@@ -125,10 +125,10 @@ export default function NFTMarketplace() {
   const purchaseContent = (item: NFTItem, type: 'pdf' | 'audio', currency: 'hybrid' | 'usd' | 'base' | 'pol') => {
     const price = type === 'pdf' ? item.pdfPrice : item.audioPrice;
     const cost = price[currency];
-    
+
     // Simulate purchase
     console.log(`Purchasing ${item.title} (${type}) for ${cost} ${currency.toUpperCase()}`);
-    
+
     // Update user balances (simulated)
     if (currency === 'hybrid' && userHybrid >= cost) {
       setUserHybrid(prev => prev - cost);

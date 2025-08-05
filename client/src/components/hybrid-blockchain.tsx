@@ -6,7 +6,8 @@ import { Badge } from '@/components/ui/badge';
 import { useBlockchain } from '@/hooks/use-blockchain';
 import { copyToClipboard } from '@/lib/spiral-calculations';
 
-export default function HybridBlockchain() {
+export function HybridBlockchain() {
+export default HybridBlockchain;
   const {
     tps,
     validators,
