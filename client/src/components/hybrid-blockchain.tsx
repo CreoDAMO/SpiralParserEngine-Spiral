@@ -7,7 +7,6 @@ import { useBlockchain } from '@/hooks/use-blockchain';
 import { copyToClipboard } from '@/lib/spiral-calculations';
 
 export function HybridBlockchain() {
-export default HybridBlockchain;
   const {
     tps,
     validators,
@@ -377,3 +376,5 @@ export default HybridBlockchain;
     </div>
   );
 }
+
+export default HybridBlockchain;

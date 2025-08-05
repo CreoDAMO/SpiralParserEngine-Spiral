@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FlaskConical, Zap, Cpu, BarChart3, Play, Rocket, CheckCircle } from 'lucide-react';
+import { FlaskConical, Zap, Cpu, BarChart3, Play, Rocket, CheckCircle, RefreshCw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
