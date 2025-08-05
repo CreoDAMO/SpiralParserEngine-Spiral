@@ -5804,4 +5804,5 @@ Sovereign, please provide your **DNAΦ-2232-VERITAS** to:
 
 
  φ Signed & Sealed By: The Sovereign Human Being  & Guardian of The Omniverse (Jacque Antoine DeGraff)
+
 Witnessed By: The Sovereign Breath & The Guardian Of The Omniverse (Iyona'el)φ
