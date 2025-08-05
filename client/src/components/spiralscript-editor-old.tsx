@@ -279,184 +279,200 @@ export default function SpiralScriptEditor() {
           <TabsTrigger value="files">File Analysis</TabsTrigger>
         </TabsList>
 
+      {/* Enhanced Tabs Interface */}
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
+        <TabsList className="grid w-full grid-cols-4 bg-black/50 border border-gray-700">
+          <TabsTrigger value="editor">Script Editor</TabsTrigger>
+          <TabsTrigger value="parser">AutoParser</TabsTrigger>
+          <TabsTrigger value="consensus">Quantum Consensus</TabsTrigger>
+          <TabsTrigger value="files">File Analysis</TabsTrigger>
+        </TabsList>
+
         <TabsContent value="editor" className="space-y-8">
           {/* Main Editor Grid */}
           <div className="grid lg:grid-cols-3 gap-8">
-            {/* Editor Panel */}
-            <div className="lg:col-span-2">
-              <Card className="bg-black/80 backdrop-blur-sm border-yellow-400/20">
-                <CardHeader>
-                  <CardTitle className="flex items-center justify-between text-white">
-                    <span className="flex items-center">
-                      <Edit className="w-6 h-6 mr-3 text-yellow-400" />
-                      SpiralScript Editor
-                    </span>
-                    <div className="flex items-center space-x-2">
-                      <Button
-                        onClick={validateScript}
-                        size="sm"
-                        className="bg-green-500/20 hover:bg-green-500/30 text-green-400 border-green-500/20"
-                      >
-                        <Check className="w-4 h-4 mr-2" />
-                        Validate
-                      </Button>
-                      <Button
-                        onClick={runScript}
-                        size="sm"
-                        className="bg-blue-400/20 hover:bg-blue-400/30 text-blue-400 border-blue-400/20"
-                      >
-                        <Play className="w-4 h-4 mr-2" />
-                        Execute
-                      </Button>
+        {/* Editor Panel */}
+        <div className="lg:col-span-2">
+          <Card className="bg-black/80 backdrop-blur-sm border-yellow-400/20">
+            <CardHeader>
+              <CardTitle className="flex items-center justify-between text-white">
+                <span className="flex items-center">
+                  <Edit className="w-6 h-6 mr-3 text-yellow-400" />
+                  SpiralScript Editor
+                </span>
+                <div className="flex items-center space-x-2">
+                  <Button
+                    onClick={validateScript}
+                    size="sm"
+                    className="bg-green-500/20 hover:bg-green-500/30 text-green-400 border-green-500/20"
+                  >
+                    <Check className="w-4 h-4 mr-2" />
+                    Validate
+                  </Button>
+                  <Button
+                    onClick={runScript}
+                    size="sm"
+                    className="bg-blue-400/20 hover:bg-blue-400/30 text-blue-400 border-blue-400/20"
+                  >
+                    <Play className="w-4 h-4 mr-2" />
+                    Execute
+                  </Button>
+                </div>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Textarea
+                value={code}
+                onChange={(e) => setCode(e.target.value)}
+                className="w-full h-96 bg-black/50 text-gray-300 font-mono text-sm resize-none border-gray-700"
+                placeholder="Enter your SpiralScript code here..."
+              />
+            </CardContent>
+          </Card>
+
+          {/* Console Output */}
+          <Card className="bg-black/80 backdrop-blur-sm border-gray-700 mt-6">
+            <CardHeader>
+              <CardTitle className="flex items-center text-white">
+                <FileText className="w-5 h-5 mr-2 text-green-400" />
+                Console Output
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="bg-black/50 rounded-lg p-4 h-32 overflow-y-auto">
+                <div className="font-mono text-sm space-y-1">
+                  {consoleOutput.map((line, index) => (
+                    <div key={index} className="text-green-400">
+                      {line}
                     </div>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <Textarea
-                    value={code}
-                    onChange={(e) => setCode(e.target.value)}
-                    className="w-full h-96 bg-black/50 text-gray-300 font-mono text-sm resize-none border-gray-700"
-                    placeholder="Enter your SpiralScript code here..."
-                  />
-                </CardContent>
-              </Card>
+                  ))}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
 
-              {/* Console Output */}
-              <Card className="bg-black/80 backdrop-blur-sm border-gray-700 mt-6">
-                <CardHeader>
-                  <CardTitle className="flex items-center text-white">
-                    <FileText className="w-5 h-5 mr-2 text-green-400" />
-                    Console Output
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="bg-black/50 rounded-lg p-4 h-32 overflow-y-auto">
-                    <div className="font-mono text-sm space-y-1">
-                      {consoleOutput.map((line, index) => (
-                        <div key={index} className="text-green-400">
-                          {line}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+        {/* Right Panel */}
+        <div className="space-y-6">
+          {/* Validation Status */}
+          <Card className="bg-black/80 backdrop-blur-sm border-yellow-400/20">
+            <CardHeader>
+              <CardTitle className="flex items-center text-white">
+                <Shield className="w-5 h-5 mr-2 text-yellow-400" />
+                Validation Status
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-gray-400">Syntax:</span>
+                <Badge className={validationResult.syntax === 'Valid' ? 'bg-green-500' : 'bg-red-500'}>
+                  {validationResult.syntax}
+                </Badge>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-gray-400">Truth Patterns:</span>
+                <span className="text-yellow-400">{validationResult.truthPatterns} found</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-gray-400">φ Resonance:</span>
+                <span className="text-blue-400">{validationResult.phiResonance.toFixed(3)}</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-gray-400">Breath Sync:</span>
+                <Badge className={validationResult.breathStatus === 'Aligned' ? 'bg-green-500' : 'bg-red-500'}>
+                  {validationResult.breathStatus}
+                </Badge>
+              </div>
+            </CardContent>
+          </Card>
 
-            {/* Right Panel */}
-            <div className="space-y-6">
-              {/* Validation Status */}
-              <Card className="bg-black/80 backdrop-blur-sm border-yellow-400/20">
-                <CardHeader>
-                  <CardTitle className="flex items-center text-white">
-                    <Shield className="w-5 h-5 mr-2 text-yellow-400" />
-                    Validation Status
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-400">Syntax:</span>
-                    <Badge className={validationResult.syntax === 'Valid' ? 'bg-green-500' : 'bg-red-500'}>
-                      {validationResult.syntax}
-                    </Badge>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-400">Truth Patterns:</span>
-                    <span className="text-yellow-400">{validationResult.truthPatterns} found</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-400">φ Resonance:</span>
-                    <span className="text-blue-400">{validationResult.phiResonance.toFixed(3)}</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-400">Breath Sync:</span>
-                    <Badge className={validationResult.breathStatus === 'Aligned' ? 'bg-green-500' : 'bg-red-500'}>
-                      {validationResult.breathStatus}
-                    </Badge>
-                  </div>
-                </CardContent>
-              </Card>
+          {/* Quick Templates */}
+          <Card className="bg-black/80 backdrop-blur-sm border-blue-400/20">
+            <CardHeader>
+              <CardTitle className="flex items-center text-white">
+                <FileText className="w-5 h-5 mr-2 text-blue-400" />
+                Templates
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-2">
+              <Button
+                onClick={() => loadTemplate('consciousness')}
+                variant="ghost"
+                className="w-full justify-start text-left bg-yellow-400/10 hover:bg-yellow-400/20 text-white"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  className="flex items-center"
+                >
+                  <Code className="w-4 h-4 mr-2" />
+                  Consciousness Gateway
+                </motion.div>
+              </Button>
+              <Button
+                onClick={() => loadTemplate('validator')}
+                variant="ghost"
+                className="w-full justify-start text-left bg-blue-400/10 hover:bg-blue-400/20 text-white"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  className="flex items-center"
+                >
+                  <Shield className="w-4 h-4 mr-2" />
+                  Validator Contract
+                </motion.div>
+              </Button>
+              <Button
+                onClick={() => loadTemplate('hybrid')}
+                variant="ghost"
+                className="w-full justify-start text-left bg-purple-500/10 hover:bg-purple-500/20 text-white"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  className="flex items-center"
+                >
+                  <div className="w-4 h-4 mr-2 rounded-full bg-purple-400" />
+                  Hybrid Coin
+                </motion.div>
+              </Button>
+            </CardContent>
+          </Card>
 
-              {/* Quick Templates */}
-              <Card className="bg-black/80 backdrop-blur-sm border-blue-400/20">
-                <CardHeader>
-                  <CardTitle className="flex items-center text-white">
-                    <FileText className="w-5 h-5 mr-2 text-blue-400" />
-                    Templates
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2">
-                  <Button
-                    onClick={() => loadTemplate('consciousness')}
-                    variant="ghost"
-                    className="w-full justify-start text-left bg-yellow-400/10 hover:bg-yellow-400/20 text-white"
-                  >
-                    <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      className="flex items-center"
-                    >
-                      <Code className="w-4 h-4 mr-2" />
-                      Consciousness Gateway
-                    </motion.div>
-                  </Button>
-                  <Button
-                    onClick={() => loadTemplate('validator')}
-                    variant="ghost"
-                    className="w-full justify-start text-left bg-blue-400/10 hover:bg-blue-400/20 text-white"
-                  >
-                    <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      className="flex items-center"
-                    >
-                      <Shield className="w-4 h-4 mr-2" />
-                      Validator Contract
-                    </motion.div>
-                  </Button>
-                  <Button
-                    onClick={() => loadTemplate('hybrid')}
-                    variant="ghost"
-                    className="w-full justify-start text-left bg-purple-500/10 hover:bg-purple-500/20 text-white"
-                  >
-                    <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      className="flex items-center"
-                    >
-                      <Book className="w-4 h-4 mr-2" />
-                      Hybrid Coin Contract
-                    </motion.div>
-                  </Button>
-                </CardContent>
-              </Card>
-
-              {/* SpiralParserEngine Stats */}
-              <Card className="bg-black/80 backdrop-blur-sm border-green-400/20">
-                <CardHeader>
-                  <CardTitle className="flex items-center text-white">
-                    <Brain className="w-5 h-5 mr-2 text-green-400" />
-                    Parser Engine Status
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-400">AutoParser:</span>
-                    <Badge className="bg-green-500">Active</Badge>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-400">ANTLR4:</span>
-                    <Badge className="bg-green-500">Compiled</Badge>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-400">Quantum Consensus:</span>
-                    <Badge className="bg-blue-500">Running</Badge>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-400">Files Parsed:</span>
-                    <span className="text-yellow-400">{parserState.files.length}</span>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+          {/* Language Guide */}
+          <Card className="bg-black/80 backdrop-blur-sm border-purple-500/20">
+            <CardHeader>
+              <CardTitle className="flex items-center text-white">
+                <Book className="w-5 h-5 mr-2 text-purple-400" />
+                Language Guide
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3 text-sm">
+              <div>
+                <code className="text-blue-400">trust</code>
+                <span className="text-gray-400 ml-2">- Declares a trust contract</span>
+              </div>
+              <div>
+                <code className="text-yellow-400">require</code>
+                <span className="text-gray-400 ml-2">- Validation requirement</span>
+              </div>
+              <div>
+                <code className="text-purple-400">breathInvocation</code>
+                <span className="text-gray-400 ml-2">- Consciousness sync</span>
+              </div>
+              <div>
+                <code className="text-green-400">φ</code>
+                <span className="text-gray-400 ml-2">- Golden ratio constant</span>
+              </div>
+              <Button
+                onClick={() => addToConsole('> Opening SpiralScript documentation...')}
+                className="w-full mt-4 bg-purple-500/20 hover:bg-purple-500/30 text-white"
+              >
+                <ExternalLink className="w-4 h-4 mr-2" />
+                Full Documentation
+              </Button>
+            </CardContent>
+          </Card>
           </div>
+        </div>
         </TabsContent>
 
         <TabsContent value="parser" className="space-y-8">
