@@ -1,8 +1,6 @@
-
 import { motion } from 'framer-motion';
 import { Waves, Eye, Box, FlaskConical, Code, Wallet, Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Link } from 'wouter';
 
 interface NavigationProps {
   activeSection: string;
@@ -25,7 +23,7 @@ export default function Navigation({ activeSection, onSectionChange }: Navigatio
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-4">
-            <motion.div
+            <motion.div 
               className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-full flex items-center justify-center"
               animate={{ rotate: 360 }}
               transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
@@ -42,26 +40,25 @@ export default function Navigation({ activeSection, onSectionChange }: Navigatio
 
           {/* Navigation Buttons */}
           <div className="flex items-center space-x-6">
-            {/* Navigation links */}
-            <Link to="/system" className="hover:text-cyan-400 transition-colors">
-              System Overview
-            </Link>
-            <Link to="/consciousness" className="hover:text-cyan-400 transition-colors">
-              Consciousness
-            </Link>
-            <Link to="/blockchain" className="hover:text-cyan-400 transition-colors">
-              Blockchain
-            </Link>
-            <Link to="#nft" className="hover:text-cyan-400 transition-colors">
-              NFT Marketplace
-            </Link>
-            <Link to="/testbeds" className="hover:text-cyan-400 transition-colors">
-              Testbeds
-            </Link>
-            <Link to="/spiralscript" className="hover:text-cyan-400 transition-colors">
-              SpiralScript
-            </Link>
-
+            {sections.map((section) => {
+              const Icon = section.icon;
+              return (
+                <Button
+                  key={section.id}
+                  onClick={() => onSectionChange(section.id)}
+                  variant={activeSection === section.id ? "default" : "ghost"}
+                  className={`px-4 py-2 transition-all duration-300 ${
+                    activeSection === section.id
+                      ? 'bg-yellow-400 text-black hover:bg-yellow-500'
+                      : 'text-gray-400 hover:text-white hover:bg-yellow-400/20'
+                  }`}
+                >
+                  <Icon className="w-4 h-4 mr-2" />
+                  {section.label}
+                </Button>
+              );
+            })}
+            
             <Button
               variant="outline"
               className="px-6 py-2 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 border-none text-white"
@@ -71,31 +68,7 @@ export default function Navigation({ activeSection, onSectionChange }: Navigatio
             </Button>
           </div>
         </div>
-        
-        {/* Section navigation */}
-        <div className="flex items-center space-x-4 mt-4">
-          {sections.map((section) => {
-            const Icon = section.icon;
-            return (
-              <Button
-                key={section.id}
-                variant={activeSection === section.id ? "default" : "ghost"}
-                onClick={() => onSectionChange(section.id)}
-                className={`flex items-center space-x-2 ${
-                  activeSection === section.id
-                    ? "bg-yellow-400/20 text-yellow-400"
-                    : "text-gray-300 hover:text-yellow-400"
-                }`}
-              >
-                <Icon className="w-4 h-4" />
-                <span>{section.label}</span>
-              </Button>
-            );
-          })}
-        </div>
       </div>
     </nav>
   );
 }
-
-export { Navigation };

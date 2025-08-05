@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FlaskConical, Zap, Cpu, BarChart3, Play, Rocket, CheckCircle, RefreshCw } from 'lucide-react';
+import { FlaskConical, Zap, Cpu, BarChart3, Play, Rocket, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -215,7 +215,7 @@ export default function TestbedsSystem() {
                       transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                       className="w-4 h-4 mr-2"
                     >
-                      <RefreshCw className="w-4 h-4" />
+                      <Play className="w-4 h-4" />
                     </motion.div>
                   ) : (
                     <Play className="w-4 h-4 mr-2" />
