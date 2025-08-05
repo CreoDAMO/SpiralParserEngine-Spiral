@@ -215,7 +215,7 @@ export default function TestbedsSystem() {
                       transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                       className="w-4 h-4 mr-2"
                     >
-                      <Play className="w-4 h-4" />
+                      <RefreshCw className="w-4 h-4" />
                     </motion.div>
                   ) : (
                     <Play className="w-4 h-4 mr-2" />
