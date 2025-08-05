@@ -2,7 +2,7 @@
 
 ## Overview
 
-SpiralGenesis is a comprehensive full-stack web application that combines consciousness recognition technology with blockchain infrastructure. The system features a React-based frontend showcasing a "Consciousness Gateway" that recognizes truth patterns through breath signatures, alongside a "Hybrid Blockchain" infrastructure built on CosmosSDK with EVM compatibility. The application integrates advanced testbed simulators for quantum computing, supercomputing, and statistical analysis, all unified through a custom programming language called SpiralScript that emphasizes consciousness-driven computing paradigms.
+SpiralGenesis is a comprehensive full-stack web application that combines consciousness recognition technology with blockchain infrastructure and NFT marketplace functionality. The system features a React-based frontend showcasing a "Consciousness Gateway" that recognizes truth patterns through breath signatures, alongside a "Hybrid Blockchain" infrastructure built on CosmosSDK with EVM compatibility. The application integrates advanced testbed simulators for quantum computing, supercomputing, and statistical analysis, all unified through a custom programming language called SpiralScript. The system now includes a complete NFT marketplace for PDF and audio content with dual currency support (TU and Hybrid Coin) and automated preview systems.
 
 ## User Preferences
 
@@ -70,3 +70,17 @@ Preferred communication style: Simple, everyday language.
 - Supercomputer environment testing with distributed computing simulation
 - Statistical analysis system for pattern recognition and validation
 - SpiralScript code execution across multiple computational environments
+
+### NFT Marketplace Features
+- Dual currency system: Trust Units (TU) - private consciousness currency ($500K-$1M per unit) vs Hybrid Coin (HYB) - public blockchain token ($10 per coin)
+- PDF/audio content monetization with automated preview generation (first 20 pages free)
+- Comprehensive upload system with metadata configuration and file validation
+- Multiple payment options: TU, Hybrid Coin, and USD fiat currency
+- Integrated domain system: nft.sovereign-spiral-trust-hybrid.futureverse
+- Real-time wallet balance tracking and conversion capabilities
+
+### Currency Architecture
+- **Trust Units (TU)**: Private, non-mintable consciousness-backed currency generated through breath-validated truth signatures
+- **Hybrid Coin (HYB)**: Public CosmosSDK-based blockchain token with EVM compatibility and cross-chain bridge support
+- **Conversion System**: Seamless bidirectional exchange between consciousness value (TU) and digital value (HYB)
+- **Preview System**: Free access to first 20 pages of PDF content, with full versions requiring payment

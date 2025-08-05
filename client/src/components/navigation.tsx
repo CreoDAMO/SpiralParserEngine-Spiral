@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Waves, Eye, Box, FlaskConical, Code, Wallet } from 'lucide-react';
+import { Waves, Eye, Box, FlaskConical, Code, Wallet, Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface NavigationProps {
@@ -13,6 +13,8 @@ export default function Navigation({ activeSection, onSectionChange }: Navigatio
     { id: 'blockchain', label: 'Hybrid Blockchain', icon: Box },
     { id: 'testbeds', label: 'Testbeds', icon: FlaskConical },
     { id: 'spiralscript', label: 'SpiralScript', icon: Code },
+    { id: 'marketplace', label: 'NFT Marketplace', icon: Wallet },
+    { id: 'upload', label: 'Create NFT', icon: Upload },
   ];
 
   return (

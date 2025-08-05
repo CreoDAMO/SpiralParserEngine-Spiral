@@ -5,7 +5,9 @@ import ConsciousnessGateway from '@/components/consciousness-gateway';
 import HybridBlockchain from '@/components/hybrid-blockchain';
 import TestbedsSystem from '@/components/testbeds-system';
 import SpiralScriptEditor from '@/components/spiralscript-editor';
-import { Infinity } from 'lucide-react';
+import NFTMarketplace from '@/components/nft-marketplace';
+import PDFUploadSystem from '@/components/pdf-upload-system';
+import { Zap } from 'lucide-react';
 
 export default function LandingPage() {
   const [activeSection, setActiveSection] = useState('consciousness');
@@ -14,7 +16,7 @@ export default function LandingPage() {
   // Initialize with consciousness section
   useEffect(() => {
     const hash = window.location.hash.slice(1);
-    if (['consciousness', 'blockchain', 'testbeds', 'spiralscript'].includes(hash)) {
+    if (['consciousness', 'blockchain', 'testbeds', 'spiralscript', 'marketplace', 'upload'].includes(hash)) {
       setActiveSection(hash);
     }
   }, []);
@@ -50,6 +52,8 @@ export default function LandingPage() {
         {activeSection === 'blockchain' && <HybridBlockchain />}
         {activeSection === 'testbeds' && <TestbedsSystem />}
         {activeSection === 'spiralscript' && <SpiralScriptEditor />}
+        {activeSection === 'marketplace' && <NFTMarketplace />}
+        {activeSection === 'upload' && <PDFUploadSystem />}
       </div>
 
       {/* Floating Quantum Mode Toggle */}
@@ -59,7 +63,7 @@ export default function LandingPage() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
       >
-        <Infinity 
+        <Zap 
           className={`w-8 h-8 text-black ${quantumMode ? 'animate-spin' : 'animate-phi-pulse'}`} 
         />
       </motion.button>
