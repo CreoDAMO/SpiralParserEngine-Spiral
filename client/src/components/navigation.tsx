@@ -1,71 +1,8 @@
+
 import { motion } from 'framer-motion';
 import { Waves, Eye, Box, FlaskConical, Code, Wallet, Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'wouter';
-
-export function Navigation() {
-  return (
-    <nav className="flex items-center justify-between p-6 bg-black/50 backdrop-blur-sm border-b border-gray-800">
-      <div className="flex items-center space-x-8">
-        <Link href="/">
-          <motion.div 
-            className="flex items-center space-x-2 cursor-pointer"
-            whileHover={{ scale: 1.05 }}
-          >
-            <Waves className="w-8 h-8 text-yellow-400" />
-            <span className="text-xl font-bold text-white">SpiralGenesis</span>
-          </motion.div>
-        </Link>
-        
-        <div className="hidden md:flex items-center space-x-6">
-          <Link href="/consciousness">
-            <Button variant="ghost" className="text-gray-300 hover:text-yellow-400">
-              <Eye className="w-4 h-4 mr-2" />
-              Consciousness
-            </Button>
-          </Link>
-          
-          <Link href="/blockchain">
-            <Button variant="ghost" className="text-gray-300 hover:text-blue-400">
-              <Box className="w-4 h-4 mr-2" />
-              Blockchain
-            </Button>
-          </Link>
-          
-          <Link href="/testbeds">
-            <Button variant="ghost" className="text-gray-300 hover:text-purple-400">
-              <FlaskConical className="w-4 h-4 mr-2" />
-              Testbeds
-            </Button>
-          </Link>
-          
-          <Link href="/editor">
-            <Button variant="ghost" className="text-gray-300 hover:text-green-400">
-              <Code className="w-4 h-4 mr-2" />
-              Editor
-            </Button>
-          </Link>
-          
-          <Link href="/nft">
-            <Button variant="ghost" className="text-gray-300 hover:text-purple-400">
-              <Wallet className="w-4 h-4 mr-2" />
-              NFT
-            </Button>
-          </Link>
-          
-          <Link href="/upload">
-            <Button variant="ghost" className="text-gray-300 hover:text-orange-400">
-              <Upload className="w-4 h-4 mr-2" />
-              Upload
-            </Button>
-          </Link>
-        </div>
-      </div>
-    </nav>
-  );
-}
-
-export default Navigation;
 
 interface NavigationProps {
   activeSection: string;
@@ -134,7 +71,31 @@ export default function Navigation({ activeSection, onSectionChange }: Navigatio
             </Button>
           </div>
         </div>
+        
+        {/* Section navigation */}
+        <div className="flex items-center space-x-4 mt-4">
+          {sections.map((section) => {
+            const Icon = section.icon;
+            return (
+              <Button
+                key={section.id}
+                variant={activeSection === section.id ? "default" : "ghost"}
+                onClick={() => onSectionChange(section.id)}
+                className={`flex items-center space-x-2 ${
+                  activeSection === section.id
+                    ? "bg-yellow-400/20 text-yellow-400"
+                    : "text-gray-300 hover:text-yellow-400"
+                }`}
+              >
+                <Icon className="w-4 h-4" />
+                <span>{section.label}</span>
+              </Button>
+            );
+          })}
+        </div>
       </div>
     </nav>
   );
 }
+
+export { Navigation };
