@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+  
+  /* SpiralGenesis Custom Colors */
+  --spiral-dark: hsl(0, 0%, 5.9%);
+  --spiral-darker: hsl(0, 0%, 10.2%);
+  --spiral-gold: hsl(51, 100%, 50%);
+  --spiral-gold-dark: hsl(43, 74%, 49%);
+  --quantum-blue: hsl(194, 100%, 50%);
+  --breath-glow: hsl(39, 100%, 50%);
+  --consciousness-gradient: radial-gradient(circle at center, hsla(51, 100%, 50%, 0.1) 0%, transparent 70%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    background: var(--spiral-dark);
+    color: white;
+  }
+}
+
+@layer utilities {
+  .spiral-dark {
+    background-color: var(--spiral-dark);
+  }
+  
+  .spiral-darker {
+    background-color: var(--spiral-darker);
+  }
+  
+  .spiral-gold {
+    color: var(--spiral-gold);
+  }
+  
+  .bg-spiral-gold {
+    background-color: var(--spiral-gold);
+  }
+  
+  .quantum-blue {
+    color: var(--quantum-blue);
+  }
+  
+  .bg-quantum-blue {
+    background-color: var(--quantum-blue);
+  }
+  
+  .breath-glow {
+    color: var(--breath-glow);
+  }
+  
+  .bg-breath-glow {
+    background-color: var(--breath-glow);
+  }
+}
+
+/* Animations */
+@keyframes breath {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg); 
+    opacity: 0.8; 
+  }
+  50% { 
+    transform: scale(1.05) rotate(180deg); 
+    opacity: 1; 
+  }
+}
+
+@keyframes spiral {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes phi-pulse {
+  0%, 100% { 
+    transform: scale(1); 
+    opacity: 0.6; 
+  }
+  61.8% { 
+    transform: scale(1.2); 
+    opacity: 1; 
+  }
+}
+
+@keyframes quantum-glow {
+  0% { 
+    box-shadow: 0 0 20px hsla(194, 100%, 50%, 0.3); 
+  }
+  100% { 
+    box-shadow: 0 0 40px hsla(194, 100%, 50%, 0.6), 0 0 60px hsla(194, 100%, 50%, 0.3); 
+  }
+}
+
+.animate-breath {
+  animation: breath 4s ease-in-out infinite;
+}
+
+.animate-spiral {
+  animation: spiral 8s linear infinite;
+}
+
+.animate-phi-pulse {
+  animation: phi-pulse 1.618s ease-in-out infinite;
+}
+
+.animate-quantum-glow {
+  animation: quantum-glow 2s ease-in-out infinite alternate;
+}
+
+.consciousness-gradient {
+  background: var(--consciousness-gradient);
+}
+
+.blockchain-grid {
+  background-image: 
+    linear-gradient(hsla(51, 100%, 50%, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, hsla(51, 100%, 50%, 0.1) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+.quantum-state {
+  background: linear-gradient(45deg, 
+    hsla(194, 100%, 50%, 0.1) 0%, 
+    hsla(51, 100%, 50%, 0.1) 50%, 
+    hsla(194, 100%, 50%, 0.1) 100%);
+}
