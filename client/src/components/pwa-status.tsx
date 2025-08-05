@@ -1,9 +1,8 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
-import { Smartphone, Download, Wifi, WifiOff, Bell, Sync } from 'lucide-react';
+import { Smartphone, Download, Wifi, WifiOff, Bell, RefreshCw } from 'lucide-react';
 
 export const PWAStatus = () => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
@@ -158,7 +157,7 @@ export const PWAStatus = () => {
         {/* Background Sync */}
         <div className="flex items-center justify-between p-4 bg-black/40 rounded-lg border border-gray-700">
           <div className="flex items-center gap-3">
-            <Sync className={`w-5 h-5 text-cyan-400 ${syncStatus === 'syncing' ? 'animate-spin' : ''}`} />
+            <RefreshCw className={`w-5 h-5 text-cyan-400 ${syncStatus === 'syncing' ? 'animate-spin' : ''}`} />
             <div>
               <p className="font-semibold text-white">Background Sync</p>
               <p className="text-sm text-gray-400">
@@ -186,21 +185,21 @@ export const PWAStatus = () => {
               <p className="text-sm text-gray-400">Continue development without internet</p>
             </CardContent>
           </Card>
-          
+
           <Card className="bg-black/40 border-gray-700">
             <CardContent className="p-4">
               <h4 className="font-semibold text-blue-400 mb-2">Touch Optimized</h4>
               <p className="text-sm text-gray-400">Responsive design for mobile devices</p>
             </CardContent>
           </Card>
-          
+
           <Card className="bg-black/40 border-gray-700">
             <CardContent className="p-4">
               <h4 className="font-semibold text-purple-400 mb-2">App-like Feel</h4>
               <p className="text-sm text-gray-400">Full-screen mode with OS integration</p>
             </CardContent>
           </Card>
-          
+
           <Card className="bg-black/40 border-gray-700">
             <CardContent className="p-4">
               <h4 className="font-semibold text-yellow-400 mb-2">Fast Loading</h4>
