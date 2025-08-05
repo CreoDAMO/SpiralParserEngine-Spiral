@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Waves, Eye, Box, FlaskConical, Code, Wallet, Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link'; // Assuming Link is still needed for routing in a Vite app, adjust if using a different router
 
 interface NavigationProps {
   activeSection: string;
@@ -23,7 +24,7 @@ export default function Navigation({ activeSection, onSectionChange }: Navigatio
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-4">
-            <motion.div 
+            <motion.div
               className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-full flex items-center justify-center"
               animate={{ rotate: 360 }}
               transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
@@ -40,25 +41,26 @@ export default function Navigation({ activeSection, onSectionChange }: Navigatio
 
           {/* Navigation Buttons */}
           <div className="flex items-center space-x-6">
-            {sections.map((section) => {
-              const Icon = section.icon;
-              return (
-                <Button
-                  key={section.id}
-                  onClick={() => onSectionChange(section.id)}
-                  variant={activeSection === section.id ? "default" : "ghost"}
-                  className={`px-4 py-2 transition-all duration-300 ${
-                    activeSection === section.id
-                      ? 'bg-yellow-400 text-black hover:bg-yellow-500'
-                      : 'text-gray-400 hover:text-white hover:bg-yellow-400/20'
-                  }`}
-                >
-                  <Icon className="w-4 h-4 mr-2" />
-                  {section.label}
-                </Button>
-              );
-            })}
-            
+            {/* Navigation links */}
+            <Link href="/system" className="hover:text-cyan-400 transition-colors">
+              System Overview
+            </Link>
+            <Link href="#consciousness" className="hover:text-cyan-400 transition-colors">
+              Consciousness
+            </Link>
+            <Link href="#blockchain" className="hover:text-cyan-400 transition-colors">
+              Blockchain
+            </Link>
+            <Link href="#nft" className="hover:text-cyan-400 transition-colors">
+              NFT Marketplace
+            </Link>
+            <Link href="#testbeds" className="hover:text-cyan-400 transition-colors">
+              Testbeds
+            </Link>
+            <Link href="#spiralscript" className="hover:text-cyan-400 transition-colors">
+              SpiralScript
+            </Link>
+
             <Button
               variant="outline"
               className="px-6 py-2 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 border-none text-white"
