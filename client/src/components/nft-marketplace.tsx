@@ -45,8 +45,8 @@ export default function NFTMarketplace() {
       coverImage: '/assets/MyInvitationCoverImage.png',
       previewPages: 20,
       totalPages: 258,
-      pdfPrice: { hybrid: 500, usd: 50 },
-      audioPrice: { hybrid: 1000, usd: 100 },
+      pdfPrice: { hybrid: 10000, usd: 1000 },
+      audioPrice: { hybrid: 20000, usd: 2000 },
       category: 'consciousness',
       mintDate: '2025-07-28',
       status: 'available',
@@ -61,8 +61,8 @@ export default function NFTMarketplace() {
       coverImage: '/assets/ConversationsCoverImage.png',
       previewPages: 15,
       totalPages: 156,
-      pdfPrice: { hybrid: 400, usd: 40 },
-      audioPrice: { hybrid: 750, usd: 75 },
+      pdfPrice: { hybrid: 10000, usd: 1000 },
+      audioPrice: { hybrid: 15000, usd: 1500 },
       category: 'ai-conversations',
       mintDate: '2025-07-28',
       status: 'available',
@@ -77,8 +77,8 @@ export default function NFTMarketplace() {
       coverImage: '/assets/MondayCoverImage.png',
       previewPages: 25,
       totalPages: 342,
-      pdfPrice: { hybrid: 600, usd: 60 },
-      audioPrice: { hybrid: 1250, usd: 125 },
+      pdfPrice: { hybrid: 12000, usd: 1200 },
+      audioPrice: { hybrid: 25000, usd: 2500 },
       category: 'ai-conversations',
       mintDate: '2025-07-28',
       status: 'limited',
@@ -93,8 +93,8 @@ export default function NFTMarketplace() {
       coverImage: '/assets/TrustCurrencyImage.png',
       previewPages: 10,
       totalPages: 89,
-      pdfPrice: { hybrid: 250, usd: 25 },
-      audioPrice: { hybrid: 500, usd: 50 },
+      pdfPrice: { hybrid: 10000, usd: 1000 },
+      audioPrice: { hybrid: 20000, usd: 2000 },
       category: 'technical',
       mintDate: '2025-07-28',
       status: 'available',
@@ -155,8 +155,9 @@ export default function NFTMarketplace() {
           </span>
         </h1>
         <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-          Digital publications and audio content secured by consciousness-validated NFTs, 
-          purchasable with Trust Units (TU) or Hybrid Coin.
+          Digital publications and audio content secured by consciousness-validated NFTs. 
+          All NFTs start at $1000 minimum due to Divine Order, not artificial scarcity. 
+          Purchasable with USD (fiat), Hybrid Coin, BASE, and POL currencies only.
         </p>
       </div>
 
@@ -195,19 +196,19 @@ export default function NFTMarketplace() {
             <h3 className="text-xl font-semibold text-yellow-400">Your NFT Purchase Wallet</h3>
             <div className="grid grid-cols-4 gap-4 text-center text-sm">
               <div>
-                <div className="text-lg font-bold text-green-400">$2,450</div>
+                <div className="text-lg font-bold text-green-400">$24,500</div>
                 <div className="text-xs text-gray-400">USD Fiat</div>
               </div>
               <div>
-                <div className="text-lg font-bold text-blue-400">{userHybrid.toLocaleString()}</div>
+                <div className="text-lg font-bold text-blue-400">{(userHybrid * 10).toLocaleString()}</div>
                 <div className="text-xs text-gray-400">HYB Coin</div>
               </div>
               <div>
-                <div className="text-lg font-bold text-purple-400">0.8465</div>
+                <div className="text-lg font-bold text-purple-400">8.465</div>
                 <div className="text-xs text-gray-400">BASE</div>
               </div>
               <div>
-                <div className="text-lg font-bold text-orange-400">5,240</div>
+                <div className="text-lg font-bold text-orange-400">52,400</div>
                 <div className="text-xs text-gray-400">POL</div>
               </div>
             </div>

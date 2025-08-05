@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Box, BusFront, Coins, Network, Activity, Globe, Copy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useBlockchain } from '@/hooks/use-blockchain';
 import { copyToClipboard } from '@/lib/spiral-calculations';
@@ -41,8 +41,8 @@ export default function HybridBlockchain() {
             </span>
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            CosmosSDK-based Layer 1 with EVM compatibility, featuring φ-harmonic consensus 
-            and dual bridge architecture for sovereign applications.
+            A CosmosSDK-based blockchain with EVM compatibility, featuring Hybrid Coin (HYB) 
+            as the native currency for the public digital economy.
           </p>
         </div>
 
@@ -91,21 +91,21 @@ export default function HybridBlockchain() {
               <p className="text-gray-400">TPS Throughput</p>
             </CardContent>
           </Card>
-          
+
           <Card className="bg-black/80 backdrop-blur-sm border-yellow-400/20 text-center">
             <CardContent className="p-6">
               <div className="text-3xl font-bold text-yellow-400 mb-2">3s</div>
               <p className="text-gray-400">Block Finality</p>
             </CardContent>
           </Card>
-          
+
           <Card className="bg-black/80 backdrop-blur-sm border-green-500/20 text-center">
             <CardContent className="p-6">
               <div className="text-3xl font-bold text-green-400 mb-2">99.99%</div>
               <p className="text-gray-400">Uptime</p>
             </CardContent>
           </Card>
-          
+
           <Card className="bg-black/80 backdrop-blur-sm border-purple-500/20 text-center">
             <CardContent className="p-6">
               <div className="text-3xl font-bold text-purple-400 mb-2">φ 1.618</div>
