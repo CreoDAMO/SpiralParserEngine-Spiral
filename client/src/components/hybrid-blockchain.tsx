@@ -244,6 +244,135 @@ export default function HybridBlockchain() {
           </CardContent>
         </Card>
       </div>
+
+      {/* Currency Architecture Section */}
+      <Card className="bg-gradient-to-br from-gray-900 to-black border-blue-400/20 mt-12">
+        <CardContent className="p-8">
+          <h3 className="text-2xl font-semibold mb-6 text-center">
+            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              Hybrid Blockchain Currency Architecture
+            </span>
+          </h3>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="space-y-4">
+              <h4 className="text-xl font-semibold text-yellow-400">Trust Units (TU) - Private Gate</h4>
+              <div className="space-y-2 text-gray-300">
+                <p>• Private consciousness-backed currency</p>
+                <p>• Generated through breath-validated truth signatures</p>
+                <p>• Cannot be minted or mined artificially</p>
+                <p>• Value: $500,000 - $1,000,000 per TU</p>
+                <p>• Used for sovereign private transactions</p>
+                <p>• Backed by Spiral Resonance Index (SRI)</p>
+              </div>
+            </div>
+            <div className="space-y-4">
+              <h4 className="text-xl font-semibold text-blue-400">Hybrid Coin (HYB) - Public Gate</h4>
+              <div className="space-y-2 text-gray-300">
+                <p>• Public blockchain cryptocurrency</p>
+                <p>• Built on CosmosSDK with EVM compatibility</p>
+                <p>• Native coin, not a token</p>
+                <p>• Value: $10 USD per HYB</p>
+                <p>• Total Supply: 100 billion HYB</p>
+                <p>• Used for public ecosystem transactions</p>
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 text-center">
+            <div className="inline-block bg-black/50 rounded-lg p-4">
+              <h5 className="text-lg font-semibold text-purple-400 mb-2">Bridge Architecture</h5>
+              <p className="text-gray-300">
+                SpiralBridge (Private) ↔ HybridBridge (Public) with seamless TU ↔ HYB conversion
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Public Gate Features */}
+      <div className="grid md:grid-cols-2 gap-8 mt-8">
+        <Card className="bg-gradient-to-br from-gray-900 to-black border-blue-400/20">
+          <CardContent className="p-6">
+            <h4 className="text-xl font-semibold text-blue-400 mb-4">
+              Public Gate Infrastructure
+            </h4>
+            <div className="space-y-3 text-gray-300">
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                <span>CosmosSDK Base Layer</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                <span>EVM Compatibility</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                <span>IBC Cross-Chain Protocol</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                <span>NFT-Gated Validators</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                <span>Dual Bridge Architecture</span>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-gradient-to-br from-gray-900 to-black border-green-400/20">
+          <CardContent className="p-6">
+            <h4 className="text-xl font-semibold text-green-400 mb-4">
+              HYB Token Economics
+            </h4>
+            <div className="space-y-3 text-gray-300">
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                <span>100B Total Supply</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                <span>$10 USD per HYB</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                <span>Staking Rewards: 8-12% APY</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                <span>Validator Requirements</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                <span>Cross-Chain Liquidity</span>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Validator Network Status */}
+      <Card className="bg-gradient-to-br from-gray-900 to-black border-purple-400/20 mt-8">
+        <CardContent className="p-6">
+          <h4 className="text-xl font-semibold text-purple-400 mb-4">
+            Validator Network Status
+          </h4>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="text-center">
+              <div className="text-2xl font-bold text-blue-400">127</div>
+              <div className="text-gray-400">Active Validators</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-green-400">$1.2M</div>
+              <div className="text-gray-400">Total Staked HYB</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-yellow-400">99.99%</div>
+              <div className="text-gray-400">Network Uptime</div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }

@@ -397,38 +397,7 @@ export default function NFTMarketplace() {
         </TabsContent>
       </Tabs>
 
-      {/* Currency Explanation */}
-      <Card className="bg-gradient-to-br from-gray-900 to-black border-yellow-400/20 mt-12">
-        <CardContent className="p-8">
-          <h3 className="text-2xl font-semibold mb-6 text-center">
-            <span className="bg-gradient-to-r from-yellow-400 to-blue-400 bg-clip-text text-transparent">
-              Understanding Our Currency Systems
-            </span>
-          </h3>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="space-y-4">
-              <h4 className="text-xl font-semibold text-yellow-400">Trust Units (TU)</h4>
-              <div className="space-y-2 text-gray-300">
-                <p>• Private consciousness-backed currency</p>
-                <p>• Generated through breath-validated truth</p>
-                <p>• Cannot be minted or mined artificially</p>
-                <p>• Value: $500,000 - $1,000,000 per TU</p>
-                <p>• Used for sovereign transactions</p>
-              </div>
-            </div>
-            <div className="space-y-4">
-              <h4 className="text-xl font-semibold text-blue-400">Hybrid Coin (HYB)</h4>
-              <div className="space-y-2 text-gray-300">
-                <p>• Public blockchain cryptocurrency</p>
-                <p>• Built on CosmosSDK with EVM compatibility</p>
-                <p>• Native coin, not a token</p>
-                <p>• Value: $10 USD per HYB</p>
-                <p>• Used for public ecosystem transactions</p>
-              </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+
     </div>
   );
 }
