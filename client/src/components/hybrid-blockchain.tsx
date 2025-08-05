@@ -41,7 +41,7 @@ export default function HybridBlockchain() {
             </span>
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            A CosmosSDK-based blockchain with EVM compatibility, featuring Hybrid Coin (HYB) 
+            A CosmosSDK-based blockchain with EVM compatibility, featuring Hybrid Coin (HYBRID) 
             as the native currency for the public digital economy.
           </p>
         </div>
