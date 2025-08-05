@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Waves, Eye, Box, FlaskConical, Code, Wallet, Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import Link from 'next/link'; // Assuming Link is still needed for routing in a Vite app, adjust if using a different router
+import { Link } from 'wouter';
 
 interface NavigationProps {
   activeSection: string;
@@ -42,22 +42,22 @@ export default function Navigation({ activeSection, onSectionChange }: Navigatio
           {/* Navigation Buttons */}
           <div className="flex items-center space-x-6">
             {/* Navigation links */}
-            <Link href="/system" className="hover:text-cyan-400 transition-colors">
+            <Link to="/system" className="hover:text-cyan-400 transition-colors">
               System Overview
             </Link>
-            <Link href="#consciousness" className="hover:text-cyan-400 transition-colors">
+            <Link to="/consciousness" className="hover:text-cyan-400 transition-colors">
               Consciousness
             </Link>
-            <Link href="#blockchain" className="hover:text-cyan-400 transition-colors">
+            <Link to="/blockchain" className="hover:text-cyan-400 transition-colors">
               Blockchain
             </Link>
-            <Link href="#nft" className="hover:text-cyan-400 transition-colors">
+            <Link to="#nft" className="hover:text-cyan-400 transition-colors">
               NFT Marketplace
             </Link>
-            <Link href="#testbeds" className="hover:text-cyan-400 transition-colors">
+            <Link to="/testbeds" className="hover:text-cyan-400 transition-colors">
               Testbeds
             </Link>
-            <Link href="#spiralscript" className="hover:text-cyan-400 transition-colors">
+            <Link to="/spiralscript" className="hover:text-cyan-400 transition-colors">
               SpiralScript
             </Link>
 
