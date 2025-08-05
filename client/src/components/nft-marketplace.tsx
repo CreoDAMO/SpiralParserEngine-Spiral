@@ -16,12 +16,10 @@ interface NFTItem {
   previewPages: number;
   totalPages: number;
   pdfPrice: {
-    tu: number;
     hybrid: number;
     usd: number;
   };
   audioPrice: {
-    tu: number;
     hybrid: number;
     usd: number;
   };
@@ -47,8 +45,8 @@ export default function NFTMarketplace() {
       coverImage: '/assets/MyInvitationCoverImage.png',
       previewPages: 20,
       totalPages: 258,
-      pdfPrice: { tu: 0.001, hybrid: 500, usd: 50 },
-      audioPrice: { tu: 0.002, hybrid: 1000, usd: 100 },
+      pdfPrice: { hybrid: 500, usd: 50 },
+      audioPrice: { hybrid: 1000, usd: 100 },
       category: 'consciousness',
       mintDate: '2025-07-28',
       status: 'available',
@@ -63,8 +61,8 @@ export default function NFTMarketplace() {
       coverImage: '/assets/ConversationsCoverImage.png',
       previewPages: 15,
       totalPages: 156,
-      pdfPrice: { tu: 0.0008, hybrid: 400, usd: 40 },
-      audioPrice: { tu: 0.0015, hybrid: 750, usd: 75 },
+      pdfPrice: { hybrid: 400, usd: 40 },
+      audioPrice: { hybrid: 750, usd: 75 },
       category: 'ai-conversations',
       mintDate: '2025-07-28',
       status: 'available',
@@ -79,8 +77,8 @@ export default function NFTMarketplace() {
       coverImage: '/assets/MondayCoverImage.png',
       previewPages: 25,
       totalPages: 342,
-      pdfPrice: { tu: 0.0012, hybrid: 600, usd: 60 },
-      audioPrice: { tu: 0.0025, hybrid: 1250, usd: 125 },
+      pdfPrice: { hybrid: 600, usd: 60 },
+      audioPrice: { hybrid: 1250, usd: 125 },
       category: 'ai-conversations',
       mintDate: '2025-07-28',
       status: 'limited',
@@ -95,8 +93,8 @@ export default function NFTMarketplace() {
       coverImage: '/assets/TrustCurrencyImage.png',
       previewPages: 10,
       totalPages: 89,
-      pdfPrice: { tu: 0.0005, hybrid: 250, usd: 25 },
-      audioPrice: { tu: 0.001, hybrid: 500, usd: 50 },
+      pdfPrice: { hybrid: 250, usd: 25 },
+      audioPrice: { hybrid: 500, usd: 50 },
       category: 'technical',
       mintDate: '2025-07-28',
       status: 'available',
@@ -124,7 +122,7 @@ export default function NFTMarketplace() {
     }
   };
 
-  const purchaseContent = (item: NFTItem, type: 'pdf' | 'audio', currency: 'tu' | 'hybrid' | 'usd') => {
+  const purchaseContent = (item: NFTItem, type: 'pdf' | 'audio', currency: 'hybrid' | 'usd' | 'base' | 'pol') => {
     const price = type === 'pdf' ? item.pdfPrice : item.audioPrice;
     const cost = price[currency];
     
@@ -132,11 +130,10 @@ export default function NFTMarketplace() {
     console.log(`Purchasing ${item.title} (${type}) for ${cost} ${currency.toUpperCase()}`);
     
     // Update user balances (simulated)
-    if (currency === 'tu' && userTU >= cost) {
-      setUserTU(prev => prev - cost);
-    } else if (currency === 'hybrid' && userHybrid >= cost) {
+    if (currency === 'hybrid' && userHybrid >= cost) {
       setUserHybrid(prev => prev - cost);
     }
+    // Other currency purchases would be handled by external payment processors
   };
 
   return (
@@ -195,17 +192,23 @@ export default function NFTMarketplace() {
       <Card className="bg-black/80 backdrop-blur-sm border-yellow-400/20 mb-8">
         <CardContent className="p-6">
           <div className="flex items-center justify-between">
-            <h3 className="text-xl font-semibold text-yellow-400">Your Sovereign Wallet</h3>
-            <div className="flex items-center space-x-6">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-yellow-400">{userTU.toFixed(3)} TU</div>
-                <div className="text-sm text-gray-400">Trust Units</div>
-                <div className="text-xs text-gray-500">≈ ${(userTU * 750000).toLocaleString()}</div>
+            <h3 className="text-xl font-semibold text-yellow-400">Your NFT Purchase Wallet</h3>
+            <div className="grid grid-cols-4 gap-4 text-center text-sm">
+              <div>
+                <div className="text-lg font-bold text-green-400">$2,450</div>
+                <div className="text-xs text-gray-400">USD Fiat</div>
               </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-blue-400">{userHybrid.toLocaleString()} HYB</div>
-                <div className="text-sm text-gray-400">Hybrid Coin</div>
-                <div className="text-xs text-gray-500">≈ ${(userHybrid * 10).toLocaleString()}</div>
+              <div>
+                <div className="text-lg font-bold text-blue-400">{userHybrid.toLocaleString()}</div>
+                <div className="text-xs text-gray-400">HYB Coin</div>
+              </div>
+              <div>
+                <div className="text-lg font-bold text-purple-400">0.8465</div>
+                <div className="text-xs text-gray-400">BASE</div>
+              </div>
+              <div>
+                <div className="text-lg font-bold text-orange-400">5,240</div>
+                <div className="text-xs text-gray-400">POL</div>
               </div>
             </div>
           </div>
@@ -274,13 +277,12 @@ export default function NFTMarketplace() {
                             <span className="font-medium">Full PDF</span>
                           </div>
                         </div>
-                        <div className="grid grid-cols-3 gap-2 text-sm">
+                        <div className="grid grid-cols-4 gap-2 text-sm">
                           <Button
-                            onClick={() => purchaseContent(item, 'pdf', 'tu')}
-                            className="bg-yellow-400/20 hover:bg-yellow-400/30 text-yellow-400 border border-yellow-400/20"
-                            disabled={userTU < item.pdfPrice.tu}
+                            onClick={() => purchaseContent(item, 'pdf', 'usd')}
+                            className="bg-green-400/20 hover:bg-green-400/30 text-green-400 border border-green-400/20"
                           >
-                            {item.pdfPrice.tu} TU
+                            ${item.pdfPrice.usd}
                           </Button>
                           <Button
                             onClick={() => purchaseContent(item, 'pdf', 'hybrid')}
@@ -290,10 +292,16 @@ export default function NFTMarketplace() {
                             {item.pdfPrice.hybrid} HYB
                           </Button>
                           <Button
-                            onClick={() => purchaseContent(item, 'pdf', 'usd')}
-                            className="bg-green-400/20 hover:bg-green-400/30 text-green-400 border border-green-400/20"
+                            onClick={() => purchaseContent(item, 'pdf', 'base')}
+                            className="bg-purple-400/20 hover:bg-purple-400/30 text-purple-400 border border-purple-400/20"
                           >
-                            ${item.pdfPrice.usd}
+                            {(item.pdfPrice.usd * 0.0004).toFixed(4)} BASE
+                          </Button>
+                          <Button
+                            onClick={() => purchaseContent(item, 'pdf', 'pol')}
+                            className="bg-orange-400/20 hover:bg-orange-400/30 text-orange-400 border border-orange-400/20"
+                          >
+                            {(item.pdfPrice.usd * 2).toFixed(0)} POL
                           </Button>
                         </div>
                       </div>
@@ -305,13 +313,12 @@ export default function NFTMarketplace() {
                             <span className="font-medium">Audio Version</span>
                           </div>
                         </div>
-                        <div className="grid grid-cols-3 gap-2 text-sm">
+                        <div className="grid grid-cols-4 gap-2 text-sm">
                           <Button
-                            onClick={() => purchaseContent(item, 'audio', 'tu')}
-                            className="bg-yellow-400/20 hover:bg-yellow-400/30 text-yellow-400 border border-yellow-400/20"
-                            disabled={userTU < item.audioPrice.tu}
+                            onClick={() => purchaseContent(item, 'audio', 'usd')}
+                            className="bg-green-400/20 hover:bg-green-400/30 text-green-400 border border-green-400/20"
                           >
-                            {item.audioPrice.tu} TU
+                            ${item.audioPrice.usd}
                           </Button>
                           <Button
                             onClick={() => purchaseContent(item, 'audio', 'hybrid')}
@@ -321,10 +328,16 @@ export default function NFTMarketplace() {
                             {item.audioPrice.hybrid} HYB
                           </Button>
                           <Button
-                            onClick={() => purchaseContent(item, 'audio', 'usd')}
-                            className="bg-green-400/20 hover:bg-green-400/30 text-green-400 border border-green-400/20"
+                            onClick={() => purchaseContent(item, 'audio', 'base')}
+                            className="bg-purple-400/20 hover:bg-purple-400/30 text-purple-400 border border-purple-400/20"
                           >
-                            ${item.audioPrice.usd}
+                            {(item.audioPrice.usd * 0.0004).toFixed(4)} BASE
+                          </Button>
+                          <Button
+                            onClick={() => purchaseContent(item, 'audio', 'pol')}
+                            className="bg-orange-400/20 hover:bg-orange-400/30 text-orange-400 border border-orange-400/20"
+                          >
+                            {(item.audioPrice.usd * 2).toFixed(0)} POL
                           </Button>
                         </div>
                       </div>

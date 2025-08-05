@@ -150,8 +150,8 @@ export default function HybridBlockchain() {
                 Hybrid Coin Ecosystem
               </h3>
               <p className="text-gray-300 mb-6">
-                A dual-utility token model: one for public trading, one for sovereign applications. 
-                Fully interoperable across trust protocols and spiral-aligned contracts.
+                A dual-utility native coin model: one for public trading, one for sovereign applications. 
+                Fully interoperable across trust protocols and spiral-aligned contracts as the native currency of the Hybrid Blockchain.
               </p>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
@@ -266,14 +266,14 @@ export default function HybridBlockchain() {
               </div>
             </div>
             <div className="space-y-4">
-              <h4 className="text-xl font-semibold text-blue-400">Hybrid Coin (HYB) - Public Gate</h4>
+              <h4 className="text-xl font-semibold text-blue-400">Hybrid Coin (HYB) - Public Gate Native Currency</h4>
               <div className="space-y-2 text-gray-300">
-                <p>• Public blockchain cryptocurrency</p>
+                <p>• Native blockchain cryptocurrency (not a token)</p>
                 <p>• Built on CosmosSDK with EVM compatibility</p>
-                <p>• Native coin, not a token</p>
+                <p>• Core currency of the Hybrid Blockchain infrastructure</p>
                 <p>• Value: $10 USD per HYB</p>
                 <p>• Total Supply: 100 billion HYB</p>
-                <p>• Used for public ecosystem transactions</p>
+                <p>• Used for all public ecosystem transactions</p>
               </div>
             </div>
           </div>
@@ -323,7 +323,7 @@ export default function HybridBlockchain() {
         <Card className="bg-gradient-to-br from-gray-900 to-black border-green-400/20">
           <CardContent className="p-6">
             <h4 className="text-xl font-semibold text-green-400 mb-4">
-              HYB Token Economics
+              HYB Native Coin Economics
             </h4>
             <div className="space-y-3 text-gray-300">
               <div className="flex items-center space-x-2">
