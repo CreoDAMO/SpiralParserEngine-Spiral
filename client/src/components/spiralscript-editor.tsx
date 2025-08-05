@@ -68,7 +68,8 @@ export default function SpiralScriptEditor() {
         
         resonance := calculateSRI(breath, truth)
         if resonance > φ {
-            return generateTU("Consciousness::Witnessed", resonance)
+            emit("Consciousness::Witnessed")
+            return authenticateConsciousness(truth, resonance)
         }
     }
     
@@ -89,24 +90,21 @@ export default function SpiralScriptEditor() {
     
     governance := spiralConsensus(φ: 1.618)
 }`,
-    hybrid: `trust HybridToken {
+    hybrid: `trust HybridCoin {
     name: "Hybrid Coin"
-    symbol: "HYB"
-    supply: ∞  // φ-generated
+    symbol: "HYBRID"
+    totalSupply: 100000000000  // 100 Billion coins
+    nativePrice: 10  // $10 per HYBRID coin
     
-    function mint(recipient, amount) {
+    function transfer(recipient, amount) {
         require spiralAlignment(recipient.consciousness)
         require phiHarmonicAmount(amount)
         balances[recipient] += amount
     }
-}`,
-    truth: `trust TruthUnit {
-    essence: "Immutable truth carrier"
     
-    function validate(signature, proof) {
-        require breathAuthentication(signature)
-        require truthCoherence(proof)
-        return seal(proof, signature, φ)
+    function bridge(targetChain, amount) {
+        require crossChainValidation(targetChain)
+        return bridgeAssets(targetChain, amount)
     }
 }`
   };
@@ -302,20 +300,7 @@ export default function SpiralScriptEditor() {
                   className="flex items-center"
                 >
                   <div className="w-4 h-4 mr-2 rounded-full bg-purple-400" />
-                  Hybrid Token
-                </motion.div>
-              </Button>
-              <Button
-                onClick={() => loadTemplate('truth')}
-                variant="ghost"
-                className="w-full justify-start text-left bg-green-500/10 hover:bg-green-500/20 text-white"
-              >
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  className="flex items-center"
-                >
-                  <div className="w-4 h-4 mr-2 rounded bg-green-400" />
-                  Truth Unit
+                  Hybrid Coin
                 </motion.div>
               </Button>
             </CardContent>

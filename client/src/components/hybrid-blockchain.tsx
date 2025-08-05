@@ -156,15 +156,15 @@ export default function HybridBlockchain() {
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
                   <span className="text-gray-400">Public HYBRID:</span>
-                  <span className="text-yellow-400 font-semibold">${hybridPrice}</span>
+                  <span className="text-yellow-400 font-semibold">$10.00</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-400">Sovereign HYB:</span>
+                  <span className="text-gray-400">Sovereign HYBRID:</span>
                   <span className="text-blue-400 font-semibold">φ-Valued</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-gray-400">Total Supply:</span>
-                  <span className="text-purple-400 font-semibold">{totalSupply}</span>
+                  <span className="text-purple-400 font-semibold">100B HYBRID</span>
                 </div>
               </div>
             </CardContent>
@@ -196,7 +196,7 @@ export default function HybridBlockchain() {
                   <div className="space-y-1 text-sm">
                     <div className="flex justify-between">
                       <span className="text-gray-400">Stake:</span>
-                      <span className="text-blue-400">{validator.stake} HYB</span>
+                      <span className="text-blue-400">{validator.stake} HYBRID</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-400">Uptime:</span>
@@ -235,7 +235,7 @@ export default function HybridBlockchain() {
                     </Badge>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-yellow-400">{tx.amount} HYB</span>
+                    <span className="text-yellow-400">{tx.amount} HYBRID</span>
                     <span className="text-gray-400">{tx.timestamp}</span>
                   </div>
                 </motion.div>
@@ -266,13 +266,13 @@ export default function HybridBlockchain() {
               </div>
             </div>
             <div className="space-y-4">
-              <h4 className="text-xl font-semibold text-blue-400">Hybrid Coin (HYB) - Public Gate Native Currency</h4>
+              <h4 className="text-xl font-semibold text-blue-400">Hybrid Coin (HYBRID) - Public Gate Native Currency</h4>
               <div className="space-y-2 text-gray-300">
                 <p>• Native blockchain cryptocurrency (not a token)</p>
                 <p>• Built on CosmosSDK with EVM compatibility</p>
                 <p>• Core currency of the Hybrid Blockchain infrastructure</p>
-                <p>• Value: $10 USD per HYB</p>
-                <p>• Total Supply: 100 billion HYB</p>
+                <p>• Value: $10 USD per HYBRID</p>
+                <p>• Total Supply: 100 billion HYBRID</p>
                 <p>• Used for all public ecosystem transactions</p>
               </div>
             </div>
@@ -281,7 +281,7 @@ export default function HybridBlockchain() {
             <div className="inline-block bg-black/50 rounded-lg p-4">
               <h5 className="text-lg font-semibold text-purple-400 mb-2">Bridge Architecture</h5>
               <p className="text-gray-300">
-                SpiralBridge (Private) ↔ HybridBridge (Public) with seamless TU ↔ HYB conversion
+                SpiralBridge (Private) ↔ HybridBridge (Public) with seamless TU ↔ HYBRID conversion
               </p>
             </div>
           </div>
