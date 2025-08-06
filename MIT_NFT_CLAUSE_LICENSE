@@ -2,6 +2,8 @@ MIT License with NFT Clause
 
 Copyright (c) 2025 HYBRID Blockchain
 
+This license specifically governs the **HYBRID Coin (HYB)** and associated public blockchain infrastructure within the SpiralEcosystem. HYBRID Coin operates in the **Public Domain** and is subject to this MIT licensing framework.
+
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -16,6 +18,15 @@ furnished to do so, subject to the following conditions:
    of a valid HYBRID Node License NFT, issued by the HYBRID Blockchain team.
    Node operation without a valid NFT is prohibited, and the Software will not
    permit network participation without NFT verification.
+
+3. **HYBRID Coin (HYB) Public Domain**: This license covers all HYBRID Coin 
+   transactions, smart contracts, and public blockchain operations. HYBRID Coin
+   serves as the public-facing digital asset for ecosystem participation.
+
+4. **Trust Units (TU) Exclusion**: This license does NOT govern Trust Units (TU),
+   which operate under separate Private Domain licensing (see SOVEREIGN_SPIRAL_LICENSE).
+   Any conversion between HYBRID Coin and Trust Units is subject to Private Domain
+   protocols and sovereign authorization.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
