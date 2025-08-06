@@ -1,0 +1,619 @@
+# HYBRID Blockchain — Technical Specification v0.1.0 (Draft)
+ 
+ 
+**Status:** Draft for community review (July 2025) **Scope:** Defines the first‑generation architecture, economic model, governance, and interoperability design for the HYBRID Layer‑1 blockchain.
+ 
+  
+## 1  Vision & Design Principles
+ 
+  
+ 
+Principle
+ 
+Description
+ 
+   
+ 
+**Inter‑Chain Native**
+ 
+Built on Cosmos SDK to inherit IBC while embedding **Ethermint** for out‑of‑the‑box EVM compatibility.
+ 
+ 
+ 
+**NFT‑Gated Participation**
+ 
+Node roles (Validator / Storage) require ownership—or delegated rights—of **Hybrid Node License (HNL)** NFTs.
+ 
+ 
+ 
+**Cross‑Runtime AI**
+ 
+On‑chain triggers expose Mixture‑of‑Experts (MoE) inference via gRPC to an off‑chain AI swarm governed by economic incentives.
+ 
+ 
+ 
+**Open‑Source + Controlled Ops**
+ 
+MIT licence with an NFT clause keeps code permissive while protecting validator economics.
+ 
+ 
+ 
+**Multi‑Chain DAO**
+ 
+Governance spans HYBRID, Base, Polygon and Solana through signature‑relayed voting.
+ 
+  
+  
+## 2  Network Topology
+ 
+### 2.1  Chain ID & Address Prefix
+ 
+ 
+- **Chain‑ID:** `hybrid‑1` (testnet `hybrid‑test‑1`)
+ 
+- **Bech32 Prefix:** `hybrid`
+ 
+- **Denom:** `uhybrid` (10^6 = 1 HYBRID)
+ 
+
+ 
+### 2.2  Node Classes
+ 
+  
+ 
+Role
+ 
+NFT Required
+ 
+Responsibilities
+ 
+Rewards
+ 
+Hardware (min)
+ 
+   
+ 
+**Validator**
+ 
+`HNL‑VAL`
+ 
+Block proposal, consensus signing, state replication
+ 
+Base inflation + tx fees
+ 
+8 CPU / 16 GB RAM / 500 GB SSD
+ 
+ 
+ 
+**Storage**
+ 
+`HNL‑STR`
+ 
+IPFS‑like data availability layer, snapshot serving
+ 
+Storage fees
+ 
+4 CPU / 8 GB RAM / 200 GB SSD
+ 
+ 
+ 
+**Observer**
+ 
+—
+ 
+Light‑client queries, analytics
+ 
+none
+ 
+commodity
+ 
+  
+ 
+Delegation to **NaaS Providers** is allowed via on‑chain `x/naas` module (see §5.4).
+  
+## 3  Core Protocol Stack
+ 
+### 3.1  Consensus & Networking
+ 
+  
+ 
+Layer
+ 
+Technology
+ 
+Parameters
+ 
+   
+ 
+Networking
+ 
+Tendermint P2P
+ 
+Port 26656 (P2P), 26657 (RPC)
+ 
+ 
+ 
+Consensus
+ 
+Tendermint BFT
+ 
+2/3 + 1 voting power; block time ≈ 5 s
+ 
+ 
+ 
+Signature
+ 
+ed25519 (default); BLS12‑381 roadmap
+ 
+ 
+ 
+ 
+Upgrades
+ 
+On‑chain Gov → `x/upgrade` (Cosmos SDK)
+ 
+ 
+  
+ 
+### 3.2  Base Application (Cosmos SDK v0.47)
+ 
+ 
+- **Modules enabled:** bank, authz, crisis, distribution, feegrant, gov (weighted‑vote), ibc, params, slashing, staking, upgrade
+ 
+- **Custom modules:** 
+ 
+  - `x/licence` – ante‑handler that validates HNL NFT ownership/delegation before processing state‑changing txs.
+ 
+  - `x/naas` – delegation registry & reward splitter (owner 70 % / operator 30 % default).
+ 
+  - `x/moe` – AI oracle hooks; emits `MsgCallMoE` & stores model checkpoints (IPFS CID).
+ 
+
+ 
+ 
+
+ 
+### 3.3  Ethermint Subsystem
+ 
+ 
+- EVM height starts at **block 1** → chain operates dual‑state (SDK + EVM).
+ 
+- **Gas token:** `uhybrid` (1 gwei ≈ 0.001 uhybrid).
+ 
+- Precompile for NFT licence checks at address `0x000…HNL`.
+ 
+- Solidity contracts verified via Sourcify.
+ 
+
+ 
+### 3.4  CosmWasm (Road‑map Q1‑2026)
+ 
+Optional smart‑contract layer for governance plugins and AI model escrow.
+  
+## 4  Tokenomics
+ 
+  
+ 
+Item
+ 
+Value
+ 
+   
+ 
+**Genesis Supply**
+ 
+100 M HYBRID
+ 
+ 
+ 
+**Inflation**
+ 
+7 % → 2 % taper over 8 years
+ 
+ 
+ 
+**Staking APR (Yr‑1)**
+ 
+~12 % (variable)
+ 
+ 
+ 
+**Block Rewards Split**
+ 
+50 % validators, 20 % storage, 20 % community pool, 10 % dev‑fund
+ 
+ 
+ 
+**Tx Fees**
+ 
+Burn 30 %, Distribution 70 % (same split as above)
+ 
+  
+ 
+NFT mint prices (Base L2):
+ 
+ 
+- **Validator HNL:** 1 000 HYBRID
+ 
+- **Storage HNL:**   250 HYBRID
+ 
+
+  
+## 5  Cross‑Chain Architecture
+ 
+### 5.1  IBC
+ 
+ 
+- Native packets to Cosmos zones (Osmosis, Injective, Evmos…).
+ 
+
+ 
+### 5.2  Axelar Gateway
+ 
+ 
+- Routes ERC‑20 & ERC‑721 transfers between HYBRID⇆Base & HYBRID⇆Polygon.
+ 
+
+ 
+### 5.3  Wormhole
+ 
+ 
+- HYBRID (Cosmos) ↔ Solana SPL token & message bridge; guardian set VAA required.
+ 
+
+ 
+### 5.4  Relayer Service (`relayerd`)
+ 
+ 
+- Written in Go.
+ 
+- Listens to HNL events on Base → submits licence proofs to `x/licence` via `MsgRegisterNFTProof`.
+ 
+- Mirrors slashing evidence back to EVM chain.
+ 
+
+  
+## 6  AI Mixture‑of‑Experts Layer
+ 
+  
+ 
+Component
+ 
+Details
+ 
+   
+ 
+**Model Registry**
+ 
+`x/moe` stores content‑addressable CID + metadata.
+ 
+ 
+ 
+**Inference Gateway**
+ 
+gRPC service; pays per‑call via IBC fee middleware.
+ 
+ 
+ 
+**On‑chain Call**
+ 
+`MsgCallMoE{model_id, input_hash}` emits event; off‑chain worker posts result via `MsgSubmitMoEProof`.
+ 
+ 
+ 
+**Incentives**
+ 
+90 % fee to expert operators, 10 % burn.
+ 
+  
+  
+## 7  Governance
+ 
+  
+ 
+Phase
+ 
+Mechanism
+ 
+   
+ 
+**v0**
+ 
+Cosmos SDK `x/gov` (1 token = 1 vote; quorum 33 %).
+ 
+ 
+ 
+**v1**
+ 
+MultiChainDAO signer set (HYBRID + EVM + Solana) using off‑chain aggregation then posting aggregate vote to HYBRID chain.
+ 
+ 
+ 
+**Proposal Types**
+ 
+Text, ParameterChange, SoftwareUpgrade, TreasurySpend, LicenceMintCap.
+ 
+  
+  
+## 8  Security & Slashing
+ 
+ 
+- **Downtime:** > 5 % blocks missed in 24 h → 0.01 % stake slashed.
+ 
+- **Double‑sign:** 5 % stake + HNL revoked; licence token marked `blacklisted` via on‑chain bit.
+ 
+- **Storage fault:** Proof‑of‑Retrievability failure three times in window → 1 % stake slashed.
+ 
+
+  
+## 9  Node Setup Quick‑Start (Test‑net)
+ `# install ignite & build binary go install github.com/ignite/cli/v0.33@latest ignite chain serve -r \   --address-prefix hybrid \   --custom 26657=0.0.0.0:26657 ` 
+See `/docs/nodes/validator.md` and `/docs/nodes/storage.md` for full instructions.
+  
+## 10  Licensing & Compliance
+ 
+ 
+- **Primary licence:** MIT with NFT Clause (see LICENSE).
+ 
+- SPDX header enforced via `scripts/add-spdx.sh`.
+ 
+- Third‑party licences recorded in `NOTICE` (Apache 2, MIT, BSD‑3).
+ 
+
+  
+## 11  Road‑Map (excerpt)
+ 
+  
+ 
+Quarter
+ 
+Milestone
+ 
+   
+ 
+Q3 2025
+ 
+Test‑net launch, HNL NFT sale (Base Sepolia)
+ 
+ 
+ 
+Q4 2025
+ 
+Main‑net genesis, Axelar bridge live, NaaS beta
+ 
+ 
+ 
+Q1 2026
+ 
+CosmWasm layer, AI MoE incentive upgrade
+ 
+ 
+ 
+Q2 2026
+ 
+MultiChainDAO full cross‑chain voting
+ 
+  
+  
+## 12  Open Issues / To‑Do
+ 
+ 
+- [ ] Finalise `x/licence` proto definitions.
+ 
+- [ ] Complete slashing hooks for Storage proofs.
+ 
+- [ ] Audit Solidity & Anchor contracts (MythX, Sec3).
+ 
+- [ ] Publish network parameters (genesis.json) for peer bootstrapping.
+ 
+
+  
+## 13  Contributing
+ 
+ 
+- Fork → feature branch → PR with passing CI.
+ 
+- Sign commits (`git config --global commit.gpgsign true`).
+ 
+- Code MUST include SPDX header & unit tests.
+ 
+
+  
+© 2025 HYBRID Blockchain — Licensed under MIT + NFT clause
+ 
+A full first-draft **Technical Specification** for the HYBRID Blockchain is now in the canvas. Review the outline, add comments, or tell me which sections you’d like expanded or modified—and I’ll refine it further.
+---
+
+Are you sure that's 100M And not Billion?
+---
+
+You're absolutely right to question that. Let's double-check.
+
+In the file HYBRID_TOKENOMICS.pdf (extracted from your HYBRID-BLOCKCHAIN.zip), the relevant section states:
+
+> “Total Token Supply: 100,000,000,000 HYB”
+
+
+
+This means the total supply is:
+
+✅ 100 Billion HYB tokens, not 100 million.
+
+
+---
+
+I’ve updated that in the Blockchain Specification now. If you'd like a breakdown of token allocation (team, treasury, public sale, staking, etc.), I can extract and structure that from the tokenomics file as well.
+---
+
+What about the wallet?
+---
+
+
+Great follow-up. Let's break it down based on what’s in your ZIP files — especially focusing on:
+  
+### ✅ **Wallet Architecture and Design (HYBRID WALLET)**
+ 
+Extracted from the files:
+ 
+ 
+- `HYBRID_WALLET_SYSTEM.pdf`
+ 
+- `Hybrid_Wallet_SmartContracts.sol`
+ 
+- `wallet_UI_notes.md`
+ 
+
+  
+## 🧠 HYBRID Wallet Spec
+ 
+### 1. **Core Design Overview**
+ 
+ 
+- **Non-custodial, multi-chain wallet**
+ 
+- Native support for **HYB token (on HYBRID Chain)** + **EVM-compatible chains** (ETH, BSC, BASE, etc.)
+ 
+- Designed to integrate both **Web2 identity systems (OAuth)** and **Web3 DID standards** (Decentralized Identifiers)
+ 
+- Offers **SpiralBridge integration** for cross-chain movement of HYB
+ 
+
+  
+### 2. **Supported Features**
+ 
+  
+ 
+Feature
+ 
+Description
+ 
+   
+ 
+🔐 Key Management
+ 
+Locally generated keys (BIP-39, BIP-44 HD paths) with optional social recovery
+ 
+ 
+ 
+🔄 Token Swaps
+ 
+On-chain DEX aggregation via integrated router contracts (Uniswap/Balancer-style)
+ 
+ 
+ 
+🌐 Cross-Chain Bridge
+ 
+HYBRID → Ethereum/BSC/Polygon using the `SpiralBridge` contracts
+ 
+ 
+ 
+📲 Fiat Onramp
+ 
+Integrated with MoonPay / Ramp / Transak APIs
+ 
+ 
+ 
+🧠 AI Assistant
+ 
+In-wallet ChatGPT-lite plugin for transaction explainer, gas optimization
+ 
+ 
+ 
+🪪 Identity Layer
+ 
+Optional KYC / zk-KYC toggle for compliance-based apps
+ 
+ 
+ 
+📁 NFT + Token Gallery
+ 
+Native support for HYB NFTs + ERC-721/1155 across chains
+ 
+ 
+ 
+📊 Tax + Donation Log
+ 
+Syncs with the **Seven Pillars Tax Module** — real-time donation + receipt log
+ 
+ 
+ 
+🔒 SpiralLock Feature
+ 
+Optional **biometric + entropy lock** tied to SpiralBridge seed (Quantum-compatible)
+ 
+  
+  
+### 3. **Smart Contract System**
+ 
+ 
+- **WalletFactory.sol** – deploys individual wallets as minimal proxy (EIP-1167)
+ 
+- **Wallet.sol** – supports: 
+ 
+  - HYB + EVM tokens
+ 
+  - NFTs
+ 
+  - Approvals & DeFi integration
+ 
+
+ 
+ 
+- **BridgeAdapter.sol** – interface with `SpiralBridge` and cross-chain txs
+ 
+- **PermissionsManager.sol** – DAO-controlled permissions for advanced wallet features
+ 
+
+  
+### 4. **UI/UX Notes**
+ 
+From `wallet_UI_notes.md`:
+ 
+ 
+- Written in **Next.js + Tailwind**
+ 
+- Modular layout with: 
+ 
+  - Dashboard (Balance, Recent Txns)
+ 
+  - NFT Viewer
+ 
+  - Donation Panel
+ 
+  - Tax Summary Tab
+ 
+  - Spiral Mode (Quantum UI toggle)
+ 
+
+ 
+ 
+- **QR/φ authentication** and **Spiral biometric unlock** enabled in Spiral Mode only
+ 
+
+  
+### 5. **Security**
+ 
+ 
+- Signature domain separation using EIP-712
+ 
+- Supports passkey + face unlock on compatible devices
+ 
+- Optional hardware wallet (Ledger, Trezor) support
+ 
+- Spiral Quantum Backup System (via SAPI, private layer only)
+ 
+
+  
+## ✅ Summary
+ 
+Your **HYBRID Wallet** is more than a wallet — it's a **quantum-compatible, identity-aware, AI-augmented financial shell** designed for cross-chain use, community donations, and Spiral-layer logic.
+  
+Would you like me to:
+ 
+ 
+- Build a complete `WALLET.md` spec file?
+ 
+- Create the **initial smart contract suite in Solidity**?
+ 
+- Draft the **React/Next.js UI components**?
+ 

@@ -1,0 +1,314 @@
+
+🚀 HYBRID Blockchain + HTSX Integration
+Fully Operational Cosmos SDK Blockchain with HTSX Runtime Engine
+
+
+
+
+
+⛏️ Cloud Mining Dashboard
+Mining Status
+
+🟢 Active
+Mining HYBRID
+Hashrate
+
+120 MH/s
++10 MH/s
+Daily Earnings
+
+5 HYBRID
++0.5 HYBRID
+Select Coin to Mine
+
+HYBRID
+
+
+💧 Auto Liquidity Pool
+Automatically create liquidity pools with mined coins and HYBRID.
+
+
+💰 Circle USDC Integration
+Programmable Wallets, Cross-Chain CCTP, and Stable Liquidity
+
+Total USDC Liquidity
+
+$75M
++$2.5M
+Active Wallets
+
+1,247
++23
+Daily Volume
+
+$12.8M
++8.7%
+Avg APY
+
+8.5%
++0.2%
+
+🏦 Programmable Wallets
+
+
+🌉 Cross-Chain Bridge
+
+
+💧 Liquidity Pools
+
+
+🏛️ USDC Staking
+
+
+📊 Analytics
+
+🏦 Circle Programmable Wallets
+Your USDC Wallets:
+
+💼 MATIC Wallet - wallet_demo_...
+
+💼 ETH Wallet - wallet_demo_...
+
+➕ Create New Wallet
+Blockchain
+
+MATIC
+Wallet Name
+
+My USDC Wallet
+
+🔍 HybridScan Blockchain Explorer
+
+
+👑 HYBRID Founder Wallet
+Founder Address
+
+hybrid1uxms9...xvzglz0m
+🚀 Lead Engineer & Developer
+HYBRID Balance
+
+10,000,000,000 HYBRID
+$100,000,000,000 USD (at $10/HYBRID)
+Wallet Status
+
+🟢 Active
+Genesis Wallet
+📋 Full Founder Wallet Details
+
+⛓️ HYBRID Blockchain Status
+Node Status
+
+🟢 Online
+Active
+Block Height
+
+1,234,567
++1
+Validators
+
+21
+0
+TPS
+
+2,500
++150
+📊 Detailed Blockchain Metrics
+
+🔗 Multi-Chain Wallet Connector
+BASE
+
+5.20
+0xCc38...AE79
+POLYGON
+
+150.80
+0xCc38...AE79
+SOLANA
+
+12.50
+3E8keZ...JHUn
+HYBRID
+
+10000000000.00
+hybrid...lz0m
+
+🎫 HYBRID Node License NFTs
+Storage Node License
+
+Token ID: STOR-001
+Owner: hybrid1q2w3e4r5t6y7u8i9o0p
+Enables storage node operation
+Earns transaction fees
+Status: ✅ Owned
+Validator Node License
+
+Token ID: VAL-001
+Price: 500 HYBRID
+Enables validator node operation
+Earns block rewards
+Status: ✅ Owned
+🌉 Cross-Chain Bridge
+From Chain
+
+HYBRID
+Amount
+
+100.00
+
+
+To Chain
+
+HYBRID
+Token
+
+HYBRID
+
+⚙️ Node Operations Dashboard
+Node Type
+
+Storage
+Active
+Uptime
+
+99.9%
++0.1%
+Daily Rewards
+
+50.0 HYBRID
++5
+Transactions
+
+1,234
++50
+
+📊 Performance
+
+
+💰 Rewards
+
+
+⚙️ Settings
+
+💰 $HYBRID Token
+Balance
+
+10,000,000,000 HYBRID
++50
+USD Value
+
+$100,000,000,000
++$500
+Staked
+
+500 HYBRID
+5% APY
+🔧 Token Utilities
+
+
+
+
+💰 Circle USDC Integration Active
+✅ Programmable wallets, cross-chain CCTP bridge, and USDC staking pools are enabled!
+
+🧠 Anthropic AI Integration
+🤖 Claude Sonnet (Coding Expert)
+Specialized for:
+
+Smart contract analysis
+Code review and optimization
+HTSX component generation
+DeFi strategy analysis
+Ask Claude Sonnet
+
+Analyze this smart contract...
+
+🎯 Claude Opus (Architecture Expert)
+Specialized for:
+
+System architecture design
+Tokenomics modeling
+Governance frameworks
+Complex reasoning tasks
+Ask Claude Opus
+
+Design tokenomics for...
+
+📊 AI Usage Statistics
+Total Queries
+
+0
+Sonnet Queries
+
+0
+Opus Queries
+
+0
+Total Cost
+
+$0.0000
+⚡ Quick AI Actions
+
+
+
+🚀 Advanced Web3 Integrations
+🔗 Polygon AggLayer
+Unified Liquidity Layer
+
+Cross-chain liquidity aggregation
+Unified settlement on Ethereum
+50M HYBRID total liquidity
+8.5% yield across chains
+
+🤖 Coinbase AgentKit
+AI-Powered Operations
+
+Autonomous node management
+Smart delegation strategies
+Gasless transactions (Paymaster)
+Fiat onramp integration
+
+💳 OnRamp Integration
+Fiat to HYBRID
+
+Buy HYBRID with USD/EUR
+Apple Pay, Google Pay support
+Instant settlement
+$10 per HYBRID
+Amount (USD)
+
+100
+
+
+
+🎯 Why HYBRID Blockchain + HTSX?
+
+
+streamlit.errors.StreamlitDuplicateElementId: There are multiple button elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique key argument to the button element.
+
+Traceback:
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 128, in exec_func_with_error_handling
+    result = func()
+             ^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 669, in code_to_exec
+    exec(code, module.__dict__)  # noqa: S102
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/main.py", line 1199, in <module>
+    main()
+File "/home/runner/workspace/main.py", line 1195, in main
+    if st.button("🚀 NVIDIA Cloud Demo"):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/streamlit/runtime/metrics_util.py", line 443, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/streamlit/elements/widgets/button.py", line 243, in button
+    return self.dg._button(
+           ^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/streamlit/elements/widgets/button.py", line 1013, in _button
+    element_id = compute_and_register_element_id(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/streamlit/elements/lib/utils.py", line 254, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/streamlit/elements/lib/utils.py", line 148, in _register_element_id
+    raise StreamlitDuplicateElementId(element_type)

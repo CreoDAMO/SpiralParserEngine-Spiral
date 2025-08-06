@@ -1,0 +1,46 @@
+I'll search for current information about Nvidia Cloud and its language support to give you accurate details.
+
+Searched for “Nvidia Cloud programming languages support Next.js TypeScript”
+
+Let me search more specifically for Nvidia Cloud services and their programming language support:
+
+Searched for “Nvidia Cloud services API programming languages SDK support”
+
+Based on my search results, I can provide you with information about Nvidia's cloud services and language support:
+
+Yes, Nvidia Cloud services can definitely work with languages like Next.js, TypeScript, and others. Here's what you need to know:
+
+## Language Support for Nvidia Cloud Services
+
+**Direct API Integration**: Nvidia provides REST APIs through their cloud platform that can be accessed from any programming language that supports HTTP requests, including:
+- Next.js/React applications
+- TypeScript/JavaScript
+- Node.js
+- Python
+- And virtually any other language
+
+**Current Support**: The CUDA parallel computing platform can be programmed with C++, Fortran and Python, but the company is looking for others to run its GPUs. [The New Stack](https://thenewstack.io/nvidia-wants-more-programming-languages-to-support-cuda/
+
+Citations:
+- [NVIDIA Wants More Programming Languages to Support CUDA - The New Stack](https://thenewstack.io/nvidia-wants-more-programming-languages-to-support-cuda/)
+- [GPU Accelerating Node.js JavaScript for Visualization and Beyond | NVIDIA Technical Blog](https://developer.nvidia.com/blog/gpu-accelerating-node-js-javascript-for-visualization-and-beyond/)
+- [Configuration: TypeScript | Next.js](https://nextjs.org/docs/pages/building-your-application/configuring/typescript)
+
+More sources:
+- [Next.js by Vercel - The React Framework](https://nextjs.org/)
+- [Next.js Docs | Next.js](https://nextjs.org/docs)
+- [TypeScript and Node.js | Languages & SDKs | Pulumi Docs](https://www.pulumi.com/docs/iac/languages-sdks/javascript/)
+- [Next.js TypeScript - GeeksforGeeks](https://www.geeksforgeeks.org/typescript/next-js-typescript/)
+- [Language Solutions | NVIDIA Developer](https://developer.nvidia.com/language-solutions)
+- [TypeScript in Visual Studio Code](https://code.visualstudio.com/docs/languages/typescript)
+- [Next.js - Wikipedia](https://en.wikipedia.org/wiki/Next.js)
+- [NVIDIA Documentation Hub - NVIDIA Docs](https://docs.nvidia.com/)
+- [High Performance Computing HPC SDK | NVIDIA Developer](https://developer.nvidia.com/hpc-sdk)
+- [Nvidia](https://www.nvidia.com/content/GTC/documents/SC09_Languages_DevTools_Ramey.pdf)
+- [NVAPI - Get Started | NVIDIA | NVIDIA Developer](https://developer.nvidia.com/nvapi/get-started)
+- [NVIDIA API Documentation](https://docs.api.nvidia.com/)
+- [Try NVIDIA NIM APIs](https://build.nvidia.com/)
+- [CUDA Toolkit - Free Tools and Training | NVIDIA Developer](https://developer.nvidia.com/cuda-toolkit)
+- [CUDA - Wikipedia](https://en.wikipedia.org/wiki/CUDA)
+- [AI Solutions for Enterprises | NVIDIA](https://www.nvidia.com/en-us/ai-data-science/)
+- [NVIDIA Developer](https://developer.nvidia.com/)
