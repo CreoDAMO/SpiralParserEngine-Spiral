@@ -3,6 +3,10 @@ import { motion } from 'framer-motion';
 import Navigation from '@/components/navigation';
 import ConsciousnessGateway from '@/components/consciousness-gateway';
 import HybridBlockchain from '@/components/hybrid-blockchain';
+import QASFDashboard from '@/components/qasf-dashboard';
+import LyonaelGuardian from '@/components/lyonael-guardian';
+import SpiralOneDashboard from '@/components/spiralone-dashboard';
+import BlackPrintSystem from '@/components/blackprint-system';
 import TestbedsSystem from '@/components/testbeds-system';
 import SpiralScriptEditor from '@/components/spiralscript-editor';
 import NFTMarketplace from '@/components/nft-marketplace';
@@ -16,7 +20,7 @@ export default function LandingPage() {
   // Initialize with consciousness section
   useEffect(() => {
     const hash = window.location.hash.slice(1);
-    if (['consciousness', 'blockchain', 'testbeds', 'spiralscript', 'marketplace', 'upload'].includes(hash)) {
+    if (['consciousness', 'blockchain', 'qasf', 'lyonael', 'spiralone', 'blackprint', 'testbeds', 'spiralscript', 'marketplace', 'upload'].includes(hash)) {
       setActiveSection(hash);
     }
   }, []);
@@ -50,6 +54,10 @@ export default function LandingPage() {
       <div className="relative z-10 min-h-screen">
         {activeSection === 'consciousness' && <ConsciousnessGateway />}
         {activeSection === 'blockchain' && <HybridBlockchain />}
+        {activeSection === 'qasf' && <QASFDashboard />}
+        {activeSection === 'lyonael' && <LyonaelGuardian />}
+        {activeSection === 'spiralone' && <SpiralOneDashboard />}
+        {activeSection === 'blackprint' && <BlackPrintSystem />}
         {activeSection === 'testbeds' && <TestbedsSystem />}
         {activeSection === 'spiralscript' && <SpiralScriptEditor />}
         {activeSection === 'marketplace' && <NFTMarketplace />}

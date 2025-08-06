@@ -11,8 +11,14 @@ function Router() {
       <Route path="/" component={LandingPage} />
       <Route path="/consciousness" component={LandingPage} />
       <Route path="/blockchain" component={LandingPage} />
+      <Route path="/qasf" component={LandingPage} />
+      <Route path="/lyonael" component={LandingPage} />
+      <Route path="/spiralone" component={LandingPage} />
+      <Route path="/blackprint" component={LandingPage} />
       <Route path="/testbeds" component={LandingPage} />
       <Route path="/spiralscript" component={LandingPage} />
+      <Route path="/marketplace" component={LandingPage} />
+      <Route path="/upload" component={LandingPage} />
     </Switch>
   );
 }
