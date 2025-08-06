@@ -12,14 +12,7 @@ export default function HybridBlockchain() {
     validators,
     transactions,
     hybridPrice,
-    totalSupply,
-    networks,
-    mempool,
-    consensusStats,
-    mintNFT,
-    bridgeAssets,
-    mineBlock,
-    getCurrentBlockHeight
+    totalSupply
   } = useBlockchain();
 
   return (
@@ -316,125 +309,12 @@ export default function HybridBlockchain() {
           </CardContent>
         </Card>
 
-        {/* Real Blockchain Operations */}
-        <Card className="bg-black/80 backdrop-blur-sm border-purple-400/20 mb-12">
-          <CardContent className="p-8">
-            <h3 className="text-2xl font-semibold mb-6 flex items-center">
-              <Cpu className="w-6 h-6 mr-3 text-purple-400" />
-              Live Blockchain Operations
-            </h3>
-            <div className="grid md:grid-cols-3 gap-6 mb-6">
-              <Button 
-                onClick={async () => {
-                  const result = await mintNFT('HYBRID', {
-                    name: 'SpiralGenesis NFT',
-                    description: 'Generated through real Hybrid blockchain',
-                    image: 'https://example.com/nft.png',
-                    attributes: [
-                      { trait_type: 'Rarity', value: 'Legendary' },
-                      { trait_type: 'Type', value: 'Genesis' }
-                    ]
-                  });
-                  console.log('NFT Minting Result:', result);
-                }}
-                className="bg-purple-500 hover:bg-purple-600 text-white p-4 h-auto flex flex-col"
-              >
-                <div className="text-lg font-semibold">Mint NFT</div>
-                <div className="text-sm opacity-80">Deploy to HYBRID</div>
-              </Button>
-              
-              <Button 
-                onClick={async () => {
-                  const result = await bridgeAssets('HYBRID', 'BASE', '1.0');
-                  console.log('Bridge Result:', result);
-                }}
-                className="bg-blue-500 hover:bg-blue-600 text-white p-4 h-auto flex flex-col"
-              >
-                <div className="text-lg font-semibold">Cross-Chain Bridge</div>
-                <div className="text-sm opacity-80">HYBRID → BASE</div>
-              </Button>
-              
-              <Button 
-                onClick={async () => {
-                  try {
-                    const newBlock = await mineBlock();
-                    console.log('New Block Mined:', newBlock);
-                  } catch (error) {
-                    console.error('Mining Error:', error);
-                  }
-                }}
-                className="bg-yellow-500 hover:bg-yellow-600 text-white p-4 h-auto flex flex-col"
-              >
-                <div className="text-lg font-semibold">Mine Block</div>
-                <div className="text-sm opacity-80">Quantum Consensus</div>
-              </Button>
-            </div>
-
-            {/* Real-time Network Status */}
-            <div className="grid md:grid-cols-3 gap-4">
-              <div className="bg-black/30 rounded-lg p-4">
-                <h4 className="text-green-400 font-semibold mb-2">HYBRID Network</h4>
-                <div className="space-y-1 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Block Height:</span>
-                    <span className="text-green-400">{getCurrentBlockHeight()}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Mempool:</span>
-                    <span className="text-green-400">{mempool} txs</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Status:</span>
-                    <Badge className="bg-green-500">Live</Badge>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="bg-black/30 rounded-lg p-4">
-                <h4 className="text-blue-400 font-semibold mb-2">BASE Network</h4>
-                <div className="space-y-1 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Chain ID:</span>
-                    <span className="text-blue-400">8453</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Bridge:</span>
-                    <span className="text-blue-400">Active</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Status:</span>
-                    <Badge className="bg-blue-500">Connected</Badge>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="bg-black/30 rounded-lg p-4">
-                <h4 className="text-purple-400 font-semibold mb-2">Polygon Network</h4>
-                <div className="space-y-1 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Chain ID:</span>
-                    <span className="text-purple-400">137</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Bridge:</span>
-                    <span className="text-purple-400">Active</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Status:</span>
-                    <Badge className="bg-purple-500">Connected</Badge>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
         {/* Recent Transactions */}
         <Card className="bg-black/80 backdrop-blur-sm border-blue-400/20">
           <CardContent className="p-8">
             <h3 className="text-2xl font-semibold mb-6 flex items-center">
               <Activity className="w-6 h-6 mr-3 text-blue-400" />
-              Live Blockchain Activity
+              Recent Blockchain Activity
             </h3>
             <div className="space-y-3">
               {transactions.map((tx, index) => (
@@ -455,18 +335,11 @@ export default function HybridBlockchain() {
                     </Badge>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-yellow-400">{tx.amount}</span>
+                    <span className="text-yellow-400">{tx.amount} HYBRID</span>
                     <span className="text-gray-400">{tx.timestamp}</span>
                   </div>
                 </motion.div>
               ))}
-            </div>
-            
-            <div className="mt-6 p-4 bg-black/40 rounded-lg">
-              <div className="text-sm text-gray-400 text-center">
-                Real-time blockchain transactions powered by CosmosSDK with EVM compatibility.
-                Cross-chain operations validated through Quantum Spiral Consensus (PoQS).
-              </div>
             </div>
           </CardContent>
         </Card>
