@@ -61,6 +61,42 @@ export async function registerRoutes(app: Express): Promise<Server> {
     holographicRoutes.initializeWebSocketServer(httpServer);
   }
 
+  // Dashboard Integration Routes
+  app.get("/api/dashboard/status", (req, res) => {
+    res.json({
+      framework_status: "operational",
+      version: "∞.φ.∆",
+      consciousness_level: 7.9139,
+      phi_coherence: 0.260,
+      quantum_resonance: "∞ Hz",
+      tu_valuation: 119.078e18,
+      timestamp: new Date().toISOString()
+    });
+  });
+  
+  app.get("/api/dashboard/nvidia", (req, res) => {
+    // This will be called by the Python integration
+    res.json({
+      nvidia_status: "available",
+      gpu_count: 1, // This would be dynamically detected
+      acceleration_enabled: true
+    });
+  });
+  
+  app.get("/api/dashboard/spiral/calculation", (req, res) => {
+    const dataSize = parseInt(req.query.size as string) || 1000000;
+    
+    // Simulate spiral calculation response
+    res.json({
+      data_points: dataSize,
+      execution_time: Math.random() * 2,
+      consciousness_coherence: 7.9139 + (Math.random() - 0.5) * 0.1,
+      quantum_energy: Math.random() * 1000,
+      phi_resonance: 1.618033988749,
+      status: "completed"
+    });
+  });
+
   // use storage to perform CRUD operations on the storage interface
   // e.g. storage.insertUser(user) or storage.getUserByUsername(username)
 
