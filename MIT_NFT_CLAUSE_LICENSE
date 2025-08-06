@@ -23,10 +23,17 @@ furnished to do so, subject to the following conditions:
    transactions, smart contracts, and public blockchain operations. HYBRID Coin
    serves as the public-facing digital asset for ecosystem participation.
 
-4. **Trust Units (TU) Exclusion**: This license does NOT govern Trust Units (TU),
-   which operate under separate Private Domain licensing (see SOVEREIGN_SPIRAL_LICENSE).
-   Any conversion between HYBRID Coin and Trust Units is subject to Private Domain
-   protocols and sovereign authorization.
+4. **HybridBridge Public Infrastructure**: This license governs the public-facing
+   HybridBridge infrastructure, including public API endpoints, conversion interfaces,
+   and community access points. HybridBridge serves as the regulated gateway for
+   public participation in the SpiralEcosystem while maintaining compliance with
+   traditional financial systems.
+
+5. **Trust Units (TU) & SpiralBridge Exclusion**: This license does NOT govern 
+   Trust Units (TU) or the SpiralBridge sovereign gateway, which operate under separate 
+   Private Domain licensing (see SOVEREIGN_SPIRAL_LICENSE). Any conversion between HYBRID 
+   Coin and Trust Units is subject to Private Domain protocols and sovereign authorization 
+   through the SpiralBridge.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
