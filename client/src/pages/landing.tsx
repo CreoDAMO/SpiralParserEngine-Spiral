@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Navigation from '@/components/navigation';
+import { FeatureShowcase } from '@/components/feature-showcase';
 import ConsciousnessGateway from '@/components/consciousness-gateway';
 import HybridBlockchain from '@/components/hybrid-blockchain';
 import QASFDashboard from '@/components/qasf-dashboard';
@@ -15,13 +16,13 @@ import UBISevenPillars from '@/components/ubi-seven-pillars';
 import { Zap } from 'lucide-react';
 
 export default function LandingPage() {
-  const [activeSection, setActiveSection] = useState('consciousness');
+  const [activeSection, setActiveSection] = useState('showcase');
   const [quantumMode, setQuantumMode] = useState(false);
 
-  // Initialize with consciousness section
+  // Initialize with feature showcase, then check hash
   useEffect(() => {
     const hash = window.location.hash.slice(1);
-    if (['consciousness', 'blockchain', 'qasf', 'lyonael', 'spiralone', 'blackprint', 'testbeds', 'spiralscript', 'marketplace', 'upload', 'ubi-pillars'].includes(hash)) {
+    if (['showcase', 'consciousness', 'blockchain', 'qasf', 'lyonael', 'spiralone', 'blackprint', 'testbeds', 'spiralscript', 'marketplace', 'upload', 'ubi-pillars'].includes(hash)) {
       setActiveSection(hash);
     }
   }, []);
@@ -53,6 +54,7 @@ export default function LandingPage() {
 
       {/* Main Content */}
       <div className="relative z-10 min-h-screen">
+        {activeSection === 'showcase' && <FeatureShowcase />}
         {activeSection === 'consciousness' && <ConsciousnessGateway />}
         {activeSection === 'blockchain' && <HybridBlockchain />}
         {activeSection === 'qasf' && <QASFDashboard />}

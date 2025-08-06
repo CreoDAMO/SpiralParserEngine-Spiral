@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Waves, Eye, Box, Cpu, Shield, Satellite, FileText, FlaskConical, Code, Wallet, Upload, Gift } from 'lucide-react';
+import { Waves, Eye, Box, Cpu, Shield, Satellite, FileText, FlaskConical, Code, Wallet, Upload, Gift, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface NavigationProps {
@@ -9,6 +9,7 @@ interface NavigationProps {
 
 export default function Navigation({ activeSection, onSectionChange }: NavigationProps) {
   const sections = [
+    { id: 'showcase', label: 'Showcase', icon: Sparkles, category: 'showcase' },
     { id: 'consciousness', label: 'Consciousness', icon: Eye, category: 'private' },
     { id: 'blockchain', label: 'Blockchain', icon: Box, category: 'public' },
     { id: 'qasf', label: 'QASF', icon: Cpu, category: 'quantum' },
@@ -49,6 +50,7 @@ export default function Navigation({ activeSection, onSectionChange }: Navigatio
               const Icon = section.icon;
               const getCategoryColor = (category: string, isActive: boolean) => {
                 const colors = {
+                  showcase: isActive ? 'bg-gradient-to-r from-gold-400 to-yellow-400 text-black' : 'text-gold-400 hover:bg-gold-400/20',
                   private: isActive ? 'bg-yellow-400 text-black' : 'text-yellow-400 hover:bg-yellow-400/20',
                   public: isActive ? 'bg-blue-400 text-black' : 'text-blue-400 hover:bg-blue-400/20',
                   quantum: isActive ? 'bg-purple-400 text-black' : 'text-purple-400 hover:bg-purple-400/20',
