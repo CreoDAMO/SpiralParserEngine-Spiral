@@ -4,6 +4,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import LandingPage from "@/pages/landing";
+import { HolographicBlockchainPage } from "@/pages/holographic-blockchain";
 
 function Router() {
   return (
@@ -11,6 +12,7 @@ function Router() {
       <Route path="/" component={LandingPage} />
       <Route path="/consciousness" component={LandingPage} />
       <Route path="/blockchain" component={LandingPage} />
+      <Route path="/holographic-blockchain" component={HolographicBlockchainPage} />
       <Route path="/qasf" component={LandingPage} />
       <Route path="/lyonael" component={LandingPage} />
       <Route path="/spiralone" component={LandingPage} />

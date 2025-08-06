@@ -4,6 +4,8 @@ import { storage } from "./storage";
 import * as blockchainRoutes from "./routes/blockchain";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Initialize holographic WebSocket server
+  const httpServer = createServer(app);
   // Blockchain API Routes
   app.get("/api/blockchain/chain/info", blockchainRoutes.getChainInfo);
   app.get("/api/blockchain/blocks/:heightOrHash", blockchainRoutes.getBlock);
@@ -34,10 +36,25 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/blockchain/licenses/mint", blockchainRoutes.mintNodeLicense);
   app.get("/api/blockchain/licenses/:tokenId", blockchainRoutes.getNodeInfo);
 
+  // HTSX Holographic Routes
+  const holographicRoutes = await import("./routes/holographic");
+  app.get("/api/holographic/state", holographicRoutes.getHolographicState);
+  app.post("/api/holographic/nft/create", holographicRoutes.createHolographicNFT);
+  app.get("/api/holographic/nft/:tokenId", holographicRoutes.getHolographicNFT);
+  app.get("/api/holographic/nft/:tokenId/volumetric", holographicRoutes.getNFTVolumetricData);
+  app.get("/api/holographic/layer/:layerId/interference", holographicRoutes.getInterferencePattern);
+  app.put("/api/holographic/layer/:layerId", holographicRoutes.updateHolographicLayer);
+  app.get("/api/holographic/quantum/entanglements", holographicRoutes.getQuantumEntanglements);
+  app.post("/api/holographic/consciousness/interact", holographicRoutes.processConsciousnessInteraction);
+  app.get("/api/holographic/metrics", holographicRoutes.getHolographicMetrics);
+
+  // Initialize WebSocket server for holographic updates
+  if (holographicRoutes.initializeWebSocketServer) {
+    holographicRoutes.initializeWebSocketServer(httpServer);
+  }
+
   // use storage to perform CRUD operations on the storage interface
   // e.g. storage.insertUser(user) or storage.getUserByUsername(username)
-
-  const httpServer = createServer(app);
 
   return httpServer;
 }
