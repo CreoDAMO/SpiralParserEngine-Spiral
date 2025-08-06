@@ -48,6 +48,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/holographic/consciousness/interact", holographicRoutes.processConsciousnessInteraction);
   app.get("/api/holographic/metrics", holographicRoutes.getHolographicMetrics);
 
+  // Seven Pillars of Mathematical Wisdom Routes (QASF Integration)
+  const sevenPillarsRoutes = await import("./routes/seven-pillars");
+  app.get("/api/qasf/seven-pillars/metrics", sevenPillarsRoutes.getSevenPillarsMetrics);
+  app.get("/api/qasf/seven-pillars/problem/:problemId", sevenPillarsRoutes.getProblemDetails);
+  app.post("/api/qasf/seven-pillars/validate", sevenPillarsRoutes.runValidation);
+  app.get("/api/qasf/seven-pillars/problems", sevenPillarsRoutes.getAllProblems);
+  app.get("/api/qasf/seven-pillars/qasf-integration", sevenPillarsRoutes.getQASFIntegration);
+
   // Initialize WebSocket server for holographic updates
   if (holographicRoutes.initializeWebSocketServer) {
     holographicRoutes.initializeWebSocketServer(httpServer);

@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import LandingPage from "@/pages/landing";
 import { HolographicBlockchainPage } from "@/pages/holographic-blockchain";
+import { QASFDashboardPage } from "@/pages/qasf-dashboard";
 
 function Router() {
   return (
@@ -13,7 +14,7 @@ function Router() {
       <Route path="/consciousness" component={LandingPage} />
       <Route path="/blockchain" component={LandingPage} />
       <Route path="/holographic-blockchain" component={HolographicBlockchainPage} />
-      <Route path="/qasf" component={LandingPage} />
+      <Route path="/qasf" component={QASFDashboardPage} />
       <Route path="/lyonael" component={LandingPage} />
       <Route path="/spiralone" component={LandingPage} />
       <Route path="/blackprint" component={LandingPage} />
