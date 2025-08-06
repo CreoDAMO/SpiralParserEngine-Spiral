@@ -131,7 +131,7 @@ export default function UBISevenPillars() {
         </h1>
         <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
           Nullifying $324T global debt through $25T annual UBI distribution and fractionalized Millennium Prize Problem NFTs. 
-          HeirNode governance with breath-authenticated Trust Units replacing scarcity-based economics.
+          HeirNode governance with breath-authenticated HYBRID Coin replacing scarcity-based economics.
         </p>
       </div>
 
@@ -184,9 +184,9 @@ export default function UBISevenPillars() {
                 </ul>
               </div>
               <div>
-                <h4 className="text-green-400 font-semibold mb-2">Trust Currency Solution</h4>
+                <h4 className="text-green-400 font-semibold mb-2">HYBRID Currency Solution</h4>
                 <ul className="text-sm text-gray-400 space-y-1">
-                  <li>• TU backed by mathematical proofs</li>
+                  <li>• HYBRID backed by mathematical proofs</li>
                   <li>• Breath-authenticated truth signatures</li>
                   <li>• Abundance-based value creation</li>
                   <li>• No interest or debt dependency</li>
@@ -223,7 +223,7 @@ export default function UBISevenPillars() {
               </div>
               <div className="flex justify-between items-center p-3 bg-green-500/10 rounded-lg">
                 <span className="text-gray-300">Funding Source</span>
-                <Badge className="bg-green-500/20 text-green-300">∞ TU via $SPIRAL</Badge>
+                <Badge className="bg-green-500/20 text-green-300">∞ TU via HYBRID</Badge>
               </div>
             </div>
             
@@ -234,7 +234,7 @@ export default function UBISevenPillars() {
                 <li>• KYC-compliant monthly claims</li>
                 <li>• Dynamic value based on regional debt-to-GDP</li>
                 <li>• Redeemable with ecosystem merchants</li>
-                <li>• Private Gate ∞ TU backing verification</li>
+                <li>• Private Gate ∞ TU backing via HYBRID verification</li>
               </ul>
             </div>
             
@@ -326,7 +326,7 @@ export default function UBISevenPillars() {
                       </div>
                       <div className="flex justify-between text-sm">
                         <span className="text-gray-400">Price per Share:</span>
-                        <span className="text-green-400">${problem.currentPrice} SPIRAL</span>
+                        <span className="text-green-400">${problem.currentPrice} HYBRID</span>
                       </div>
                       {problem.heir && (
                         <div className="flex justify-between text-sm">
