@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Waves, Eye, Box, Cpu, Shield, Satellite, FileText, FlaskConical, Code, Wallet, Upload } from 'lucide-react';
+import { Waves, Eye, Box, Cpu, Shield, Satellite, FileText, FlaskConical, Code, Wallet, Upload, Gift } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface NavigationProps {
@@ -18,6 +18,7 @@ export default function Navigation({ activeSection, onSectionChange }: Navigatio
     { id: 'testbeds', label: 'Testbeds', icon: FlaskConical, category: 'testing' },
     { id: 'spiralscript', label: 'SpiralScript', icon: Code, category: 'language' },
     { id: 'marketplace', label: 'Marketplace', icon: Wallet, category: 'commerce' },
+    { id: 'ubi-pillars', label: 'UBI & Pillars', icon: Gift, category: 'economics' },
     { id: 'upload', label: 'Create NFT', icon: Upload, category: 'create' },
   ];
 
@@ -57,6 +58,7 @@ export default function Navigation({ activeSection, onSectionChange }: Navigatio
                   testing: isActive ? 'bg-pink-400 text-black' : 'text-pink-400 hover:bg-pink-400/20',
                   language: isActive ? 'bg-indigo-400 text-black' : 'text-indigo-400 hover:bg-indigo-400/20',
                   commerce: isActive ? 'bg-green-400 text-black' : 'text-green-400 hover:bg-green-400/20',
+                  economics: isActive ? 'bg-red-400 text-black' : 'text-red-400 hover:bg-red-400/20',
                   create: isActive ? 'bg-orange-400 text-black' : 'text-orange-400 hover:bg-orange-400/20'
                 };
                 return colors[category as keyof typeof colors] || (isActive ? 'bg-yellow-400 text-black' : 'text-gray-400');

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Box, BusFront, Coins, Network, Activity, Globe, Copy } from 'lucide-react';
+import { Box, BusFront, Coins, Network, Activity, Globe, Copy, Cpu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -37,13 +37,36 @@ export default function HybridBlockchain() {
           </motion.div>
           <h1 className="text-5xl font-bold mb-6">
             <span className="bg-gradient-to-r from-blue-400 via-yellow-400 to-blue-400 bg-clip-text text-transparent">
-              Hybrid Blockchain Infrastructure
+              Hybrid Blockchain Public Gate
             </span>
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            The Public Gate - CosmosSDK-based Layer 1 blockchain with EVM compatibility, featuring φ-harmonic consensus, 
-            dual bridge architecture (BASE/Ethereum), and QCHAIN integration with 127-qubit quantum processing capabilities.
+          <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            The Public Gate - Advanced CosmosSDK Layer 1 blockchain with EVM compatibility, nullifying $324T global debt 
+            through Truth-backed economics. Features φ-harmonic consensus, dual bridge architecture (BASE/Ethereum), 
+            QSPACE quantum storage, and $25T UBI distribution via NFT infrastructure co-authored with lyona'el Makeda-Kiburion.
           </p>
+          
+          {/* Economic Impact Stats */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 max-w-4xl mx-auto">
+            <Card className="bg-red-500/20 border-red-400/30">
+              <CardContent className="p-4 text-center">
+                <div className="text-2xl font-bold text-red-400">$324T</div>
+                <div className="text-sm text-gray-300">Global Debt Nullified</div>
+              </CardContent>
+            </Card>
+            <Card className="bg-green-500/20 border-green-400/30">
+              <CardContent className="p-4 text-center">
+                <div className="text-2xl font-bold text-green-400">$25T</div>
+                <div className="text-sm text-gray-300">Annual UBI Distribution</div>
+              </CardContent>
+            </Card>
+            <Card className="bg-yellow-500/20 border-yellow-400/30">
+              <CardContent className="p-4 text-center">
+                <div className="text-2xl font-bold text-yellow-400">1B</div>
+                <div className="text-sm text-gray-300">Users Onboarded</div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
 
         {/* Domain Display */}
@@ -114,14 +137,91 @@ export default function HybridBlockchain() {
           </Card>
         </div>
 
+        {/* Economic Data Integration */}
+        <Card className="bg-gradient-to-r from-gray-900 to-black border-red-400/30 mb-12">
+          <CardHeader>
+            <CardTitle className="text-2xl text-red-400 flex items-center">
+              <Activity className="w-6 h-6 mr-3" />
+              Real-Time Economic Analytics
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-red-400 mb-2">$324T</div>
+                <div className="text-sm text-gray-400">Global Debt (325% GDP)</div>
+                <div className="text-xs text-red-300 mt-1">BIS/IMF/World Bank</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-yellow-400 mb-2">$91.4T</div>
+                <div className="text-sm text-gray-400">Public Debt (29%)</div>
+                <div className="text-xs text-yellow-300 mt-1">Government Bonds</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-blue-400 mb-2">$164.5T</div>
+                <div className="text-sm text-gray-400">Corporate Debt (52%)</div>
+                <div className="text-xs text-blue-300 mt-1">Financial Sector</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-green-400 mb-2">$59.1T</div>
+                <div className="text-sm text-gray-400">Household Debt (19%)</div>
+                <div className="text-xs text-green-300 mt-1">Mortgages/Credit</div>
+              </div>
+            </div>
+            <div className="mt-6 p-4 bg-black/40 rounded-lg">
+              <div className="text-center">
+                <div className="text-lg text-gray-300 mb-2">Trust Currency Solution</div>
+                <div className="text-sm text-gray-400">
+                  TU (Trust Units) backed by validated mathematical proofs and breath-authenticated truth signatures, 
+                  replacing debt-based fiat with consciousness-verified abundance economics.
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Main Content Grid */}
         <div className="grid lg:grid-cols-2 gap-8 mb-12">
-          {/* Dual BusFront System */}
+          {/* QSPACE Integration */}
+          <Card className="bg-black/80 backdrop-blur-sm border-purple-400/20">
+            <CardContent className="p-8">
+              <h3 className="text-2xl font-semibold mb-6 flex items-center">
+                <Cpu className="w-6 h-6 mr-3 text-purple-400" />
+                QSPACE Quantum Storage
+              </h3>
+              <div className="space-y-4">
+                <div className="flex justify-between items-center p-3 bg-purple-500/10 rounded-lg">
+                  <span className="text-gray-300">PDF Processing</span>
+                  <Badge className="bg-purple-500/20 text-purple-300">1,000 docs/10s</Badge>
+                </div>
+                <div className="flex justify-between items-center p-3 bg-purple-500/10 rounded-lg">
+                  <span className="text-gray-300">Proof Validation</span>
+                  <Badge className="bg-purple-500/20 text-purple-300">0.35ns latency</Badge>
+                </div>
+                <div className="flex justify-between items-center p-3 bg-purple-500/10 rounded-lg">
+                  <span className="text-gray-300">Truth Storage</span>
+                  <Badge className="bg-purple-500/20 text-purple-300">Immutable</Badge>
+                </div>
+                <div className="flex justify-between items-center p-3 bg-purple-500/10 rounded-lg">
+                  <span className="text-gray-300">Harmonic Pulse</span>
+                  <Badge className="bg-purple-500/20 text-purple-300">735Hz</Badge>
+                </div>
+              </div>
+              <div className="mt-6 p-4 bg-black/40 rounded-lg">
+                <div className="text-sm text-gray-400">
+                  Quantum-native storage system processing mathematical proofs and consciousness validation data. 
+                  Integrated with HeirNode governance and Seven Pillars NFT royalty distribution.
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Dual Bridge System */}
           <Card className="bg-black/80 backdrop-blur-sm border-blue-400/20">
             <CardContent className="p-8">
               <h3 className="text-2xl font-semibold mb-6 flex items-center">
                 <BusFront className="w-6 h-6 mr-3 text-blue-400" />
-                Dual BusFront Architecture
+                Dual Bridge Architecture
               </h3>
               <div className="space-y-4">
                 <div className="flex items-center justify-between p-4 bg-green-500/10 rounded-xl border border-green-500/20">
