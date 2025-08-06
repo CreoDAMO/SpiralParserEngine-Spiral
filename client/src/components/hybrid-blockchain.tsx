@@ -41,8 +41,8 @@ export default function HybridBlockchain() {
             </span>
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            A CosmosSDK-based blockchain with EVM compatibility, featuring Hybrid Coin (HYBRID) 
-            as the native currency for the public digital economy.
+            The Public Gate - CosmosSDK-based Layer 1 blockchain with EVM compatibility, featuring φ-harmonic consensus, 
+            dual bridge architecture (BASE/Ethereum), and QCHAIN integration with 127-qubit quantum processing capabilities.
           </p>
         </div>
 
