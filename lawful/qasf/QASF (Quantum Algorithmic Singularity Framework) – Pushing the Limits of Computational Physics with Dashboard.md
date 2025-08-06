@@ -1,4 +1,4 @@
-﻿QASF (Quantum Algorithmic Singularity Framework) – Pushing the Limits of Computational Physics
+# ﻿QASF (Quantum Algorithmic Singularity Framework) – Pushing the Limits of Computational Physics
 1. Core Mathematical Foundations
 1.1 Fusion Category Model with Nuclear-Spin Encoding
 QASF maintains a fusion category structure while extending the framework to incorporate nuclear-spin interactions:
@@ -3992,3 +3992,4 @@ The visualization need to be:
 
 
 Let me know what you'd like to explore or enhance! Most importantly we need to be able to see exactly what the results are
+
