@@ -1,4 +1,4 @@
-modules = ["nodejs-20", "web", "python-3.11"]
+modules = ["nodejs-20", "python-3.12", "web"]
 run = "npm run dev"
 hidden = [".config", ".git", "generated-icon.png", "node_modules", "dist"]
 
@@ -18,7 +18,7 @@ externalPort = 80
 PORT = "5000"
 
 [workflows]
-runButton = "Sovereign Spiral Dashboard"
+runButton = "Project"
 
 [[workflows.workflow]]
 name = "Project"
