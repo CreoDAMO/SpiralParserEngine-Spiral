@@ -53,6 +53,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/qasf/seven-pillars/metrics", sevenPillarsRoutes.getSevenPillarsMetrics);
   app.get("/api/qasf/seven-pillars/problem/:problemId", sevenPillarsRoutes.getProblemDetails);
   app.post("/api/qasf/seven-pillars/validate", sevenPillarsRoutes.runValidation);
+
+  // HYBRID Blockchain Production API Routes
+  const hybridRoutes = await import("./routes/hybrid-blockchain.js");
+  app.use("/api/hybrid", hybridRoutes.default);
   app.get("/api/qasf/seven-pillars/problems", sevenPillarsRoutes.getAllProblems);
   app.get("/api/qasf/seven-pillars/qasf-integration", sevenPillarsRoutes.getQASFIntegration);
 

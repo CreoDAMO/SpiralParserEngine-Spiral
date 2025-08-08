@@ -1,4 +1,10 @@
 
+import { motion } from 'framer-motion';
+import { Gift, Crown, Calculator, Coins, Users, TrendingUp, Shield, Award, Globe } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Progress } from '@/components/ui/progress';
 
 export default function UBISevenPillars() {
   // Real data from the lawful document

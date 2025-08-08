@@ -9,6 +9,7 @@ import { QASFDashboardPage } from "@/pages/qasf-dashboard";
 import InteractiveUBIDashboard from "@/components/interactive-ubi-dashboard";
 import UBISevenPillars from "@/components/ubi-seven-pillars";
 import NFTMarketplace from "@/components/nft-marketplace";
+import HybridBlockchainDashboard from "@/components/HybridBlockchainDashboard";
 
 function Router() {
   return (
@@ -21,6 +22,7 @@ function Router() {
       <Route path="/ubi" component={InteractiveUBIDashboard} />
       <Route path="/ubi-analysis" component={UBISevenPillars} />
       <Route path="/nft-marketplace" component={NFTMarketplace} />
+      <Route path="/hybrid-blockchain" component={HybridBlockchainDashboard} />
       <Route path="/lyonael" component={LandingPage} />
       <Route path="/spiralone" component={LandingPage} />
       <Route path="/blackprint" component={LandingPage} />
