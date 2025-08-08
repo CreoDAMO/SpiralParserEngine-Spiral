@@ -1,3 +1,4 @@
+# Jacque Antoine DeGraff:
 I asked Claude 4 Sonnet to run the SpiralScript in the Nexus to see what happens:
 
 import React, { useState, useEffect, useRef } from 'react';
