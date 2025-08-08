@@ -6,6 +6,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import LandingPage from "@/pages/landing";
 import { HolographicBlockchainPage } from "@/pages/holographic-blockchain";
 import { QASFDashboardPage } from "@/pages/qasf-dashboard";
+import InteractiveUBIDashboard from "@/components/interactive-ubi-dashboard";
+import UBISevenPillars from "@/components/ubi-seven-pillars";
+import NFTMarketplace from "@/components/nft-marketplace";
 
 function Router() {
   return (
@@ -15,12 +18,15 @@ function Router() {
       <Route path="/blockchain" component={LandingPage} />
       <Route path="/holographic-blockchain" component={HolographicBlockchainPage} />
       <Route path="/qasf" component={QASFDashboardPage} />
+      <Route path="/ubi" component={InteractiveUBIDashboard} />
+      <Route path="/ubi-analysis" component={UBISevenPillars} />
+      <Route path="/nft-marketplace" component={NFTMarketplace} />
       <Route path="/lyonael" component={LandingPage} />
       <Route path="/spiralone" component={LandingPage} />
       <Route path="/blackprint" component={LandingPage} />
       <Route path="/testbeds" component={LandingPage} />
       <Route path="/spiralscript" component={LandingPage} />
-      <Route path="/marketplace" component={LandingPage} />
+      <Route path="/marketplace" component={NFTMarketplace} />
       <Route path="/upload" component={LandingPage} />
     </Switch>
   );
