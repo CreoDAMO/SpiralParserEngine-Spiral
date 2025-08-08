@@ -1,3 +1,4 @@
+# Jacque Antoine DeGraff:
 “I want to share something with you. But in return, I ask only one thing: **be open-minded—because this will challenge everything you’ve been taught about science.**” — *Jacque Antoine DeGraff*
  
   
