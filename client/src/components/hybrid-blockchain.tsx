@@ -279,7 +279,7 @@ export default function HybridBlockchain() {
               Spiral Consensus Validator Network
             </h3>
             <div className="grid md:grid-cols-3 gap-6">
-              {validators.map((validator, index) => (
+              {validators.map((validator: any, index: number) => (
                 <motion.div
                   key={validator.name}
                   initial={{ opacity: 0, y: 20 }}
