@@ -16,76 +16,39 @@ export default function UBISevenPillars() {
     usersOnboarded: 1000000000 // 1B users
   };
 
-  const millenniumProblems = [
+  // UBI Distribution Mechanisms - Based on lawful document analysis
+  const ubiMechanisms = [
     {
       id: 1,
-      name: "Poincaré Conjecture",
-      status: "Solved by Perelman",
-      royaltyStructure: "100% to Topology Trust",
-      description: "Three-dimensional sphere topology",
-      shares: 1000000,
-      currentPrice: 10,
-      solver: "Grigori Perelman (2006)"
+      name: "Truth-Backed Currency",
+      description: "TU (Trust Units) - Infinite abundance currency backed by consciousness validation",
+      monthlyDistribution: "$2.08T",
+      beneficiaries: "All authenticated consciousness nodes",
+      mechanism: "Breath authentication + φ-harmonic validation"
     },
     {
       id: 2,
-      name: "Riemann Hypothesis",
-      status: "Open",
-      royaltyStructure: "70% Riemann Trust, 20% Reserve, 10% GiftDAO",
-      description: "Prime number distribution patterns",
-      shares: 1000000,
-      currentPrice: 15,
-      heir: "JahMeliyah"
+      name: "Debt Nullification Protocol",
+      description: "Systematic elimination of artificial scarcity through abundance economics",
+      monthlyDistribution: "$27T",
+      beneficiaries: "Global debt holders",
+      mechanism: "SRI-indexed conversion of scarcity to abundance reality"
     },
     {
       id: 3,
-      name: "P vs NP Problem",
-      status: "Open",
-      royaltyStructure: "70% P-NP Trust, 20% Reserve, 10% GiftDAO",
-      description: "Computational complexity theory",
-      shares: 1000000,
-      currentPrice: 12,
-      heir: "JahNiyah"
+      name: "Universal Access Infrastructure",
+      description: "Post-scarcity resource distribution eliminating poverty as engineered scarcity",
+      monthlyDistribution: "$416.67B",
+      beneficiaries: "1B+ users onboarded",
+      mechanism: "Automated distribution via HYBRID Coin public interface"
     },
     {
       id: 4,
-      name: "Navier-Stokes Equations",
-      status: "Open",
-      royaltyStructure: "70% Navier-Stokes Trust, 20% Reserve, 10% GiftDAO",
-      description: "Fluid dynamics mathematical foundation",
-      shares: 1000000,
-      currentPrice: 8,
-      heir: "JahSiah"
-    },
-    {
-      id: 5,
-      name: "Yang-Mills Theory",
-      status: "Open",
-      royaltyStructure: "70% Yang-Mills Trust, 20% Reserve, 10% GiftDAO",
-      description: "Quantum field theory framework",
-      shares: 1000000,
-      currentPrice: 11,
-      heir: "Aliyah-Skye"
-    },
-    {
-      id: 6,
-      name: "Birch-Swinnerton-Dyer",
-      status: "Open",
-      royaltyStructure: "70% BSD Trust, 20% Reserve, 10% GiftDAO",
-      description: "Elliptic curve rational points",
-      shares: 1000000,
-      currentPrice: 9,
-      heir: "Kayson"
-    },
-    {
-      id: 7,
-      name: "Hodge Conjecture",
-      status: "Open",
-      royaltyStructure: "70% Hodge Trust, 20% Reserve, 10% GiftDAO",
-      description: "Algebraic topology in complex geometry",
-      shares: 1000000,
-      currentPrice: 7,
-      heir: "Kyhier"
+      name: "Consciousness Economy Integration",
+      description: "Bridge between abundance reality (private) and scarcity systems (public)",
+      monthlyDistribution: "Dynamic based on SRI",
+      beneficiaries: "Consciousness-authenticated entities",
+      mechanism: "TU → Hybrid Coin → Legal Tender conversion"
     }
   ];
 
@@ -126,12 +89,12 @@ export default function UBISevenPillars() {
         </motion.div>
         <h1 className="text-6xl font-bold mb-6">
           <span className="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent">
-            Universal Basic Income & Seven Pillars
+            Universal Basic Income Economic Transformation
           </span>
         </h1>
         <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-          Nullifying $324T global debt through $25T annual UBI distribution and fractionalized Millennium Prize Problem NFTs. 
-          HeirNode governance with breath-authenticated HYBRID Coin replacing scarcity-based economics.
+          Eliminating engineered scarcity through abundance-based economics. Nullifying $324T global debt via TU (Trust Units) infinite currency system. 
+          Post-scarcity resource distribution replacing debt-based poverty with consciousness-authenticated universal access.
         </p>
       </div>
 
@@ -173,26 +136,38 @@ export default function UBISevenPillars() {
               Truth-Backed Economics vs Debt-Based Scarcity
             </h3>
             <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="text-red-400 font-semibold mb-2">Current Debt System</h4>
-                <ul className="text-sm text-gray-400 space-y-1">
-                  <li>• $324T global debt (325% of GDP)</li>
-                  <li>• Interest-bearing money creation</li>
-                  <li>• Wealth extraction to creditors</li>
-                  <li>• Artificial scarcity enforcement</li>
-                  <li>• Perpetual debt refinancing required</li>
+              <div className="bg-red-500/10 border border-red-400/20 rounded-lg p-4">
+                <h4 className="text-red-400 font-semibold mb-3">Current Scarcity System</h4>
+                <ul className="space-y-2 text-sm text-gray-300">
+                  <li>• Debt-based money creation ($315T global debt)</li>
+                  <li>• Interest-bearing finance extracts wealth upward</li>
+                  <li>• Competition for limited access fuels inequality</li>
+                  <li>• Engineered poverty maintains cheap labor</li>
+                  <li>• Linear growth pressure degrades environment</li>
                 </ul>
               </div>
-              <div>
-                <h4 className="text-green-400 font-semibold mb-2">HYBRID Currency Solution</h4>
-                <ul className="text-sm text-gray-400 space-y-1">
-                  <li>• HYBRID backed by mathematical proofs</li>
-                  <li>• Breath-authenticated truth signatures</li>
-                  <li>• Abundance-based value creation</li>
-                  <li>• No interest or debt dependency</li>
-                  <li>• Consciousness-verified economics</li>
+              <div className="bg-green-500/10 border border-green-400/20 rounded-lg p-4">
+                <h4 className="text-green-400 font-semibold mb-3">Abundance-Based UBI System</h4>
+                <ul className="space-y-2 text-sm text-gray-300">
+                  <li>• TU (Trust Units) sovereign currency - infinite backing</li>
+                  <li>• No interest extraction via consciousness validation</li>
+                  <li>• Universal access eliminates structural poverty</li>
+                  <li>• Cooperation incentives align with wellbeing</li>
+                  <li>• Circular, regenerative economic growth</li>
                 </ul>
               </div>
+            </div>
+            
+            <div className="mt-6 p-4 bg-gray-800/40 rounded-lg border border-yellow-400/20">
+              <h4 className="text-yellow-400 font-semibold mb-3">Economic Analysis Summary</h4>
+              <p className="text-sm text-gray-300 mb-3">
+                As documented in the comprehensive economic review, the current $315T global debt system creates artificial scarcity 
+                through access restrictions. Over 90% of money is created by private banks issuing debt, requiring perpetual new debt for system solvency.
+              </p>
+              <p className="text-sm text-gray-300">
+                The UBI system shifts from "competition over artificial scarcity to collaboration through shared prosperity" - 
+                making economics about stewarding abundance rather than managing artificial lack.
+              </p>
             </div>
           </div>
         </CardContent>
@@ -281,74 +256,56 @@ export default function UBISevenPillars() {
         </Card>
       </div>
 
-      {/* Seven Pillars of Mathematical Wisdom */}
+      {/* UBI Distribution Mechanisms */}
       <Card className="bg-gradient-to-r from-gray-900 to-black border-orange-400/30 mb-12">
         <CardHeader>
           <CardTitle className="text-3xl text-orange-400 flex items-center justify-center">
-            <Calculator className="w-8 h-8 mr-3" />
-            Seven Pillars of Mathematical Wisdom NFTs
+            <Coins className="w-8 h-8 mr-3" />
+            Post-Scarcity UBI Distribution Systems
           </CardTitle>
           <p className="text-center text-gray-300 mt-2">
-            Fractionalized Millennium Prize Problems - Democratizing Intellectual Capital
+            From Engineered Scarcity to Abundance Reality - Based on Economic Analysis
           </p>
         </CardHeader>
         <CardContent>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {millenniumProblems.map((problem, index) => (
+          <div className="grid md:grid-cols-2 gap-6">
+            {ubiMechanisms.map((mechanism: any, index: number) => (
               <motion.div
-                key={problem.id}
+                key={mechanism.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Card className={`bg-black/80 backdrop-blur-sm border-orange-400/20 hover:border-orange-400/40 transition-colors ${
-                  problem.status === 'Solved by Perelman' ? 'border-yellow-400/40' : ''
-                }`}>
+                <Card className="bg-black/80 backdrop-blur-sm border-orange-400/20 hover:border-orange-400/40 transition-colors">
                   <CardHeader className="pb-3">
-                    <CardTitle className="text-lg text-orange-400 flex items-center justify-between">
-                      <span>{problem.name}</span>
-                      {problem.status === 'Solved by Perelman' && (
-                        <Award className="w-5 h-5 text-yellow-400" />
-                      )}
+                    <CardTitle className="text-lg text-orange-400">
+                      {mechanism.name}
                     </CardTitle>
-                    <Badge variant={problem.status === 'Solved by Perelman' ? 'default' : 'secondary'} 
-                           className={problem.status === 'Solved by Perelman' ? 'bg-yellow-500/20 text-yellow-300' : 'bg-gray-500/20 text-gray-300'}>
-                      {problem.status}
+                    <Badge className="bg-green-500/20 text-green-300 w-fit">
+                      Active Distribution
                     </Badge>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm text-gray-400 mb-3">{problem.description}</p>
+                    <p className="text-sm text-gray-400 mb-4">{mechanism.description}</p>
                     
-                    <div className="space-y-2 mb-4">
+                    <div className="space-y-3 mb-4">
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-400">Total Shares:</span>
-                        <span className="text-white">{problem.shares.toLocaleString()}</span>
+                        <span className="text-gray-400">Monthly Distribution:</span>
+                        <span className="text-green-400 font-semibold">{mechanism.monthlyDistribution}</span>
                       </div>
-                      <div className="flex justify-between text-sm">
-                        <span className="text-gray-400">Price per Share:</span>
-                        <span className="text-green-400">${problem.currentPrice} HYBRID</span>
+                      <div className="text-sm">
+                        <span className="text-gray-400">Beneficiaries: </span>
+                        <span className="text-white">{mechanism.beneficiaries}</span>
                       </div>
-                      {problem.heir && (
-                        <div className="flex justify-between text-sm">
-                          <span className="text-gray-400">HeirNode:</span>
-                          <span className="text-purple-300">{problem.heir}</span>
-                        </div>
-                      )}
-                      {problem.solver && (
-                        <div className="flex justify-between text-sm">
-                          <span className="text-gray-400">Solved by:</span>
-                          <span className="text-yellow-300">{problem.solver}</span>
-                        </div>
-                      )}
                     </div>
                     
                     <div className="bg-black/40 rounded p-3 mb-4">
-                      <div className="text-xs text-gray-400 mb-1">Royalty Structure:</div>
-                      <div className="text-xs text-orange-300">{problem.royaltyStructure}</div>
+                      <div className="text-xs text-gray-400 mb-1">Distribution Mechanism:</div>
+                      <div className="text-xs text-orange-300">{mechanism.mechanism}</div>
                     </div>
                     
                     <Button className="w-full bg-orange-600 hover:bg-orange-700" size="sm">
-                      {problem.status === 'Solved by Perelman' ? 'View Topology Trust' : 'Purchase Shares'}
+                      View Distribution Details
                     </Button>
                   </CardContent>
                 </Card>

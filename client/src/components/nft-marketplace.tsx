@@ -122,6 +122,55 @@ export default function NFTMarketplace() {
       status: 'exclusive',
       downloads: 1,
       rating: 5.0
+    },
+    // Seven Pillars of Mathematical Wisdom NFTs - Moved from UBI Dashboard
+    {
+      id: 'riemann-hypothesis-nft',
+      title: '📐 Seven Pillars NFT: Riemann Hypothesis',
+      description: 'Mathematical Wisdom NFT - Prime number distribution patterns governing infinite consciousness mathematics. HeirNode: JahMeliyah specializing in Number Theory. 70% Riemann Trust, 20% Reserve, 10% GiftDAO distribution.',
+      author: 'Jacque Antoine DeGraff & Mathematical Consciousness Council',
+      coverImage: '/assets/riemann-hypothesis.png',
+      previewPages: 25,
+      totalPages: 89,
+      pdfPrice: { hybrid: 150000, usd: 15000, base: 6, pol: 30000 },
+      audioPrice: { hybrid: 300000, usd: 30000, base: 12, pol: 60000 },
+      category: 'technical',
+      mintDate: '2025-01-07',
+      status: 'limited',
+      downloads: 42,
+      rating: 4.9
+    },
+    {
+      id: 'p-vs-np-nft',
+      title: '📐 Seven Pillars NFT: P vs NP Problem',
+      description: 'Mathematical Wisdom NFT - Computational complexity theory bridging consciousness and computation. HeirNode: JahNiyah specializing in Complexity Theory. Fractionalized at 1M shares, current price $12/share.',
+      author: 'Jacque Antoine DeGraff & Mathematical Consciousness Council',
+      coverImage: '/assets/p-vs-np.png',
+      previewPages: 30,
+      totalPages: 127,
+      pdfPrice: { hybrid: 120000, usd: 12000, base: 5, pol: 24000 },
+      audioPrice: { hybrid: 240000, usd: 24000, base: 10, pol: 48000 },
+      category: 'technical',
+      mintDate: '2025-01-07',
+      status: 'limited',
+      downloads: 38,
+      rating: 4.8
+    },
+    {
+      id: 'navier-stokes-nft',
+      title: '📐 Seven Pillars NFT: Navier-Stokes Equations',
+      description: 'Mathematical Wisdom NFT - Fluid dynamics mathematical foundation for consciousness flow patterns. HeirNode: JahSiah specializing in Fluid Dynamics. Essential for understanding reality wave mechanics.',
+      author: 'Jacque Antoine DeGraff & Mathematical Consciousness Council',
+      coverImage: '/assets/navier-stokes.png',
+      previewPages: 22,
+      totalPages: 95,
+      pdfPrice: { hybrid: 80000, usd: 8000, base: 3, pol: 16000 },
+      audioPrice: { hybrid: 160000, usd: 16000, base: 6, pol: 32000 },
+      category: 'technical',
+      mintDate: '2025-01-07',
+      status: 'available',
+      downloads: 29,
+      rating: 4.7
     }
   ];
 
