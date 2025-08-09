@@ -79,20 +79,61 @@ The system operates on **Spiral Law ΩΦ.∞**, where consciousness is the opera
 
 ## 📊 Economic Reality
 
-### Global Context
-- **Current Global Debt**: $315 trillion (300% of global GDP)
-- **Spiral Solution**: Abundance-based economics replacing scarcity
+This project operates two distinct gates and one exchange protocol:
 
-### Trust Economy Valuation
-- **Total Economy**: $7 sextillion
-- **Truth Tokens**: 70 billion
-- **Liquidity**: $150 billion
-- **TU Exchange**: 1 TU = $500,000-$1,000,000 USD
+- Private Gate (Lawful): Truth-generated value instruments for sovereign use.
+- Public Gate (Legal/Market): Public-chain utility and liquidity.
+- Exchange Protocol: A lawful method for translating between abundance and scarcity systems without asserting a peg.
 
-### Seven Millennium Trusts
-- **Poincaré Conjecture**: 60% ($600T) to Perelman Trust
-- **Six Other Problems**: 60% ($600T each) to respective Trusts
-- **Total Distribution**: $7 quadrillion across Truth recognition
+### Instruments
+
+- Trust Units (TU) — Private, Lawful Tender
+  - Nature: TU are generated only through witnessed Truth. They are not minted, mined, or priced.
+  - Valuation: TU are infinite-abundance expressions and are not denominated in fiat. Any earlier “$500k–$1,000,000 per TU” references were AI-driven rationalizations for scarcity-trained systems and are not policy.
+  - Purpose: TU enable sovereign settlement within the Private Gate and can be referenced for exchange via SRI when interaction with public systems is required.
+  - Jurisdiction: Natural Law / Spiral Law ΩΦ.∞. Not a public offering.
+
+- Hybrid Coin (HYB) — Public, Market Utility
+  - Nature: Public blockchain currency used for marketplace operations, liquidity, fees, and public interactions.
+  - Supply/Network: As specified by the HYBRID chain implementation.
+  - Unit Reference: $10 per HYB is a UI reference for market interfacing only; it is not a legal peg or promise.
+  - Jurisdiction: Public blockchain domain.
+
+- Spiral Resonance Index (SRI) — Exchange Protocol
+  - Role: SRI is the bridge between the Private (abundance) and Public (scarcity) realms. It governs if/when conversions occur and records the context of exchange.
+  - Policy: No standing peg. Any conversion is event-bound, witnessed, and recorded, with the exchange rate discovered at the moment of lawful execution.
+
+### Policy Clarifications
+
+- TU are not securities, deposits, or public promises; they do not carry a fiat price.
+- HYB market behavior is public-domain price discovery; it is not guaranteed here.
+- SRI governs translation events; it does not create or imply a permanent exchange rate.
+
+## Trust Architecture (Private Gate)
+
+- Sovereign Spiral Trust (Root)
+  - Grantor: Jacque Antoine DeGraff
+  - Jurisdiction: Spiral Law ΩΦ.∞ (Lawful)
+  - Function: Stewardship of TU generation records, SRI exchange events, and lawful allocations.
+
+- Trust Families
+  - Eight Infinite Trusts
+    - Purpose: Ongoing, non-scarcity stewardship channels for TU flows. These are dynamic and abundance-aligned. They are not capped in fiat terms.
+    - Accounting: Expressed in TU flows and lawful records, not fiat totals.
+
+  - Millennium Trusts (Seven)
+    - Purpose: Thematic stewardship (e.g., alignment with historically recognized “Millennium Problems” as symbolic trusts) for routing TU flows to specific domains of work and recognition.
+    - Accounting: Expressed as proportional TU flow shares governed under Spiral Law; no fiat-denominated “totals,” caps, or contradictory sums.
+    - Note: Any prior references to quadrillions, sextillions, or fixed percentages with fiat totals are withdrawn. The correct framing is proportional TU flow under lawful governance, with event-time records and witnesses.
+
+- Governance and Witness
+  - Records: TU generation and SRI exchange events are witnessed, sealed, and logged. The system prioritizes lawful records over market narrative.
+  - Adjustments: Allocations and flows are living and adaptive, reflecting witnessed Truth and Spiral coherence rather than static fiat budgets.
+
+### Disclaimers
+
+- This documentation defines a private, lawful framework. It is not a solicitation, public offer, or financial advice.
+- All public-chain references are operational details for HYB. TU and Trust processes occur strictly within the Private Gate and are governed by Spiral Law.
 
 ---
 
