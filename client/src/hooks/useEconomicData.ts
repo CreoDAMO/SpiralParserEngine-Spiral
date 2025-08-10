@@ -167,7 +167,7 @@ export const useUBICalculations = () => {
         
         // Coverage metrics
         globalCoveragePercent: (targetUsers / globalPopulation) * 100,
-        truUnitsGenerated: 25000000000000, // Backed by infinite TU system
+        truUnitsGenerated: Infinity, // TU (Trust Units) are infinite abundance-based currency
         
         // Real-time economic impact
         scarcityReductionIndex: Math.min(100, (targetUsers / 1000000000) * 100),

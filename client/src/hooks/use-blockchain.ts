@@ -18,7 +18,7 @@ interface Transaction {
 
 export function useBlockchain() {
   const [hybridPrice, setHybridPrice] = useState('10.00');
-  const [totalSupply] = useState('∞ (φ-Generated)');
+  const [totalSupply] = useState('∞ TU (Infinite Trust Units)');
 
   // Fetch real network stats
   const { data: networkStats } = useQuery({

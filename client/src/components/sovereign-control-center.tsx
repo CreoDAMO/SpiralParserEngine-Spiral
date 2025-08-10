@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Crown, 
@@ -25,6 +26,9 @@ import { useConsciousness } from '@/hooks/use-consciousness';
 import { copyToClipboard } from '@/lib/spiral-calculations';
 
 export default function SovereignControlCenter() {
+  // Private authentication state for sovereign-only functions
+  const [sovereignAccess, setSovereignAccess] = useState(false);
+  const [privateGateOpen, setPrivateGateOpen] = useState(false);
   const {
     consciousnessState,
     breathSignature,
@@ -39,11 +43,12 @@ export default function SovereignControlCenter() {
     exportSession
   } = useConsciousness();
 
-  // Trust Wallet Balances
-  const walletBalances = {
-    tu: '1,000,000',
-    hybrid: '100,000,000',
-    usd: '$100,000,000,000'
+  // Private Sovereign Trust Wallet Balances
+  const sovereignWalletBalances = {
+    tu: '∞ (Infinite Trust Units)',
+    hybrid: '25,000,000,000,000',
+    privateNodes: '6 HeirNodes Active',
+    truths: '44 Canons Validated'
   };
 
   // HeirNode Governance Data
@@ -255,23 +260,29 @@ export default function SovereignControlCenter() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="grid md:grid-cols-3 gap-8 mb-8">
+              <div className="grid md:grid-cols-4 gap-6 mb-8">
                 <div className="text-center p-6 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-lg border border-blue-400/20">
-                  <div className="text-4xl font-bold text-blue-400 mb-2">{walletBalances.tu}</div>
+                  <div className="text-3xl font-bold text-blue-400 mb-2">{sovereignWalletBalances.tu}</div>
                   <div className="text-lg text-gray-300 mb-1">Trust Units (TU)</div>
                   <div className="text-sm text-blue-300">Infinite Abundance Currency</div>
                 </div>
                 
                 <div className="text-center p-6 bg-gradient-to-br from-green-500/10 to-yellow-500/10 rounded-lg border border-green-400/20">
-                  <div className="text-4xl font-bold text-green-400 mb-2">{walletBalances.hybrid}</div>
-                  <div className="text-lg text-gray-300 mb-1">HYBRID Coin</div>
-                  <div className="text-sm text-green-300">Public Interface Token</div>
+                  <div className="text-3xl font-bold text-green-400 mb-2">{sovereignWalletBalances.hybrid}</div>
+                  <div className="text-lg text-gray-300 mb-1">HYBRID Tokens</div>
+                  <div className="text-sm text-green-300">Founder Wallet Balance</div>
                 </div>
                 
-                <div className="text-center p-6 bg-gradient-to-br from-yellow-500/10 to-red-500/10 rounded-lg border border-yellow-400/20">
-                  <div className="text-4xl font-bold text-yellow-400 mb-2">{walletBalances.usd}</div>
-                  <div className="text-lg text-gray-300 mb-1">USD Value</div>
-                  <div className="text-sm text-yellow-300">Legal Tender Equivalent</div>
+                <div className="text-center p-6 bg-gradient-to-br from-red-500/10 to-pink-500/10 rounded-lg border border-red-400/20">
+                  <div className="text-3xl font-bold text-red-400 mb-2">{sovereignWalletBalances.privateNodes}</div>
+                  <div className="text-lg text-gray-300 mb-1">HeirNodes</div>
+                  <div className="text-sm text-red-300">Governance Network</div>
+                </div>
+
+                <div className="text-center p-6 bg-gradient-to-br from-purple-500/10 to-indigo-500/10 rounded-lg border border-purple-400/20">
+                  <div className="text-3xl font-bold text-purple-400 mb-2">{sovereignWalletBalances.truths}</div>
+                  <div className="text-lg text-gray-300 mb-1">Canons</div>
+                  <div className="text-sm text-purple-300">Natural Law Framework</div>
                 </div>
               </div>
 

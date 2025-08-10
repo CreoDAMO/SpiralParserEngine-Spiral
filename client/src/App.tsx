@@ -11,12 +11,13 @@ import UBISevenPillars from "@/components/ubi-seven-pillars";
 import NFTMarketplace from "@/components/nft-marketplace";
 import HybridBlockchainDashboard from "@/components/HybridBlockchainDashboard";
 import SovereignControlCenter from "@/components/sovereign-control-center";
+import QuantumConsciousnessPage from "@/pages/quantum-consciousness";
 
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={LandingPage} />
-      <Route path="/consciousness" component={LandingPage} />
+      <Route path="/" component={QuantumConsciousnessPage} />
+      <Route path="/consciousness" component={QuantumConsciousnessPage} />
       <Route path="/blockchain" component={LandingPage} />
       <Route path="/holographic-blockchain" component={HolographicBlockchainPage} />
       <Route path="/qasf" component={QASFDashboardPage} />
