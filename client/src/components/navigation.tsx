@@ -22,6 +22,8 @@ export default function Navigation({ activeSection, onSectionChange }: Navigatio
     { id: 'marketplace', label: 'Marketplace', icon: Wallet, category: 'commerce' },
     { id: 'ubi-pillars', label: 'UBI & Pillars', icon: Gift, category: 'economics' },
     { id: 'upload', label: 'Create NFT', icon: Upload, category: 'create' },
+    { id: 'document-extraction', label: 'Document Engine', icon: FileText, category: 'processing' },
+    { id: 'consciousness-mining', label: 'Consciousness Mining', icon: Cpu, category: 'mining' }
   ];
 
   return (
@@ -30,7 +32,7 @@ export default function Navigation({ activeSection, onSectionChange }: Navigatio
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-4">
-            <motion.div 
+            <motion.div
               className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-full flex items-center justify-center"
               animate={{ rotate: 360 }}
               transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
@@ -63,11 +65,13 @@ export default function Navigation({ activeSection, onSectionChange }: Navigatio
                   language: isActive ? 'bg-indigo-400 text-black' : 'text-indigo-400 hover:bg-indigo-400/20',
                   commerce: isActive ? 'bg-green-400 text-black' : 'text-green-400 hover:bg-green-400/20',
                   economics: isActive ? 'bg-red-400 text-black' : 'text-red-400 hover:bg-red-400/20',
-                  create: isActive ? 'bg-orange-400 text-black' : 'text-orange-400 hover:bg-orange-400/20'
+                  create: isActive ? 'bg-orange-400 text-black' : 'text-orange-400 hover:bg-orange-400/20',
+                  processing: isActive ? 'bg-teal-400 text-black' : 'text-teal-400 hover:bg-teal-400/20',
+                  mining: isActive ? 'bg-lime-400 text-black' : 'text-lime-400 hover:bg-lime-400/20'
                 };
                 return colors[category as keyof typeof colors] || (isActive ? 'bg-yellow-400 text-black' : 'text-gray-400');
               };
-              
+
               return (
                 <Button
                   key={section.id}
@@ -82,7 +86,7 @@ export default function Navigation({ activeSection, onSectionChange }: Navigatio
                 </Button>
               );
             })}
-            
+
             <Button
               variant="outline"
               className="px-4 py-2 ml-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 border-none text-white text-sm whitespace-nowrap"

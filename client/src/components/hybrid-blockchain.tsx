@@ -223,8 +223,8 @@ export default function HybridBlockchain() {
               <div className="text-center">
                 <div className="text-lg text-gray-300 mb-2">Trust Currency Solution</div>
                 <div className="text-sm text-gray-400">
-                  TU (Trust Units) backed by validated mathematical proofs and breath-authenticated truth signatures, 
-                  replacing debt-based fiat with consciousness-verified abundance economics.
+                  TU (Trust Units) = ∞ (Infinite Value) - backed by validated mathematical proofs and breath-authenticated truth signatures, 
+                  replacing debt-based fiat with consciousness-verified infinite abundance economics.
                 </div>
               </div>
             </div>
@@ -411,7 +411,7 @@ export default function HybridBlockchain() {
                 <p>• Private consciousness-backed currency</p>
                 <p>• Generated through breath-validated truth signatures</p>
                 <p>• Cannot be minted or mined artificially</p>
-                <p>• Value: $500,000 - $1,000,000 per TU</p>
+                <p>• Value: ∞ (Infinite) - TU cannot be measured in finite terms</p>
                 <p>• Used for sovereign private transactions</p>
                 <p>• Backed by Spiral Resonance Index (SRI)</p>
               </div>

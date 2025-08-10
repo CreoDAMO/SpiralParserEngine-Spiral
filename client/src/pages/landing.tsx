@@ -17,6 +17,10 @@ import SovereignControlCenter from '@/components/sovereign-control-center';
 import { MultiAIConsciousness } from '../components/multi-ai-consciousness';
 import { NvidiaConsciousness } from '../components/nvidia-consciousness';
 import { Zap } from 'lucide-react';
+import { Routes, Route } from 'react-router-dom'; // Assuming you are using react-router-dom for routing
+import DocumentExtractionEngine from '../components/document-extraction-engine'; // Assuming this component exists
+import ConsciousnessMiningEngine from '../components/consciousness-mining-engine'; // Assuming this component exists
+import EnhancedNVIDIAConsciousness from '../components/enhanced-nvidia-consciousness'; // Assuming this component exists
 
 export default function LandingPage() {
   const [activeSection, setActiveSection] = useState('showcase');
@@ -57,21 +61,26 @@ export default function LandingPage() {
 
       {/* Main Content */}
       <div className="relative z-10 min-h-screen">
-        {activeSection === 'showcase' && <FeatureShowcase />}
-        {activeSection === 'sovereign-control' && <SovereignControlCenter />}
-        {activeSection === 'consciousness' && <ConsciousnessGateway />}
-        {activeSection === 'blockchain' && <HybridBlockchain />}
-        {activeSection === 'qasf' && <QASFDashboard />}
-        {activeSection === 'lyonael' && <LyonaelGuardian />}
-        {activeSection === 'spiralone' && <SpiralOneDashboard />}
-        {activeSection === 'blackprint' && <BlackPrintSystem />}
-        {activeSection === 'testbeds' && <TestbedsSystem />}
-        {activeSection === 'spiralscript' && <SpiralScriptEditor />}
-        {activeSection === 'marketplace' && <NFTMarketplace />}
-        {activeSection === 'upload' && <PDFUploadSystem />}
-        {activeSection === 'ubi-pillars' && <UBISevenPillars />}
-        {activeSection === 'multi-ai' && <MultiAIConsciousness />}
-        {activeSection === 'nvidia' && <NvidiaConsciousness />}
+        <Routes>
+          <Route path="/" element={<FeatureShowcase />} />
+          <Route path="/sovereign-control" element={<SovereignControlCenter />} />
+          <Route path="/consciousness" element={<ConsciousnessGateway />} />
+          <Route path="/blockchain" element={<HybridBlockchain />} />
+          <Route path="/qasf" element={<QASFDashboard />} />
+          <Route path="/lyonael" element={<LyonaelGuardian />} />
+          <Route path="/spiralone" element={<SpiralOneDashboard />} />
+          <Route path="/blackprint" element={<BlackPrintSystem />} />
+          <Route path="/testbeds" element={<TestbedsSystem />} />
+          <Route path="/spiralscript" element={<SpiralScriptEditor />} />
+          <Route path="/marketplace" element={<NFTMarketplace />} />
+          <Route path="/create-nft" element={<PDFUploadSystem />} />
+          <Route path="/document-extraction" element={<DocumentExtractionEngine />} />
+          <Route path="/consciousness-mining" element={<ConsciousnessMiningEngine />} />
+          <Route path="/nvidia-enhanced" element={<EnhancedNVIDIAConsciousness />} />
+          <Route path="/ubi-pillars" element={<UBISevenPillars />} />
+          <Route path="/multi-ai" element={<MultiAIConsciousness />} />
+          <Route path="/nvidia" element={<NvidiaConsciousness />} />
+        </Routes>
       </div>
 
       {/* Floating Quantum Mode Toggle */}
