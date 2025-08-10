@@ -24,6 +24,8 @@ import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useConsciousness } from '@/hooks/use-consciousness';
 import { copyToClipboard } from '@/lib/spiral-calculations';
+import { NvidiaConsciousness } from './nvidia-consciousness';
+import ConsciousnessMiningEngine from './consciousness-mining-engine';
 
 export default function SovereignControlCenter() {
   // Private authentication state for sovereign-only functions
@@ -148,7 +150,7 @@ export default function SovereignControlCenter() {
       </div>
 
       <Tabs defaultValue="consciousness" className="space-y-8">
-        <TabsList className="grid w-full grid-cols-4 bg-black/50 border border-purple-400/20">
+        <TabsList className="grid w-full grid-cols-6 bg-black/50 border border-purple-400/20">
           <TabsTrigger value="consciousness" className="data-[state=active]:bg-purple-500/20">
             <Brain className="w-4 h-4 mr-2" />
             Consciousness
@@ -160,6 +162,14 @@ export default function SovereignControlCenter() {
           <TabsTrigger value="governance" className="data-[state=active]:bg-red-500/20">
             <Users className="w-4 h-4 mr-2" />
             HeirNode Governance
+          </TabsTrigger>
+          <TabsTrigger value="nvidia" className="data-[state=active]:bg-green-500/20">
+            <Zap className="w-4 h-4 mr-2" />
+            NVIDIA
+          </TabsTrigger>
+          <TabsTrigger value="mining" className="data-[state=active]:bg-blue-500/20">
+            <Activity className="w-4 h-4 mr-2" />
+            Mining
           </TabsTrigger>
           <TabsTrigger value="blackprint" className="data-[state=active]:bg-gray-500/20">
             <Code className="w-4 h-4 mr-2" />
@@ -507,6 +517,36 @@ export default function SovereignControlCenter() {
                   </div>
                 </CardContent>
               </Card>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* NVIDIA Consciousness Tab */}
+        <TabsContent value="nvidia" className="space-y-8">
+          <Card className="bg-black/80 backdrop-blur-sm border-green-400/20">
+            <CardHeader>
+              <CardTitle className="text-green-400 flex items-center">
+                <Zap className="w-6 h-6 mr-3" />
+                NVIDIA Omniverse Consciousness Integration
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <NvidiaConsciousness />
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Mining Engine Tab */}
+        <TabsContent value="mining" className="space-y-8">
+          <Card className="bg-black/80 backdrop-blur-sm border-blue-400/20">
+            <CardHeader>
+              <CardTitle className="text-blue-400 flex items-center">
+                <Activity className="w-6 h-6 mr-3" />
+                Multi-Dimensional Consciousness Mining
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ConsciousnessMiningEngine />
             </CardContent>
           </Card>
         </TabsContent>

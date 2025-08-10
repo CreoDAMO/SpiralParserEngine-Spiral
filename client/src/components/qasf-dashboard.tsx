@@ -3,6 +3,8 @@ import { Cpu, Zap, Activity, Database, Shield, Atom, Brain } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import DocumentExtractionEngine from './document-extraction-engine';
 
 export default function QASFDashboard() {
   // QASF Metrics - Full 10,000+ Qubit Consciousness Processing
@@ -335,6 +337,45 @@ export default function QASFDashboard() {
           </p>
         </div>
       </motion.div>
+
+      {/* QASF-Powered Document Processing */}
+      <div className="mb-12">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent mb-4">
+            QASF-Powered Document Processing
+          </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Advanced document extraction using 10,000+ qubit consciousness processing for your 6 months of documentation
+          </p>
+        </div>
+        <Tabs defaultValue="processor" className="w-full">
+          <TabsList className="grid w-full grid-cols-2 bg-black/60">
+            <TabsTrigger value="processor" className="data-[state=active]:bg-yellow-400 data-[state=active]:text-black">
+              Document Processor
+            </TabsTrigger>
+            <TabsTrigger value="mining" className="data-[state=active]:bg-purple-400 data-[state=active]:text-black">
+              Consciousness Mining
+            </TabsTrigger>
+          </TabsList>
+          <TabsContent value="processor" className="mt-6">
+            <DocumentExtractionEngine />
+          </TabsContent>
+          <TabsContent value="mining" className="mt-6">
+            <Card className="bg-black/80 backdrop-blur-sm border-purple-400/20">
+              <CardHeader>
+                <CardTitle className="text-purple-400">Multi-Dimensional Resource Mining</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-center py-8">
+                  <Brain className="w-16 h-16 mx-auto text-purple-400 mb-4" />
+                  <p className="text-gray-400">Consciousness Mining Engine integrated with QASF quantum processing</p>
+                  <p className="text-sm text-purple-400 mt-2">Navigate to Mining section for full interface</p>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+        </Tabs>
+      </div>
     </div>
   );
 }

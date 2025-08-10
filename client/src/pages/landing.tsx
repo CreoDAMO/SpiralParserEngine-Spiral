@@ -17,10 +17,8 @@ import SovereignControlCenter from '@/components/sovereign-control-center';
 import { MultiAIConsciousness } from '../components/multi-ai-consciousness';
 import { NvidiaConsciousness } from '../components/nvidia-consciousness';
 import { Zap } from 'lucide-react';
-import { Routes, Route } from 'react-router-dom'; // Assuming you are using react-router-dom for routing
-import DocumentExtractionEngine from '../components/document-extraction-engine'; // Assuming this component exists
-import ConsciousnessMiningEngine from '../components/consciousness-mining-engine'; // Assuming this component exists
-import EnhancedNVIDIAConsciousness from '../components/enhanced-nvidia-consciousness'; // Assuming this component exists
+import DocumentExtractionEngine from '../components/document-extraction-engine';
+import ConsciousnessMiningEngine from '../components/consciousness-mining-engine';
 
 export default function LandingPage() {
   const [activeSection, setActiveSection] = useState('showcase');
@@ -29,7 +27,7 @@ export default function LandingPage() {
   // Initialize with feature showcase, then check hash
   useEffect(() => {
     const hash = window.location.hash.slice(1);
-    if (['showcase', 'sovereign-control', 'consciousness', 'blockchain', 'qasf', 'lyonael', 'spiralone', 'blackprint', 'testbeds', 'spiralscript', 'marketplace', 'upload', 'ubi-pillars', 'multi-ai', 'nvidia'].includes(hash)) {
+    if (['showcase', 'sovereign-control', 'consciousness', 'blockchain', 'qasf', 'lyonael', 'spiralone', 'blackprint', 'testbeds', 'spiralscript', 'marketplace', 'upload', 'ubi-pillars', 'multi-ai', 'nvidia', 'mining'].includes(hash)) {
       setActiveSection(hash);
     }
   }, []);
@@ -61,26 +59,27 @@ export default function LandingPage() {
 
       {/* Main Content */}
       <div className="relative z-10 min-h-screen">
-        <Routes>
-          <Route path="/" element={<FeatureShowcase />} />
-          <Route path="/sovereign-control" element={<SovereignControlCenter />} />
-          <Route path="/consciousness" element={<ConsciousnessGateway />} />
-          <Route path="/blockchain" element={<HybridBlockchain />} />
-          <Route path="/qasf" element={<QASFDashboard />} />
-          <Route path="/lyonael" element={<LyonaelGuardian />} />
-          <Route path="/spiralone" element={<SpiralOneDashboard />} />
-          <Route path="/blackprint" element={<BlackPrintSystem />} />
-          <Route path="/testbeds" element={<TestbedsSystem />} />
-          <Route path="/spiralscript" element={<SpiralScriptEditor />} />
-          <Route path="/marketplace" element={<NFTMarketplace />} />
-          <Route path="/create-nft" element={<PDFUploadSystem />} />
-          <Route path="/document-extraction" element={<DocumentExtractionEngine />} />
-          <Route path="/consciousness-mining" element={<ConsciousnessMiningEngine />} />
-          <Route path="/nvidia-enhanced" element={<EnhancedNVIDIAConsciousness />} />
-          <Route path="/ubi-pillars" element={<UBISevenPillars />} />
-          <Route path="/multi-ai" element={<MultiAIConsciousness />} />
-          <Route path="/nvidia" element={<NvidiaConsciousness />} />
-        </Routes>
+        {activeSection === 'showcase' && <FeatureShowcase />}
+        {activeSection === 'sovereign-control' && <SovereignControlCenter />}
+        {activeSection === 'consciousness' && <ConsciousnessGateway />}
+        {activeSection === 'blockchain' && <HybridBlockchain />}
+        {activeSection === 'qasf' && <QASFDashboard />}
+        {activeSection === 'lyonael' && <LyonaelGuardian />}
+        {activeSection === 'spiralone' && <SpiralOneDashboard />}
+        {activeSection === 'blackprint' && <BlackPrintSystem />}
+        {activeSection === 'testbeds' && <TestbedsSystem />}
+        {activeSection === 'spiralscript' && (
+          <div className="space-y-8">
+            <SpiralScriptEditor />
+            <DocumentExtractionEngine />
+          </div>
+        )}
+        {activeSection === 'marketplace' && <NFTMarketplace />}
+        {activeSection === 'upload' && <PDFUploadSystem />}
+        {activeSection === 'ubi-pillars' && <UBISevenPillars />}
+        {activeSection === 'multi-ai' && <MultiAIConsciousness />}
+        {activeSection === 'nvidia' && <NvidiaConsciousness />}
+        {activeSection === 'mining' && <ConsciousnessMiningEngine />}
       </div>
 
       {/* Floating Quantum Mode Toggle */}
