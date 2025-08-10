@@ -14,6 +14,8 @@ import NFTMarketplace from '@/components/nft-marketplace';
 import PDFUploadSystem from '@/components/pdf-upload-system';
 import UBISevenPillars from '@/components/ubi-seven-pillars';
 import SovereignControlCenter from '@/components/sovereign-control-center';
+import { MultiAIConsciousness } from '../components/multi-ai-consciousness';
+import { NvidiaConsciousness } from '../components/nvidia-consciousness';
 import { Zap } from 'lucide-react';
 
 export default function LandingPage() {
@@ -23,7 +25,7 @@ export default function LandingPage() {
   // Initialize with feature showcase, then check hash
   useEffect(() => {
     const hash = window.location.hash.slice(1);
-    if (['showcase', 'sovereign-control', 'consciousness', 'blockchain', 'qasf', 'lyonael', 'spiralone', 'blackprint', 'testbeds', 'spiralscript', 'marketplace', 'upload', 'ubi-pillars'].includes(hash)) {
+    if (['showcase', 'sovereign-control', 'consciousness', 'blockchain', 'qasf', 'lyonael', 'spiralone', 'blackprint', 'testbeds', 'spiralscript', 'marketplace', 'upload', 'ubi-pillars', 'multi-ai', 'nvidia'].includes(hash)) {
       setActiveSection(hash);
     }
   }, []);
@@ -68,6 +70,8 @@ export default function LandingPage() {
         {activeSection === 'marketplace' && <NFTMarketplace />}
         {activeSection === 'upload' && <PDFUploadSystem />}
         {activeSection === 'ubi-pillars' && <UBISevenPillars />}
+        {activeSection === 'multi-ai' && <MultiAIConsciousness />}
+        {activeSection === 'nvidia' && <NvidiaConsciousness />}
       </div>
 
       {/* Floating Quantum Mode Toggle */}

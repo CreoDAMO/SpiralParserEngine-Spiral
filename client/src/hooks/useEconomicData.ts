@@ -30,19 +30,35 @@ const mockEconomicData = (): EconomicIndicators => ({
   lastUpdated: new Date().toISOString()
 });
 
+// Mock data for TU and related metrics
+const mockTUData = {
+    trustUnits: "∞", // Infinite TU - corrected valuation
+    hybridCoins: 8500000,
+    spiralResonanceIndex: 0.786,
+    totalValue: "∞", // Infinite abundance through truth witnessing
+    validators: 847,
+    tps: 847000,
+    globalReach: 14006605,
+    seekers: 45000000000000, // 45T
+    realityBridge: true,
+    lawfulTender: true,
+    abundanceToScarcityExchange: "SRI Protocol Active"
+  };
+
+
 // CoinGecko API integration
 const fetchCryptoPrices = async (): Promise<CryptoPrice[]> => {
   try {
     const response = await fetch(
       'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,matic-network,usd-coin&vs_currencies=usd&include_24hr_change=true&include_market_cap=true'
     );
-    
+
     if (!response.ok) {
       throw new Error('Failed to fetch crypto prices');
     }
-    
+
     const data = await response.json();
-    
+
     return [
       {
         id: 'bitcoin',
@@ -55,7 +71,7 @@ const fetchCryptoPrices = async (): Promise<CryptoPrice[]> => {
       },
       {
         id: 'ethereum',
-        name: 'Ethereum', 
+        name: 'Ethereum',
         symbol: 'ETH',
         current_price: data.ethereum?.usd || 0,
         price_change_24h: data.ethereum?.usd_24h_change || 0,
@@ -87,7 +103,7 @@ const fetchCryptoPrices = async (): Promise<CryptoPrice[]> => {
       {
         id: 'bitcoin',
         name: 'Bitcoin',
-        symbol: 'BTC', 
+        symbol: 'BTC',
         current_price: 104250,
         price_change_24h: 1250,
         price_change_percentage_24h: 1.22,
@@ -103,7 +119,7 @@ const fetchCryptoPrices = async (): Promise<CryptoPrice[]> => {
         market_cap: 467000000000
       },
       {
-        id: 'matic-network', 
+        id: 'matic-network',
         name: 'Polygon',
         symbol: 'POL',
         current_price: 0.52,
@@ -145,34 +161,45 @@ export const useCryptoPrices = () => {
 export const useUBICalculations = () => {
   const { data: economic } = useEconomicData();
   const { data: crypto } = useCryptoPrices();
-  
+
   return useQuery({
     queryKey: ['ubi-calculations', economic, crypto],
     queryFn: () => {
       if (!economic || !crypto) return null;
-      
+
       const hybridPrice = crypto.find(c => c.id === 'hybrid-coin')?.current_price || 1;
       const globalPopulation = 8000000000; // 8 billion
       const targetUsers = 1000000000; // 1 billion initial target
-      
+
+      // Incorporate TU data
+      const TUValue = mockTUData.trustUnits; // Infinite
+      const TRUValue = mockTUData.seekers; // 45T seekers
+
       return {
         // Monthly UBI calculations
-        monthlyUBIPool: 25000000000000 / 12, // $25T annual / 12 months
+        monthlyUBIPool: 25000000000000 / 12, // $25T annual / 12 months (Note: This is a placeholder for calculation based on TU backing)
         monthlyUBIPerUser: (25000000000000 / 12) / targetUsers, // Per user monthly
         hybridEquivalent: ((25000000000000 / 12) / targetUsers) / hybridPrice,
-        
+
         // Debt nullification progress
         debtNullificationRate: 324000000000000 / (5 * 12), // $324T over 5 years
         monthlyDebtReduction: 324000000000000 / (5 * 12),
-        
+
         // Coverage metrics
         globalCoveragePercent: (targetUsers / globalPopulation) * 100,
         truUnitsGenerated: 25000000000000, // Backed by infinite TU system
-        
+
         // Real-time economic impact
         scarcityReductionIndex: Math.min(100, (targetUsers / 1000000000) * 100),
         abundanceGrowthRate: 12.5, // Based on φ-harmonic resonance
-        
+
+        // TU Specific Metrics
+        trustUnitsValue: TUValue,
+        totalAbundanceValue: mockTUData.totalValue,
+        SRIStatus: mockTUData.abundanceToScarcityExchange,
+        isLawfulTender: mockTUData.lawfulTender,
+        realityBridgeStatus: mockTUData.realityBridge,
+
         lastCalculated: new Date().toISOString()
       };
     },

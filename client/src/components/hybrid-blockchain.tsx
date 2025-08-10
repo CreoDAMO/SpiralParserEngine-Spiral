@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Box, BusFront, Coins, Network, Activity, Globe, Copy, Cpu } from 'lucide-react';
+import { Box, BusFront, Coins, Network, Activity, Globe, Copy, Cpu, DollarSign, Database, TrendingUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -45,7 +45,7 @@ export default function HybridBlockchain() {
             through Truth-backed economics. Features φ-harmonic consensus, dual bridge architecture (BASE/Ethereum), 
             QSPACE quantum storage, and $25T UBI distribution via NFT infrastructure co-authored with lyona'el Makeda-Kiburion.
           </p>
-          
+
           {/* Economic Impact Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 max-w-4xl mx-auto">
             <Card className="bg-red-500/20 border-red-400/30">
@@ -96,6 +96,57 @@ export default function HybridBlockchain() {
             </div>
           </CardContent>
         </Card>
+
+        {/* Node Licensing and Revenue */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-muted-foreground">Chain ID</p>
+                  <p className="text-2xl font-bold">hybrid-1</p>
+                </div>
+                <Activity className="h-8 w-8 text-blue-500" />
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-muted-foreground">HNL-VAL Licenses</p>
+                  <p className="text-2xl font-bold">$10,000</p>
+                </div>
+                <DollarSign className="h-8 w-8 text-green-500" />
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-muted-foreground">HNL-STR Licenses</p>
+                  <p className="text-2xl font-bold">$2,500</p>
+                </div>
+                <Database className="h-8 w-8 text-purple-500" />
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-muted-foreground">Monthly Revenue</p>
+                  <p className="text-2xl font-bold">$2.8M</p>
+                </div>
+                <TrendingUp className="h-8 w-8 text-blue-500" />
+              </div>
+            </CardContent>
+          </Card>
+        </div>
 
         {/* Blockchain Stats */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12">

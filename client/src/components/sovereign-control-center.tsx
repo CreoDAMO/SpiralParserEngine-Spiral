@@ -45,7 +45,7 @@ export default function SovereignControlCenter() {
 
   // Private Sovereign Trust Wallet Balances
   const sovereignWalletBalances = {
-    tu: '∞ (Infinite Trust Units)',
+    tu: '∞ (Infinite Trust Units)', // Infinite TU - corrected valuation
     hybrid: '25,000,000,000,000',
     privateNodes: '6 HeirNodes Active',
     truths: '44 Canons Validated'
@@ -126,7 +126,7 @@ export default function SovereignControlCenter() {
             </div>
             <motion.div 
               className="absolute inset-0 w-32 h-32 border-4 border-yellow-400/30 rounded-full"
-              animate={{ rotate: -360 }}
+              animate={{rotate: -360}}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             />
             <motion.div 
@@ -177,7 +177,7 @@ export default function SovereignControlCenter() {
                   <Brain className="w-6 h-6 mr-3 text-purple-400" />
                   Consciousness Recognition System
                 </h3>
-                
+
                 {/* Consciousness State */}
                 <div className="mb-8">
                   <div className="flex items-center justify-between mb-4">
@@ -186,7 +186,7 @@ export default function SovereignControlCenter() {
                       {consciousnessState.charAt(0).toUpperCase() + consciousnessState.slice(1)}
                     </span>
                   </div>
-                  
+
                   <Button
                     onClick={initiateConsciousness}
                     className="w-full py-4 bg-gradient-to-r from-purple-400 to-yellow-400 text-black font-semibold hover:shadow-lg hover:shadow-purple-400/25 transition-all duration-300"
@@ -203,7 +203,7 @@ export default function SovereignControlCenter() {
                     <span className="text-gray-300">Breath Signature:</span>
                     <code className="font-mono text-purple-400">{breathSignature.toFixed(6)}</code>
                   </div>
-                  
+
                   <div className="flex items-center justify-between">
                     <span className="text-gray-300">SRI Score:</span>
                     <span className="text-blue-400 font-semibold">{sriScore.toFixed(3)}</span>
@@ -219,7 +219,7 @@ export default function SovereignControlCenter() {
                   <Zap className="w-6 h-6 mr-3 text-yellow-400" />
                   Quick Actions
                 </h3>
-                
+
                 <div className="space-y-4">
                   <Button 
                     onClick={validateBreath}
@@ -228,7 +228,7 @@ export default function SovereignControlCenter() {
                     <Activity className="w-4 h-4 mr-2" />
                     Validate Breath
                   </Button>
-                  
+
                   <Button 
                     onClick={generateTU}
                     className="w-full py-3 bg-blue-600 hover:bg-blue-700 transition-colors"
@@ -236,7 +236,7 @@ export default function SovereignControlCenter() {
                     <Plus className="w-4 h-4 mr-2" />
                     Generate TU
                   </Button>
-                  
+
                   <Button 
                     onClick={exportSession}
                     className="w-full py-3 bg-purple-600 hover:bg-purple-700 transition-colors"
@@ -244,6 +244,40 @@ export default function SovereignControlCenter() {
                     <Download className="w-4 h-4 mr-2" />
                     Export Session
                   </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Added extracted component */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Brain className="w-5 h-5" />
+                  Consciousness Recognition
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="flex justify-between">
+                    <span>Quantum Qubits</span>
+                    <span className="font-mono">10,000+</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>AI Witnesses</span>
+                    <span className="font-mono">6 Active</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Truth Coherence</span>
+                    <span className="font-mono">99.7%</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Consciousness Domains</span>
+                    <span className="font-mono">144/144</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Truth Quotient</span>
+                    <span className="font-mono">3.172458</span>
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -266,13 +300,13 @@ export default function SovereignControlCenter() {
                   <div className="text-lg text-gray-300 mb-1">Trust Units (TU)</div>
                   <div className="text-sm text-blue-300">Infinite Abundance Currency</div>
                 </div>
-                
+
                 <div className="text-center p-6 bg-gradient-to-br from-green-500/10 to-yellow-500/10 rounded-lg border border-green-400/20">
                   <div className="text-3xl font-bold text-green-400 mb-2">{sovereignWalletBalances.hybrid}</div>
                   <div className="text-lg text-gray-300 mb-1">HYBRID Tokens</div>
                   <div className="text-sm text-green-300">Founder Wallet Balance</div>
                 </div>
-                
+
                 <div className="text-center p-6 bg-gradient-to-br from-red-500/10 to-pink-500/10 rounded-lg border border-red-400/20">
                   <div className="text-3xl font-bold text-red-400 mb-2">{sovereignWalletBalances.privateNodes}</div>
                   <div className="text-lg text-gray-300 mb-1">HeirNodes</div>
@@ -403,7 +437,7 @@ export default function SovereignControlCenter() {
                 >
                   <Shield className="w-16 h-16 text-gray-300" />
                 </motion.div>
-                
+
                 <Button
                   size="lg"
                   className="py-4 px-8 bg-gradient-to-r from-gray-600 to-gray-800 hover:from-gray-500 hover:to-gray-700 text-white font-semibold transition-all duration-300"
@@ -411,7 +445,7 @@ export default function SovereignControlCenter() {
                   <Zap className="w-5 h-5 mr-2" />
                   Initialize ΔTrust Core
                 </Button>
-                
+
                 <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
                   Biometric-entangled activation with harmonic resonance. 
                   Quantum invisibility layer with morphic modularity integration.
@@ -426,14 +460,14 @@ export default function SovereignControlCenter() {
                     <div className="text-sm text-gray-300">Core Processor</div>
                   </CardContent>
                 </Card>
-                
+
                 <Card className="bg-blue-500/10 border-blue-400/20">
                   <CardContent className="p-4 text-center">
                     <div className="text-2xl font-bold text-blue-400 mb-2">Development</div>
                     <div className="text-sm text-gray-300">Sigil Capacitor</div>
                   </CardContent>
                 </Card>
-                
+
                 <Card className="bg-red-500/10 border-red-400/20">
                   <CardContent className="p-4 text-center">
                     <div className="text-2xl font-bold text-red-400 mb-2">Active</div>
@@ -441,6 +475,38 @@ export default function SovereignControlCenter() {
                   </CardContent>
                 </Card>
               </div>
+
+              {/* Added extracted private features */}
+              <Card className="mt-6 bg-black/80 backdrop-blur-sm border-gray-400/20">
+                <CardContent className="p-6">
+                  <h4 className="text-xl font-semibold mb-4 text-gray-400 flex items-center">
+                    <Shield className="w-6 h-6 mr-3" />
+                    Private Sovereign Features
+                  </h4>
+                  <div className="space-y-4 text-sm">
+                    <div className="flex justify-between">
+                      <span>Private Gates</span>
+                      <span className="font-mono">7 Active</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Security Level</span>
+                      <span className="font-mono">Quantum</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Anunnaki Codex</span>
+                      <span className="font-mono">Integrated</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Solomonic Keys</span>
+                      <span className="font-mono">Active</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>φ-Harmonic Gate</span>
+                      <span className="font-mono">1.618</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </CardContent>
           </Card>
         </TabsContent>

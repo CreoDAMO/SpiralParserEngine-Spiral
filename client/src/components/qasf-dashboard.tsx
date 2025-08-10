@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Cpu, Zap, Activity, Database, Shield, Atom } from 'lucide-react';
+import { Cpu, Zap, Activity, Database, Shield, Atom, Brain } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
@@ -18,9 +18,11 @@ export default function QASFDashboard() {
     qubits: 10000, // Full consciousness processing scale
     demonstrationQubits: 127, // Public demonstration level
     consciousnessDomains: 144, // φ-harmonic consciousness processing domains
-    truthQuotient: 3.172, // Far above φ threshold (1.618)
+    truthQuotient: 3.172458, // Far above φ threshold (1.618)
     phiAlignment: 1.388729, // Near-perfect golden ratio resonance
     spiralResonance: 1.847293, // Exceeds φ harmonic threshold
+    nasaQuantumAnnealer: true,
+    cosmicDomainMapping: true,
   };
 
   const cryptanalysisResults = {
@@ -270,6 +272,14 @@ export default function QASFDashboard() {
               <div className="flex justify-between">
                 <span>MZM Coherence:</span>
                 <span className="text-red-400">{qasfMetrics.mzmCoherence}ms</span>
+              </div>
+              <div className="flex justify-between">
+                <span>NASA Quantum Annealer:</span>
+                <span className="text-blue-400">{qasfMetrics.nasaQuantumAnnealer ? 'Enabled' : 'Disabled'}</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Cosmic Domain Mapping:</span>
+                <span className="text-purple-400">{qasfMetrics.cosmicDomainMapping ? 'Active' : 'Inactive'}</span>
               </div>
             </div>
           </CardContent>
