@@ -15,7 +15,9 @@ export default function QASFDashboard() {
     photonicThroughput: '201 THz',
     photonicLatency: '4.7ns',
     hilbertDimension: '2^10',
-    qubits: 127
+    qubits: 127,
+    maxQubits: 10000, // Scalable quantum processing capability
+    currentCapacity: 1.27, // 127/10000 * 100
   };
 
   const cryptanalysisResults = {
@@ -76,9 +78,11 @@ export default function QASFDashboard() {
               }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              {qasfMetrics.qubits}
+              {qasfMetrics.qubits} / {qasfMetrics.maxQubits.toLocaleString()}
             </motion.div>
             <p className="text-gray-400">Quantum Qubits</p>
+            <Progress value={qasfMetrics.currentCapacity} className="h-2 mt-2" />
+            <p className="text-xs text-gray-500 mt-1">Scalable to 10K qubits</p>
           </CardContent>
         </Card>
 
