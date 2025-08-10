@@ -332,7 +332,7 @@ export default function HybridBlockchain() {
             <div className="grid md:grid-cols-3 gap-6">
               {validators.map((validator: any, index: number) => (
                 <motion.div
-                  key={`validator-${index}-${validator.name}`}
+                  key={`validator-${validator.name || validator.id || index}`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
@@ -370,7 +370,7 @@ export default function HybridBlockchain() {
             <div className="space-y-3">
               {transactions.map((tx, index) => (
                 <motion.div
-                  key={`transaction-${index}-${tx.hash}`}
+                  key={`transaction-${tx.hash || tx.id || index}`}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
