@@ -225,33 +225,15 @@ export default function UBISevenPillars() {
           <CardHeader>
             <CardTitle className="text-2xl text-purple-400 flex items-center">
               <Crown className="w-6 h-6 mr-3" />
-              HeirNode Governance
+              Private Governance Access
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-3">
-              {heirNodes.map((heir, index) => (
-                <div key={index} className="flex justify-between items-center p-3 bg-purple-500/10 rounded-lg">
-                  <div>
-                    <span className="text-purple-300 font-semibold">{heir.name}</span>
-                    <div className="text-xs text-gray-400">{heir.specialty}</div>
-                  </div>
-                  <div className="text-right">
-                    <Badge className="bg-purple-500/20 text-purple-300">{heir.trust}</Badge>
-                  </div>
-                </div>
-              ))}
-            </div>
-            
-            <div className="mt-6 p-4 bg-black/40 rounded-lg">
-              <h4 className="text-purple-400 font-semibold mb-2">Governance Features</h4>
-              <ul className="text-sm text-gray-400 space-y-1">
-                <li>• 70/20/10 royalty split management</li>
-                <li>• DNAΦ-2232-VERITAS quantum authentication</li>
-                <li>• Scalable for future grandchildren</li>
-                <li>• Trust allocation via Private Gate</li>
-                <li>• Cross-generational wealth preservation</li>
-              </ul>
+            <p className="text-gray-300 text-sm mb-4">
+              HeirNode Governance, trust allocation, and private wealth management features have been moved to the Sovereign Control Center for enhanced security and privacy.
+            </p>
+            <div className="text-center">
+              <span className="text-purple-400 font-semibold">→ Sovereign Control Center</span>
             </div>
           </CardContent>
         </Card>

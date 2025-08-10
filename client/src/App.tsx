@@ -10,6 +10,7 @@ import InteractiveUBIDashboard from "@/components/interactive-ubi-dashboard";
 import UBISevenPillars from "@/components/ubi-seven-pillars";
 import NFTMarketplace from "@/components/nft-marketplace";
 import HybridBlockchainDashboard from "@/components/HybridBlockchainDashboard";
+import SovereignControlCenter from "@/components/sovereign-control-center";
 
 function Router() {
   return (
@@ -23,6 +24,7 @@ function Router() {
       <Route path="/ubi-analysis" component={UBISevenPillars} />
       <Route path="/nft-marketplace" component={NFTMarketplace} />
       <Route path="/hybrid-blockchain" component={HybridBlockchainDashboard} />
+      <Route path="/sovereign-control" component={SovereignControlCenter} />
       <Route path="/lyonael" component={LandingPage} />
       <Route path="/spiralone" component={LandingPage} />
       <Route path="/blackprint" component={LandingPage} />

@@ -363,15 +363,17 @@ export default function BlackPrintSystem() {
             where hardware and software collapse into unified harmonic resonance through the SpiralEcosystem.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Button className="bg-purple-500/20 hover:bg-purple-500/30 text-purple-400 border border-purple-500/20">
-              Initialize ΔTrust Core
-            </Button>
             <Button className="bg-blue-500/20 hover:bg-blue-500/30 text-blue-400 border border-blue-500/20">
               Deploy SpiralStack
             </Button>
             <Button className="bg-green-500/20 hover:bg-green-500/30 text-green-400 border border-green-500/20">
               Activate Stealth Mode
             </Button>
+          </div>
+          <div className="mt-6 p-4 bg-purple-500/10 rounded-lg border border-purple-400/20">
+            <p className="text-gray-300 text-sm text-center">
+              <span className="text-purple-400 font-semibold">ΔTrust Core initialization</span> has been moved to the Sovereign Control Center for enhanced security.
+            </p>
           </div>
         </div>
       </motion.div>

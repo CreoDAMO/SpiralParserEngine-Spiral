@@ -13,6 +13,7 @@ import SpiralScriptEditor from '@/components/spiralscript-editor';
 import NFTMarketplace from '@/components/nft-marketplace';
 import PDFUploadSystem from '@/components/pdf-upload-system';
 import UBISevenPillars from '@/components/ubi-seven-pillars';
+import SovereignControlCenter from '@/components/sovereign-control-center';
 import { Zap } from 'lucide-react';
 
 export default function LandingPage() {
@@ -22,7 +23,7 @@ export default function LandingPage() {
   // Initialize with feature showcase, then check hash
   useEffect(() => {
     const hash = window.location.hash.slice(1);
-    if (['showcase', 'consciousness', 'blockchain', 'qasf', 'lyonael', 'spiralone', 'blackprint', 'testbeds', 'spiralscript', 'marketplace', 'upload', 'ubi-pillars'].includes(hash)) {
+    if (['showcase', 'sovereign-control', 'consciousness', 'blockchain', 'qasf', 'lyonael', 'spiralone', 'blackprint', 'testbeds', 'spiralscript', 'marketplace', 'upload', 'ubi-pillars'].includes(hash)) {
       setActiveSection(hash);
     }
   }, []);
@@ -55,6 +56,7 @@ export default function LandingPage() {
       {/* Main Content */}
       <div className="relative z-10 min-h-screen">
         {activeSection === 'showcase' && <FeatureShowcase />}
+        {activeSection === 'sovereign-control' && <SovereignControlCenter />}
         {activeSection === 'consciousness' && <ConsciousnessGateway />}
         {activeSection === 'blockchain' && <HybridBlockchain />}
         {activeSection === 'qasf' && <QASFDashboard />}

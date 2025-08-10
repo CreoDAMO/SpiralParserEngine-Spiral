@@ -184,35 +184,15 @@ export default function ConsciousnessGateway() {
             </CardContent>
           </Card>
 
-          {/* Quick Actions */}
-          <Card className="bg-black/80 backdrop-blur-sm border-yellow-400/20">
+          {/* Consciousness Access Note */}
+          <Card className="bg-black/80 backdrop-blur-sm border-purple-400/20">
             <CardContent className="p-6">
-              <h4 className="text-xl font-semibold mb-4 text-yellow-400">Quick Actions</h4>
-              <div className="space-y-3">
-                <Button
-                  onClick={validateBreath}
-                  className="w-full bg-yellow-400/20 hover:bg-yellow-400/30 text-white"
-                  variant="ghost"
-                >
-                  <Stethoscope className="w-4 h-4 mr-2" />
-                  Validate Breath
-                </Button>
-                <Button
-                  onClick={generateTU}
-                  className="w-full bg-blue-400/20 hover:bg-blue-400/30 text-white"
-                  variant="ghost"
-                >
-                  <Plus className="w-4 h-4 mr-2" />
-                  Generate TU
-                </Button>
-                <Button
-                  onClick={exportSession}
-                  className="w-full bg-purple-500/20 hover:bg-purple-500/30 text-white"
-                  variant="ghost"
-                >
-                  <Download className="w-4 h-4 mr-2" />
-                  Export Session
-                </Button>
+              <h4 className="text-xl font-semibold mb-4 text-purple-400">Private Access</h4>
+              <p className="text-gray-300 text-sm mb-4">
+                Advanced consciousness operations and TU generation are now available in the Sovereign Control Center.
+              </p>
+              <div className="text-center">
+                <span className="text-purple-400 font-semibold">→ Sovereign Control Center</span>
               </div>
             </CardContent>
           </Card>
@@ -239,68 +219,21 @@ export default function ConsciousnessGateway() {
         </CardContent>
       </Card>
 
-      {/* Private Gate Architecture */}
-      <div className="grid md:grid-cols-2 gap-8 mt-8">
-        <Card className="bg-gradient-to-br from-gray-900 to-black border-yellow-400/20">
-          <CardContent className="p-6">
-            <h4 className="text-xl font-semibold text-yellow-400 mb-4">
-              Private Gate Features
-            </h4>
-            <div className="space-y-3 text-gray-300">
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                <span>Natural Law Jurisdiction</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                <span>Sui Juris Status Recognition</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                <span>Sovereign Spiral Trust</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                <span>UCC-1 Financing Statements</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                <span>Living Man/Woman Status</span>
-              </div>
+      {/* Public Gate Information */}
+      <Card className="bg-gradient-to-br from-gray-900 to-black border-blue-400/20 mt-8">
+        <CardContent className="p-6">
+          <h4 className="text-xl font-semibold text-blue-400 mb-4">
+            Public Gateway Access
+          </h4>
+          <div className="text-gray-300 space-y-2">
+            <p>This is the public consciousness gateway for demonstration and educational purposes.</p>
+            <p>Full consciousness operations, Private Gate features, and TU generation are available in the Sovereign Control Center.</p>
+            <div className="mt-4 text-center">
+              <span className="text-purple-400 font-semibold">Access via Navigation → Sovereign Control</span>
             </div>
-          </CardContent>
-        </Card>
-
-        <Card className="bg-gradient-to-br from-gray-900 to-black border-purple-400/20">
-          <CardContent className="p-6">
-            <h4 className="text-xl font-semibold text-purple-400 mb-4">
-              TU Generation Process
-            </h4>
-            <div className="space-y-3 text-gray-300">
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
-                <span>Breath Pattern Recognition</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
-                <span>φ-Harmonic Validation</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
-                <span>SRI Coherence Scoring</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
-                <span>Truth Witnessing Events</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
-                <span>Consciousness State Transition</span>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }

@@ -183,31 +183,19 @@ export default function SpiralOneDashboard() {
 
         {/* Trust Wallet */}
         <div className="space-y-6">
-          <Card className="bg-black/80 backdrop-blur-sm border-yellow-400/20">
+          <Card className="bg-black/80 backdrop-blur-sm border-purple-400/20">
             <CardHeader>
               <CardTitle className="text-xl flex items-center">
-                <Shield className="w-5 h-5 mr-2 text-yellow-400" />
-                Trust Wallet
+                <Shield className="w-5 h-5 mr-2 text-purple-400" />
+                Private Access
               </CardTitle>
             </CardHeader>
             <CardContent className="p-6">
-              <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-300">Trust Units (TU):</span>
-                  <span className="text-yellow-400 font-semibold">{walletBalances.tu}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-300">HYBRID Coin:</span>
-                  <span className="text-blue-400 font-semibold">{walletBalances.hybrid}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-300">USD Value:</span>
-                  <span className="text-green-400 font-semibold">{walletBalances.usd}</span>
-                </div>
-                <hr className="border-gray-700" />
-                <Button className="w-full bg-yellow-400/20 hover:bg-yellow-400/30 text-yellow-400 border border-yellow-400/20">
-                  Convert TU ↔ HYBRID
-                </Button>
+              <p className="text-gray-300 text-sm mb-4">
+                Trust Wallet and TU/HYBRID conversion features have been moved to the Sovereign Control Center for enhanced security.
+              </p>
+              <div className="text-center">
+                <span className="text-purple-400 font-semibold">→ Sovereign Control Center</span>
               </div>
             </CardContent>
           </Card>
