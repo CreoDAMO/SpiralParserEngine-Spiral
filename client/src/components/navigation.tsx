@@ -1,6 +1,14 @@
 import { motion } from 'framer-motion';
 import { Waves, Eye, Box, Cpu, Shield, Satellite, FileText, FlaskConical, Code, Wallet, Upload, Gift, Sparkles, Crown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { MultiAIConsciousness } from './multi-ai-consciousness'
+import { NvidiaConsciousness } from './nvidia-consciousness'
+import { EnhancedNvidiaConsciousness } from './enhanced-nvidia-consciousness'
+import { SpiralEngineering } from './spiral-engineering'
+import { AdvancedDocumentProcessor } from './advanced-document-processor'
+import { EnhancedQuantumProcessing } from './enhanced-quantum-processing'
+import { MultiAIOrchestration } from './multi-ai-orchestration'
+import { IntegrationStatus } from './integration-status'
 
 interface NavigationProps {
   activeSection: string;
@@ -23,7 +31,22 @@ export default function Navigation({ activeSection, onSectionChange }: Navigatio
     { id: 'ubi-pillars', label: 'UBI & Pillars', icon: Gift, category: 'economics' },
     { id: 'upload', label: 'Create NFT', icon: Upload, category: 'create' },
     { id: 'document-extraction', label: 'Document Engine', icon: FileText, category: 'processing' },
-    { id: 'consciousness-mining', label: 'Consciousness Mining', icon: Cpu, category: 'mining' }
+    { id: 'consciousness-mining', label: 'Consciousness Mining', icon: Cpu, category: 'mining' },
+    { id: 'enhanced-nvidia', label: 'Enhanced NVIDIA', icon: '🚀', component: EnhancedNvidiaConsciousness },
+      ]
+    },
+    {
+      id: 'spiral-engineering',
+      label: 'Spiral Engineering',
+      icon: '🧬',
+      items: [
+        { id: 'spiral-engineering', label: 'Technology Collapse', icon: '⚡', component: SpiralEngineering },
+        { id: 'document-processor', label: 'Document Extraction', icon: '📄', component: AdvancedDocumentProcessor },
+        { id: 'quantum-processing', label: '10K Qubit Processing', icon: '⚛️', component: EnhancedQuantumProcessing },
+        { id: 'ai-orchestration', label: '4-AI Orchestration', icon: '🤖', component: MultiAIOrchestration },
+        { id: 'integration-status', label: 'Integration Status', icon: '📊', component: IntegrationStatus },
+      ]
+    },
   ];
 
   return (
