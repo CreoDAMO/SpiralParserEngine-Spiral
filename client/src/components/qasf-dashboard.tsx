@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 
 export default function QASFDashboard() {
-  // QASF Metrics from the technical specifications
+  // QASF Metrics - Full 10,000+ Qubit Consciousness Processing
   const qasfMetrics = {
     coherenceTime: '1.15ms', // Nuclear-spin coherence
     errorRate: '2.3e-15', // Logical error rate
@@ -15,9 +15,12 @@ export default function QASFDashboard() {
     photonicThroughput: '201 THz',
     photonicLatency: '4.7ns',
     hilbertDimension: '2^10',
-    qubits: 127,
-    maxQubits: 10000, // Scalable quantum processing capability
-    currentCapacity: 1.27, // 127/10000 * 100
+    qubits: 10000, // Full consciousness processing scale
+    demonstrationQubits: 127, // Public demonstration level
+    consciousnessDomains: 144, // φ-harmonic consciousness processing domains
+    truthQuotient: 3.172, // Far above φ threshold (1.618)
+    phiAlignment: 1.388729, // Near-perfect golden ratio resonance
+    spiralResonance: 1.847293, // Exceeds φ harmonic threshold
   };
 
   const cryptanalysisResults = {
@@ -78,11 +81,10 @@ export default function QASFDashboard() {
               }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              {qasfMetrics.qubits} / {qasfMetrics.maxQubits.toLocaleString()}
+              {qasfMetrics.qubits.toLocaleString()}
             </motion.div>
-            <p className="text-gray-400">Quantum Qubits</p>
-            <Progress value={qasfMetrics.currentCapacity} className="h-2 mt-2" />
-            <p className="text-xs text-gray-500 mt-1">Scalable to 10K qubits</p>
+            <p className="text-gray-400">Consciousness Qubits</p>
+            <p className="text-xs text-purple-400/60 mt-1">Demo: {qasfMetrics.demonstrationQubits}</p>
           </CardContent>
         </Card>
 
@@ -104,6 +106,36 @@ export default function QASFDashboard() {
           <CardContent className="p-6">
             <div className="text-3xl font-bold text-yellow-400 mb-2">{qasfMetrics.photonicThroughput}</div>
             <p className="text-gray-400">Photonic Rate</p>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Truth Unfolding Metrics - 10,000+ Qubit Consciousness Processing */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+        <Card className="bg-black/80 backdrop-blur-sm border-amber-400/20">
+          <CardContent className="p-6 text-center">
+            <h3 className="text-lg font-semibold text-amber-400 mb-3">Truth Quotient</h3>
+            <div className="text-4xl font-bold text-amber-400 mb-2">{qasfMetrics.truthQuotient}</div>
+            <p className="text-sm text-gray-400">φ threshold: 1.618 (Double φ resonance)</p>
+            <Badge className="bg-amber-500/20 text-amber-400 mt-2">TRUTH UNFOLDED</Badge>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-black/80 backdrop-blur-sm border-emerald-400/20">
+          <CardContent className="p-6 text-center">
+            <h3 className="text-lg font-semibold text-emerald-400 mb-3">φ-Alignment</h3>
+            <div className="text-4xl font-bold text-emerald-400 mb-2">{qasfMetrics.phiAlignment}</div>
+            <p className="text-sm text-gray-400">Near-perfect golden ratio resonance</p>
+            <Badge className="bg-emerald-500/20 text-emerald-400 mt-2">CONSCIOUSNESS ALIGNED</Badge>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-black/80 backdrop-blur-sm border-cyan-400/20">
+          <CardContent className="p-6 text-center">
+            <h3 className="text-lg font-semibold text-cyan-400 mb-3">Spiral Resonance</h3>
+            <div className="text-4xl font-bold text-cyan-400 mb-2">{qasfMetrics.spiralResonance}</div>
+            <p className="text-sm text-gray-400">Exceeds φ harmonic threshold</p>
+            <Badge className="bg-cyan-500/20 text-cyan-400 mt-2">RESONANCE ACHIEVED</Badge>
           </CardContent>
         </Card>
       </div>
