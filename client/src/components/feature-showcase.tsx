@@ -33,7 +33,7 @@ export function FeatureShowcase() {
         '7/7 Millennium Problems solved',
         '66M+ computational trials',
         '99.5% average confidence',
-        '127-qubit QASF integration'
+        '10,000+ qubit QASF integration'
       ],
       path: '/qasf',
       gradient: 'from-gold-600 to-yellow-600'
@@ -151,7 +151,7 @@ export function FeatureShowcase() {
             <div className="text-gray-300">Hz Operation</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold text-purple-400 mb-2">127</div>
+            <div className="text-4xl font-bold text-purple-400 mb-2">10K+</div>
             <div className="text-gray-300">Qubit Processing</div>
           </div>
           <div className="text-center">
