@@ -205,7 +205,10 @@ export default function QuantumTruthDashboard() {
                 <Eye className="w-4 h-4 mr-2" />
                 Witness Truth Event
               </Button>
-              
+              <Button className="bg-green-600 hover:bg-green-700">
+                <Activity className="w-4 h-4 mr-2" />
+                Generate Truth Units
+              </Button>
             </div>
           </CardContent>
         </Card>
