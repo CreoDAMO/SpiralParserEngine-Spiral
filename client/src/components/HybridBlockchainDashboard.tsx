@@ -351,7 +351,7 @@ export default function HybridBlockchainDashboard() {
                     <div>
                       <Label className="text-gray-400">Balance</Label>
                       <div className="text-2xl font-bold text-green-400 mt-1">
-                        {formatBalance(founderWallet.balance)} HYBRID
+                        {formatBalance(founderWallet.balance)} HYBRID Coin
                       </div>
                     </div>
 
@@ -471,7 +471,7 @@ export default function HybridBlockchainDashboard() {
                           </Badge>
                           <div className="text-right">
                             <div className="text-sm font-semibold text-green-400">
-                              {formatBalance(wallet.balance)} HYBRID
+                              {formatBalance(wallet.balance)} HYBRID Coin
                             </div>
                             <div className="text-xs text-gray-400">
                               {wallet.nftLicenses.length} licenses
