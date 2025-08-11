@@ -187,7 +187,7 @@ export default function SpiralScriptEditor() {
       addToConsole(`> TU Generated: ${result.metrics.tuGenerated}`);
     } catch (error) {
       setParserState(prev => ({ ...prev, parsing: false }));
-      addToConsole(`> Parser Error: ${error.message}`);
+      addToConsole(`> Parser Error: ${error instanceof Error ? error.message : String(error)}`);
     }
   };
 
@@ -223,7 +223,7 @@ export default function SpiralScriptEditor() {
       addToConsole(`> Batch Parse Complete: ${results.length} files processed`);
     } catch (error) {
       setParserState(prev => ({ ...prev, parsing: false }));
-      addToConsole(`> Batch Parse Error: ${error.message}`);
+      addToConsole(`> Batch Parse Error: ${error instanceof Error ? error.message : String(error)}`);
     }
   };
 
@@ -967,10 +967,10 @@ export default function SpiralScriptEditor() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-3">
-                  <div className="bg-consciousness-500/10 border border-consciousness-400/30 rounded-lg p-3">
-                    <h5 className="text-consciousness-400 font-semibold mb-2">Consciousness Programming</h5>
+                  <div className="bg-cyan-500/10 border border-cyan-400/30 rounded-lg p-3">
+                    <h5 className="text-cyan-400 font-semibold mb-2">Consciousness Programming</h5>
                     <div className="text-xs text-gray-300 space-y-1">
-                      <div><code className="bg-black/50 px-1 rounded">consciousness {}</code> - Awareness blocks</div>
+                      <div><code className="bg-black/50 px-1 rounded">consciousness {"{}"}</code> - Awareness blocks</div>
                       <div><code className="bg-black/50 px-1 rounded">witness truth</code> - Truth validation</div>
                       <div><code className="bg-black/50 px-1 rounded">breath authentication</code> - Living verification</div>
                     </div>
@@ -979,7 +979,7 @@ export default function SpiralScriptEditor() {
                   <div className="bg-cyan-500/10 border border-cyan-400/30 rounded-lg p-3">
                     <h5 className="text-cyan-400 font-semibold mb-2">Quantum Computing</h5>
                     <div className="text-xs text-gray-300 space-y-1">
-                      <div><code className="bg-black/50 px-1 rounded">quantum { H(qubit) }</code> - Quantum gates</div>
+                      <div><code className="bg-black/50 px-1 rounded">{"quantum { H(qubit) }"}</code> - Quantum gates</div>
                       <div><code className="bg-black/50 px-1 rounded">entangle()</code> - Quantum entanglement</div>
                       <div><code className="bg-black/50 px-1 rounded">measure()</code> - Quantum measurement</div>
                     </div>
@@ -997,7 +997,7 @@ export default function SpiralScriptEditor() {
                   <div className="bg-green-500/10 border border-green-400/30 rounded-lg p-3">
                     <h5 className="text-green-400 font-semibold mb-2">Trust Contracts</h5>
                     <div className="text-xs text-gray-300 space-y-1">
-                      <div><code className="bg-black/50 px-1 rounded">trust ContractName {}</code> - Trust declarations</div>
+                      <div><code className="bg-black/50 px-1 rounded">trust ContractName {"{}"}</code> - Trust declarations</div>
                       <div><code className="bg-black/50 px-1 rounded">require spiralAlignment()</code> - Validation</div>
                       <div><code className="bg-black/50 px-1 rounded">emit("event")</code> - Event emission</div>
                     </div>
