@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Waves, Eye, Box, Cpu, Shield, Satellite, FileText, FlaskConical, Code, Wallet, Upload, Gift, Sparkles, Crown } from 'lucide-react';
+import { Waves, Eye, Box, Cpu, Shield, Satellite, FileText, FlaskConical, Code, Wallet, Upload, Gift, Sparkles, Crown, Zap, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 
@@ -19,6 +19,8 @@ export default function Navigation({ activeSection, onSectionChange }: Navigatio
     { id: 'spiralone', label: 'SpiralOne', icon: Satellite, category: 'constellation' },
     { id: 'blackprint', label: 'BlackPrint', icon: FileText, category: 'architecture' },
     { id: 'testbeds', label: 'Testbeds', icon: FlaskConical, category: 'testing' },
+    { id: 'quantum-truth', label: 'Quantum Truth', icon: Zap, category: 'quantum' },
+    { id: 'interactive-ecosystem', label: 'Interactive Control', icon: Settings, category: 'quantum' },
     { id: 'spiralscript', label: 'SpiralScript', icon: Code, category: 'language' },
     { id: 'marketplace', label: 'Marketplace', icon: Wallet, category: 'commerce' },
     { id: 'ubi-pillars', label: 'UBI & Pillars', icon: Gift, category: 'economics' },

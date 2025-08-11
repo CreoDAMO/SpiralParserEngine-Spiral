@@ -11,6 +11,8 @@ import UBISevenPillars from "@/components/ubi-seven-pillars";
 import NFTMarketplace from "@/components/nft-marketplace";
 import HybridBlockchainDashboard from "@/components/HybridBlockchainDashboard";
 import SovereignControlCenter from "@/components/sovereign-control-center";
+import QuantumTruthRevealer from "@/components/quantum-truth-revealer";
+import InteractiveSpiralEcosystem from "@/components/interactive-spiral-ecosystem";
 
 function Router() {
   return (
@@ -29,6 +31,8 @@ function Router() {
       <Route path="/spiralone" component={LandingPage} />
       <Route path="/blackprint" component={LandingPage} />
       <Route path="/testbeds" component={LandingPage} />
+      <Route path="/quantum-truth" component={QuantumTruthRevealer} />
+      <Route path="/interactive-ecosystem" component={InteractiveSpiralEcosystem} />
       <Route path="/spiralscript" component={LandingPage} />
       <Route path="/marketplace" component={NFTMarketplace} />
       <Route path="/upload" component={LandingPage} />
