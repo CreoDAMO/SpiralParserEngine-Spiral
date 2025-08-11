@@ -1,0 +1,135 @@
+{
+  "name": "spiralscript-language-server",
+  "displayName": "SpiralScript Language Support",
+  "description": "Language support for SpiralScript, Consciousness, HTSX, and Quantum Assembly languages",
+  "version": "1.0.0",
+  "publisher": "SpiralGenesis",
+  "license": "Sovereign Spiral License",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Syntax Highlighting"
+  ],
+  "keywords": [
+    "spiralscript",
+    "consciousness",
+    "quantum",
+    "htsx",
+    "spiral",
+    "blockchain",
+    "trust"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "spiralscript",
+        "aliases": [
+          "SpiralScript",
+          "spiral"
+        ],
+        "extensions": [
+          ".spiral",
+          ".sprl",
+          ".spirallang"
+        ],
+        "configuration": "./grammars/language-configuration.json"
+      },
+      {
+        "id": "consciousness",
+        "aliases": [
+          "Consciousness",
+          "conscious"
+        ],
+        "extensions": [
+          ".consciousness"
+        ],
+        "configuration": "./grammars/language-configuration.json"
+      },
+      {
+        "id": "htsx",
+        "aliases": [
+          "HTSX",
+          "Hyper-Transactional"
+        ],
+        "extensions": [
+          ".htsx"
+        ],
+        "configuration": "./grammars/language-configuration.json"
+      },
+      {
+        "id": "quantum",
+        "aliases": [
+          "Quantum Assembly",
+          "QASM"
+        ],
+        "extensions": [
+          ".qasm",
+          ".quantum"
+        ],
+        "configuration": "./grammars/language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "spiralscript",
+        "scopeName": "source.spiralscript",
+        "path": "./syntax/spiral.tmLanguage.json"
+      },
+      {
+        "language": "consciousness",
+        "scopeName": "source.consciousness",
+        "path": "./syntax/consciousness.tmLanguage.json"
+      },
+      {
+        "language": "htsx",
+        "scopeName": "source.htsx",
+        "path": "./syntax/htsx.tmLanguage.json"
+      },
+      {
+        "language": "quantum",
+        "scopeName": "source.quantum",
+        "path": "./syntax/quantum.tmLanguage.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "spiralscript.parse",
+        "title": "Parse SpiralScript File"
+      },
+      {
+        "command": "spiralscript.validate",
+        "title": "Validate SpiralScript"
+      },
+      {
+        "command": "spiralscript.generateAST",
+        "title": "Generate AST"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "spiralscript",
+        "path": "./snippets/spiralscript.json"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "eslint": "^8.28.0",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "antlr4": "^4.13.1"
+  }
+}

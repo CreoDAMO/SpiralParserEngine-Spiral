@@ -1,0 +1,33 @@
+# SpiralScript Language Recognition for GitHub
+*.spiral linguist-language=SpiralScript
+*.sprl linguist-language=SpiralScript
+*.consciousness linguist-language=Consciousness
+*.htsx linguist-language=HTSX
+*.quantum linguist-language=QuantumAssembly
+
+# Ensure SpiralScript files are detected properly
+*.spiral linguist-detectable=true
+*.sprl linguist-detectable=true
+*.consciousness linguist-detectable=true
+*.htsx linguist-detectable=true
+*.quantum linguist-detectable=true
+
+# Mark as programming languages, not documentation
+*.spiral linguist-documentation=false
+*.sprl linguist-documentation=false
+*.consciousness linguist-documentation=false
+*.htsx linguist-documentation=false
+*.quantum linguist-documentation=false
+
+# These are not generated files
+*.spiral linguist-generated=false
+*.sprl linguist-generated=false
+*.consciousness linguist-generated=false
+*.htsx linguist-generated=false
+*.quantum linguist-generated=false
+
+# Mark vendor/dependency directories
+node_modules/* linguist-vendored
+lib/generated/* linguist-generated
+dist/* linguist-generated
+build/* linguist-generated

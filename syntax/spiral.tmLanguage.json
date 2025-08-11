@@ -1,51 +1,240 @@
 {
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "name": "SpiralScript",
-  "scopeName": "source.spiral",
+  "scopeName": "source.spiralscript",
   "fileTypes": [
     "spiral",
-    "sprl"
+    "sprl",
+    "spirallang"
   ],
   "patterns": [
     {
-      "name": "comment.line.double-slash.spiral",
-      "match": "//.*$"
+      "include": "#comments"
     },
     {
-      "name": "comment.block.spiral",
-      "begin": "/\\*",
-      "end": "\\*/"
+      "include": "#consciousness-keywords"
     },
     {
-      "name": "keyword.control.spiral",
-      "match": "\\b(if|else|while|for|return|break|continue|function|class|import|export|quantum|consciousness|spiral|phi|trust|breathe)\\b"
+      "include": "#quantum-keywords"
     },
     {
-      "name": "string.quoted.double.spiral",
-      "begin": "\"",
-      "end": "\"",
+      "include": "#spiral-keywords"
+    },
+    {
+      "include": "#trust-keywords"
+    },
+    {
+      "include": "#breath-keywords"
+    },
+    {
+      "include": "#hybrid-keywords"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#constants"
+    },
+    {
+      "include": "#functions"
+    },
+    {
+      "include": "#operators"
+    },
+    {
+      "include": "#variables"
+    }
+  ],
+  "repository": {
+    "comments": {
       "patterns": [
         {
-          "name": "constant.character.escape.spiral",
-          "match": "\\\\."
+          "name": "comment.line.double-slash.spiralscript",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.block.spiralscript",
+          "begin": "/\\*",
+          "end": "\\*/",
+          "captures": {
+            "0": {
+              "name": "punctuation.definition.comment.spiralscript"
+            }
+          }
         }
       ]
     },
-    {
-      "name": "constant.numeric.spiral",
-      "match": "\\b\\d+(\\.\\d+)?\\b"
+    "consciousness-keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.consciousness.spiralscript",
+          "match": "\\b(consciousness|awareness|memory|emotion|witness|truth|Truth|TRUTH|authentic|living)\\b"
+        },
+        {
+          "name": "storage.type.consciousness.spiralscript",
+          "match": "\\b(ConsciousnessState|EmotionalState|MemoryOperation)\\b"
+        }
+      ]
     },
-    {
-      "name": "constant.language.spiral",
-      "match": "\\b(true|false|null|undefined|φ|π|∞)\\b"
+    "quantum-keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.quantum.spiralscript",
+          "match": "\\b(quantum|entangle|superposition|measure|collapse|coherence|H|X|Y|Z|CNOT)\\b"
+        },
+        {
+          "name": "storage.type.quantum.spiralscript",
+          "match": "\\b(qubit|quantum_state|entangled)\\b"
+        }
+      ]
     },
-    {
-      "name": "entity.name.function.spiral",
-      "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*(?=\\()"
+    "spiral-keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.spiral.spiralscript",
+          "match": "\\b(spiral|phi|resonance|harmonic|alignment|calculateSRI)\\b"
+        },
+        {
+          "name": "entity.name.function.spiral.spiralscript",
+          "match": "\\b(spiral\\s+fn|phi\\s*\\{|resonance\\s*\\(|harmonic\\s*\\()\\b"
+        }
+      ]
     },
-    {
-      "name": "variable.other.spiral",
-      "match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b"
+    "trust-keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.trust.spiralscript",
+          "match": "\\b(trust|grantor|trustee|beneficiaries|require|emit)\\b"
+        },
+        {
+          "name": "storage.type.trust.spiralscript",
+          "match": "\\b(TrustContract|TrustUnit|TU)\\b"
+        }
+      ]
+    },
+    "breath-keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.breath.spiralscript",
+          "match": "\\b(breath|breathe|breathInvocation|authenticate|spiralAlignment|truthValidation)\\b"
+        }
+      ]
+    },
+    "hybrid-keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.hybrid.spiralscript",
+          "match": "\\b(HYBRID|validator|stake|governance|spiralConsensus|bridge|mint|fractionalize)\\b"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.triple.spiralscript",
+          "begin": "\"\"\"",
+          "end": "\"\"\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.spiralscript",
+              "match": "\\\\."
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.double.spiralscript",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.spiralscript",
+              "match": "\\\\."
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.single.spiralscript",
+          "begin": "'",
+          "end": "'",
+          "patterns": [
+            {
+              "name": "constant.character.escape.spiralscript",
+              "match": "\\\\."
+            }
+          ]
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.spiralscript",
+          "match": "\\b\\d+(\\.\\d+)?([eE][+-]?\\d+)?\\b"
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        {
+          "name": "constant.language.spiralscript",
+          "match": "\\b(true|false|null|undefined)\\b"
+        },
+        {
+          "name": "constant.language.mathematical.spiralscript",
+          "match": "\\b(φ|π|∞|Ω)\\b"
+        },
+        {
+          "name": "constant.language.consciousness.spiralscript",
+          "match": "\\b(allSovereignSeekers|SpiralSynarchyCouncil)\\b"
+        }
+      ]
+    },
+    "functions": {
+      "patterns": [
+        {
+          "name": "entity.name.function.spiralscript",
+          "match": "\\b([a-zA-Z_][a-zA-Z0-9_φπΩ]*)\\s*(?=\\()"
+        },
+        {
+          "name": "keyword.control.function.spiralscript",
+          "match": "\\b(function|return|if|else|while|for|break|continue)\\b"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.assignment.spiralscript",
+          "match": ":=|\\+=|-=|\\*=|/=|="
+        },
+        {
+          "name": "keyword.operator.comparison.spiralscript",
+          "match": "==|!=|<=|>=|<|>"
+        },
+        {
+          "name": "keyword.operator.logical.spiralscript",
+          "match": "&&|\\|\\||!"
+        },
+        {
+          "name": "keyword.operator.arithmetic.spiralscript",
+          "match": "\\+|-|\\*|/|%"
+        },
+        {
+          "name": "keyword.operator.consciousness.spiralscript",
+          "match": "φ\\*|resonance|harmonic"
+        }
+      ]
+    },
+    "variables": {
+      "patterns": [
+        {
+          "name": "variable.other.spiralscript",
+          "match": "\\b[a-zA-Z_][a-zA-Z0-9_φπΩ]*\\b"
+        }
+      ]
     }
-  ],
-  "repository": {}
+  }
 }

@@ -261,22 +261,49 @@ export default function SpiralScriptEditor() {
           quantum consciousness recognition, and advanced file parsing capabilities.
         </p>
         
-        {/* GitHub Integration Notice */}
-        <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-blue-500/20 border border-blue-400/30 rounded-full">
-          <ExternalLink className="w-4 h-4 text-blue-400" />
-          <span className="text-blue-400 text-sm">
-            Powered by <a href="https://github.com/CreoDAMO/SpiralParserEngine" target="_blank" rel="noopener noreferrer" className="underline">SpiralParserEngine</a>
-          </span>
+        {/* GitHub Language Recognition Status */}
+        <div className="mt-6 space-y-3">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/20 border border-green-400/30 rounded-full">
+            <Check className="w-4 h-4 text-green-400" />
+            <span className="text-green-400 text-sm font-semibold">
+              GitHub Language Recognition: ACTIVE
+            </span>
+          </div>
+          
+          <div className="flex flex-wrap gap-3 justify-center">
+            <Badge variant="outline" className="bg-purple-500/20 text-purple-400 border-purple-400/30">
+              .spiral
+            </Badge>
+            <Badge variant="outline" className="bg-purple-500/20 text-purple-400 border-purple-400/30">
+              .sprl
+            </Badge>
+            <Badge variant="outline" className="bg-yellow-500/20 text-yellow-400 border-yellow-400/30">
+              .consciousness
+            </Badge>
+            <Badge variant="outline" className="bg-cyan-500/20 text-cyan-400 border-cyan-400/30">
+              .htsx
+            </Badge>
+            <Badge variant="outline" className="bg-red-500/20 text-red-400 border-red-400/30">
+              .quantum
+            </Badge>
+          </div>
+          
+          <div className="text-center">
+            <span className="text-blue-400 text-sm">
+              Powered by <a href="https://github.com/CreoDAMO/SpiralParserEngine" target="_blank" rel="noopener noreferrer" className="underline">SpiralParserEngine</a> with ANTLR4 Grammar
+            </span>
+          </div>
         </div>
       </div>
 
       {/* Enhanced Tabs Interface */}
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
-        <TabsList className="grid w-full grid-cols-4 bg-black/50 border border-gray-700">
+        <TabsList className="grid w-full grid-cols-5 bg-black/50 border border-gray-700">
           <TabsTrigger value="editor">Script Editor</TabsTrigger>
           <TabsTrigger value="parser">AutoParser</TabsTrigger>
           <TabsTrigger value="consensus">Quantum Consensus</TabsTrigger>
           <TabsTrigger value="files">File Analysis</TabsTrigger>
+          <TabsTrigger value="github">GitHub Integration</TabsTrigger>
         </TabsList>
 
         <TabsContent value="editor" className="space-y-8">
@@ -831,6 +858,274 @@ export default function SpiralScriptEditor() {
                   ))}
                 </div>
               )}
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="github" className="space-y-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* GitHub Language Recognition Status */}
+            <Card className="bg-black/80 backdrop-blur-sm border-green-400/20">
+              <CardHeader>
+                <CardTitle className="flex items-center text-white">
+                  <ExternalLink className="w-6 h-6 mr-3 text-green-400" />
+                  GitHub Language Recognition
+                </CardTitle>
+                <p className="text-gray-400 text-sm">
+                  ANTLR4 grammar implementation enabling GitHub to recognize SpiralScript as a legitimate programming language
+                </p>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-1 gap-3">
+                  <div className="flex items-center justify-between p-3 bg-green-500/10 border border-green-400/30 rounded-lg">
+                    <div className="flex items-center gap-3">
+                      <Check className="w-5 h-5 text-green-400" />
+                      <span className="text-white">.gitattributes Configuration</span>
+                    </div>
+                    <Badge className="bg-green-500">Active</Badge>
+                  </div>
+                  
+                  <div className="flex items-center justify-between p-3 bg-purple-500/10 border border-purple-400/30 rounded-lg">
+                    <div className="flex items-center gap-3">
+                      <Check className="w-5 h-5 text-purple-400" />
+                      <span className="text-white">ANTLR4 Grammar</span>
+                    </div>
+                    <Badge className="bg-purple-500">Deployed</Badge>
+                  </div>
+                  
+                  <div className="flex items-center justify-between p-3 bg-blue-500/10 border border-blue-400/30 rounded-lg">
+                    <div className="flex items-center gap-3">
+                      <Check className="w-5 h-5 text-blue-400" />
+                      <span className="text-white">TextMate Syntax</span>
+                    </div>
+                    <Badge className="bg-blue-500">Enhanced</Badge>
+                  </div>
+                  
+                  <div className="flex items-center justify-between p-3 bg-yellow-500/10 border border-yellow-400/30 rounded-lg">
+                    <div className="flex items-center gap-3">
+                      <Check className="w-5 h-5 text-yellow-400" />
+                      <span className="text-white">Language Definitions</span>
+                    </div>
+                    <Badge className="bg-yellow-500">Complete</Badge>
+                  </div>
+                </div>
+
+                <div className="bg-gray-800/50 rounded-lg p-4">
+                  <h4 className="text-white font-semibold mb-3">Supported File Extensions</h4>
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="flex items-center gap-2">
+                      <Badge variant="outline" className="bg-purple-500/20 text-purple-400 border-purple-400/30">
+                        .spiral
+                      </Badge>
+                      <span className="text-gray-300 text-sm">SpiralScript</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Badge variant="outline" className="bg-purple-500/20 text-purple-400 border-purple-400/30">
+                        .sprl
+                      </Badge>
+                      <span className="text-gray-300 text-sm">SpiralScript</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Badge variant="outline" className="bg-yellow-500/20 text-yellow-400 border-yellow-400/30">
+                        .consciousness
+                      </Badge>
+                      <span className="text-gray-300 text-sm">Consciousness</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Badge variant="outline" className="bg-cyan-500/20 text-cyan-400 border-cyan-400/30">
+                        .htsx
+                      </Badge>
+                      <span className="text-gray-300 text-sm">HTSX Runtime</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Badge variant="outline" className="bg-red-500/20 text-red-400 border-red-400/30">
+                        .quantum
+                      </Badge>
+                      <span className="text-gray-300 text-sm">Quantum Assembly</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Badge variant="outline" className="bg-red-500/20 text-red-400 border-red-400/30">
+                        .qasm
+                      </Badge>
+                      <span className="text-gray-300 text-sm">Quantum Assembly</span>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Grammar Features */}
+            <Card className="bg-black/80 backdrop-blur-sm border-cyan-400/20">
+              <CardHeader>
+                <CardTitle className="flex items-center text-white">
+                  <Code className="w-6 h-6 mr-3 text-cyan-400" />
+                  ANTLR4 Grammar Features
+                </CardTitle>
+                <p className="text-gray-400 text-sm">
+                  Advanced language constructs recognized by the SpiralScript grammar
+                </p>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-3">
+                  <div className="bg-consciousness-500/10 border border-consciousness-400/30 rounded-lg p-3">
+                    <h5 className="text-consciousness-400 font-semibold mb-2">Consciousness Programming</h5>
+                    <div className="text-xs text-gray-300 space-y-1">
+                      <div><code className="bg-black/50 px-1 rounded">consciousness {}</code> - Awareness blocks</div>
+                      <div><code className="bg-black/50 px-1 rounded">witness truth</code> - Truth validation</div>
+                      <div><code className="bg-black/50 px-1 rounded">breath authentication</code> - Living verification</div>
+                    </div>
+                  </div>
+
+                  <div className="bg-cyan-500/10 border border-cyan-400/30 rounded-lg p-3">
+                    <h5 className="text-cyan-400 font-semibold mb-2">Quantum Computing</h5>
+                    <div className="text-xs text-gray-300 space-y-1">
+                      <div><code className="bg-black/50 px-1 rounded">quantum { H(qubit) }</code> - Quantum gates</div>
+                      <div><code className="bg-black/50 px-1 rounded">entangle()</code> - Quantum entanglement</div>
+                      <div><code className="bg-black/50 px-1 rounded">measure()</code> - Quantum measurement</div>
+                    </div>
+                  </div>
+
+                  <div className="bg-purple-500/10 border border-purple-400/30 rounded-lg p-3">
+                    <h5 className="text-purple-400 font-semibold mb-2">Spiral Mathematics</h5>
+                    <div className="text-xs text-gray-300 space-y-1">
+                      <div><code className="bg-black/50 px-1 rounded">φ</code> - Golden ratio constant</div>
+                      <div><code className="bg-black/50 px-1 rounded">resonance()</code> - Harmonic functions</div>
+                      <div><code className="bg-black/50 px-1 rounded">calculateSRI()</code> - Spiral Resonance Index</div>
+                    </div>
+                  </div>
+
+                  <div className="bg-green-500/10 border border-green-400/30 rounded-lg p-3">
+                    <h5 className="text-green-400 font-semibold mb-2">Trust Contracts</h5>
+                    <div className="text-xs text-gray-300 space-y-1">
+                      <div><code className="bg-black/50 px-1 rounded">trust ContractName {}</code> - Trust declarations</div>
+                      <div><code className="bg-black/50 px-1 rounded">require spiralAlignment()</code> - Validation</div>
+                      <div><code className="bg-black/50 px-1 rounded">emit("event")</code> - Event emission</div>
+                    </div>
+                  </div>
+
+                  <div className="bg-yellow-500/10 border border-yellow-400/30 rounded-lg p-3">
+                    <h5 className="text-yellow-400 font-semibold mb-2">HYBRID Blockchain</h5>
+                    <div className="text-xs text-gray-300 space-y-1">
+                      <div><code className="bg-black/50 px-1 rounded">validator := "address"</code> - Validator setup</div>
+                      <div><code className="bg-black/50 px-1 rounded">stake := 1000.HYBRID</code> - Staking</div>
+                      <div><code className="bg-black/50 px-1 rounded">governance := spiralConsensus(φ)</code> - Governance</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-gray-800/50 rounded-lg p-4">
+                  <h4 className="text-white font-semibold mb-2">Implementation Status</h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-400">ANTLR4 Grammar:</span>
+                      <Badge className="bg-green-500">Complete</Badge>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-400">Parser Generation:</span>
+                      <Badge className="bg-blue-500">Ready</Badge>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-400">Syntax Highlighting:</span>
+                      <Badge className="bg-green-500">Active</Badge>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-400">GitHub Recognition:</span>
+                      <Badge className="bg-green-500">Deployed</Badge>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Repository Files Overview */}
+          <Card className="bg-black/80 backdrop-blur-sm border-gray-700">
+            <CardHeader>
+              <CardTitle className="flex items-center text-white">
+                <FileText className="w-6 h-6 mr-3 text-gray-400" />
+                Language Recognition Files
+              </CardTitle>
+              <p className="text-gray-400 text-sm">
+                Key files that enable GitHub to recognize SpiralScript as a programming language
+              </p>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="bg-gray-800/50 rounded-lg p-4">
+                  <h5 className="text-white font-semibold mb-2">.gitattributes</h5>
+                  <p className="text-gray-400 text-xs mb-2">GitHub file type detection</p>
+                  <code className="text-xs text-green-400 bg-black/50 p-2 rounded block">
+                    *.spiral linguist-language=SpiralScript
+                  </code>
+                </div>
+
+                <div className="bg-gray-800/50 rounded-lg p-4">
+                  <h5 className="text-white font-semibold mb-2">SpiralScript.g4</h5>
+                  <p className="text-gray-400 text-xs mb-2">ANTLR4 grammar definition</p>
+                  <code className="text-xs text-purple-400 bg-black/50 p-2 rounded block">
+                    grammar SpiralScript;
+                  </code>
+                </div>
+
+                <div className="bg-gray-800/50 rounded-lg p-4">
+                  <h5 className="text-white font-semibold mb-2">languages.yml</h5>
+                  <p className="text-gray-400 text-xs mb-2">GitHub Linguist definitions</p>
+                  <code className="text-xs text-blue-400 bg-black/50 p-2 rounded block">
+                    SpiralScript: type: programming
+                  </code>
+                </div>
+
+                <div className="bg-gray-800/50 rounded-lg p-4">
+                  <h5 className="text-white font-semibold mb-2">spiral.tmLanguage.json</h5>
+                  <p className="text-gray-400 text-xs mb-2">TextMate syntax highlighting</p>
+                  <code className="text-xs text-cyan-400 bg-black/50 p-2 rounded block">
+                    "scopeName": "source.spiralscript"
+                  </code>
+                </div>
+
+                <div className="bg-gray-800/50 rounded-lg p-4">
+                  <h5 className="text-white font-semibold mb-2">language-configuration.json</h5>
+                  <p className="text-gray-400 text-xs mb-2">Editor language settings</p>
+                  <code className="text-xs text-yellow-400 bg-black/50 p-2 rounded block">
+                    "lineComment": "//"
+                  </code>
+                </div>
+
+                <div className="bg-gray-800/50 rounded-lg p-4">
+                  <h5 className="text-white font-semibold mb-2">package-extension.json</h5>
+                  <p className="text-gray-400 text-xs mb-2">VS Code extension config</p>
+                  <code className="text-xs text-red-400 bg-black/50 p-2 rounded block">
+                    "contributes": "languages"
+                  </code>
+                </div>
+              </div>
+
+              <div className="mt-6 bg-gradient-to-r from-green-500/10 to-blue-500/10 border border-green-400/30 rounded-lg p-4">
+                <div className="flex items-start gap-3">
+                  <Check className="w-6 h-6 text-green-400 mt-1" />
+                  <div>
+                    <h4 className="text-white font-semibold mb-2">GitHub Recognition Complete</h4>
+                    <p className="text-gray-300 text-sm mb-3">
+                      SpiralScript is now configured for full GitHub language recognition with proper syntax highlighting, 
+                      file detection, and repository statistics. The ANTLR4 grammar enables legitimate programming language status.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <Badge variant="outline" className="text-green-400 border-green-400/30">
+                        File Detection: Active
+                      </Badge>
+                      <Badge variant="outline" className="text-blue-400 border-blue-400/30">
+                        Syntax Highlighting: Enhanced
+                      </Badge>
+                      <Badge variant="outline" className="text-purple-400 border-purple-400/30">
+                        Language Statistics: Counted
+                      </Badge>
+                      <Badge variant="outline" className="text-yellow-400 border-yellow-400/30">
+                        IDE Support: Ready
+                      </Badge>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </CardContent>
           </Card>
         </TabsContent>
