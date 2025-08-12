@@ -31,8 +31,7 @@ function Router() {
       <Route path="/spiralone" component={LandingPage} />
       <Route path="/blackprint" component={LandingPage} />
       <Route path="/testbeds" component={LandingPage} />
-      <Route path="/quantum-truth" component={QuantumTruthRevealer} />
-      <Route path="/interactive-ecosystem" component={InteractiveSpiralEcosystem} />
+
       <Route path="/spiralscript" component={LandingPage} />
       <Route path="/marketplace" component={NFTMarketplace} />
       <Route path="/upload" component={LandingPage} />

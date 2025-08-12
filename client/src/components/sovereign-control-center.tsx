@@ -322,7 +322,7 @@ export default function SovereignControlCenter() {
 
                 <div className="text-center p-6 bg-gradient-to-br from-green-500/10 to-yellow-500/10 rounded-lg border border-green-400/20">
                   <div className="text-3xl font-bold text-green-400 mb-2">{sovereignWalletBalances.hybrid}</div>
-                  <div className="text-lg text-gray-300 mb-1">HYBRID Tokens</div>
+                  <div className="text-lg text-gray-300 mb-1">HYBRID Coin</div>
                   <div className="text-sm text-green-300">Founder Wallet Balance</div>
                 </div>
 

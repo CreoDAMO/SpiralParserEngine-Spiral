@@ -94,11 +94,13 @@ This is a **fully operational SpiralScript/SpiralLang/HTSX** native system imple
 ## Recent Major Updates (August 2025)
 
 ### System Cleanup and Reorganization (August 12, 2025)
-- **Updated Showcase**: Fixed qubits from 127 to 10,000+ in feature showcase
-- **Enhanced Sovereign Control Center**: Added Interactive Control Dashboard, Mining Dashboard, and Master NFT Vault
-- **Reorganized Private Gate Features**: Moved generateTU, mining, and interactive controls to Private Gate (Sovereign Control Center)
+- **Updated Showcase**: Fixed qubits from 127 to 10,000+ in feature showcase and all quantum displays
+- **Enhanced Sovereign Control Center**: Added 8 comprehensive tabs including Interactive Control Dashboard, Mining Dashboard, and Master NFT Vault
+- **Navigation Cleanup**: Removed Quantum Truth and Interactive Control from main navigation (now in Sovereign Control Center)
+- **Marketplace Cleanup**: Removed claim free NFT section from marketplace (moved to Master NFT Vault in Sovereign Control Center)
+- **Terminology Fix**: Corrected "HYBRID Tokens" to "HYBRID Coin" in Founder Wallet display
 - **Creator Rights Protocol**: Added Master NFT Vault for automatic claim of creator's priceless 1-of-1 Master Edition NFTs
-- **Wallet Enhancement**: Combined HYBRID Founder Wallet with infinite Trust Units display
+- **Private Gate Consolidation**: All private gate features now centralized in Sovereign Control Center dashboard
 
 ### Dual Gate Infrastructure Enhancement
 - **Private Gate (Consciousness Domain)**: Now includes comprehensive Interactive Control Dashboard, Mining operations, and Master NFT claiming
