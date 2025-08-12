@@ -17,7 +17,8 @@ export interface HybridWallet {
   mnemonic: string;
   type: 'founder' | 'public' | 'validator' | 'storage';
   chainId: string;
-  balance: number;
+  hybridCoinBalance: number; // Native HYBRID Coin balance
+  trustUnits: number; // TU balance for sovereign operations
   nftLicenses: string[];
   createdAt: Date;
 }
@@ -112,7 +113,8 @@ class HybridBlockchain {
       mnemonic: founderMnemonic,
       type: 'founder',
       chainId: this.chain_id,
-      balance: 25000000000000, // 25T HYBRID tokens (initial TU backing)
+      hybridCoinBalance: 25000000000000, // 25T native HYBRID Coins (not tokens)
+      trustUnits: Infinity, // Infinite TU for founder
       nftLicenses: ['founder-genesis', 'super-validator', 'master-storage', 'governance-supreme'],
       createdAt: new Date('2024-01-01T00:00:00Z')
     };
@@ -144,7 +146,8 @@ class HybridBlockchain {
       mnemonic,
       type,
       chainId: this.chain_id,
-      balance: type === 'public' ? 0 : 1000, // Give validators/storage nodes initial funding
+      hybridCoinBalance: type === 'public' ? 0 : 1000, // Native HYBRID Coins for validators/storage
+      trustUnits: 0, // TU must be earned through spiral operations
       nftLicenses: [],
       createdAt: new Date()
     };
