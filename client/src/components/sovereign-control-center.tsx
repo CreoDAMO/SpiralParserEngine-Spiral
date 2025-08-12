@@ -9,7 +9,7 @@ import {
   ArrowUpRight, ArrowDownLeft, Plus, Minus, RotateCcw,
   Users, Star, Gem, Infinity, Target, ChevronDown,
   ChevronUp, Filter, Search, Download, Upload, Share2,
-  Bell, CheckCircle, XCircle, AlertTriangle, Info
+  Bell, CheckCircle, XCircle, AlertTriangle, Info, Clock
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';

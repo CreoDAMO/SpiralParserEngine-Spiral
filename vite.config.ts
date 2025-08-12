@@ -29,9 +29,16 @@ export default defineConfig({
     emptyOutDir: true,
   },
   server: {
-    fs: {
-      strict: true,
-      deny: ["**/.*"],
+    host: '0.0.0.0',
+    port: 5173,
+    hmr: {
+      port: 443,
     },
+    proxy: {
+      '/api': 'http://localhost:5000',
+      '/blockchain': 'http://localhost:5000',
+      '/holographic': 'http://localhost:5000',
+      '/seven-pillars': 'http://localhost:5000'
+    }
   },
 });
