@@ -101,11 +101,11 @@ class HybridBlockchain {
     // Founder wallet with specific mnemonic for reproducibility
     const founderMnemonic = "spiral truth abundance consciousness hybrid sovereign jacque antoine degraff quantum reality infinite love wisdom golden ratio phi harmonic resonance abundance freedom prosperity abundance";
     const seed = mnemonicToSeedSync(founderMnemonic);
-    
+
     // Use simple seed derivation for Ed25519 compatibility
     const seedHash = createHash('sha256').update(seed).digest();
     const keypair = Keypair.fromSeed(seedHash.slice(0, 32));
-    
+
     this.founder_wallet = {
       address: `hybrid1${this.encodeAddress(keypair.publicKey.toBytes())}`,
       publicKey: keypair.publicKey.toString(),
@@ -118,6 +118,11 @@ class HybridBlockchain {
       nftLicenses: ['founder-genesis', 'super-validator', 'master-storage', 'governance-supreme'],
       createdAt: new Date('2024-01-01T00:00:00Z')
     };
+
+    // Initialize balance if undefined
+    if (!this.founder_wallet.balance) {
+      this.founder_wallet.balance = 1000000000; // 1B HYBRID initial supply
+    }
 
     this.wallets.set(this.founder_wallet.address, this.founder_wallet);
     this.validators.add(this.founder_wallet.address);
@@ -134,11 +139,11 @@ class HybridBlockchain {
   public generateWallet(type: 'public' | 'validator' | 'storage' = 'public'): HybridWallet {
     const mnemonic = generateMnemonic(256); // 24 words for maximum entropy
     const seed = mnemonicToSeedSync(mnemonic);
-    
+
     // Use simple seed derivation for Ed25519 compatibility
     const seedHash = createHash('sha256').update(seed).digest();
     const keypair = Keypair.fromSeed(seedHash.slice(0, 32));
-    
+
     const wallet: HybridWallet = {
       address: `hybrid1${this.encodeAddress(keypair.publicKey.toBytes())}`,
       publicKey: keypair.publicKey.toString(),
@@ -465,7 +470,7 @@ class HybridBlockchain {
    */
   public getFounderWallet(): Omit<HybridWallet, 'privateKey'> | null {
     if (!this.founder_wallet) return null;
-    
+
     const { privateKey, ...safeWallet } = this.founder_wallet;
     return safeWallet;
   }
