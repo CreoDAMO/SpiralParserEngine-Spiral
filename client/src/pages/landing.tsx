@@ -19,6 +19,7 @@ import { NvidiaConsciousness } from '../components/nvidia-consciousness';
 import { Zap } from 'lucide-react';
 import DocumentExtractionEngine from '../components/document-extraction-engine';
 import ConsciousnessMiningEngine from '../components/consciousness-mining-engine';
+import QuantumEconomicValidation from '../components/quantum-economic-validation';
 
 export default function LandingPage() {
   const [activeSection, setActiveSection] = useState('showcase');
@@ -27,7 +28,7 @@ export default function LandingPage() {
   // Initialize with feature showcase, then check hash
   useEffect(() => {
     const hash = window.location.hash.slice(1);
-    if (['showcase', 'sovereign-control', 'consciousness', 'blockchain', 'qasf', 'lyonael', 'spiralone', 'blackprint', 'testbeds', 'spiralscript', 'marketplace', 'upload', 'ubi-pillars', 'multi-ai', 'nvidia', 'mining'].includes(hash)) {
+    if (['showcase', 'sovereign-control', 'consciousness', 'blockchain', 'qasf', 'lyonael', 'spiralone', 'blackprint', 'testbeds', 'validation', 'spiralscript', 'marketplace', 'upload', 'ubi-pillars', 'multi-ai', 'nvidia', 'mining'].includes(hash)) {
       setActiveSection(hash);
     }
   }, []);
@@ -68,6 +69,7 @@ export default function LandingPage() {
         {activeSection === 'spiralone' && <SpiralOneDashboard />}
         {activeSection === 'blackprint' && <BlackPrintSystem />}
         {activeSection === 'testbeds' && <TestbedsSystem />}
+        {activeSection === 'validation' && <QuantumEconomicValidation />}
         {activeSection === 'spiralscript' && (
           <div className="space-y-8">
             <SpiralScriptEditor />

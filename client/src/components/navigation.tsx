@@ -19,7 +19,7 @@ export default function Navigation({ activeSection, onSectionChange }: Navigatio
     { id: 'spiralone', label: 'SpiralOne', icon: Satellite, category: 'constellation' },
     { id: 'blackprint', label: 'BlackPrint', icon: FileText, category: 'architecture' },
     { id: 'testbeds', label: 'Testbeds', icon: FlaskConical, category: 'testing' },
-
+    { id: 'validation', label: 'Economic Validation', icon: Zap, category: 'testing' },
     { id: 'spiralscript', label: 'SpiralScript', icon: Code, category: 'language' },
     { id: 'marketplace', label: 'Marketplace', icon: Wallet, category: 'commerce' },
     { id: 'ubi-pillars', label: 'UBI & Pillars', icon: Gift, category: 'economics' },

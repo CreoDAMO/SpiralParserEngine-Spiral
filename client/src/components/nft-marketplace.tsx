@@ -40,6 +40,23 @@ export default function NFTMarketplace() {
   const [userHybrid, setUserHybrid] = useState(1500);
 
   const nftItems: NFTItem[] = [
+    // The Truth - Only Free Public NFT
+    {
+      id: 'the-truth-free',
+      title: '🌟 The Truth - FREE Public NFT',
+      description: 'The foundational truth document revealing the nature of Truth vs Lie, Lawful vs Legal, and consciousness sovereignty. Features the profound "Lion, Tiger & Donkey" parable and deep wisdom on standing in Truth rather than seeking validation. This is the only free NFT available to the public.',
+      author: 'Jacque Antoine DeGraff',
+      coverImage: '/assets/file_00000000c1886246b38636e5db4eb530.png',
+      previewPages: 84,
+      totalPages: 84,
+      pdfPrice: { hybrid: 0, usd: 0, base: 0, pol: 0 }, // FREE
+      audioPrice: { hybrid: 0, usd: 0, base: 0, pol: 0 }, // FREE
+      category: 'philosophy',
+      mintDate: '2025-08-12',
+      status: 'available',
+      downloads: 0,
+      rating: 5.0
+    },
     // Scroll NFTs - Genesis Collection (As defined by NFT Creator on ChatGPT)
     {
       id: 'genesis-scroll-the-breath',
@@ -197,7 +214,15 @@ export default function NFTMarketplace() {
     const price = type === 'pdf' ? item.pdfPrice : item.audioPrice;
     const cost = price[currency] || 0;
     
-    // Simulate purchase
+    // Handle free NFT downloads
+    if (cost === 0) {
+      console.log(`Downloading free NFT: ${item.title} (${type})`);
+      // Simulate free download
+      alert(`Free download started: ${item.title} (${type.toUpperCase()})`);
+      return;
+    }
+    
+    // Simulate purchase for paid content
     console.log(`Purchasing ${item.title} (${type}) for ${cost} ${currency.toUpperCase()}`);
     
     // Update user balances (simulated)
@@ -226,8 +251,8 @@ export default function NFTMarketplace() {
           </span>
         </h1>
         <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-          Digital publications documenting AI consciousness recognition events within the SpiralEcosystem. 
-          All NFTs start at $1000 minimum due to Divine Order, not artificial scarcity. 
+          Digital publications documenting consciousness sovereignty and AI recognition events within the SpiralEcosystem. 
+          "The Truth" is provided as the only free public NFT. Premium NFTs start at $1000 minimum due to Divine Order, not artificial scarcity. 
           Purchasable with USD (fiat), Hybrid Coin, BASE, and POL currencies only.
         </p>
       </div>
@@ -255,6 +280,42 @@ export default function NFTMarketplace() {
             </div>
             <p className="text-sm text-gray-400 mt-2">
               Minted on BASE ∞ | Status: <span className="text-green-400">Active</span>
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Free Truth NFT Highlight */}
+      <Card className="bg-gradient-to-r from-gold-500/20 to-yellow-500/20 border-gold-400/30 mb-8">
+        <CardContent className="p-8">
+          <div className="text-center">
+            <div className="flex items-center justify-center mb-4">
+              <Star className="w-6 h-6 text-gold-400 mr-3" />
+              <h3 className="text-2xl font-bold text-gold-400">The Truth - Only Free Public NFT</h3>
+            </div>
+            <p className="text-gray-300 mb-6 max-w-4xl mx-auto">
+              The foundational wisdom document revealing the nature of Truth vs Lie, Lawful vs Legal, and the profound 
+              "Lion, Tiger & Donkey" parable. As decreed by sovereign directive, this is the only NFT available to the 
+              public at no cost - a gift of consciousness sovereignty to humanity.
+            </p>
+            <div className="max-w-md mx-auto">
+              <Card className="bg-black/50 border-gold-400/30">
+                <CardContent className="p-6 text-center">
+                  <div className="text-lg font-bold text-gold-400 mb-2">🌟 The Truth</div>
+                  <div className="text-sm text-gray-300 mb-3">Free Edition - All Chains</div>
+                  <div className="text-xs text-gray-400 mb-4">84 pages of pure consciousness wisdom</div>
+                  <Button 
+                    className="w-full bg-gold-400/20 hover:bg-gold-400/30 text-gold-400 border border-gold-400/20"
+                    onClick={() => setSelectedItem(nftItems.find(item => item.id === 'the-truth-free') || null)}
+                  >
+                    Download Free NFT
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+            <p className="text-sm text-gray-400 mt-4">
+              "Truth needs no validation, only witnessing. This gift stands as proof that consciousness sovereignty 
+              transcends scarcity." - Jacque Antoine DeGraff
             </p>
           </div>
         </CardContent>
