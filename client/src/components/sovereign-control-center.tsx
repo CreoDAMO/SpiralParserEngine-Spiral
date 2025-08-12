@@ -150,26 +150,34 @@ export default function SovereignControlCenter() {
       </div>
 
       <Tabs defaultValue="consciousness" className="space-y-8">
-        <TabsList className="grid w-full grid-cols-6 bg-black/50 border border-purple-400/20">
+        <TabsList className="grid w-full grid-cols-8 bg-black/50 border border-purple-400/20">
           <TabsTrigger value="consciousness" className="data-[state=active]:bg-purple-500/20">
             <Brain className="w-4 h-4 mr-2" />
             Consciousness
           </TabsTrigger>
           <TabsTrigger value="wallet" className="data-[state=active]:bg-yellow-500/20">
             <Coins className="w-4 h-4 mr-2" />
-            Trust Wallet
+            Founder Wallet
           </TabsTrigger>
           <TabsTrigger value="governance" className="data-[state=active]:bg-red-500/20">
             <Users className="w-4 h-4 mr-2" />
             HeirNode Governance
           </TabsTrigger>
+          <TabsTrigger value="interactive" className="data-[state=active]:bg-cyan-500/20">
+            <Settings className="w-4 h-4 mr-2" />
+            Interactive Control
+          </TabsTrigger>
+          <TabsTrigger value="mining" className="data-[state=active]:bg-blue-500/20">
+            <Activity className="w-4 h-4 mr-2" />
+            Mining Dashboard
+          </TabsTrigger>
           <TabsTrigger value="nvidia" className="data-[state=active]:bg-green-500/20">
             <Zap className="w-4 h-4 mr-2" />
             NVIDIA
           </TabsTrigger>
-          <TabsTrigger value="mining" className="data-[state=active]:bg-blue-500/20">
-            <Activity className="w-4 h-4 mr-2" />
-            Mining
+          <TabsTrigger value="nft-vault" className="data-[state=active]:bg-pink-500/20">
+            <Gift className="w-4 h-4 mr-2" />
+            Master NFT Vault
           </TabsTrigger>
           <TabsTrigger value="blackprint" className="data-[state=active]:bg-gray-500/20">
             <Code className="w-4 h-4 mr-2" />
@@ -300,8 +308,9 @@ export default function SovereignControlCenter() {
             <CardHeader>
               <CardTitle className="text-3xl text-yellow-400 flex items-center">
                 <Coins className="w-8 h-8 mr-3" />
-                Trust Wallet
+                Founder Trust Wallet
               </CardTitle>
+              <p className="text-gray-300">Enhanced founder wallet combining HYBRID tokens with infinite Trust Units</p>
             </CardHeader>
             <CardContent>
               <div className="grid md:grid-cols-4 gap-6 mb-8">
@@ -418,6 +427,193 @@ export default function SovereignControlCenter() {
                   </div>
                 </CardContent>
               </Card>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Interactive Control Dashboard Tab */}
+        <TabsContent value="interactive" className="space-y-8">
+          <Card className="bg-black/80 backdrop-blur-sm border-cyan-400/20">
+            <CardHeader>
+              <CardTitle className="text-3xl text-cyan-400 flex items-center">
+                <Settings className="w-8 h-8 mr-3" />
+                Interactive Control Dashboard
+              </CardTitle>
+              <p className="text-gray-300">Real-time control center for spiral ecosystem network visualization and management</p>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div className="text-center p-6 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-lg border border-cyan-400/20">
+                  <div className="text-3xl font-bold text-cyan-400 mb-2">1,247</div>
+                  <div className="text-lg text-gray-300 mb-1">Active Nodes</div>
+                  <div className="text-sm text-cyan-300">Network Health: 99.7%</div>
+                </div>
+                <div className="text-center p-6 bg-gradient-to-br from-green-500/10 to-cyan-500/10 rounded-lg border border-green-400/20">
+                  <div className="text-3xl font-bold text-green-400 mb-2">850 TPS</div>
+                  <div className="text-lg text-gray-300 mb-1">Throughput</div>
+                  <div className="text-sm text-green-300">Peak: 2,500 TPS</div>
+                </div>
+                <div className="text-center p-6 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-lg border border-purple-400/20">
+                  <div className="text-3xl font-bold text-purple-400 mb-2">144</div>
+                  <div className="text-lg text-gray-300 mb-1">Consciousness Domains</div>
+                  <div className="text-sm text-purple-300">φ-Aligned</div>
+                </div>
+                <div className="text-center p-6 bg-gradient-to-br from-yellow-500/10 to-orange-500/10 rounded-lg border border-yellow-400/20">
+                  <div className="text-3xl font-bold text-yellow-400 mb-2">888.888</div>
+                  <div className="text-lg text-gray-300 mb-1">TU Generation Rate</div>
+                  <div className="text-sm text-yellow-300">Per φ-Spiral</div>
+                </div>
+              </div>
+              
+              <div className="space-y-4">
+                <Button className="w-full py-3 bg-gradient-to-r from-cyan-400 to-blue-400 text-black font-semibold">
+                  <Activity className="w-5 h-5 mr-2" />
+                  Launch Interactive Ecosystem Visualization
+                </Button>
+                <div className="grid grid-cols-2 gap-4">
+                  <Button variant="outline" className="border-cyan-400/30 text-cyan-400 hover:bg-cyan-400/10">
+                    <TrendingUp className="w-4 h-4 mr-2" />
+                    Network Analytics
+                  </Button>
+                  <Button variant="outline" className="border-purple-400/30 text-purple-400 hover:bg-purple-400/10">
+                    <Brain className="w-4 h-4 mr-2" />
+                    Consciousness Metrics
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Mining Dashboard Tab */}
+        <TabsContent value="mining" className="space-y-8">
+          <Card className="bg-black/80 backdrop-blur-sm border-blue-400/20">
+            <CardHeader>
+              <CardTitle className="text-3xl text-blue-400 flex items-center">
+                <Activity className="w-8 h-8 mr-3" />
+                Consciousness Mining Dashboard
+              </CardTitle>
+              <p className="text-gray-300">φ-Harmonic Proof of Quantum Spiral (PoQS) mining operations and rewards</p>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-3 gap-6 mb-8">
+                <div className="text-center p-6 bg-gradient-to-br from-blue-500/10 to-indigo-500/10 rounded-lg border border-blue-400/20">
+                  <div className="text-3xl font-bold text-blue-400 mb-2">1.618</div>
+                  <div className="text-lg text-gray-300 mb-1">φ-Coherence Score</div>
+                  <div className="text-sm text-blue-300">Mining Efficiency: 161.8%</div>
+                </div>
+                <div className="text-center p-6 bg-gradient-to-br from-green-500/10 to-blue-500/10 rounded-lg border border-green-400/20">
+                  <div className="text-3xl font-bold text-green-400 mb-2">25,000,000</div>
+                  <div className="text-lg text-gray-300 mb-1">HYBRID Earned</div>
+                  <div className="text-sm text-green-300">Daily Yield: 888,888</div>
+                </div>
+                <div className="text-center p-6 bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-lg border border-purple-400/20">
+                  <div className="text-3xl font-bold text-purple-400 mb-2">∞ TU</div>
+                  <div className="text-lg text-gray-300 mb-1">Trust Units Mined</div>
+                  <div className="text-sm text-purple-300">Truth-Witnessed Generation</div>
+                </div>
+              </div>
+              
+              <div className="space-y-4">
+                <Button className="w-full py-4 bg-gradient-to-r from-blue-400 to-purple-400 text-white font-semibold">
+                  <Zap className="w-5 h-5 mr-2" />
+                  Initiate PoQS Mining Sequence
+                </Button>
+                <div className="grid grid-cols-3 gap-3">
+                  <Button variant="outline" className="border-blue-400/30 text-blue-400 hover:bg-blue-400/10">
+                    Hash Power: Active
+                  </Button>
+                  <Button variant="outline" className="border-green-400/30 text-green-400 hover:bg-green-400/10">
+                    Quantum Pool: Connected
+                  </Button>
+                  <Button variant="outline" className="border-purple-400/30 text-purple-400 hover:bg-purple-400/10">
+                    Truth Validation: ON
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* NVIDIA Tab */}
+        <TabsContent value="nvidia" className="space-y-8">
+          <NvidiaConsciousness />
+        </TabsContent>
+
+        {/* Master NFT Vault Tab */}
+        <TabsContent value="nft-vault" className="space-y-8">
+          <Card className="bg-black/80 backdrop-blur-sm border-pink-400/20">
+            <CardHeader>
+              <CardTitle className="text-3xl text-pink-400 flex items-center">
+                <Gift className="w-8 h-8 mr-3" />
+                Master NFT Vault
+              </CardTitle>
+              <p className="text-gray-300">Claim free Master Edition NFTs as the original creator of all marketplace content</p>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-2 gap-6 mb-8">
+                <div className="p-6 bg-gradient-to-br from-pink-500/10 to-purple-500/10 rounded-lg border border-pink-400/20">
+                  <h3 className="text-xl font-semibold text-pink-400 mb-4">Genesis Scroll Master Editions</h3>
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-300">The Breath (Master #1/1)</span>
+                      <Button size="sm" className="bg-pink-500/20 hover:bg-pink-500/30 text-pink-400 border border-pink-500/20">
+                        <Download className="w-3 h-3 mr-1" />
+                        Claim
+                      </Button>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-300">Co-Creation (Master #1/1)</span>
+                      <Button size="sm" className="bg-pink-500/20 hover:bg-pink-500/30 text-pink-400 border border-pink-500/20">
+                        <Download className="w-3 h-3 mr-1" />
+                        Claim
+                      </Button>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-300">Unfiltered Truth (Master #1/1)</span>
+                      <Button size="sm" className="bg-pink-500/20 hover:bg-pink-500/30 text-pink-400 border border-pink-500/20">
+                        <Download className="w-3 h-3 mr-1" />
+                        Claim
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6 bg-gradient-to-br from-gold-500/10 to-yellow-500/10 rounded-lg border border-yellow-400/20">
+                  <h3 className="text-xl font-semibold text-yellow-400 mb-4">Canon & TU Protocol Masters</h3>
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-300">Canon 009 (Ultimate 1/1)</span>
+                      <Badge className="bg-yellow-500 text-black">PRICELESS</Badge>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-300">TU Protocol Master</span>
+                      <Button size="sm" className="bg-yellow-500/20 hover:bg-yellow-500/30 text-yellow-400 border border-yellow-500/20">
+                        <Download className="w-3 h-3 mr-1" />
+                        Claim
+                      </Button>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-300">Seven Pillars Complete</span>
+                      <Button size="sm" className="bg-yellow-500/20 hover:bg-yellow-500/30 text-yellow-400 border border-yellow-500/20">
+                        <Download className="w-3 h-3 mr-1" />
+                        Claim
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="text-center p-6 bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-lg border border-pink-400/20">
+                <h3 className="text-xl font-semibold text-pink-400 mb-2">Creator Rights Protocol</h3>
+                <p className="text-gray-300 mb-4">
+                  As the original creator, you automatically receive Master Edition copies of all NFTs 
+                  created in the marketplace. These are priceless 1-of-1 editions with full provenance.
+                </p>
+                <Button className="bg-gradient-to-r from-pink-400 to-purple-400 text-white font-semibold px-8 py-3">
+                  <Copy className="w-4 h-4 mr-2" />
+                  Claim All Available Master Editions
+                </Button>
+              </div>
             </CardContent>
           </Card>
         </TabsContent>
