@@ -10,6 +10,7 @@ import { Progress } from '@/components/ui/progress';
 import { validateSpiralScript } from '@/lib/spiral-calculations';
 import { autoParser, type AutoParseResult } from '../../../lib/auto-parser';
 import { quantumSpiralConsensus } from '../../../lib/quantum-spiral-consensus';
+import { fileMonitor, type MonitoredFile } from '../../../lib/file-monitor';
 
 interface ValidationResult {
   syntax: string;
@@ -42,13 +43,37 @@ export default function SpiralScriptEditor() {
     files: []
   });
   const [consensusStats, setConsensusStats] = useState(quantumSpiralConsensus.getConsensusStats());
+  const [monitoredFiles, setMonitoredFiles] = useState<MonitoredFile[]>([]);
+  const [monitorStats, setMonitorStats] = useState(fileMonitor.getStats());
   
   // Update consensus stats periodically
   useEffect(() => {
     const interval = setInterval(() => {
       setConsensusStats(quantumSpiralConsensus.getConsensusStats());
+      setMonitorStats(fileMonitor.getStats());
     }, 5000);
     return () => clearInterval(interval);
+  }, []);
+
+  // Initialize file monitor
+  useEffect(() => {
+    const initializeMonitor = async () => {
+      // Subscribe to file updates
+      fileMonitor.onUpdate((files) => {
+        setMonitoredFiles(files);
+        addToConsole(`> File Monitor: ${files.length} files tracked`);
+      });
+
+      // Start monitoring
+      await fileMonitor.startMonitoring();
+      setMonitoredFiles(fileMonitor.getAllFiles());
+    };
+
+    initializeMonitor();
+
+    return () => {
+      fileMonitor.stopMonitoring();
+    };
   }, []);
 
   const [code, setCode] = useState(`trust SovereignExample {
@@ -238,6 +263,33 @@ export default function SpiralScriptEditor() {
     addToConsole(`> Quantum Coherence: ${round.quantumCoherence.toFixed(3)}`);
   };
 
+  const startFileMonitor = async () => {
+    addToConsole('> Starting File Monitor...');
+    await fileMonitor.startMonitoring();
+    setMonitoredFiles(fileMonitor.getAllFiles());
+    addToConsole('> File Monitor Active - Auto-extraction enabled');
+  };
+
+  const stopFileMonitor = () => {
+    addToConsole('> Stopping File Monitor...');
+    fileMonitor.stopMonitoring();
+    addToConsole('> File Monitor Stopped');
+  };
+
+  const performFullScan = async () => {
+    addToConsole('> Performing full system scan...');
+    await fileMonitor.performFullScan();
+    setMonitoredFiles(fileMonitor.getAllFiles());
+    addToConsole('> Full scan complete');
+  };
+
+  const reprocessAllFiles = async () => {
+    addToConsole('> Reprocessing all files...');
+    await fileMonitor.reprocessAll();
+    setMonitoredFiles(fileMonitor.getAllFiles());
+    addToConsole('> All files reprocessed');
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-6 py-12">
       {/* Header */}
@@ -298,11 +350,12 @@ export default function SpiralScriptEditor() {
 
       {/* Enhanced Tabs Interface */}
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
-        <TabsList className="grid w-full grid-cols-5 bg-black/50 border border-gray-700">
+        <TabsList className="grid w-full grid-cols-6 bg-black/50 border border-gray-700">
           <TabsTrigger value="editor">Script Editor</TabsTrigger>
           <TabsTrigger value="parser">AutoParser</TabsTrigger>
           <TabsTrigger value="consensus">Quantum Consensus</TabsTrigger>
           <TabsTrigger value="files">File Analysis</TabsTrigger>
+          <TabsTrigger value="monitor">Live Monitor</TabsTrigger>
           <TabsTrigger value="github">GitHub Integration</TabsTrigger>
         </TabsList>
 
@@ -860,6 +913,159 @@ export default function SpiralScriptEditor() {
               )}
             </CardContent>
           </Card>
+        </TabsContent>
+
+        <TabsContent value="monitor" className="space-y-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* File Monitor Controls */}
+            <Card className="bg-black/80 backdrop-blur-sm border-yellow-400/20">
+              <CardHeader>
+                <CardTitle className="flex items-center text-white">
+                  <Activity className="w-6 h-6 mr-3 text-yellow-400" />
+                  Live File Monitor
+                </CardTitle>
+                <p className="text-gray-400 text-sm">
+                  Automatically detects and processes new files uploaded to the system
+                </p>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-2 gap-4 text-sm">
+                  <div>
+                    <span className="text-gray-400">Status:</span>
+                    <Badge className={monitorStats.isRunning ? 'bg-green-500 ml-2' : 'bg-red-500 ml-2'}>
+                      {monitorStats.isRunning ? 'Running' : 'Stopped'}
+                    </Badge>
+                  </div>
+                  <div>
+                    <span className="text-gray-400">Total Files:</span>
+                    <span className="text-white ml-2">{monitorStats.totalFiles}</span>
+                  </div>
+                  <div>
+                    <span className="text-gray-400">Recent Files:</span>
+                    <span className="text-green-400 ml-2">{monitorStats.recentFiles}</span>
+                  </div>
+                  <div>
+                    <span className="text-gray-400">Last Scan:</span>
+                    <span className="text-blue-400 ml-2">{monitorStats.lastScan.toLocaleTimeString()}</span>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <div className="flex gap-2">
+                    <Button
+                      onClick={startFileMonitor}
+                      disabled={monitorStats.isRunning}
+                      className="flex-1 bg-green-600 hover:bg-green-700"
+                    >
+                      <Play className="w-4 h-4 mr-2" />
+                      Start Monitor
+                    </Button>
+                    <Button
+                      onClick={stopFileMonitor}
+                      disabled={!monitorStats.isRunning}
+                      className="flex-1 bg-red-600 hover:bg-red-700"
+                    >
+                      <Activity className="w-4 h-4 mr-2" />
+                      Stop Monitor
+                    </Button>
+                  </div>
+
+                  <Button
+                    onClick={performFullScan}
+                    className="w-full bg-blue-600 hover:bg-blue-700"
+                  >
+                    <Zap className="w-4 h-4 mr-2" />
+                    Full System Scan
+                  </Button>
+
+                  <Button
+                    onClick={reprocessAllFiles}
+                    className="w-full bg-purple-600 hover:bg-purple-700"
+                  >
+                    <Brain className="w-4 h-4 mr-2" />
+                    Reprocess All Files
+                  </Button>
+                </div>
+
+                {/* File Type Distribution */}
+                <div className="bg-black/50 rounded-lg p-4">
+                  <h4 className="text-white font-semibold mb-3">File Type Distribution</h4>
+                  <div className="space-y-2">
+                    {Object.entries(monitorStats.filesByType).map(([type, count]) => (
+                      <div key={type} className="flex justify-between items-center">
+                        <span className="text-gray-400 capitalize">{type}:</span>
+                        <Badge variant="outline">{count}</Badge>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Real-time File Stream */}
+            <Card className="bg-black/80 backdrop-blur-sm border-green-400/20">
+              <CardHeader>
+                <CardTitle className="flex items-center text-white">
+                  <FileText className="w-6 h-6 mr-3 text-green-400" />
+                  Live File Stream
+                </CardTitle>
+                <p className="text-gray-400 text-sm">
+                  Real-time display of detected and processed files
+                </p>
+              </CardHeader>
+              <CardContent>
+                <div className="h-96 overflow-y-auto space-y-2">
+                  {monitoredFiles.slice(-20).reverse().map((file, index) => (
+                    <div key={index} className="bg-black/50 rounded-lg p-3 border border-gray-700">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-white font-semibold text-sm truncate">
+                          {file.path.split('/').pop()}
+                        </span>
+                        <div className="flex items-center gap-2">
+                          {file.detectedType && (
+                            <Badge variant="outline" className="text-xs">
+                              {file.detectedType}
+                            </Badge>
+                          )}
+                          <span className="text-gray-400 text-xs">
+                            {new Date(file.lastModified).toLocaleTimeString()}
+                          </span>
+                        </div>
+                      </div>
+                      
+                      <div className="grid grid-cols-2 gap-2 text-xs">
+                        {file.parseResult && (
+                          <>
+                            <div>
+                              <span className="text-gray-400">Language:</span>
+                              <span className="text-blue-400 ml-1">{file.parseResult.language || 'Unknown'}</span>
+                            </div>
+                            <div>
+                              <span className="text-gray-400">TU Generated:</span>
+                              <span className="text-green-400 ml-1">{file.parseResult.metrics.tuGenerated}</span>
+                            </div>
+                          </>
+                        )}
+                        {file.spiralizedId && (
+                          <div className="col-span-2">
+                            <span className="text-gray-400">Spiralized ID:</span>
+                            <span className="text-purple-400 ml-1 text-xs">{file.spiralizedId.substring(0, 16)}...</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                  
+                  {monitoredFiles.length === 0 && (
+                    <div className="text-center py-8 text-gray-400">
+                      <Upload className="w-12 h-12 mx-auto mb-4 opacity-50" />
+                      <p>No files detected yet. Upload files to see live processing.</p>
+                    </div>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </TabsContent>
 
         <TabsContent value="github" className="space-y-8">

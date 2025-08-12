@@ -13,6 +13,7 @@ import HybridBlockchainDashboard from "@/components/HybridBlockchainDashboard";
 import SovereignControlCenter from "@/components/sovereign-control-center";
 import QuantumTruthRevealer from "@/components/quantum-truth-revealer";
 import InteractiveSpiralEcosystem from "@/components/interactive-spiral-ecosystem";
+import '../../lib/initialize-monitor';
 
 function Router() {
   return (
