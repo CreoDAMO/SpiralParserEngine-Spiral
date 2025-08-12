@@ -21,6 +21,7 @@ export interface HybridWallet {
   trustUnits: number; // TU balance for sovereign operations
   nftLicenses: string[];
   createdAt: Date;
+  balance?: number; // Added balance property to match the initialization
 }
 
 export interface BlockchainTransaction {
@@ -106,23 +107,22 @@ class HybridBlockchain {
     const seedHash = createHash('sha256').update(seed).digest();
     const keypair = Keypair.fromSeed(seedHash.slice(0, 32));
 
+    // Initialize founder wallet with proper balance structure
+    const initialBalance = 1000000000; // 1B HYBRID initial supply
+
     this.founder_wallet = {
       address: `hybrid1${this.encodeAddress(keypair.publicKey.toBytes())}`,
       publicKey: keypair.publicKey.toString(),
-      privateKey: Buffer.from(keypair.secretKey).toString('hex'),
+      privateKey: Buffer.from(keypair.secretKey).toString('hex'), // Correctly store private key as hex string
       mnemonic: founderMnemonic,
       type: 'founder',
       chainId: this.chain_id,
       hybridCoinBalance: 25000000000000, // 25T native HYBRID Coins (not tokens)
       trustUnits: Infinity, // Infinite TU for founder
       nftLicenses: ['founder-genesis', 'super-validator', 'master-storage', 'governance-supreme'],
-      createdAt: new Date('2024-01-01T00:00:00Z')
+      createdAt: new Date('2024-01-01T00:00:00Z'),
+      balance: initialBalance // Assign initial balance here
     };
-
-    // Initialize balance if undefined
-    if (!this.founder_wallet.balance) {
-      this.founder_wallet.balance = 1000000000; // 1B HYBRID initial supply
-    }
 
     this.wallets.set(this.founder_wallet.address, this.founder_wallet);
     this.validators.add(this.founder_wallet.address);
@@ -147,14 +147,15 @@ class HybridBlockchain {
     const wallet: HybridWallet = {
       address: `hybrid1${this.encodeAddress(keypair.publicKey.toBytes())}`,
       publicKey: keypair.publicKey.toString(),
-      privateKey: Buffer.from(keypair.secretKey).toString('hex'),
+      privateKey: Buffer.from(keypair.secretKey).toString('hex'), // Store private key as hex string
       mnemonic,
       type,
       chainId: this.chain_id,
       hybridCoinBalance: type === 'public' ? 0 : 1000, // Native HYBRID Coins for validators/storage
       trustUnits: 0, // TU must be earned through spiral operations
       nftLicenses: [],
-      createdAt: new Date()
+      createdAt: new Date(),
+      balance: type === 'public' ? 0 : 1000 // Initialize balance for new wallets
     };
 
     this.wallets.set(wallet.address, wallet);
@@ -209,7 +210,7 @@ class HybridBlockchain {
    * Purchase NFT License for node operation
    */
   public async purchaseNFTLicense(
-    buyer: string, 
+    buyer: string,
     licenseType: 'HNL-VAL' | 'HNL-STR' | 'HNL-GOV',
     payment: number
   ): Promise<NFTLicense> {
@@ -220,12 +221,12 @@ class HybridBlockchain {
 
     const licensePrices = {
       'HNL-VAL': 1000000000, // 1000 HYBRID
-      'HNL-STR': 250000000,  // 250 HYBRID  
+      'HNL-STR': 250000000,  // 250 HYBRID
       'HNL-GOV': 5000000000  // 5000 HYBRID
     };
 
     const requiredPrice = licensePrices[licenseType];
-    if (wallet.balance < requiredPrice) {
+    if (!wallet.balance || wallet.balance < requiredPrice) { // Check if balance exists and is sufficient
       throw new Error('Insufficient balance for license purchase');
     }
 
@@ -333,9 +334,10 @@ class HybridBlockchain {
     // Handle different transaction types
     switch (tx.type) {
       case 'transfer':
-        if (fromWallet && fromWallet.balance >= (tx.amount + tx.fee)) {
+        if (fromWallet && fromWallet.balance !== undefined && fromWallet.balance >= (tx.amount + tx.fee)) {
           fromWallet.balance -= (tx.amount + tx.fee);
           if (toWallet) {
+            if (toWallet.balance === undefined) toWallet.balance = 0;
             toWallet.balance += tx.amount;
           }
           tx.status = 'confirmed';
@@ -407,7 +409,7 @@ class HybridBlockchain {
       total_nft_licenses: this.nft_licenses.size,
       total_bridges: this.bridges.size,
       founder_wallet: this.founder_wallet?.address,
-      total_supply: Array.from(this.wallets.values()).reduce((sum, w) => sum + w.balance, 0),
+      total_supply: Array.from(this.wallets.values()).reduce((sum, w) => sum + (w.balance || 0), 0), // Safely sum balances
       last_block_time: this.blocks[this.blocks.length - 1]?.timestamp
     };
   }
@@ -449,7 +451,7 @@ class HybridBlockchain {
   }
 
   /**
-   * Verify wallet signature for consciousness authentication  
+   * Verify wallet signature for consciousness authentication
    */
   public verifyWalletSignature(address: string, message: string, signature: string): boolean {
     const wallet = this.wallets.get(address);
@@ -459,8 +461,14 @@ class HybridBlockchain {
       // Implement Ed25519 signature verification
       const messageHash = createHash('sha256').update(message).digest();
       // In production, use proper Ed25519 verification library
-      return signature.length === 128; // Simplified verification
+      // For demonstration purposes, a simple check if signature is a hex string of expected length
+      const publicKey = Buffer.from(wallet.publicKey, 'hex');
+      // This is a placeholder for actual signature verification.
+      // In a real scenario, you'd use a library like '@noble/curves' or similar for Ed25519 verification.
+      // Example: const isValid = verify(messageHash, signature, publicKey);
+      return signature.length === 128; // Simplified verification: check length for Ed25519 signature (64 bytes * 2 hex chars/byte)
     } catch (error) {
+      console.error("Signature verification failed:", error);
       return false;
     }
   }
@@ -483,16 +491,16 @@ export const hybridBlockchain = new HybridBlockchain();
 export const HybridAPI = {
   generateWallet: (type?: 'public' | 'validator' | 'storage') => hybridBlockchain.generateWallet(type),
   getWallet: (address: string) => hybridBlockchain.getWallet(address),
-  purchaseNFTLicense: (buyer: string, type: 'HNL-VAL' | 'HNL-STR' | 'HNL-GOV', payment: number) => 
+  purchaseNFTLicense: (buyer: string, type: 'HNL-VAL' | 'HNL-STR' | 'HNL-GOV', payment: number) =>
     hybridBlockchain.purchaseNFTLicense(buyer, type, payment),
-  createTransaction: (txData: any) => hybridBlockchain.createTransaction(txData),
-  initiateBridge: (from: any, to: any, token: string, amount: number, sender: string, recipient: string) =>
-    hybridBlockchain.initiateBridge(from, to, token, amount, sender, recipient),
+  createTransaction: (txData: { from: string; to: string; amount: number; type: BlockchainTransaction['type']; data?: any }) => hybridBlockchain.createTransaction(txData),
+  initiateBridge: (from_chain: CrossChainBridge['from_chain'], to_chain: CrossChainBridge['to_chain'], token: string, amount: number, sender: string, recipient: string) =>
+    hybridBlockchain.initiateBridge(from_chain, to_chain, token, amount, sender, recipient),
   getBlockchainStatus: () => hybridBlockchain.getBlockchainStatus(),
   getFounderWallet: () => hybridBlockchain.getFounderWallet(),
   getAllWallets: () => hybridBlockchain.getAllWallets(),
   getAllNFTLicenses: () => hybridBlockchain.getAllNFTLicenses(),
-  getBridges: (status?: any) => hybridBlockchain.getBridges(status),
+  getBridges: (status?: CrossChainBridge['status']) => hybridBlockchain.getBridges(status),
   verifySignature: (address: string, message: string, signature: string) =>
     hybridBlockchain.verifyWalletSignature(address, message, signature)
 };

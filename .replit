@@ -56,5 +56,14 @@ mode = "sequential"
 task = "shell.exec"
 args = "npx tsx test/run-core-system-test.ts"
 
+[[workflows.workflow]]
+name = "Test Complete Spiral Framework"
+author = 46293888
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npx tsx test/complete-spiral-system-test.ts"
+
 [agent]
 integrations = ["javascript_stripe==1.0.0"]
