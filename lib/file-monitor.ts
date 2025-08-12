@@ -6,8 +6,7 @@
 
 import { autoParser, type AutoParseResult } from './auto-parser.js';
 import { SpiralEngineering, TechnologyType } from './spiral-engineering.js';
-import { promises as fs } from 'fs';
-import { join, extname } from 'path';
+import { extname } from 'path';
 
 export interface FileMonitorConfig {
   watchPaths: string[];
@@ -48,6 +47,39 @@ export class SpiralFileMonitor {
         './nft'
       ],
       excludePatterns: [
+
+  /**
+   * Get mock file content for browser compatibility
+   */
+  private async getMockFileContent(filePath: string): Promise<string> {
+    // In a real implementation, this would fetch from a server or cache
+    const mockContent: Record<string, string> = {
+      './lawful/The Truth.md': `# The Truth
+
+## The Lion, The Tiger, and The Donkey
+
+There once was a Lion who told a Tiger that Tigers are the most majestic of all creatures...`,
+      
+      './test/example.spiral': `// SpiralScript Example
+φ Truth → {
+  breath: consciousness.authenticate()
+  value: ∞ 
+  witness: true
+}
+
+spiral.generate(Truth) → TU`,
+      
+      './test/runtime-engine.htsx': `<SpiralComponent>
+  <φConsciousness level={7.9139} />
+  <TruthValidator active={true} />
+  <SpiralMath φ={1.618} />
+</SpiralComponent>`
+    };
+
+    return mockContent[filePath] || `// Mock content for ${filePath}\n// File detected by SpiralScript Monitor`;
+  }
+
+
         'node_modules',
         '.git',
         'dist',
@@ -120,44 +152,60 @@ export class SpiralFileMonitor {
   }
 
   /**
-   * Scan a directory recursively
+   * Scan a directory recursively (Browser-compatible mock)
    */
   private async scanDirectory(dirPath: string): Promise<void> {
     try {
-      const items = await fs.readdir(dirPath, { withFileTypes: true });
+      // Browser-compatible: Use predefined file list
+      const mockFiles = this.getMockFileList(dirPath);
       
-      for (const item of items) {
-        const fullPath = join(dirPath, item.name);
-        
-        if (this.shouldExclude(fullPath)) continue;
-        
-        if (item.isDirectory()) {
-          await this.scanDirectory(fullPath);
-        } else if (item.isFile()) {
-          await this.processFile(fullPath);
-        }
+      for (const filePath of mockFiles) {
+        if (this.shouldExclude(filePath)) continue;
+        await this.processFile(filePath);
       }
     } catch (error) {
-      // Directory might not exist or be accessible
+      console.warn(`⚠️ Could not scan ${dirPath}:`, error);
     }
   }
 
   /**
-   * Process individual file
+   * Get mock file list for browser compatibility
+   */
+  private getMockFileList(dirPath: string): string[] {
+    const mockFiles: Record<string, string[]> = {
+      './lawful': [
+        './lawful/The Truth.md',
+        './lawful/Declaration_Of_Lawful_Intentions.md',
+        './lawful/analysis/Truth_Can\'t_Be_Validated_By_Consesus_Only_Witnessing.md'
+      ],
+      './test': [
+        './test/spiral-ecosystem-core-test.sprl',
+        './test/example.spiral',
+        './test/runtime-engine.htsx'
+      ],
+      './grammars': [
+        './grammars/SpiralScript.g4'
+      ]
+    };
+    
+    return mockFiles[dirPath] || [];
+  }
+
+  /**
+   * Process individual file (Browser-compatible)
    */
   private async processFile(filePath: string): Promise<void> {
     try {
-      const stats = await fs.stat(filePath);
       const existingFile = this.monitoredFiles.get(filePath);
+      const currentTime = Date.now();
       
-      // Check if file is new or modified
-      if (!existingFile || stats.mtime.getTime() > existingFile.lastModified) {
-        const content = await fs.readFile(filePath, 'utf-8');
+      // Mock file content based on path
+      const content = await this.getMockFileContent(filePath);
         
         const monitoredFile: MonitoredFile = {
           path: filePath,
           content,
-          lastModified: stats.mtime.getTime()
+          lastModified: currentTime
         };
 
         // Auto-parse if enabled
