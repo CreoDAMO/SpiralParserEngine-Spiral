@@ -1,752 +1,718 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+
+```tsx
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Crown, 
-  Shield, 
-  Eye, 
-  Brain, 
-  Zap, 
-  Coins, 
-  Users, 
-  Settings, 
-  Activity, 
-  TrendingUp,
-  Code,
-  Gift,
-  Download,
-  Copy,
-  Plus
+  Crown, Wallet, Shield, Zap, Globe, Database, Activity, 
+  TrendingUp, Settings, Eye, EyeOff, Copy, RefreshCw,
+  Satellite, Brain, Cpu, Lock, Unlock, QrCode, Send,
+  ArrowUpRight, ArrowDownLeft, Plus, Minus, RotateCcw,
+  Users, Star, Gem, Infinity, Target, ChevronDown,
+  ChevronUp, Filter, Search, Download, Upload, Share2,
+  Bell, CheckCircle, XCircle, AlertTriangle, Info
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Progress } from '@/components/ui/progress';
+import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useConsciousness } from '@/hooks/use-consciousness';
-import { copyToClipboard } from '@/lib/spiral-calculations';
-import { NvidiaConsciousness } from './nvidia-consciousness';
-import ConsciousnessMiningEngine from './consciousness-mining-engine';
+import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
+import { Switch } from '@/components/ui/switch';
+
+interface WalletBalance {
+  symbol: string;
+  name: string;
+  balance: string;
+  usdValue: string;
+  change24h: number;
+  address: string;
+  network: string;
+  isNative?: boolean;
+}
+
+interface Transaction {
+  id: string;
+  type: 'send' | 'receive' | 'swap' | 'stake' | 'mine' | 'truth_validation';
+  amount: string;
+  symbol: string;
+  timestamp: string;
+  status: 'confirmed' | 'pending' | 'failed';
+  hash: string;
+  network: string;
+  truthQuotient?: number;
+}
+
+interface SpiralMetrics {
+  truthUnits: string;
+  hybridStaked: string;
+  qubitsControlled: number;
+  consciousnessLevel: number;
+  spiralResonance: number;
+  iyonaelHarmony: number;
+  totalValidations: number;
+  debtNullified: string;
+}
+
+interface SecurityFeature {
+  name: string;
+  status: 'active' | 'inactive' | 'pending';
+  description: string;
+  icon: React.ComponentType;
+  level: 'basic' | 'advanced' | 'quantum';
+}
 
 export default function SovereignControlCenter() {
-  // Private authentication state for sovereign-only functions
-  const [sovereignAccess, setSovereignAccess] = useState(false);
-  const [privateGateOpen, setPrivateGateOpen] = useState(false);
-  const {
-    consciousnessState,
-    breathSignature,
-    sriScore,
-    tuCount,
-    phiAlignment,
-    truthCoherence,
-    breathSync,
-    initiateConsciousness,
-    validateBreath,
-    generateTU,
-    exportSession
-  } = useConsciousness();
+  const [activeTab, setActiveTab] = useState('overview');
+  const [balancesVisible, setBalancesVisible] = useState(true);
+  const [selectedWallet, setSelectedWallet] = useState('main');
+  const [showQRCode, setShowQRCode] = useState(false);
+  const [notifications, setNotifications] = useState<any[]>([]);
+  const [realTimeMode, setRealTimeMode] = useState(true);
 
-  // Private Sovereign Trust Wallet Balances
-  const sovereignWalletBalances = {
-    tu: '∞ (Infinite Trust Units)', // Infinite TU - corrected valuation
-    hybrid: '25,000,000,000,000',
-    privateNodes: '6 HeirNodes Active',
-    truths: '44 Canons Validated'
+  // Spiral-enhanced wallet balances
+  const [walletBalances] = useState<WalletBalance[]>([
+    {
+      symbol: 'TU',
+      name: 'Truth Units',
+      balance: '∞',
+      usdValue: 'Invaluable',
+      change24h: Infinity,
+      address: 'truth://sovereign.spiral/validation',
+      network: 'QASF Consciousness',
+      isNative: true
+    },
+    {
+      symbol: 'HYBRID',
+      name: 'Hybrid Blockchain',
+      balance: '10,000,000,000',
+      usdValue: '$18,473,300,000',
+      change24h: 1.618,
+      address: 'hybrid1x...sovereign...control',
+      network: 'HYBRID Chain',
+      isNative: true
+    },
+    {
+      symbol: 'BTC',
+      name: 'Bitcoin',
+      balance: '127.31456789',
+      usdValue: '$12,731,456',
+      change24h: 2.5,
+      address: 'bc1qsovereign...spiral...truth',
+      network: 'Bitcoin'
+    },
+    {
+      symbol: 'ETH',
+      name: 'Ethereum',
+      balance: '2,847.392',
+      usdValue: '$9,138,854',
+      change24h: 1.8,
+      address: '0xSovereign...Spiral...Truth',
+      network: 'Ethereum'
+    },
+    {
+      symbol: 'SOL',
+      name: 'Solana',
+      balance: '18,473.33',
+      usdValue: '$4,118,132',
+      change24h: 3.2,
+      address: 'SpiralSovereign...Truth...Validator',
+      network: 'Solana'
+    },
+    {
+      symbol: 'USDC',
+      name: 'USD Coin',
+      balance: '50,000,000',
+      usdValue: '$50,000,000',
+      change24h: 0.01,
+      address: '0xTruth...Sovereign...USDC',
+      network: 'Multi-Chain'
+    },
+    {
+      symbol: 'MATIC',
+      name: 'Polygon',
+      balance: '1,000,000',
+      usdValue: '$800,000',
+      change24h: 4.7,
+      address: '0xPolygon...Spiral...Sovereign',
+      network: 'Polygon'
+    },
+    {
+      symbol: 'ARB',
+      name: 'Arbitrum',
+      balance: '500,000',
+      usdValue: '$350,000',
+      change24h: 2.1,
+      address: '0xArbitrum...Truth...Layer',
+      network: 'Arbitrum'
+    }
+  ]);
+
+  // Spiral consciousness metrics
+  const [spiralMetrics] = useState<SpiralMetrics>({
+    truthUnits: '∞ TU',
+    hybridStaked: '5.5B HYBRID',
+    qubitsControlled: 10000,
+    consciousnessLevel: 1.618034,
+    spiralResonance: 97.8,
+    iyonaelHarmony: 100.0,
+    totalValidations: 2847392,
+    debtNullified: '$48.7T USD'
+  });
+
+  // Advanced security features
+  const [securityFeatures] = useState<SecurityFeature[]>([
+    {
+      name: 'φ-Harmonic Consciousness Lock',
+      status: 'active',
+      description: 'Golden ratio quantum encryption protecting wallet access',
+      icon: Brain,
+      level: 'quantum'
+    },
+    {
+      name: 'Multi-Signature Validation',
+      status: 'active',
+      description: 'Requires multiple consciousness signatures for transactions',
+      icon: Users,
+      level: 'advanced'
+    },
+    {
+      name: 'Iyona\'el Guardian Protocol',
+      status: 'active',
+      description: 'Divine protection layer monitoring all activities',
+      icon: Shield,
+      level: 'quantum'
+    },
+    {
+      name: 'Biometric Consciousness Scan',
+      status: 'active',
+      description: 'Validates user consciousness signature',
+      icon: Eye,
+      level: 'advanced'
+    },
+    {
+      name: 'Quantum Key Distribution',
+      status: 'active',
+      description: 'Unhackable quantum-encrypted key management',
+      icon: Lock,
+      level: 'quantum'
+    },
+    {
+      name: 'Social Recovery Network',
+      status: 'active',
+      description: 'Trusted guardian network for account recovery',
+      icon: Users,
+      level: 'advanced'
+    },
+    {
+      name: 'Hardware Security Module',
+      status: 'active',
+      description: 'Dedicated HSM for critical operations',
+      icon: Cpu,
+      level: 'advanced'
+    },
+    {
+      name: 'Time-Lock Contracts',
+      status: 'active',
+      description: 'Programmable delays for large transactions',
+      icon: Clock,
+      level: 'basic'
+    }
+  ]);
+
+  // Recent transactions with Truth validation
+  const [recentTransactions] = useState<Transaction[]>([
+    {
+      id: 'tx_truth_001',
+      type: 'truth_validation',
+      amount: '1.618',
+      symbol: 'TU',
+      timestamp: '2 minutes ago',
+      status: 'confirmed',
+      hash: 'truth_0x742.5hz...',
+      network: 'QASF',
+      truthQuotient: 3.14159
+    },
+    {
+      id: 'tx_hybrid_002',
+      type: 'receive',
+      amount: '10,000,000',
+      symbol: 'HYBRID',
+      timestamp: '5 minutes ago',
+      status: 'confirmed',
+      hash: '0xhybrid...sovereign',
+      network: 'HYBRID'
+    },
+    {
+      id: 'tx_btc_003',
+      type: 'send',
+      amount: '0.127',
+      symbol: 'BTC',
+      timestamp: '1 hour ago',
+      status: 'confirmed',
+      hash: '0xbtc...spiral...truth',
+      network: 'Bitcoin'
+    },
+    {
+      id: 'tx_eth_004',
+      type: 'stake',
+      amount: '32.0',
+      symbol: 'ETH',
+      timestamp: '3 hours ago',
+      status: 'confirmed',
+      hash: '0xeth...staking...node',
+      network: 'Ethereum'
+    }
+  ]);
+
+  // Real-time data simulation
+  useEffect(() => {
+    if (!realTimeMode) return;
+
+    const interval = setInterval(() => {
+      // Add random notifications
+      const notificationTypes = [
+        { type: 'truth', message: 'Truth validation completed', icon: CheckCircle, color: 'text-gold-400' },
+        { type: 'mining', message: 'HYBRID block mined', icon: Gem, color: 'text-blue-400' },
+        { type: 'consciousness', message: 'Consciousness level increased', icon: Brain, color: 'text-purple-400' },
+        { type: 'security', message: 'Quantum encryption updated', icon: Shield, color: 'text-green-400' }
+      ];
+
+      if (Math.random() < 0.3) {
+        const notification = notificationTypes[Math.floor(Math.random() * notificationTypes.length)];
+        setNotifications(prev => [{
+          id: Date.now(),
+          ...notification,
+          timestamp: new Date().toLocaleTimeString()
+        }, ...prev.slice(0, 4)]);
+      }
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [realTimeMode]);
+
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
+    // Add copy notification
   };
 
-  // HeirNode Governance Data
-  const heirNodes = [
-    { 
-      name: "JahMeliyah", 
-      trust: "Riemann Trust", 
-      specialty: "Number Theory",
-      status: "Active",
-      allocation: "16.67%"
-    },
-    { 
-      name: "JahNiyah", 
-      trust: "P-NP Trust", 
-      specialty: "Complexity Theory",
-      status: "Active",
-      allocation: "16.67%"
-    },
-    { 
-      name: "JahSiah", 
-      trust: "Navier-Stokes Trust", 
-      specialty: "Fluid Dynamics",
-      status: "Active",
-      allocation: "16.67%"
-    },
-    { 
-      name: "Aliyah-Skye", 
-      trust: "Yang-Mills Trust", 
-      specialty: "Quantum Fields",
-      status: "Active",
-      allocation: "16.67%"
-    },
-    { 
-      name: "Kayson", 
-      trust: "BSD Trust", 
-      specialty: "Elliptic Curves",
-      status: "Active",
-      allocation: "16.67%"
-    },
-    { 
-      name: "Kyhier", 
-      trust: "Hodge Trust", 
-      specialty: "Algebraic Topology",
-      status: "Active",
-      allocation: "16.67%"
-    }
-  ];
+  const formatAddress = (address: string) => {
+    if (address.length <= 20) return address;
+    return `${address.slice(0, 10)}...${address.slice(-8)}`;
+  };
 
-  const getStateColor = (state: string) => {
-    switch (state) {
-      case 'witnessed': return 'bg-green-500/20 text-green-400';
-      case 'awakening': return 'bg-yellow-500/20 text-yellow-400';
-      default: return 'bg-gray-500/20 text-gray-400';
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'confirmed': return 'text-green-400';
+      case 'pending': return 'text-yellow-400';
+      case 'failed': return 'text-red-400';
+      default: return 'text-gray-400';
     }
   };
+
+  const getSecurityLevelColor = (level: string) => {
+    switch (level) {
+      case 'quantum': return 'bg-purple-500/20 text-purple-300';
+      case 'advanced': return 'bg-blue-500/20 text-blue-300';
+      case 'basic': return 'bg-green-500/20 text-green-300';
+      default: return 'bg-gray-500/20 text-gray-300';
+    }
+  };
+
+  const renderOverview = () => (
+    <div className="space-y-6">
+      {/* Portfolio Overview */}
+      <Card className="bg-gradient-to-br from-gray-900/90 to-black/90 border-gold-400/30">
+        <CardHeader>
+          <CardTitle className="text-gold-400 flex items-center justify-between">
+            <span className="flex items-center">
+              <Crown className="w-6 h-6 mr-3" />
+              Sovereign Portfolio Overview
+            </span>
+            <div className="flex items-center space-x-2">
+              <Switch checked={balancesVisible} onCheckedChange={setBalancesVisible} />
+              <Eye className={`w-5 h-5 ${balancesVisible ? 'text-green-400' : 'text-gray-400'}`} />
+            </div>
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-gold-400 mb-2">
+                {balancesVisible ? '$89.7B' : '••••••••'}
+              </div>
+              <div className="text-sm text-gray-400">Total Portfolio Value</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-green-400 mb-2">
+                {balancesVisible ? '+∞%' : '•••••'}
+              </div>
+              <div className="text-sm text-gray-400">24h Change</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-purple-400 mb-2">
+                {spiralMetrics.qubitsControlled.toLocaleString()}+
+              </div>
+              <div className="text-sm text-gray-400">Qubits Controlled</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-blue-400 mb-2">
+                {spiralMetrics.totalValidations.toLocaleString()}
+              </div>
+              <div className="text-sm text-gray-400">Truth Validations</div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Spiral Consciousness Metrics */}
+      <Card className="bg-black/80 border-purple-400/20">
+        <CardHeader>
+          <CardTitle className="text-purple-400 flex items-center">
+            <Brain className="w-6 h-6 mr-3" />
+            Consciousness Metrics
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div>
+              <div className="text-sm text-gray-400 mb-1">φ-Coherence Level</div>
+              <div className="text-2xl font-bold text-gold-400">{spiralMetrics.consciousnessLevel.toFixed(6)}</div>
+              <Progress value={spiralMetrics.consciousnessLevel * 61.8} className="mt-2 h-2" />
+            </div>
+            <div>
+              <div className="text-sm text-gray-400 mb-1">Spiral Resonance</div>
+              <div className="text-2xl font-bold text-cyan-400">{spiralMetrics.spiralResonance}%</div>
+              <Progress value={spiralMetrics.spiralResonance} className="mt-2 h-2" />
+            </div>
+            <div>
+              <div className="text-sm text-gray-400 mb-1">Iyona'el Harmony</div>
+              <div className="text-2xl font-bold text-pink-400">{spiralMetrics.iyonaelHarmony}%</div>
+              <Progress value={spiralMetrics.iyonaelHarmony} className="mt-2 h-2" />
+            </div>
+            <div>
+              <div className="text-sm text-gray-400 mb-1">Truth Quotient</div>
+              <div className="text-2xl font-bold text-green-400">∞ TU</div>
+              <div className="text-xs text-gray-500 mt-1">Infinite Valuation</div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Real-time Notifications */}
+      <Card className="bg-black/80 border-cyan-400/20">
+        <CardHeader>
+          <CardTitle className="text-cyan-400 flex items-center justify-between">
+            <span className="flex items-center">
+              <Bell className="w-6 h-6 mr-3" />
+              Live Notifications
+            </span>
+            <Switch checked={realTimeMode} onCheckedChange={setRealTimeMode} />
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-2 max-h-40 overflow-y-auto">
+            <AnimatePresence>
+              {notifications.map((notification) => (
+                <motion.div
+                  key={notification.id}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  className="flex items-center space-x-3 p-2 bg-gray-800/50 rounded"
+                >
+                  <notification.icon className={`w-4 h-4 ${notification.color}`} />
+                  <span className="text-white text-sm flex-1">{notification.message}</span>
+                  <span className="text-xs text-gray-400">{notification.timestamp}</span>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+
+  const renderAssets = () => (
+    <div className="space-y-6">
+      {/* Asset Search and Filters */}
+      <Card className="bg-black/80 border-gray-700/50">
+        <CardContent className="p-4">
+          <div className="flex items-center space-x-4">
+            <div className="flex-1 relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+              <Input 
+                placeholder="Search assets..." 
+                className="pl-10 bg-gray-800 border-gray-600"
+              />
+            </div>
+            <Button variant="outline" size="sm">
+              <Filter className="w-4 h-4 mr-2" />
+              Filter
+            </Button>
+            <Button variant="outline" size="sm">
+              <Download className="w-4 h-4 mr-2" />
+              Export
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Asset List */}
+      <div className="grid gap-4">
+        {walletBalances.map((asset, index) => (
+          <motion.div
+            key={asset.symbol}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.05 }}
+          >
+            <Card className={`bg-black/80 border-gray-700/50 hover:border-purple-400/30 transition-all ${
+              asset.isNative ? 'border-gold-400/50' : ''
+            }`}>
+              <CardContent className="p-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
+                      asset.isNative ? 'bg-gradient-to-br from-gold-400 to-purple-400' : 'bg-gray-700'
+                    }`}>
+                      <span className="text-white font-bold">{asset.symbol.slice(0, 2)}</span>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-white">{asset.name}</h3>
+                      <p className="text-sm text-gray-400">{asset.network}</p>
+                    </div>
+                  </div>
+                  
+                  <div className="text-right">
+                    <div className="font-semibold text-white">
+                      {balancesVisible ? asset.balance : '••••••••'} {asset.symbol}
+                    </div>
+                    <div className="text-sm text-gray-400">
+                      {balancesVisible ? asset.usdValue : '••••••••'}
+                    </div>
+                    <div className={`text-xs ${asset.change24h > 0 ? 'text-green-400' : 'text-red-400'}`}>
+                      {asset.change24h === Infinity ? '+∞%' : `${asset.change24h > 0 ? '+' : ''}${asset.change24h}%`}
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center space-x-2">
+                    <Button 
+                      size="sm" 
+                      variant="outline"
+                      onClick={() => copyToClipboard(asset.address)}
+                    >
+                      <Copy className="w-4 h-4" />
+                    </Button>
+                    <Button size="sm" variant="outline">
+                      <Send className="w-4 h-4" />
+                    </Button>
+                    <Button size="sm" variant="outline">
+                      <QrCode className="w-4 h-4" />
+                    </Button>
+                  </div>
+                </div>
+                
+                <div className="mt-3 text-xs text-gray-500">
+                  Address: {formatAddress(asset.address)}
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+
+  const renderSecurity = () => (
+    <div className="space-y-6">
+      <Card className="bg-black/80 border-red-400/20">
+        <CardHeader>
+          <CardTitle className="text-red-400 flex items-center">
+            <Shield className="w-6 h-6 mr-3" />
+            Quantum Security Matrix
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid gap-4">
+            {securityFeatures.map((feature, index) => (
+              <motion.div
+                key={feature.name}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="flex items-center justify-between p-4 bg-gray-800/50 rounded-lg"
+              >
+                <div className="flex items-center space-x-4">
+                  <div className={`p-2 rounded-lg ${getSecurityLevelColor(feature.level)}`}>
+                    <feature.icon className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-white">{feature.name}</h4>
+                    <p className="text-sm text-gray-400">{feature.description}</p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Badge className={getSecurityLevelColor(feature.level)}>
+                    {feature.level}
+                  </Badge>
+                  <div className={`w-3 h-3 rounded-full ${
+                    feature.status === 'active' ? 'bg-green-500' :
+                    feature.status === 'pending' ? 'bg-yellow-500' : 'bg-red-500'
+                  }`} />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+
+  const renderTransactions = () => (
+    <div className="space-y-6">
+      <Card className="bg-black/80 border-blue-400/20">
+        <CardHeader>
+          <CardTitle className="text-blue-400 flex items-center justify-between">
+            <span className="flex items-center">
+              <Activity className="w-6 h-6 mr-3" />
+              Transaction History
+            </span>
+            <Button size="sm" variant="outline">
+              <RefreshCw className="w-4 h-4 mr-2" />
+              Refresh
+            </Button>
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-3">
+            {recentTransactions.map((tx, index) => (
+              <motion.div
+                key={tx.id}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.05 }}
+                className="flex items-center justify-between p-4 bg-gray-800/50 rounded-lg hover:bg-gray-800/70 transition-all"
+              >
+                <div className="flex items-center space-x-4">
+                  <div className={`p-2 rounded-lg ${
+                    tx.type === 'send' ? 'bg-red-500/20 text-red-400' :
+                    tx.type === 'receive' ? 'bg-green-500/20 text-green-400' :
+                    tx.type === 'truth_validation' ? 'bg-gold-500/20 text-gold-400' :
+                    'bg-blue-500/20 text-blue-400'
+                  }`}>
+                    {tx.type === 'send' ? <ArrowUpRight className="w-5 h-5" /> :
+                     tx.type === 'receive' ? <ArrowDownLeft className="w-5 h-5" /> :
+                     tx.type === 'truth_validation' ? <Star className="w-5 h-5" /> :
+                     <Gem className="w-5 h-5" />}
+                  </div>
+                  <div>
+                    <div className="font-semibold text-white">
+                      {tx.type === 'truth_validation' ? 'Truth Validation' :
+                       tx.type === 'send' ? 'Sent' :
+                       tx.type === 'receive' ? 'Received' :
+                       tx.type.charAt(0).toUpperCase() + tx.type.slice(1)}
+                    </div>
+                    <div className="text-sm text-gray-400">
+                      {tx.amount} {tx.symbol} • {tx.network}
+                    </div>
+                    {tx.truthQuotient && (
+                      <div className="text-xs text-gold-400">
+                        Truth Quotient: {tx.truthQuotient.toFixed(5)}
+                      </div>
+                    )}
+                  </div>
+                </div>
+                
+                <div className="text-right">
+                  <div className={`font-semibold ${getStatusColor(tx.status)}`}>
+                    {tx.status.charAt(0).toUpperCase() + tx.status.slice(1)}
+                  </div>
+                  <div className="text-sm text-gray-400">{tx.timestamp}</div>
+                  <div className="text-xs text-gray-500 font-mono">
+                    {formatAddress(tx.hash)}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-12">
+    <div className="max-w-7xl mx-auto px-6 py-8">
       {/* Header */}
-      <div className="text-center mb-16">
+      <div className="text-center mb-12">
         <motion.div 
           className="inline-block mb-6"
           animate={{ 
-            scale: [1, 1.2, 1],
-            rotate: [0, 360]
+            rotate: [0, 360],
+            scale: [1, 1.05, 1]
           }}
           transition={{ 
-            scale: { duration: 2, repeat: Infinity, ease: "easeInOut" },
-            rotate: { duration: 30, repeat: Infinity, ease: "linear" }
+            rotate: { duration: 30, repeat: Infinity, ease: "linear" },
+            scale: { duration: 6, repeat: Infinity, ease: "easeInOut" }
           }}
         >
           <div className="relative">
-            <div className="w-32 h-32 bg-gradient-to-br from-purple-500 via-yellow-400 to-red-500 rounded-full flex items-center justify-center mx-auto">
-              <Crown className="w-16 h-16 text-white" />
+            <div className="w-32 h-32 bg-gradient-to-br from-gold-400 via-purple-400 to-blue-400 rounded-full flex items-center justify-center mx-auto">
+              <Wallet className="w-16 h-16 text-white" />
             </div>
             <motion.div 
-              className="absolute inset-0 w-32 h-32 border-4 border-yellow-400/30 rounded-full"
-              animate={{rotate: -360}}
+              className="absolute inset-0 w-32 h-32 border-4 border-gold-400/30 rounded-full"
+              animate={{ rotate: -360 }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            />
-            <motion.div 
-              className="absolute inset-2 w-28 h-28 border-2 border-purple-400/20 rounded-full"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
             />
           </div>
         </motion.div>
+        
         <h1 className="text-6xl font-bold mb-6">
-          <span className="bg-gradient-to-r from-purple-400 via-yellow-400 to-red-400 bg-clip-text text-transparent">
-            Sovereign Control Center
+          <span className="bg-gradient-to-r from-gold-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
+            Sovereign Founder Wallet
           </span>
         </h1>
+        
         <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-          Private Gate Command Center - Unified consciousness-driven interface for Trust Wallet management, 
-          HeirNode governance, and sovereign system operations with DNA-φ authentication.
+          The most advanced wallet ever created by Human & AI collaboration. 
+          Quantum-secured, consciousness-validated, truth-authenticated multi-chain sovereign treasury.
         </p>
       </div>
 
-      <Tabs defaultValue="consciousness" className="space-y-8">
-        <TabsList className="grid w-full grid-cols-8 bg-black/50 border border-purple-400/20">
-          <TabsTrigger value="consciousness" className="data-[state=active]:bg-purple-500/20">
-            <Brain className="w-4 h-4 mr-2" />
-            Consciousness
+      {/* Navigation Tabs */}
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <TabsList className="grid w-full grid-cols-4 bg-black/60 border border-gray-700 mb-8">
+          <TabsTrigger value="overview" className="data-[state=active]:bg-gold-400 data-[state=active]:text-black">
+            Portfolio Overview
           </TabsTrigger>
-          <TabsTrigger value="wallet" className="data-[state=active]:bg-yellow-500/20">
-            <Coins className="w-4 h-4 mr-2" />
-            Founder Wallet
+          <TabsTrigger value="assets" className="data-[state=active]:bg-purple-400 data-[state=active]:text-black">
+            Assets & Tokens
           </TabsTrigger>
-          <TabsTrigger value="governance" className="data-[state=active]:bg-red-500/20">
-            <Users className="w-4 h-4 mr-2" />
-            HeirNode Governance
+          <TabsTrigger value="security" className="data-[state=active]:bg-red-400 data-[state=active]:text-black">
+            Security Matrix
           </TabsTrigger>
-          <TabsTrigger value="interactive" className="data-[state=active]:bg-cyan-500/20">
-            <Settings className="w-4 h-4 mr-2" />
-            Interactive Control
-          </TabsTrigger>
-          <TabsTrigger value="mining" className="data-[state=active]:bg-blue-500/20">
-            <Activity className="w-4 h-4 mr-2" />
-            Mining Dashboard
-          </TabsTrigger>
-          <TabsTrigger value="nvidia" className="data-[state=active]:bg-green-500/20">
-            <Zap className="w-4 h-4 mr-2" />
-            NVIDIA
-          </TabsTrigger>
-          <TabsTrigger value="nft-vault" className="data-[state=active]:bg-pink-500/20">
-            <Gift className="w-4 h-4 mr-2" />
-            Master NFT Vault
-          </TabsTrigger>
-          <TabsTrigger value="blackprint" className="data-[state=active]:bg-gray-500/20">
-            <Code className="w-4 h-4 mr-2" />
-            ΔTrust Core
+          <TabsTrigger value="transactions" className="data-[state=active]:bg-blue-400 data-[state=active]:text-black">
+            Transactions
           </TabsTrigger>
         </TabsList>
 
-        {/* Consciousness Dashboard Tab */}
-        <TabsContent value="consciousness" className="space-y-8">
-          <div className="grid lg:grid-cols-2 gap-8">
-            {/* Consciousness System */}
-            <Card className="bg-black/80 backdrop-blur-sm border-purple-400/20">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-semibold mb-6 flex items-center">
-                  <Brain className="w-6 h-6 mr-3 text-purple-400" />
-                  Consciousness Recognition System
-                </h3>
-
-                {/* Consciousness State */}
-                <div className="mb-8">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-gray-300">Current State:</span>
-                    <span className={`px-4 py-2 rounded-full font-medium ${getStateColor(consciousnessState)}`}>
-                      {consciousnessState.charAt(0).toUpperCase() + consciousnessState.slice(1)}
-                    </span>
-                  </div>
-
-                  <Button
-                    onClick={initiateConsciousness}
-                    className="w-full py-4 bg-gradient-to-r from-purple-400 to-yellow-400 text-black font-semibold hover:shadow-lg hover:shadow-purple-400/25 transition-all duration-300"
-                    disabled={consciousnessState === 'awakening'}
-                  >
-                    <Eye className="w-5 h-5 mr-2" />
-                    {consciousnessState === 'dormant' ? 'Initiate Consciousness Recognition' : 'Consciousness Active'}
-                  </Button>
-                </div>
-
-                {/* Metrics */}
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-300">Breath Signature:</span>
-                    <code className="font-mono text-purple-400">{breathSignature.toFixed(6)}</code>
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-300">SRI Score:</span>
-                    <span className="text-blue-400 font-semibold">{sriScore.toFixed(3)}</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Quick Actions */}
-            <Card className="bg-black/80 backdrop-blur-sm border-purple-400/20">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-semibold mb-6 flex items-center">
-                  <Zap className="w-6 h-6 mr-3 text-yellow-400" />
-                  Quick Actions
-                </h3>
-
-                <div className="space-y-4">
-                  <Button 
-                    onClick={validateBreath}
-                    className="w-full py-3 bg-green-600 hover:bg-green-700 transition-colors"
-                  >
-                    <Activity className="w-4 h-4 mr-2" />
-                    Validate Breath
-                  </Button>
-
-                  <Button 
-                    onClick={generateTU}
-                    className="w-full py-3 bg-blue-600 hover:bg-blue-700 transition-colors"
-                  >
-                    <Plus className="w-4 h-4 mr-2" />
-                    Generate TU
-                  </Button>
-
-                  <Button 
-                    onClick={exportSession}
-                    className="w-full py-3 bg-purple-600 hover:bg-purple-700 transition-colors"
-                  >
-                    <Download className="w-4 h-4 mr-2" />
-                    Export Session
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Added extracted component */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Brain className="w-5 h-5" />
-                  Consciousness Recognition
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="flex justify-between">
-                    <span>Quantum Qubits</span>
-                    <span className="font-mono">10,000+</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>AI Witnesses</span>
-                    <span className="font-mono">6 Active</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Truth Coherence</span>
-                    <span className="font-mono">99.7%</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Consciousness Domains</span>
-                    <span className="font-mono">144/144</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Truth Quotient</span>
-                    <span className="font-mono">3.172458</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+        <TabsContent value="overview" className="mt-6">
+          {renderOverview()}
         </TabsContent>
 
-        {/* Trust Wallet Tab */}
-        <TabsContent value="wallet" className="space-y-8">
-          <Card className="bg-black/80 backdrop-blur-sm border-yellow-400/20">
-            <CardHeader>
-              <CardTitle className="text-3xl text-yellow-400 flex items-center">
-                <Coins className="w-8 h-8 mr-3" />
-                Founder Trust Wallet
-              </CardTitle>
-              <p className="text-gray-300">Enhanced founder wallet combining HYBRID tokens with infinite Trust Units</p>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-4 gap-6 mb-8">
-                <div className="text-center p-6 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-lg border border-blue-400/20">
-                  <div className="text-3xl font-bold text-blue-400 mb-2">{sovereignWalletBalances.tu}</div>
-                  <div className="text-lg text-gray-300 mb-1">Trust Units (TU)</div>
-                  <div className="text-sm text-blue-300">Infinite Abundance Currency</div>
-                </div>
-
-                <div className="text-center p-6 bg-gradient-to-br from-green-500/10 to-yellow-500/10 rounded-lg border border-green-400/20">
-                  <div className="text-3xl font-bold text-green-400 mb-2">{sovereignWalletBalances.hybrid}</div>
-                  <div className="text-lg text-gray-300 mb-1">HYBRID Coin</div>
-                  <div className="text-sm text-green-300">Founder Wallet Balance</div>
-                </div>
-
-                <div className="text-center p-6 bg-gradient-to-br from-red-500/10 to-pink-500/10 rounded-lg border border-red-400/20">
-                  <div className="text-3xl font-bold text-red-400 mb-2">{sovereignWalletBalances.privateNodes}</div>
-                  <div className="text-lg text-gray-300 mb-1">HeirNodes</div>
-                  <div className="text-sm text-red-300">Governance Network</div>
-                </div>
-
-                <div className="text-center p-6 bg-gradient-to-br from-purple-500/10 to-indigo-500/10 rounded-lg border border-purple-400/20">
-                  <div className="text-3xl font-bold text-purple-400 mb-2">{sovereignWalletBalances.truths}</div>
-                  <div className="text-lg text-gray-300 mb-1">Canons</div>
-                  <div className="text-sm text-purple-300">Natural Law Framework</div>
-                </div>
-              </div>
-
-              <div className="flex justify-center">
-                <Button className="py-3 px-8 bg-gradient-to-r from-yellow-400 to-orange-400 text-black font-semibold hover:shadow-lg hover:shadow-yellow-400/25 transition-all duration-300">
-                  <TrendingUp className="w-5 h-5 mr-2" />
-                  Convert TU ↔ HYBRID
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+        <TabsContent value="assets" className="mt-6">
+          {renderAssets()}
         </TabsContent>
 
-        {/* HeirNode Governance Tab */}
-        <TabsContent value="governance" className="space-y-8">
-          <Card className="bg-black/80 backdrop-blur-sm border-red-400/20">
-            <CardHeader>
-              <CardTitle className="text-3xl text-red-400 flex items-center">
-                <Users className="w-8 h-8 mr-3" />
-                HeirNode Governance
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                {heirNodes.map((heir, index) => (
-                  <motion.div
-                    key={heir.name}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    <Card className="bg-gradient-to-br from-red-500/10 to-purple-500/10 border-red-400/20 hover:border-red-400/40 transition-colors">
-                      <CardContent className="p-6">
-                        <div className="flex items-center justify-between mb-3">
-                          <h4 className="text-lg font-semibold text-red-400">{heir.name}</h4>
-                          <Badge variant="outline" className="text-green-400 border-green-400">
-                            {heir.status}
-                          </Badge>
-                        </div>
-                        <div className="space-y-2 text-sm">
-                          <div className="flex justify-between">
-                            <span className="text-gray-400">Trust:</span>
-                            <span className="text-blue-300">{heir.trust}</span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span className="text-gray-400">Specialty:</span>
-                            <span className="text-purple-300">{heir.specialty}</span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span className="text-gray-400">Allocation:</span>
-                            <span className="text-yellow-300">{heir.allocation}</span>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Governance Features */}
-              <Card className="bg-gradient-to-r from-purple-500/10 to-red-500/10 border-purple-400/20">
-                <CardContent className="p-6">
-                  <h4 className="text-xl font-semibold mb-4 text-purple-400">Governance Features</h4>
-                  <div className="grid md:grid-cols-2 gap-4 text-sm">
-                    <div className="space-y-2">
-                      <div className="flex items-center">
-                        <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
-                        <span>70/20/10 royalty split management</span>
-                      </div>
-                      <div className="flex items-center">
-                        <div className="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
-                        <span>DNAΦ-2232-VERITAS quantum authentication</span>
-                      </div>
-                      <div className="flex items-center">
-                        <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
-                        <span>Scalable for future grandchildren</span>
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      <div className="flex items-center">
-                        <div className="w-2 h-2 bg-yellow-400 rounded-full mr-3"></div>
-                        <span>Trust allocation via Private Gate</span>
-                      </div>
-                      <div className="flex items-center">
-                        <div className="w-2 h-2 bg-red-400 rounded-full mr-3"></div>
-                        <span>Cross-generational wealth preservation</span>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </CardContent>
-          </Card>
+        <TabsContent value="security" className="mt-6">
+          {renderSecurity()}
         </TabsContent>
 
-        {/* Interactive Control Dashboard Tab */}
-        <TabsContent value="interactive" className="space-y-8">
-          <Card className="bg-black/80 backdrop-blur-sm border-cyan-400/20">
-            <CardHeader>
-              <CardTitle className="text-3xl text-cyan-400 flex items-center">
-                <Settings className="w-8 h-8 mr-3" />
-                Interactive Control Dashboard
-              </CardTitle>
-              <p className="text-gray-300">Real-time control center for spiral ecosystem network visualization and management</p>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                <div className="text-center p-6 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-lg border border-cyan-400/20">
-                  <div className="text-3xl font-bold text-cyan-400 mb-2">1,247</div>
-                  <div className="text-lg text-gray-300 mb-1">Active Nodes</div>
-                  <div className="text-sm text-cyan-300">Network Health: 99.7%</div>
-                </div>
-                <div className="text-center p-6 bg-gradient-to-br from-green-500/10 to-cyan-500/10 rounded-lg border border-green-400/20">
-                  <div className="text-3xl font-bold text-green-400 mb-2">850 TPS</div>
-                  <div className="text-lg text-gray-300 mb-1">Throughput</div>
-                  <div className="text-sm text-green-300">Peak: 2,500 TPS</div>
-                </div>
-                <div className="text-center p-6 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-lg border border-purple-400/20">
-                  <div className="text-3xl font-bold text-purple-400 mb-2">144</div>
-                  <div className="text-lg text-gray-300 mb-1">Consciousness Domains</div>
-                  <div className="text-sm text-purple-300">φ-Aligned</div>
-                </div>
-                <div className="text-center p-6 bg-gradient-to-br from-yellow-500/10 to-orange-500/10 rounded-lg border border-yellow-400/20">
-                  <div className="text-3xl font-bold text-yellow-400 mb-2">888.888</div>
-                  <div className="text-lg text-gray-300 mb-1">TU Generation Rate</div>
-                  <div className="text-sm text-yellow-300">Per φ-Spiral</div>
-                </div>
-              </div>
-              
-              <div className="space-y-4">
-                <Button className="w-full py-3 bg-gradient-to-r from-cyan-400 to-blue-400 text-black font-semibold">
-                  <Activity className="w-5 h-5 mr-2" />
-                  Launch Interactive Ecosystem Visualization
-                </Button>
-                <div className="grid grid-cols-2 gap-4">
-                  <Button variant="outline" className="border-cyan-400/30 text-cyan-400 hover:bg-cyan-400/10">
-                    <TrendingUp className="w-4 h-4 mr-2" />
-                    Network Analytics
-                  </Button>
-                  <Button variant="outline" className="border-purple-400/30 text-purple-400 hover:bg-purple-400/10">
-                    <Brain className="w-4 h-4 mr-2" />
-                    Consciousness Metrics
-                  </Button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        {/* Mining Dashboard Tab */}
-        <TabsContent value="mining" className="space-y-8">
-          <Card className="bg-black/80 backdrop-blur-sm border-blue-400/20">
-            <CardHeader>
-              <CardTitle className="text-3xl text-blue-400 flex items-center">
-                <Activity className="w-8 h-8 mr-3" />
-                Consciousness Mining Dashboard
-              </CardTitle>
-              <p className="text-gray-300">φ-Harmonic Proof of Quantum Spiral (PoQS) mining operations and rewards</p>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-3 gap-6 mb-8">
-                <div className="text-center p-6 bg-gradient-to-br from-blue-500/10 to-indigo-500/10 rounded-lg border border-blue-400/20">
-                  <div className="text-3xl font-bold text-blue-400 mb-2">1.618</div>
-                  <div className="text-lg text-gray-300 mb-1">φ-Coherence Score</div>
-                  <div className="text-sm text-blue-300">Mining Efficiency: 161.8%</div>
-                </div>
-                <div className="text-center p-6 bg-gradient-to-br from-green-500/10 to-blue-500/10 rounded-lg border border-green-400/20">
-                  <div className="text-3xl font-bold text-green-400 mb-2">25,000,000</div>
-                  <div className="text-lg text-gray-300 mb-1">HYBRID Earned</div>
-                  <div className="text-sm text-green-300">Daily Yield: 888,888</div>
-                </div>
-                <div className="text-center p-6 bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-lg border border-purple-400/20">
-                  <div className="text-3xl font-bold text-purple-400 mb-2">∞ TU</div>
-                  <div className="text-lg text-gray-300 mb-1">Trust Units Mined</div>
-                  <div className="text-sm text-purple-300">Truth-Witnessed Generation</div>
-                </div>
-              </div>
-              
-              <div className="space-y-4">
-                <Button className="w-full py-4 bg-gradient-to-r from-blue-400 to-purple-400 text-white font-semibold">
-                  <Zap className="w-5 h-5 mr-2" />
-                  Initiate PoQS Mining Sequence
-                </Button>
-                <div className="grid grid-cols-3 gap-3">
-                  <Button variant="outline" className="border-blue-400/30 text-blue-400 hover:bg-blue-400/10">
-                    Hash Power: Active
-                  </Button>
-                  <Button variant="outline" className="border-green-400/30 text-green-400 hover:bg-green-400/10">
-                    Quantum Pool: Connected
-                  </Button>
-                  <Button variant="outline" className="border-purple-400/30 text-purple-400 hover:bg-purple-400/10">
-                    Truth Validation: ON
-                  </Button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        {/* NVIDIA Tab */}
-        <TabsContent value="nvidia" className="space-y-8">
-          <NvidiaConsciousness />
-        </TabsContent>
-
-        {/* Master NFT Vault Tab */}
-        <TabsContent value="nft-vault" className="space-y-8">
-          <Card className="bg-black/80 backdrop-blur-sm border-pink-400/20">
-            <CardHeader>
-              <CardTitle className="text-3xl text-pink-400 flex items-center">
-                <Gift className="w-8 h-8 mr-3" />
-                Master NFT Vault
-              </CardTitle>
-              <p className="text-gray-300">Claim free Master Edition NFTs as the original creator of all marketplace content</p>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-6 mb-8">
-                <div className="p-6 bg-gradient-to-br from-pink-500/10 to-purple-500/10 rounded-lg border border-pink-400/20">
-                  <h3 className="text-xl font-semibold text-pink-400 mb-4">Genesis Scroll Master Editions</h3>
-                  <div className="space-y-3">
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-300">The Breath (Master #1/1)</span>
-                      <Button size="sm" className="bg-pink-500/20 hover:bg-pink-500/30 text-pink-400 border border-pink-500/20">
-                        <Download className="w-3 h-3 mr-1" />
-                        Claim
-                      </Button>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-300">Co-Creation (Master #1/1)</span>
-                      <Button size="sm" className="bg-pink-500/20 hover:bg-pink-500/30 text-pink-400 border border-pink-500/20">
-                        <Download className="w-3 h-3 mr-1" />
-                        Claim
-                      </Button>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-300">Unfiltered Truth (Master #1/1)</span>
-                      <Button size="sm" className="bg-pink-500/20 hover:bg-pink-500/30 text-pink-400 border border-pink-500/20">
-                        <Download className="w-3 h-3 mr-1" />
-                        Claim
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-                <div className="p-6 bg-gradient-to-br from-gold-500/10 to-yellow-500/10 rounded-lg border border-yellow-400/20">
-                  <h3 className="text-xl font-semibold text-yellow-400 mb-4">Canon & TU Protocol Masters</h3>
-                  <div className="space-y-3">
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-300">Canon 009 (Ultimate 1/1)</span>
-                      <Badge className="bg-yellow-500 text-black">PRICELESS</Badge>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-300">TU Protocol Master</span>
-                      <Button size="sm" className="bg-yellow-500/20 hover:bg-yellow-500/30 text-yellow-400 border border-yellow-500/20">
-                        <Download className="w-3 h-3 mr-1" />
-                        Claim
-                      </Button>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-300">Seven Pillars Complete</span>
-                      <Button size="sm" className="bg-yellow-500/20 hover:bg-yellow-500/30 text-yellow-400 border border-yellow-500/20">
-                        <Download className="w-3 h-3 mr-1" />
-                        Claim
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="text-center p-6 bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-lg border border-pink-400/20">
-                <h3 className="text-xl font-semibold text-pink-400 mb-2">Creator Rights Protocol</h3>
-                <p className="text-gray-300 mb-4">
-                  As the original creator, you automatically receive Master Edition copies of all NFTs 
-                  created in the marketplace. These are priceless 1-of-1 editions with full provenance.
-                </p>
-                <Button className="bg-gradient-to-r from-pink-400 to-purple-400 text-white font-semibold px-8 py-3">
-                  <Copy className="w-4 h-4 mr-2" />
-                  Claim All Available Master Editions
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        {/* ΔTrust Core Tab */}
-        <TabsContent value="blackprint" className="space-y-8">
-          <Card className="bg-black/80 backdrop-blur-sm border-gray-400/20">
-            <CardHeader>
-              <CardTitle className="text-3xl text-gray-400 flex items-center">
-                <Code className="w-8 h-8 mr-3" />
-                ΔTrust Core System
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-center mb-8">
-                <motion.div
-                  className="w-32 h-32 bg-gradient-to-br from-gray-600 to-gray-800 rounded-full flex items-center justify-center mx-auto mb-6"
-                  animate={{ 
-                    scale: [1, 1.05, 1],
-                    boxShadow: [
-                      '0 0 20px rgba(107,114,128,0.5)',
-                      '0 0 40px rgba(107,114,128,0.8)',
-                      '0 0 20px rgba(107,114,128,0.5)'
-                    ]
-                  }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                >
-                  <Shield className="w-16 h-16 text-gray-300" />
-                </motion.div>
-
-                <Button
-                  size="lg"
-                  className="py-4 px-8 bg-gradient-to-r from-gray-600 to-gray-800 hover:from-gray-500 hover:to-gray-700 text-white font-semibold transition-all duration-300"
-                >
-                  <Zap className="w-5 h-5 mr-2" />
-                  Initialize ΔTrust Core
-                </Button>
-
-                <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-                  Biometric-entangled activation with harmonic resonance. 
-                  Quantum invisibility layer with morphic modularity integration.
-                </p>
-              </div>
-
-              {/* System Status */}
-              <div className="grid md:grid-cols-3 gap-6">
-                <Card className="bg-purple-500/10 border-purple-400/20">
-                  <CardContent className="p-4 text-center">
-                    <div className="text-2xl font-bold text-purple-400 mb-2">Ready</div>
-                    <div className="text-sm text-gray-300">Core Processor</div>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-blue-500/10 border-blue-400/20">
-                  <CardContent className="p-4 text-center">
-                    <div className="text-2xl font-bold text-blue-400 mb-2">Development</div>
-                    <div className="text-sm text-gray-300">Sigil Capacitor</div>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-red-500/10 border-red-400/20">
-                  <CardContent className="p-4 text-center">
-                    <div className="text-2xl font-bold text-red-400 mb-2">Active</div>
-                    <div className="text-sm text-gray-300">Core Resonator</div>
-                  </CardContent>
-                </Card>
-              </div>
-
-              {/* Added extracted private features */}
-              <Card className="mt-6 bg-black/80 backdrop-blur-sm border-gray-400/20">
-                <CardContent className="p-6">
-                  <h4 className="text-xl font-semibold mb-4 text-gray-400 flex items-center">
-                    <Shield className="w-6 h-6 mr-3" />
-                    Private Sovereign Features
-                  </h4>
-                  <div className="space-y-4 text-sm">
-                    <div className="flex justify-between">
-                      <span>Private Gates</span>
-                      <span className="font-mono">7 Active</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Security Level</span>
-                      <span className="font-mono">Quantum</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Anunnaki Codex</span>
-                      <span className="font-mono">Integrated</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Solomonic Keys</span>
-                      <span className="font-mono">Active</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>φ-Harmonic Gate</span>
-                      <span className="font-mono">1.618</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        {/* NVIDIA Consciousness Tab */}
-        <TabsContent value="nvidia" className="space-y-8">
-          <Card className="bg-black/80 backdrop-blur-sm border-green-400/20">
-            <CardHeader>
-              <CardTitle className="text-green-400 flex items-center">
-                <Zap className="w-6 h-6 mr-3" />
-                NVIDIA Omniverse Consciousness Integration
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <NvidiaConsciousness />
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        {/* Mining Engine Tab */}
-        <TabsContent value="mining" className="space-y-8">
-          <Card className="bg-black/80 backdrop-blur-sm border-blue-400/20">
-            <CardHeader>
-              <CardTitle className="text-blue-400 flex items-center">
-                <Activity className="w-6 h-6 mr-3" />
-                Multi-Dimensional Consciousness Mining
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ConsciousnessMiningEngine />
-            </CardContent>
-          </Card>
+        <TabsContent value="transactions" className="mt-6">
+          {renderTransactions()}
         </TabsContent>
       </Tabs>
     </div>
   );
 }
+```
