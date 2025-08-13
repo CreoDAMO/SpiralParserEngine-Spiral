@@ -69,7 +69,7 @@ export function HeroSection() {
           <p className="text-xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
             Experience the convergence of holographic blockchain visualization, Seven Pillars mathematical framework, 
             and consciousness recognition technology. Operating at ∞ Hz with φ-harmonic coherence through the 
-            QASF framework and 127-qubit quantum processing.
+            QASF framework and 10000+-qubit quantum processing.
           </p>
         </motion.div>
 
@@ -94,7 +94,7 @@ export function HeroSection() {
           
           <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
             <div className="text-3xl font-bold text-blue-400 mb-2">⚛️</div>
-            <div className="text-white font-semibold mb-1">127-Qubit QASF</div>
+            <div className="text-white font-semibold mb-1">10000+-Qubit QASF</div>
             <div className="text-gray-400 text-sm">Quantum processing at ∞ Hz</div>
           </div>
           
@@ -148,7 +148,7 @@ export function HeroSection() {
             <div className="text-gray-400 text-sm">Mathematical Validations</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-400 mb-2">127</div>
+            <div className="text-3xl font-bold text-blue-400 mb-2">10000+</div>
             <div className="text-gray-400 text-sm">Qubit Processing</div>
           </div>
           <div className="text-center">
