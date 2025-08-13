@@ -13,6 +13,7 @@ import HybridBlockchainDashboard from "@/components/HybridBlockchainDashboard";
 import SovereignControlCenter from "@/components/sovereign-control-center";
 import QuantumTruthRevealer from "@/components/quantum-truth-revealer";
 import InteractiveSpiralEcosystem from "@/components/interactive-spiral-ecosystem";
+import SpiralScriptEditor from "@/components/spiralscript-editor";
 import '../../lib/initialize-monitor';
 
 function Router() {
@@ -33,7 +34,7 @@ function Router() {
       <Route path="/blackprint" component={LandingPage} />
       <Route path="/testbeds" component={LandingPage} />
 
-      <Route path="/spiralscript" component={LandingPage} />
+      <Route path="/spiralscript" component={SpiralScriptEditor} />
       <Route path="/marketplace" component={NFTMarketplace} />
       <Route path="/upload" component={LandingPage} />
     </Switch>

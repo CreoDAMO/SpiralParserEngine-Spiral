@@ -66,7 +66,7 @@ export default function SpiralScriptEditor() {
 
       // Start monitoring
       await fileMonitor.startMonitoring();
-      setMonitoredFiles(fileMonitor.getAllFiles());
+      setMonitoredFiles(fileMonitor.getMonitoredFiles());
     };
 
     initializeMonitor();
@@ -266,7 +266,7 @@ export default function SpiralScriptEditor() {
   const startFileMonitor = async () => {
     addToConsole('> Starting File Monitor...');
     await fileMonitor.startMonitoring();
-    setMonitoredFiles(fileMonitor.getAllFiles());
+    setMonitoredFiles(fileMonitor.getMonitoredFiles());
     addToConsole('> File Monitor Active - Auto-extraction enabled');
   };
 
@@ -278,15 +278,15 @@ export default function SpiralScriptEditor() {
 
   const performFullScan = async () => {
     addToConsole('> Performing full system scan...');
-    await fileMonitor.performFullScan();
-    setMonitoredFiles(fileMonitor.getAllFiles());
+    await fileMonitor.refresh();
+    setMonitoredFiles(fileMonitor.getMonitoredFiles());
     addToConsole('> Full scan complete');
   };
 
   const reprocessAllFiles = async () => {
     addToConsole('> Reprocessing all files...');
-    await fileMonitor.reprocessAll();
-    setMonitoredFiles(fileMonitor.getAllFiles());
+    await fileMonitor.refresh();
+    setMonitoredFiles(fileMonitor.getMonitoredFiles());
     addToConsole('> All files reprocessed');
   };
 
@@ -942,11 +942,11 @@ export default function SpiralScriptEditor() {
                   </div>
                   <div>
                     <span className="text-gray-400">Recent Files:</span>
-                    <span className="text-green-400 ml-2">{monitorStats.recentFiles}</span>
+                    <span className="text-green-400 ml-2">{monitoredFiles.length}</span>
                   </div>
                   <div>
                     <span className="text-gray-400">Last Scan:</span>
-                    <span className="text-blue-400 ml-2">{monitorStats.lastScan.toLocaleTimeString()}</span>
+                    <span className="text-blue-400 ml-2">{new Date(monitorStats.lastScanTime).toLocaleTimeString()}</span>
                   </div>
                 </div>
 
@@ -991,10 +991,10 @@ export default function SpiralScriptEditor() {
                 <div className="bg-black/50 rounded-lg p-4">
                   <h4 className="text-white font-semibold mb-3">File Type Distribution</h4>
                   <div className="space-y-2">
-                    {Object.entries(monitorStats.filesByType).map(([type, count]) => (
+                    {Object.entries(monitorStats.byType).map(([type, count]) => (
                       <div key={type} className="flex justify-between items-center">
                         <span className="text-gray-400 capitalize">{type}:</span>
-                        <Badge variant="outline">{count}</Badge>
+                        <Badge variant="outline">{String(count)}</Badge>
                       </div>
                     ))}
                   </div>
