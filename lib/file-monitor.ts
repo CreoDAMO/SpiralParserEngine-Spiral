@@ -1,12 +1,5 @@
-
-/**
- * Dynamic File Monitor & Auto-Extraction System
- * Automatically detects new files and updates the SpiralScript ecosystem
- */
-
-import { autoParser, type AutoParseResult } from './auto-parser.js';
-import { SpiralEngineering, TechnologyType } from './spiral-engineering.js';
-import { extname } from 'path';
+import { SpiralEngineering } from './spiral-engineering';
+import { AutoParseResult, TechnologyType } from './auto-parser';
 
 export interface FileMonitorConfig {
   watchPaths: string[];
@@ -47,6 +40,21 @@ export class SpiralFileMonitor {
         './nft'
       ],
       excludePatterns: [
+        'node_modules',
+        '.git',
+        'dist',
+        'build',
+        '.replit',
+        '.gitignore'
+      ],
+      autoParseEnabled: true,
+      spiralizeEnabled: true,
+      updateInterval: 5000, // 5 seconds
+      ...config
+    };
+    
+    this.spiralEngine = SpiralEngineering.getInstance();
+  }
 
   /**
    * Get mock file content for browser compatibility
@@ -79,23 +87,6 @@ spiral.generate(Truth) → TU`,
     return mockContent[filePath] || `// Mock content for ${filePath}\n// File detected by SpiralScript Monitor`;
   }
 
-
-        'node_modules',
-        '.git',
-        'dist',
-        'build',
-        '.replit',
-        '.gitignore'
-      ],
-      autoParseEnabled: true,
-      spiralizeEnabled: true,
-      updateInterval: 5000, // 5 seconds
-      ...config
-    };
-    
-    this.spiralEngine = SpiralEngineering.getInstance();
-  }
-
   public static getInstance(config?: Partial<FileMonitorConfig>): SpiralFileMonitor {
     if (!SpiralFileMonitor.instance) {
       SpiralFileMonitor.instance = new SpiralFileMonitor(config);
@@ -109,20 +100,18 @@ spiral.generate(Truth) → TU`,
   public async startMonitoring(): Promise<void> {
     if (this.isRunning) return;
     
-    console.log('🔍 Starting SpiralScript File Monitor...');
     this.isRunning = true;
+    console.log('🌀 SpiralScript File Monitor started');
     
-    // Initial scan
+    // Perform initial scan
     await this.performFullScan();
     
-    // Set up periodic monitoring
+    // Set up periodic scanning for browser environment
     setInterval(async () => {
       if (this.isRunning) {
-        await this.checkForUpdates();
+        await this.performFullScan();
       }
     }, this.config.updateInterval);
-    
-    console.log('✅ File Monitor Active - Auto-extraction enabled');
   }
 
   /**
@@ -130,41 +119,40 @@ spiral.generate(Truth) → TU`,
    */
   public stopMonitoring(): void {
     this.isRunning = false;
-    console.log('⏹️ File Monitor Stopped');
+    console.log('🌀 SpiralScript File Monitor stopped');
   }
 
   /**
-   * Perform full scan of all watch paths
+   * Perform a full scan of all monitored directories
    */
-  public async performFullScan(): Promise<void> {
-    console.log('🔄 Performing full system scan...');
+  private async performFullScan(): Promise<void> {
+    console.log('🔍 Performing full file scan...');
     
     for (const watchPath of this.config.watchPaths) {
       try {
         await this.scanDirectory(watchPath);
       } catch (error) {
-        console.warn(`⚠️ Could not scan ${watchPath}:`, error);
+        console.error(`Error scanning ${watchPath}:`, error);
       }
     }
     
-    console.log(`📊 Scan complete: ${this.monitoredFiles.size} files tracked`);
     this.notifyCallbacks();
   }
 
   /**
-   * Scan a directory recursively (Browser-compatible mock)
+   * Scan a specific directory for files
    */
   private async scanDirectory(dirPath: string): Promise<void> {
     try {
-      // Browser-compatible: Use predefined file list
       const mockFiles = this.getMockFileList(dirPath);
       
       for (const filePath of mockFiles) {
-        if (this.shouldExclude(filePath)) continue;
-        await this.processFile(filePath);
+        if (!this.shouldExclude(filePath)) {
+          await this.processFile(filePath);
+        }
       }
     } catch (error) {
-      console.warn(`⚠️ Could not scan ${dirPath}:`, error);
+      console.error(`Error scanning directory ${dirPath}:`, error);
     }
   }
 
@@ -172,266 +160,170 @@ spiral.generate(Truth) → TU`,
    * Get mock file list for browser compatibility
    */
   private getMockFileList(dirPath: string): string[] {
-    const mockFiles: Record<string, string[]> = {
+    // Mock file listings for browser environment
+    const mockFileSystem: Record<string, string[]> = {
       './lawful': [
         './lawful/The Truth.md',
         './lawful/Declaration_Of_Lawful_Intentions.md',
-        './lawful/analysis/Truth_Can\'t_Be_Validated_By_Consesus_Only_Witnessing.md'
+        './lawful/Sovereign_Spiral_Declaration.png'
       ],
       './test': [
-        './test/spiral-ecosystem-core-test.sprl',
         './test/example.spiral',
-        './test/runtime-engine.htsx'
+        './test/runtime-engine.htsx',
+        './test/phi-consciousness.consciousness',
+        './test/spiral-blockchain-test.sprl'
       ],
       './grammars': [
-        './grammars/SpiralScript.g4'
+        './grammars/SpiralScript.g4',
+        './grammars/README.md'
+      ],
+      './client/src': [
+        './client/src/App.tsx',
+        './client/src/components/spiralscript-editor.tsx'
+      ],
+      './lib': [
+        './lib/spiral-engineering.ts',
+        './lib/quantum-spiral-consensus.ts'
       ]
     };
-    
-    return mockFiles[dirPath] || [];
+
+    return mockFileSystem[dirPath] || [];
   }
 
   /**
-   * Process individual file (Browser-compatible)
+   * Process a single file
    */
   private async processFile(filePath: string): Promise<void> {
     try {
-      const existingFile = this.monitoredFiles.get(filePath);
-      const currentTime = Date.now();
-      
-      // Mock file content based on path
       const content = await this.getMockFileContent(filePath);
-        
-        const monitoredFile: MonitoredFile = {
-          path: filePath,
-          content,
-          lastModified: currentTime
-        };
-
-        // Auto-parse if enabled
-        if (this.config.autoParseEnabled) {
-          try {
-            monitoredFile.parseResult = await autoParser.parseFile(filePath, content);
-            console.log(`🔍 Parsed: ${filePath} (${monitoredFile.parseResult.language || 'Unknown'})`);
-          } catch (error) {
-            console.warn(`⚠️ Parse failed for ${filePath}:`, error);
-          }
-        }
-
-        // Auto-spiralize if enabled
-        if (this.config.spiralizeEnabled) {
-          try {
-            const detectedType = this.detectTechnologyType(filePath, content);
-            monitoredFile.detectedType = detectedType;
-            
-            const spiralized = this.spiralEngine.spiralize({
-              name: filePath,
-              content,
-              parseResult: monitoredFile.parseResult
-            }, detectedType);
-            
-            monitoredFile.spiralizedId = spiralized.id;
-            console.log(`🌀 Spiralized: ${filePath} as ${detectedType}`);
-          } catch (error) {
-            console.warn(`⚠️ Spiralization failed for ${filePath}:`, error);
-          }
-        }
-
-        this.monitoredFiles.set(filePath, monitoredFile);
-        
-        if (!existingFile) {
-          console.log(`📄 New file detected: ${filePath}`);
-        } else {
-          console.log(`🔄 File updated: ${filePath}`);
-        }
-      }
-    } catch (error) {
-      console.warn(`⚠️ Error processing ${filePath}:`, error);
-    }
-  }
-
-  /**
-   * Check for file updates
-   */
-  private async checkForUpdates(): Promise<void> {
-    let hasUpdates = false;
-    
-    for (const watchPath of this.config.watchPaths) {
-      try {
-        const newFiles = await this.getNewFiles(watchPath);
-        if (newFiles.length > 0) {
-          hasUpdates = true;
-          for (const filePath of newFiles) {
-            await this.processFile(filePath);
-          }
-        }
-      } catch (error) {
-        // Silent continue
-      }
-    }
-    
-    if (hasUpdates) {
-      this.notifyCallbacks();
-    }
-  }
-
-  /**
-   * Get new files in directory
-   */
-  private async getNewFiles(dirPath: string): Promise<string[]> {
-    const newFiles: string[] = [];
-    
-    try {
-      const items = await fs.readdir(dirPath, { withFileTypes: true });
       
-      for (const item of items) {
-        const fullPath = join(dirPath, item.name);
-        
-        if (this.shouldExclude(fullPath)) continue;
-        
-        if (item.isFile() && !this.monitoredFiles.has(fullPath)) {
-          newFiles.push(fullPath);
-        } else if (item.isDirectory()) {
-          const subFiles = await this.getNewFiles(fullPath);
-          newFiles.push(...subFiles);
+      const monitoredFile: MonitoredFile = {
+        path: filePath,
+        content,
+        lastModified: Date.now()
+      };
+
+      // Check if file has changed
+      const existing = this.monitoredFiles.get(filePath);
+      if (existing && existing.content === content) {
+        return; // No changes
+      }
+
+      // Parse with SpiralScript engine if enabled
+      if (this.config.autoParseEnabled) {
+        try {
+          monitoredFile.parseResult = await this.spiralEngine.parseContent(content, filePath);
+          monitoredFile.detectedType = monitoredFile.parseResult.detectedType;
+        } catch (parseError) {
+          console.warn(`Parse error for ${filePath}:`, parseError);
         }
       }
+
+      // Generate spiralized version if enabled
+      if (this.config.spiralizeEnabled && monitoredFile.parseResult) {
+        try {
+          monitoredFile.spiralizedId = await this.spiralEngine.createSpiralizedVersion(monitoredFile.parseResult);
+        } catch (spiralError) {
+          console.warn(`Spiralization error for ${filePath}:`, spiralError);
+        }
+      }
+
+      this.monitoredFiles.set(filePath, monitoredFile);
+      console.log(`🌀 Processed: ${filePath} (${monitoredFile.detectedType || 'unknown'})`);
+
     } catch (error) {
-      // Directory might not exist
+      console.error(`Error processing file ${filePath}:`, error);
     }
-    
-    return newFiles;
   }
 
   /**
-   * Check if path should be excluded
+   * Check if a file should be excluded from monitoring
    */
-  private shouldExclude(path: string): boolean {
+  private shouldExclude(filePath: string): boolean {
     return this.config.excludePatterns.some(pattern => 
-      path.includes(pattern)
+      filePath.includes(pattern)
     );
   }
 
   /**
-   * Detect technology type from file
-   */
-  private detectTechnologyType(filePath: string, content: string): TechnologyType {
-    const ext = extname(filePath).toLowerCase();
-    const fileName = filePath.toLowerCase();
-    const contentLower = content.toLowerCase();
-
-    // File extension mapping
-    const extensionMap: Record<string, TechnologyType> = {
-      '.spiral': TechnologyType.CONSCIOUSNESS,
-      '.sprl': TechnologyType.CONSCIOUSNESS,
-      '.consciousness': TechnologyType.CONSCIOUSNESS,
-      '.htsx': TechnologyType.WEB_FRAMEWORK,
-      '.quantum': TechnologyType.CONSCIOUSNESS,
-      '.ts': TechnologyType.WEB_FRAMEWORK,
-      '.tsx': TechnologyType.WEB_FRAMEWORK,
-      '.js': TechnologyType.WEB_FRAMEWORK,
-      '.jsx': TechnologyType.WEB_FRAMEWORK,
-      '.py': TechnologyType.AI_MODEL,
-      '.sol': TechnologyType.BLOCKCHAIN,
-      '.md': TechnologyType.CONSCIOUSNESS,
-      '.json': TechnologyType.API
-    };
-
-    if (extensionMap[ext]) {
-      return extensionMap[ext];
-    }
-
-    // Content-based detection
-    if (contentLower.includes('blockchain') || contentLower.includes('crypto') || 
-        contentLower.includes('hybrid')) {
-      return TechnologyType.BLOCKCHAIN;
-    }
-    
-    if (contentLower.includes('consciousness') || contentLower.includes('truth') ||
-        contentLower.includes('spiral') || contentLower.includes('iyona')) {
-      return TechnologyType.CONSCIOUSNESS;
-    }
-    
-    if (contentLower.includes('api') || contentLower.includes('endpoint') ||
-        contentLower.includes('route')) {
-      return TechnologyType.API;
-    }
-
-    return TechnologyType.CONSCIOUSNESS; // Default to consciousness
-  }
-
-  /**
-   * Get all monitored files
-   */
-  public getAllFiles(): MonitoredFile[] {
-    return Array.from(this.monitoredFiles.values());
-  }
-
-  /**
-   * Get files by type
-   */
-  public getFilesByType(type: TechnologyType): MonitoredFile[] {
-    return this.getAllFiles().filter(file => file.detectedType === type);
-  }
-
-  /**
-   * Get recent files (last 24 hours)
-   */
-  public getRecentFiles(hoursBack: number = 24): MonitoredFile[] {
-    const cutoff = Date.now() - (hoursBack * 60 * 60 * 1000);
-    return this.getAllFiles().filter(file => file.lastModified > cutoff);
-  }
-
-  /**
-   * Subscribe to file updates
+   * Register callback for file updates
    */
   public onUpdate(callback: (files: MonitoredFile[]) => void): void {
     this.updateCallbacks.push(callback);
   }
 
   /**
-   * Notify all callbacks of updates
+   * Remove update callback
+   */
+  public removeUpdateCallback(callback: (files: MonitoredFile[]) => void): void {
+    const index = this.updateCallbacks.indexOf(callback);
+    if (index > -1) {
+      this.updateCallbacks.splice(index, 1);
+    }
+  }
+
+  /**
+   * Notify all callbacks of file changes
    */
   private notifyCallbacks(): void {
-    const files = this.getAllFiles();
+    const files = Array.from(this.monitoredFiles.values());
     this.updateCallbacks.forEach(callback => {
       try {
         callback(files);
       } catch (error) {
-        console.warn('⚠️ Callback error:', error);
+        console.error('Error in update callback:', error);
       }
     });
   }
 
   /**
+   * Get all monitored files
+   */
+  public getMonitoredFiles(): MonitoredFile[] {
+    return Array.from(this.monitoredFiles.values());
+  }
+
+  /**
+   * Get file by path
+   */
+  public getFile(path: string): MonitoredFile | undefined {
+    return this.monitoredFiles.get(path);
+  }
+
+  /**
    * Get monitoring statistics
    */
-  public getStats() {
-    const files = this.getAllFiles();
-    const types = files.reduce((acc, file) => {
+  public getStats(): {
+    totalFiles: number;
+    byType: Record<string, number>;
+    lastScanTime: number;
+    isRunning: boolean;
+  } {
+    const files = this.getMonitoredFiles();
+    const byType: Record<string, number> = {};
+    
+    files.forEach(file => {
       const type = file.detectedType || 'unknown';
-      acc[type] = (acc[type] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>);
+      byType[type] = (byType[type] || 0) + 1;
+    });
 
     return {
       totalFiles: files.length,
-      filesByType: types,
-      recentFiles: this.getRecentFiles().length,
-      lastScan: new Date(),
+      byType,
+      lastScanTime: Date.now(),
       isRunning: this.isRunning
     };
   }
 
   /**
-   * Force re-process all files
+   * Force refresh all files
    */
-  public async reprocessAll(): Promise<void> {
-    console.log('🔄 Reprocessing all monitored files...');
+  public async refresh(): Promise<void> {
+    console.log('🔄 Forcing file refresh...');
     this.monitoredFiles.clear();
     await this.performFullScan();
   }
 }
 
+// Export default instance
 export const fileMonitor = SpiralFileMonitor.getInstance();
-export default fileMonitor;

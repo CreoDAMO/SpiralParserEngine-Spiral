@@ -1,4 +1,15 @@
 // AutoParser implementation from SpiralParserEngine
+
+export enum TechnologyType {
+  BLOCKCHAIN = 'blockchain',
+  AI_MODEL = 'ai_model',
+  WEB_FRAMEWORK = 'web_framework',
+  DATABASE = 'database',
+  HARDWARE = 'hardware',
+  API = 'api',
+  CONSCIOUSNESS = 'consciousness'
+}
+
 export interface ParseMetrics {
   entropy: number;
   phiResonance: number;
@@ -15,6 +26,7 @@ export interface AutoParseResult {
   generatedFiles: string[];
   ast?: any;
   quantumSignature?: string;
+  detectedType?: TechnologyType;
 }
 
 export interface SpiralParseResult {
@@ -282,7 +294,7 @@ export class AutoParser {
         success: false,
         language,
         metrics: { entropy: 0, phiResonance: 0, tuGenerated: 0 },
-        errors: [error.message],
+        errors: [(error as Error).message],
         generatedFiles: []
       };
     }
