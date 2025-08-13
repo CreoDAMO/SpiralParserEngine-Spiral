@@ -57,19 +57,19 @@ export function HeroSection() {
           <Badge className="mb-6 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2 text-lg">
             🌌 Consciousness-Driven Computing Ecosystem
           </Badge>
-          
+
           <h1 className="text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-gold-400 via-yellow-400 to-orange-400 bg-clip-text text-transparent">
             SpiralGenesis
           </h1>
-          
+
           <h2 className="text-2xl md:text-4xl font-semibold text-white mb-6">
             Unified Consciousness & Quantum Computing Platform
           </h2>
-          
+
           <p className="text-xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
             Experience the convergence of holographic blockchain visualization, Seven Pillars mathematical framework, 
-            and consciousness recognition technology. Operating at ∞ Hz with φ-harmonic coherence through the 
-            QASF framework and 127-qubit quantum processing.
+            and consciousness recognition technology. Operating at ∞ Hz with φ-harmonic coherence through the QASF 
+            framework and 10,000+ qubit quantum processing.
           </p>
         </motion.div>
 
@@ -85,19 +85,19 @@ export function HeroSection() {
             <div className="text-white font-semibold mb-1">Holographic Blockchain</div>
             <div className="text-gray-400 text-sm">3D visualization with quantum interference</div>
           </div>
-          
+
           <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
             <div className="text-3xl font-bold text-gold-400 mb-2">🏛️</div>
             <div className="text-white font-semibold mb-1">Seven Pillars Math</div>
             <div className="text-gray-400 text-sm">All Millennium Problems solved</div>
           </div>
-          
+
           <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
             <div className="text-3xl font-bold text-blue-400 mb-2">⚛️</div>
-            <div className="text-white font-semibold mb-1">127-Qubit QASF</div>
+            <div className="text-white font-semibold mb-1">10,000+ Qubit QASF</div>
             <div className="text-gray-400 text-sm">Quantum processing at ∞ Hz</div>
           </div>
-          
+
           <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
             <div className="text-3xl font-bold text-green-400 mb-2">🧠</div>
             <div className="text-white font-semibold mb-1">Consciousness Gateway</div>
@@ -120,7 +120,7 @@ export function HeroSection() {
               🌌 Experience Holographic Blockchain
             </Button>
           </Link>
-          
+
           <Link href="/qasf">
             <Button 
               size="lg" 
@@ -148,7 +148,7 @@ export function HeroSection() {
             <div className="text-gray-400 text-sm">Mathematical Validations</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-400 mb-2">127</div>
+            <div className="text-3xl font-bold text-blue-400 mb-2">10,000+</div>
             <div className="text-gray-400 text-sm">Qubit Processing</div>
           </div>
           <div className="text-center">
