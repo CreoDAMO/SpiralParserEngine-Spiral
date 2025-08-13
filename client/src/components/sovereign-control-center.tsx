@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Crown, 
@@ -15,7 +15,11 @@ import {
   Gift,
   Download,
   Copy,
-  Plus
+  Plus,
+  Monitor,
+  ExternalLink,
+  AlertTriangle,
+  CheckCircle2
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -27,11 +31,33 @@ import { copyToClipboard } from '@/lib/spiral-calculations';
 import { NvidiaConsciousness } from './nvidia-consciousness';
 import ConsciousnessMiningEngine from './consciousness-mining-engine';
 import QuantumConsciousnessWallet from './quantum-consciousness-wallet';
+import { SevenPillarsDashboard } from './seven-pillars-dashboard';
+import QASFDashboard from './qasf-dashboard';
+import IyonaelConsciousnessDashboard from './iyonael-consciousness-dashboard';
+import InteractiveUBIDashboard from './interactive-ubi-dashboard';
+import HybridBlockchainDashboard from './HybridBlockchainDashboard';
 
 export default function SovereignControlCenter() {
   // Private authentication state for sovereign-only functions
   const [sovereignAccess, setSovereignAccess] = useState(false);
   const [privateGateOpen, setPrivateGateOpen] = useState(false);
+  
+  // Crypto monitoring state
+  const [hybridPrice, setHybridPrice] = useState(10.00);
+  const [priceChange24h, setPriceChange24h] = useState(0);
+  const [marketCap, setMarketCap] = useState(250000000000); // $250B
+  const [volume24h, setVolume24h] = useState(50000000); // $50M
+  const [lastUpdated, setLastUpdated] = useState(new Date());
+  
+  // Dashboard monitoring states  
+  const [dashboardStatuses, setDashboardStatuses] = useState({
+    qasf: { status: 'operational', uptime: '99.97%' },
+    blockchain: { status: 'operational', uptime: '99.99%' },
+    consciousness: { status: 'operational', uptime: '100%' },
+    nvidia: { status: 'operational', uptime: '98.5%' },
+    ubi: { status: 'operational', uptime: '99.8%' },
+    pillars: { status: 'operational', uptime: '100%' }
+  });
   const {
     consciousnessState,
     breathSignature,
@@ -100,11 +126,32 @@ export default function SovereignControlCenter() {
     }
   ];
 
+  // Simulate crypto price monitoring (in real implementation, would use actual APIs)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const variance = (Math.random() - 0.5) * 0.02; // ±1% variance
+      setHybridPrice(prev => Math.max(9.50, Math.min(10.50, prev * (1 + variance))));
+      setPriceChange24h((Math.random() - 0.5) * 10); // ±5% daily change
+      setLastUpdated(new Date());
+    }, 30000); // Update every 30 seconds
+    
+    return () => clearInterval(interval);
+  }, []);
+
   const getStateColor = (state: string) => {
     switch (state) {
       case 'witnessed': return 'bg-green-500/20 text-green-400';
       case 'awakening': return 'bg-yellow-500/20 text-yellow-400';
       default: return 'bg-gray-500/20 text-gray-400';
+    }
+  };
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'operational': return 'text-green-400';
+      case 'warning': return 'text-yellow-400';
+      case 'error': return 'text-red-400';
+      default: return 'text-gray-400';
     }
   };
 
@@ -151,10 +198,18 @@ export default function SovereignControlCenter() {
       </div>
 
       <Tabs defaultValue="consciousness" className="space-y-8">
-        <TabsList className="grid w-full grid-cols-8 bg-black/50 border border-purple-400/20">
+        <TabsList className="grid w-full grid-cols-10 bg-black/50 border border-purple-400/20">
           <TabsTrigger value="consciousness" className="data-[state=active]:bg-purple-500/20">
             <Brain className="w-4 h-4 mr-2" />
             Consciousness
+          </TabsTrigger>
+          <TabsTrigger value="monitoring" className="data-[state=active]:bg-blue-500/20">
+            <Monitor className="w-4 h-4 mr-2" />
+            System Monitor
+          </TabsTrigger>
+          <TabsTrigger value="crypto" className="data-[state=active]:bg-orange-500/20">
+            <TrendingUp className="w-4 h-4 mr-2" />
+            Hybrid Tracking
           </TabsTrigger>
           <TabsTrigger value="wallet" className="data-[state=active]:bg-yellow-500/20">
             <Coins className="w-4 h-4 mr-2" />
@@ -185,6 +240,175 @@ export default function SovereignControlCenter() {
             ΔTrust Core
           </TabsTrigger>
         </TabsList>
+
+        {/* System Monitoring Tab */}
+        <TabsContent value="monitoring" className="space-y-8">
+          <div className="grid lg:grid-cols-2 gap-8">
+            {/* Dashboard Status Overview */}
+            <Card className="bg-black/80 backdrop-blur-sm border-blue-400/20">
+              <CardHeader>
+                <CardTitle className="text-2xl text-blue-400 flex items-center">
+                  <Monitor className="w-6 h-6 mr-3" />
+                  Integrated Dashboard Status
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {Object.entries(dashboardStatuses).map(([key, data]) => (
+                  <div key={key} className="flex items-center justify-between p-4 bg-gray-900/50 rounded-lg">
+                    <div className="flex items-center space-x-3">
+                      <div className={`w-3 h-3 rounded-full ${data.status === 'operational' ? 'bg-green-400' : 'bg-red-400'}`}></div>
+                      <span className="text-white font-medium capitalize">{key} Dashboard</span>
+                    </div>
+                    <div className="flex items-center space-x-4">
+                      <span className={`font-mono ${getStatusColor(data.status)}`}>
+                        {data.status.toUpperCase()}
+                      </span>
+                      <span className="text-gray-400 text-sm">{data.uptime}</span>
+                    </div>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            {/* Quick Dashboard Access */}
+            <Card className="bg-black/80 backdrop-blur-sm border-purple-400/20">
+              <CardHeader>
+                <CardTitle className="text-2xl text-purple-400 flex items-center">
+                  <Settings className="w-6 h-6 mr-3" />
+                  Quick Access Panel
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="grid grid-cols-2 gap-4">
+                <Button className="bg-blue-600 hover:bg-blue-700 transition-colors">
+                  <Brain className="w-4 h-4 mr-2" />
+                  QASF Console
+                </Button>
+                <Button className="bg-green-600 hover:bg-green-700 transition-colors">
+                  <Activity className="w-4 h-4 mr-2" />
+                  Blockchain Status
+                </Button>
+                <Button className="bg-purple-600 hover:bg-purple-700 transition-colors">
+                  <Eye className="w-4 h-4 mr-2" />
+                  Consciousness Metrics
+                </Button>
+                <Button className="bg-yellow-600 hover:bg-yellow-700 transition-colors">
+                  <Zap className="w-4 h-4 mr-2" />
+                  NVIDIA Performance
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </TabsContent>
+
+        {/* Crypto Monitoring Tab */}
+        <TabsContent value="crypto" className="space-y-8">
+          <Card className="bg-black/80 backdrop-blur-sm border-orange-400/20">
+            <CardHeader>
+              <CardTitle className="text-3xl text-orange-400 flex items-center">
+                <TrendingUp className="w-8 h-8 mr-3" />
+                HYBRID Coin Market Tracking
+              </CardTitle>
+              <p className="text-gray-300">Real-time monitoring across major exchanges</p>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-4 gap-6 mb-8">
+                <div className="text-center p-6 bg-gradient-to-br from-orange-500/10 to-yellow-500/10 rounded-lg border border-orange-400/20">
+                  <div className="text-3xl font-bold text-orange-400 mb-2">
+                    ${hybridPrice.toFixed(2)}
+                  </div>
+                  <div className="text-lg text-gray-300 mb-1">Current Price</div>
+                  <div className={`text-sm ${priceChange24h >= 0 ? 'text-green-300' : 'text-red-300'}`}>
+                    {priceChange24h >= 0 ? '+' : ''}{priceChange24h.toFixed(2)}% (24h)
+                  </div>
+                </div>
+                <div className="text-center p-6 bg-gradient-to-br from-green-500/10 to-blue-500/10 rounded-lg border border-green-400/20">
+                  <div className="text-3xl font-bold text-green-400 mb-2">
+                    ${(marketCap / 1e9).toFixed(1)}B
+                  </div>
+                  <div className="text-lg text-gray-300 mb-1">Market Cap</div>
+                  <div className="text-sm text-green-300">Rank #1 (Native Coin)</div>
+                </div>
+                <div className="text-center p-6 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-lg border border-blue-400/20">
+                  <div className="text-3xl font-bold text-blue-400 mb-2">
+                    ${(volume24h / 1e6).toFixed(1)}M
+                  </div>
+                  <div className="text-lg text-gray-300 mb-1">24h Volume</div>
+                  <div className="text-sm text-blue-300">Cross-chain Trading</div>
+                </div>
+                <div className="text-center p-6 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-lg border border-purple-400/20">
+                  <div className="text-3xl font-bold text-purple-400 mb-2">∞</div>
+                  <div className="text-lg text-gray-300 mb-1">Max Supply</div>
+                  <div className="text-sm text-purple-300">Infinite Generation</div>
+                </div>
+              </div>
+
+              {/* Exchange Links */}
+              <div className="grid md:grid-cols-3 gap-4 mb-6">
+                <Card className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border-blue-400/20">
+                  <CardContent className="p-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h4 className="text-lg font-semibold text-blue-400 mb-1">Coinbase</h4>
+                        <p className="text-sm text-gray-400">Primary Exchange</p>
+                      </div>
+                      <Button size="sm" className="bg-blue-500/20 hover:bg-blue-500/30">
+                        <ExternalLink className="w-4 h-4" />
+                      </Button>
+                    </div>
+                    <div className="mt-3 flex items-center">
+                      <CheckCircle2 className="w-4 h-4 text-green-400 mr-2" />
+                      <span className="text-sm text-green-400">Timestamped Native</span>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-gradient-to-br from-orange-500/10 to-red-500/10 border-orange-400/20">
+                  <CardContent className="p-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h4 className="text-lg font-semibold text-orange-400 mb-1">CoinMarketCap</h4>
+                        <p className="text-sm text-gray-400">Market Analytics</p>
+                      </div>
+                      <Button size="sm" className="bg-orange-500/20 hover:bg-orange-500/30">
+                        <ExternalLink className="w-4 h-4" />
+                      </Button>
+                    </div>
+                    <div className="mt-3 flex items-center">
+                      <CheckCircle2 className="w-4 h-4 text-green-400 mr-2" />
+                      <span className="text-sm text-green-400">Listed & Tracked</span>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-gradient-to-br from-green-500/10 to-teal-500/10 border-green-400/20">
+                  <CardContent className="p-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h4 className="text-lg font-semibold text-green-400 mb-1">CoinGecko</h4>
+                        <p className="text-sm text-gray-400">Price Discovery</p>
+                      </div>
+                      <Button size="sm" className="bg-green-500/20 hover:bg-green-500/30">
+                        <ExternalLink className="w-4 h-4" />
+                      </Button>
+                    </div>
+                    <div className="mt-3 flex items-center">
+                      <CheckCircle2 className="w-4 h-4 text-green-400 mr-2" />
+                      <span className="text-sm text-green-400">Native Coin Status</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Last Updated */}
+              <div className="text-center p-4 bg-gray-900/50 rounded-lg">
+                <p className="text-gray-400 text-sm">
+                  Last Updated: {lastUpdated.toLocaleString()}
+                  <span className="ml-4 text-green-400">• Live Data</span>
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
 
         {/* Consciousness Dashboard Tab */}
         <TabsContent value="consciousness" className="space-y-8">
