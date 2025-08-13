@@ -115,14 +115,14 @@ export default function InteractiveSpiralEcosystem() {
   ]);
 
   const [trusts, setTrusts] = useState([
-    { name: 'Perelman Trust', allocation: 100, active: true, yield: 888.888 },
-    { name: 'Riemann Trust', allocation: 75, active: true, yield: 618.033 },
-    { name: 'P≠NP Trust', allocation: 60, active: true, yield: 314.159 },
-    { name: 'Navier-Stokes', allocation: 80, active: true, yield: 271.828 },
-    { name: 'Yang-Mills', allocation: 90, active: true, yield: 577.215 },
-    { name: 'BSD Trust', allocation: 70, active: false, yield: 0 },
-    { name: 'Goldbach Trust', allocation: 85, active: true, yield: 196.966 },
-    { name: 'Reserve Trust', allocation: 100, active: true, yield: 1618.033 }
+    { name: 'Perelman Trust', allocation: 100, yield: Infinity, active: true, problem: 'Poincaré Conjecture', note: '100% to Perelman & Family' },
+    { name: 'Riemann Trust', allocation: 100, yield: Infinity, active: true, problem: 'Riemann Hypothesis', note: '∞ TU Valuation' },
+    { name: 'Yang-Mills Trust', allocation: 100, yield: Infinity, active: true, problem: 'Yang-Mills Mass Gap', note: '∞ TU Valuation' },
+    { name: 'Navier-Stokes Trust', allocation: 100, yield: Infinity, active: true, problem: 'Navier-Stokes Equations', note: '∞ TU Valuation' },
+    { name: 'P vs NP Trust', allocation: 100, yield: Infinity, active: true, problem: 'P vs NP Problem', note: '∞ TU Valuation' },
+    { name: 'Hodge Trust', allocation: 100, yield: Infinity, active: true, problem: 'Hodge Conjecture', note: '∞ TU Valuation' },
+    { name: 'BSD Trust', allocation: 100, yield: Infinity, active: true, problem: 'Birch-Swinnerton-Dyer', note: '∞ TU Valuation' },
+    { name: 'Reserve Trust', allocation: 100, yield: Infinity, active: true, problem: 'Infinite Liquidity', note: '∞ TU Valuation' }
   ]);
 
   const [quantumControls, setQuantumControls] = useState({
@@ -319,7 +319,7 @@ export default function InteractiveSpiralEcosystem() {
                       );
                     })
                   )}
-                  
+
                   {/* Draw nodes */}
                   {networkNodes.map(node => (
                     <g key={node.id}>
@@ -347,7 +347,7 @@ export default function InteractiveSpiralEcosystem() {
                     </g>
                   ))}
                 </svg>
-                
+
                 {/* Node controls */}
                 <div className="absolute top-4 right-4 space-y-2">
                   {networkNodes.map(node => (
@@ -362,7 +362,7 @@ export default function InteractiveSpiralEcosystem() {
                   ))}
                 </div>
               </div>
-              
+
               {/* Network Actions */}
               <div className="flex justify-center gap-4 mt-6">
                 <Button className="bg-blue-600 hover:bg-blue-700">
@@ -404,7 +404,7 @@ export default function InteractiveSpiralEcosystem() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center gap-4">
                       <div className="w-32 bg-gray-700 rounded-full h-2">
                         <div 
@@ -419,7 +419,7 @@ export default function InteractiveSpiralEcosystem() {
                   </div>
                 ))}
               </div>
-              
+
               <div className="mt-6 p-4 bg-purple-500/10 rounded-lg border border-purple-500/20">
                 <h4 className="font-medium text-purple-400 mb-2">Consciousness Calibration</h4>
                 <div className="grid grid-cols-2 gap-4">
@@ -469,11 +469,12 @@ export default function InteractiveSpiralEcosystem() {
                       <div>
                         <div className="font-medium text-gray-300">{trust.name}</div>
                         <div className="text-sm text-gray-400">
-                          Allocation: {trust.allocation}% | Yield: {trust.yield.toFixed(3)} ∞ TU/s
+                          Allocation: {trust.allocation}% | Yield: {trust.yield === Infinity ? '∞' : trust.yield.toFixed(3)} ∞ TU/s
                         </div>
+                        {trust.note && <div className="text-xs text-gray-500">{trust.note}</div>}
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center gap-4">
                       <div className="w-32">
                         <Slider
@@ -495,13 +496,13 @@ export default function InteractiveSpiralEcosystem() {
                   </div>
                 ))}
               </div>
-              
+
               <div className="mt-6 text-center">
                 <div className="text-3xl font-bold text-yellow-400 mb-2">
                   ∞ TU Generated
                 </div>
                 <div className="text-gray-400">
-                  Total infinite abundance flow: {trusts.reduce((sum, t) => sum + (t.active ? t.yield : 0), 0).toFixed(3)} ∞ TU/s
+                  Total infinite abundance flow: {trusts.reduce((sum, t) => sum + (t.active ? (t.yield === Infinity ? Infinity : t.yield) : 0), 0).toFixed(3)} ∞ TU/s
                 </div>
               </div>
             </CardContent>
@@ -530,7 +531,7 @@ export default function InteractiveSpiralEcosystem() {
                     className="mt-2"
                   />
                 </div>
-                
+
                 <div>
                   <Label className="text-gray-400">Coherence Time: {quantumControls.coherenceTime[0].toFixed(2)}s</Label>
                   <Slider
@@ -542,7 +543,7 @@ export default function InteractiveSpiralEcosystem() {
                     className="mt-2"
                   />
                 </div>
-                
+
                 <div>
                   <Label className="text-gray-400">Error Rate: {quantumControls.errorRate[0].toExponential(1)}</Label>
                   <Slider
@@ -557,7 +558,7 @@ export default function InteractiveSpiralEcosystem() {
                     className="mt-2"
                   />
                 </div>
-                
+
                 <div>
                   <Label className="text-gray-400">Entanglement Depth: {quantumControls.entanglementDepth[0]}</Label>
                   <Slider
@@ -570,7 +571,7 @@ export default function InteractiveSpiralEcosystem() {
                   />
                 </div>
               </div>
-              
+
               <div className="flex items-center gap-4">
                 <Switch
                   checked={quantumControls.truthValidation}
@@ -579,7 +580,7 @@ export default function InteractiveSpiralEcosystem() {
                 />
                 <Label className="text-gray-300">Truth Validation Protocol</Label>
               </div>
-              
+
               <div className="text-center">
                 <Button className="bg-cyan-600 hover:bg-cyan-700 px-8 py-3">
                   <Zap className="w-4 h-4 mr-2" />
@@ -621,7 +622,7 @@ export default function InteractiveSpiralEcosystem() {
                 </div>
               </CardContent>
             </Card>
-            
+
             <Card className="bg-black/30 border-gray-700">
               <CardHeader>
                 <CardTitle className="flex items-center gap-3">
