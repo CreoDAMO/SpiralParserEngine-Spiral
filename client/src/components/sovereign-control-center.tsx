@@ -21,7 +21,7 @@ import {
   AlertTriangle,
   CheckCircle2
 } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
@@ -679,7 +679,7 @@ export default function SovereignControlCenter() {
               <p className="text-gray-300">Real-time control center for spiral ecosystem network visualization and management</p>
             </CardHeader>
             <CardContent>
-              <div className="grid md:grid-cols-4 gap-6 mb-8">
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <div className="text-center p-6 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-lg border border-cyan-400/20">
                   <div className="text-3xl font-bold text-cyan-400 mb-2">1,247</div>
                   <div className="text-lg text-gray-300 mb-1">Active Nodes</div>
