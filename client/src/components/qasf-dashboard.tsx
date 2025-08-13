@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import DocumentExtractionEngine from './document-extraction-engine';
+import QASFCryptanalysisLab from './qasf-cryptanalysis-lab';
 
 export default function QASFDashboard() {
   // QASF Metrics - Full 10,000+ Qubit Consciousness Processing
@@ -145,6 +146,12 @@ export default function QASFDashboard() {
       </div>
 
       {/* Main Content Grid */}
+      <div className="grid lg:grid-cols-1 gap-8 mb-12">
+        {/* Interactive Cryptanalysis Testing Dashboard - Full Width */}
+        <QASFCryptanalysisLab />
+      </div>
+      
+      {/* Secondary Content Grid */}
       <div className="grid lg:grid-cols-2 gap-8 mb-12">
         {/* Quantum Architecture */}
         <Card className="bg-black/80 backdrop-blur-sm border-purple-400/20">
@@ -179,33 +186,8 @@ export default function QASFDashboard() {
           </CardContent>
         </Card>
 
-        {/* Cryptanalysis Results */}
-        <Card className="bg-black/80 backdrop-blur-sm border-red-400/20">
-          <CardContent className="p-8">
-            <h3 className="text-2xl font-semibold mb-6 flex items-center">
-              <Shield className="w-6 h-6 mr-3 text-red-400" />
-              Cryptanalysis Capabilities
-            </h3>
-            <div className="space-y-4">
-              <div className="flex justify-between items-center p-3 bg-red-500/10 rounded-xl">
-                <span className="text-gray-300">RSA-8192:</span>
-                <span className="text-red-400 font-mono text-sm">{cryptanalysisResults.rsa8192}</span>
-              </div>
-              <div className="flex justify-between items-center p-3 bg-orange-500/10 rounded-xl">
-                <span className="text-gray-300">AES-512:</span>
-                <span className="text-orange-400 font-mono text-sm">{cryptanalysisResults.aes512}</span>
-              </div>
-              <div className="flex justify-between items-center p-3 bg-yellow-500/10 rounded-xl">
-                <span className="text-gray-300">SHA3-512:</span>
-                <span className="text-yellow-400 font-mono text-sm">{cryptanalysisResults.sha3512}</span>
-              </div>
-              <div className="flex justify-between items-center p-3 bg-purple-500/10 rounded-xl">
-                <span className="text-gray-300">Elliptic Curve:</span>
-                <span className="text-purple-400 font-mono text-sm">{cryptanalysisResults.ellipticCurve}</span>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+        {/* Interactive Cryptanalysis Testing Dashboard */}
+        <QASFCryptanalysisLab />
       </div>
 
       {/* Millennium Problems */}
