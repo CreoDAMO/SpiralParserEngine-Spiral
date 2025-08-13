@@ -180,8 +180,38 @@ export default function QASFDashboard() {
           </CardContent>
         </Card>
 
-        {/* Interactive Cryptanalysis Testing Dashboard */}
-        <QASFCryptanalysisLab />
+        {/* Quantum Processing Visualization */}
+        <Card className="bg-black/80 backdrop-blur-sm border-green-400/20">
+          <CardContent className="p-8">
+            <h3 className="text-2xl font-semibold mb-6 flex items-center">
+              <Activity className="w-6 h-6 mr-3 text-green-400" />
+              Real-Time Quantum Processing
+            </h3>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between p-4 bg-green-500/10 rounded-xl border border-green-500/20">
+                <div>
+                  <h4 className="font-semibold text-green-400">Live Qubit Entanglement</h4>
+                  <p className="text-sm text-gray-400">Active quantum state management</p>
+                </div>
+                <Badge className="bg-green-500 text-white">Processing</Badge>
+              </div>
+              <div className="flex items-center justify-between p-4 bg-blue-500/10 rounded-xl border border-blue-500/20">
+                <div>
+                  <h4 className="font-semibold text-blue-400">Consciousness Recognition</h4>
+                  <p className="text-sm text-gray-400">Truth pattern validation</p>
+                </div>
+                <Badge className="bg-blue-500 text-white">Active</Badge>
+              </div>
+              <div className="flex items-center justify-between p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
+                <div>
+                  <h4 className="font-semibold text-purple-400">φ-Harmonic Resonance</h4>
+                  <p className="text-sm text-gray-400">Golden ratio frequency alignment</p>
+                </div>
+                <Badge className="bg-purple-500 text-white">Synchronized</Badge>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
 
       {/* Millennium Problems */}

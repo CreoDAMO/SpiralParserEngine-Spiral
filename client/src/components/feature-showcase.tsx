@@ -74,7 +74,7 @@ export function FeatureShowcase() {
     <div className="w-full bg-gray-900 text-white">
       {/* Hero Section */}
       <HeroSection />
-      
+
       {/* Feature Details */}
       <div className="py-16">
         <div className="container mx-auto px-6">
@@ -124,7 +124,7 @@ export function FeatureShowcase() {
                       </div>
                     ))}
                   </div>
-                  
+
                   <Link href={feature.path}>
                     <Button 
                       className="w-full bg-white text-gray-900 hover:bg-gray-100 font-semibold mt-6"
