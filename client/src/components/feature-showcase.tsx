@@ -33,7 +33,7 @@ export function FeatureShowcase() {
         '7/7 Millennium Problems solved',
         '66M+ computational trials',
         '99.5% average confidence',
-        '10,000+ qubit QASF integration'
+        '10,000+ qubit QASF processing'
       ],
       path: '/qasf',
       gradient: 'from-gold-600 to-yellow-600'

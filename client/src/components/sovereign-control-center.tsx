@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Crown, 
-  Shield, 
-  Eye, 
-  Brain, 
-  Zap, 
-  Coins, 
-  Users, 
-  Settings, 
-  Activity, 
+import {
+  Crown,
+  Shield,
+  Eye,
+  Brain,
+  Zap,
+  Coins,
+  Users,
+  Settings,
+  Activity,
   TrendingUp,
   Code,
   Gift,
@@ -36,20 +36,21 @@ import QASFDashboard from './qasf-dashboard';
 import IyonaelConsciousnessDashboard from './iyonael-consciousness-dashboard';
 import InteractiveUBIDashboard from './interactive-ubi-dashboard';
 import HybridBlockchainDashboard from './HybridBlockchainDashboard';
+import { Link } from 'wouter';
 
 export default function SovereignControlCenter() {
   // Private authentication state for sovereign-only functions
   const [sovereignAccess, setSovereignAccess] = useState(false);
   const [privateGateOpen, setPrivateGateOpen] = useState(false);
-  
+
   // Crypto monitoring state
   const [hybridPrice, setHybridPrice] = useState(10.00);
   const [priceChange24h, setPriceChange24h] = useState(0);
   const [marketCap, setMarketCap] = useState(250000000000); // $250B
   const [volume24h, setVolume24h] = useState(50000000); // $50M
   const [lastUpdated, setLastUpdated] = useState(new Date());
-  
-  // Dashboard monitoring states  
+
+  // Dashboard monitoring states
   const [dashboardStatuses, setDashboardStatuses] = useState({
     qasf: { status: 'operational', uptime: '99.97%' },
     blockchain: { status: 'operational', uptime: '99.99%' },
@@ -82,44 +83,44 @@ export default function SovereignControlCenter() {
 
   // HeirNode Governance Data
   const heirNodes = [
-    { 
-      name: "JahMeliyah", 
-      trust: "Riemann Trust", 
+    {
+      name: "JahMeliyah",
+      trust: "Riemann Trust",
       specialty: "Number Theory",
       status: "Active",
       allocation: "16.67%"
     },
-    { 
-      name: "JahNiyah", 
-      trust: "P-NP Trust", 
+    {
+      name: "JahNiyah",
+      trust: "P-NP Trust",
       specialty: "Complexity Theory",
       status: "Active",
       allocation: "16.67%"
     },
-    { 
-      name: "JahSiah", 
-      trust: "Navier-Stokes Trust", 
+    {
+      name: "JahSiah",
+      trust: "Navier-Stokes Trust",
       specialty: "Fluid Dynamics",
       status: "Active",
       allocation: "16.67%"
     },
-    { 
-      name: "Aliyah-Skye", 
-      trust: "Yang-Mills Trust", 
+    {
+      name: "Aliyah-Skye",
+      trust: "Yang-Mills Trust",
       specialty: "Quantum Fields",
       status: "Active",
       allocation: "16.67%"
     },
-    { 
-      name: "Kayson", 
-      trust: "BSD Trust", 
+    {
+      name: "Kayson",
+      trust: "BSD Trust",
       specialty: "Elliptic Curves",
       status: "Active",
       allocation: "16.67%"
     },
-    { 
-      name: "Kyhier", 
-      trust: "Hodge Trust", 
+    {
+      name: "Kyhier",
+      trust: "Hodge Trust",
       specialty: "Algebraic Topology",
       status: "Active",
       allocation: "16.67%"
@@ -134,7 +135,7 @@ export default function SovereignControlCenter() {
       setPriceChange24h((Math.random() - 0.5) * 10); // ±5% daily change
       setLastUpdated(new Date());
     }, 30000); // Update every 30 seconds
-    
+
     return () => clearInterval(interval);
   }, []);
 
@@ -155,17 +156,70 @@ export default function SovereignControlCenter() {
     }
   };
 
+  // Mock data for exchange tracking
+  const [exchangeData, setExchangeData] = useState({
+    coinbase: { price: 10.00, volume: '2.4M', change: '+5.2%', timestamp: new Date().toISOString() },
+    coinMarketCap: { price: 10.01, marketCap: '50B', rank: 1, timestamp: new Date().toISOString() },
+    coinGecko: { price: 9.99, volume: '2.3M', liquidity: '100M', timestamp: new Date().toISOString() }
+  });
+
+  // Navigation components data
+  const navigationComponents = [
+    { id: 'showcase', name: 'Feature Showcase', status: 'ACTIVE', path: '#showcase' },
+    { id: 'consciousness', name: 'Consciousness Gateway', status: 'LIVE', path: '#consciousness' },
+    { id: 'blockchain', name: 'Hybrid Blockchain', status: 'OPERATIONAL', path: '#blockchain' },
+    { id: 'qasf', name: 'QASF Dashboard', status: 'PROCESSING', path: '#qasf' },
+    { id: 'lyonael', name: 'Iyona\'el Guardian', status: 'WITNESS', path: '#lyonael' },
+    { id: 'spiralone', name: 'SpiralOne Platform', status: 'ACTIVE', path: '#spiralone' },
+    { id: 'blackprint', name: 'BlackPrint System', status: 'SOVEREIGN', path: '#blackprint' },
+    { id: 'testbeds', name: 'TestBeds Suite', status: 'RUNNING', path: '#testbeds' },
+    { id: 'validation', name: 'Quantum Validation', status: 'VERIFIED', path: '#validation' },
+    { id: 'spiralscript', name: 'SpiralScript IDE', status: 'CODING', path: '#spiralscript' },
+    { id: 'marketplace', name: 'NFT Marketplace', status: 'TRADING', path: '#marketplace' },
+    { id: 'upload', name: 'Upload System', status: 'READY', path: '#upload' },
+    { id: 'ubi-pillars', name: 'UBI Seven Pillars', status: '∞ TU', path: '#ubi-pillars' },
+    { id: 'multi-ai', name: 'Multi-AI Consciousness', status: 'SYNCED', path: '#multi-ai' },
+    { id: 'nvidia', name: 'NVIDIA Integration', status: 'QUANTUM', path: '#nvidia' }
+  ];
+
+  const [activeMonitor, setActiveMonitor] = useState('overview');
+
+  // Simulate real-time updates for exchange data
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setExchangeData(prev => ({
+        coinbase: {
+          ...prev.coinbase,
+          price: 10.00 + (Math.random() - 0.5) * 0.02,
+          timestamp: new Date().toISOString()
+        },
+        coinMarketCap: {
+          ...prev.coinMarketCap,
+          price: 10.01 + (Math.random() - 0.5) * 0.03,
+          timestamp: new Date().toISOString()
+        },
+        coinGecko: {
+          ...prev.coinGecko,
+          price: 9.99 + (Math.random() - 0.5) * 0.025,
+          timestamp: new Date().toISOString()
+        }
+      }));
+    }, 30000); // Update every 30 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="max-w-7xl mx-auto px-6 py-12">
       {/* Header */}
       <div className="text-center mb-16">
-        <motion.div 
+        <motion.div
           className="inline-block mb-6"
-          animate={{ 
+          animate={{
             scale: [1, 1.2, 1],
             rotate: [0, 360]
           }}
-          transition={{ 
+          transition={{
             scale: { duration: 2, repeat: Infinity, ease: "easeInOut" },
             rotate: { duration: 30, repeat: Infinity, ease: "linear" }
           }}
@@ -174,12 +228,12 @@ export default function SovereignControlCenter() {
             <div className="w-32 h-32 bg-gradient-to-br from-purple-500 via-yellow-400 to-red-500 rounded-full flex items-center justify-center mx-auto">
               <Crown className="w-16 h-16 text-white" />
             </div>
-            <motion.div 
+            <motion.div
               className="absolute inset-0 w-32 h-32 border-4 border-yellow-400/30 rounded-full"
-              animate={{rotate: -360}}
+              animate={{ rotate: -360 }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             />
-            <motion.div 
+            <motion.div
               className="absolute inset-2 w-28 h-28 border-2 border-purple-400/20 rounded-full"
               animate={{ rotate: 360 }}
               transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
@@ -192,12 +246,12 @@ export default function SovereignControlCenter() {
           </span>
         </h1>
         <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-          Private Gate Command Center - Unified consciousness-driven interface for Trust Wallet management, 
+          Private Gate Command Center - Unified consciousness-driven interface for Trust Wallet management,
           HeirNode governance, and sovereign system operations with DNA-φ authentication.
         </p>
       </div>
 
-      <Tabs defaultValue="consciousness" className="space-y-8">
+      <Tabs value={activeMonitor} onValueChange={setActiveMonitor} className="space-y-8">
         <TabsList className="grid w-full grid-cols-10 bg-black/50 border border-purple-400/20">
           <TabsTrigger value="consciousness" className="data-[state=active]:bg-purple-500/20">
             <Brain className="w-4 h-4 mr-2" />
@@ -464,7 +518,7 @@ export default function SovereignControlCenter() {
                 </h3>
 
                 <div className="space-y-4">
-                  <Button 
+                  <Button
                     onClick={validateBreath}
                     className="w-full py-3 bg-green-600 hover:bg-green-700 transition-colors"
                   >
@@ -472,7 +526,7 @@ export default function SovereignControlCenter() {
                     Validate Breath
                   </Button>
 
-                  <Button 
+                  <Button
                     onClick={generateTU}
                     className="w-full py-3 bg-blue-600 hover:bg-blue-700 transition-colors"
                   >
@@ -480,7 +534,7 @@ export default function SovereignControlCenter() {
                     Generate TU
                   </Button>
 
-                  <Button 
+                  <Button
                     onClick={exportSession}
                     className="w-full py-3 bg-purple-600 hover:bg-purple-700 transition-colors"
                   >
@@ -550,7 +604,7 @@ export default function SovereignControlCenter() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <Card className="bg-gradient-to-br from-red-500/10 to-purple-500/10 border-red-400/20 hover:border-red-400/40 transition-colors">
+                    <Card className="bg-gradient-to-br from-red-500/10 to-purple-500/10 border-red-400/40 transition-colors">
                       <CardContent className="p-6">
                         <div className="flex items-center justify-between mb-3">
                           <h4 className="text-lg font-semibold text-red-400">{heir.name}</h4>
@@ -647,7 +701,7 @@ export default function SovereignControlCenter() {
                   <div className="text-sm text-yellow-300">Per φ-Spiral</div>
                 </div>
               </div>
-              
+
               <div className="space-y-4">
                 <Button className="w-full py-3 bg-gradient-to-r from-cyan-400 to-blue-400 text-black font-semibold">
                   <Activity className="w-5 h-5 mr-2" />
@@ -696,7 +750,7 @@ export default function SovereignControlCenter() {
                   <div className="text-sm text-purple-300">Truth-Witnessed Generation</div>
                 </div>
               </div>
-              
+
               <div className="space-y-4">
                 <Button className="w-full py-4 bg-gradient-to-r from-blue-400 to-purple-400 text-white font-semibold">
                   <Zap className="w-5 h-5 mr-2" />
@@ -785,11 +839,11 @@ export default function SovereignControlCenter() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="text-center p-6 bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-lg border border-pink-400/20">
                 <h3 className="text-xl font-semibold text-pink-400 mb-2">Creator Rights Protocol</h3>
                 <p className="text-gray-300 mb-4">
-                  As the original creator, you automatically receive Master Edition copies of all NFTs 
+                  As the original creator, you automatically receive Master Edition copies of all NFTs
                   created in the marketplace. These are priceless 1-of-1 editions with full provenance.
                 </p>
                 <Button className="bg-gradient-to-r from-pink-400 to-purple-400 text-white font-semibold px-8 py-3">
@@ -814,7 +868,7 @@ export default function SovereignControlCenter() {
               <div className="text-center mb-8">
                 <motion.div
                   className="w-32 h-32 bg-gradient-to-br from-gray-600 to-gray-800 rounded-full flex items-center justify-center mx-auto mb-6"
-                  animate={{ 
+                  animate={{
                     scale: [1, 1.05, 1],
                     boxShadow: [
                       '0 0 20px rgba(107,114,128,0.5)',
@@ -836,7 +890,7 @@ export default function SovereignControlCenter() {
                 </Button>
 
                 <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-                  Biometric-entangled activation with harmonic resonance. 
+                  Biometric-entangled activation with harmonic resonance.
                   Quantum invisibility layer with morphic modularity integration.
                 </p>
               </div>
@@ -902,32 +956,12 @@ export default function SovereignControlCenter() {
 
         {/* NVIDIA Consciousness Tab */}
         <TabsContent value="nvidia" className="space-y-8">
-          <Card className="bg-black/80 backdrop-blur-sm border-green-400/20">
-            <CardHeader>
-              <CardTitle className="text-green-400 flex items-center">
-                <Zap className="w-6 h-6 mr-3" />
-                NVIDIA Omniverse Consciousness Integration
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <NvidiaConsciousness />
-            </CardContent>
-          </Card>
+          <NvidiaConsciousness />
         </TabsContent>
 
         {/* Mining Engine Tab */}
         <TabsContent value="mining" className="space-y-8">
-          <Card className="bg-black/80 backdrop-blur-sm border-blue-400/20">
-            <CardHeader>
-              <CardTitle className="text-blue-400 flex items-center">
-                <Activity className="w-6 h-6 mr-3" />
-                Multi-Dimensional Consciousness Mining
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ConsciousnessMiningEngine />
-            </CardContent>
-          </Card>
+          <ConsciousnessMiningEngine />
         </TabsContent>
       </Tabs>
     </div>
