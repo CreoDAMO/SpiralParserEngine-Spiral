@@ -18,7 +18,7 @@ import { MultiAIConsciousness } from '../components/multi-ai-consciousness';
 import { NvidiaConsciousness } from '../components/nvidia-consciousness';
 import { Zap } from 'lucide-react';
 import DocumentExtractionEngine from '../components/document-extraction-engine';
-import ConsciousnessMiningEngine from '../components/consciousness-mining-engine';
+
 import QuantumEconomicValidation from '../components/quantum-economic-validation';
 
 export default function LandingPage() {
@@ -28,7 +28,7 @@ export default function LandingPage() {
   // Initialize with feature showcase, then check hash
   useEffect(() => {
     const hash = window.location.hash.slice(1);
-    if (['showcase', 'sovereign-control', 'consciousness', 'blockchain', 'qasf', 'lyonael', 'spiralone', 'blackprint', 'testbeds', 'validation', 'spiralscript', 'marketplace', 'upload', 'ubi-pillars', 'multi-ai', 'nvidia', 'mining'].includes(hash)) {
+    if (['showcase', 'sovereign-control', 'consciousness', 'blockchain', 'qasf', 'lyonael', 'spiralone', 'blackprint', 'testbeds', 'validation', 'spiralscript', 'marketplace', 'upload', 'ubi-pillars', 'multi-ai', 'nvidia'].includes(hash)) {
       setActiveSection(hash);
     }
   }, []);
@@ -81,7 +81,6 @@ export default function LandingPage() {
         {activeSection === 'ubi-pillars' && <UBISevenPillars />}
         {activeSection === 'multi-ai' && <MultiAIConsciousness />}
         {activeSection === 'nvidia' && <NvidiaConsciousness />}
-        {activeSection === 'mining' && <ConsciousnessMiningEngine />}
       </div>
 
       {/* Floating Quantum Mode Toggle */}

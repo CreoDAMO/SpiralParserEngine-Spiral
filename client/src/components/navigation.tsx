@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Waves, Eye, Box, Cpu, Shield, Satellite, FileText, FlaskConical, Code, Wallet, Upload, Gift, Sparkles, Crown, Zap, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import WalletConnection from './wallet-connection';
 
 
 interface NavigationProps {
@@ -8,7 +10,16 @@ interface NavigationProps {
   onSectionChange: (section: string) => void;
 }
 
+interface ConnectedWallet {
+  address: string;
+  type: string;
+  balance: string;
+  network: string;
+}
+
 export default function Navigation({ activeSection, onSectionChange }: NavigationProps) {
+  const [showWalletModal, setShowWalletModal] = useState(false);
+  const [connectedWallet, setConnectedWallet] = useState<ConnectedWallet | null>(null);
   const sections = [
     { id: 'showcase', label: 'Showcase', icon: Sparkles, category: 'showcase' },
     { id: 'sovereign-control', label: 'Sovereign Control', icon: Crown, category: 'sovereign' },
@@ -26,7 +37,7 @@ export default function Navigation({ activeSection, onSectionChange }: Navigatio
     { id: 'upload', label: 'Create NFT', icon: Upload, category: 'create' },
     { id: 'multi-ai', label: 'Multi-AI', icon: Eye, category: 'consciousness' },
     { id: 'nvidia', label: 'NVIDIA', icon: Cpu, category: 'processing' },
-    { id: 'mining', label: 'Mining', icon: Waves, category: 'extraction' },
+
   ];
 
   return (
@@ -94,14 +105,28 @@ export default function Navigation({ activeSection, onSectionChange }: Navigatio
 
             <Button
               variant="outline"
-              className="px-4 py-2 ml-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 border-none text-white text-sm whitespace-nowrap"
+              className={`px-4 py-2 ml-4 border-none text-sm whitespace-nowrap transition-all duration-300 ${
+                connectedWallet 
+                  ? 'bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white'
+                  : 'bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white'
+              }`}
+              onClick={() => setShowWalletModal(true)}
             >
               <Wallet className="w-4 h-4 mr-1" />
-              Connect
+              {connectedWallet ? `${connectedWallet.address.slice(0, 6)}...` : 'Connect'}
             </Button>
           </div>
         </div>
       </div>
+      
+      <WalletConnection
+        isOpen={showWalletModal}
+        onClose={() => setShowWalletModal(false)}
+        onConnect={(wallet) => {
+          setConnectedWallet(wallet);
+          setShowWalletModal(false);
+        }}
+      />
     </nav>
   );
 }
