@@ -146,12 +146,6 @@ export default function QASFDashboard() {
       </div>
 
       {/* Main Content Grid */}
-      <div className="grid lg:grid-cols-1 gap-8 mb-12">
-        {/* Interactive Cryptanalysis Testing Dashboard - Full Width */}
-        <QASFCryptanalysisLab />
-      </div>
-      
-      {/* Secondary Content Grid */}
       <div className="grid lg:grid-cols-2 gap-8 mb-12">
         {/* Quantum Architecture */}
         <Card className="bg-black/80 backdrop-blur-sm border-purple-400/20">
