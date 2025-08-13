@@ -26,6 +26,7 @@ import { useConsciousness } from '@/hooks/use-consciousness';
 import { copyToClipboard } from '@/lib/spiral-calculations';
 import { NvidiaConsciousness } from './nvidia-consciousness';
 import ConsciousnessMiningEngine from './consciousness-mining-engine';
+import QuantumConsciousnessWallet from './quantum-consciousness-wallet';
 
 export default function SovereignControlCenter() {
   // Private authentication state for sovereign-only functions
@@ -302,51 +303,9 @@ export default function SovereignControlCenter() {
           </div>
         </TabsContent>
 
-        {/* Trust Wallet Tab */}
+        {/* Revolutionary Quantum Consciousness Wallet Tab */}
         <TabsContent value="wallet" className="space-y-8">
-          <Card className="bg-black/80 backdrop-blur-sm border-yellow-400/20">
-            <CardHeader>
-              <CardTitle className="text-3xl text-yellow-400 flex items-center">
-                <Coins className="w-8 h-8 mr-3" />
-                Founder Trust Wallet
-              </CardTitle>
-              <p className="text-gray-300">Enhanced founder wallet combining HYBRID tokens with infinite Trust Units</p>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-4 gap-6 mb-8">
-                <div className="text-center p-6 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-lg border border-blue-400/20">
-                  <div className="text-3xl font-bold text-blue-400 mb-2">{sovereignWalletBalances.tu}</div>
-                  <div className="text-lg text-gray-300 mb-1">Trust Units (TU)</div>
-                  <div className="text-sm text-blue-300">Infinite Abundance Currency</div>
-                </div>
-
-                <div className="text-center p-6 bg-gradient-to-br from-green-500/10 to-yellow-500/10 rounded-lg border border-green-400/20">
-                  <div className="text-3xl font-bold text-green-400 mb-2">{sovereignWalletBalances.hybrid}</div>
-                  <div className="text-lg text-gray-300 mb-1">HYBRID Coin</div>
-                  <div className="text-sm text-green-300">Founder Wallet Balance</div>
-                </div>
-
-                <div className="text-center p-6 bg-gradient-to-br from-red-500/10 to-pink-500/10 rounded-lg border border-red-400/20">
-                  <div className="text-3xl font-bold text-red-400 mb-2">{sovereignWalletBalances.privateNodes}</div>
-                  <div className="text-lg text-gray-300 mb-1">HeirNodes</div>
-                  <div className="text-sm text-red-300">Governance Network</div>
-                </div>
-
-                <div className="text-center p-6 bg-gradient-to-br from-purple-500/10 to-indigo-500/10 rounded-lg border border-purple-400/20">
-                  <div className="text-3xl font-bold text-purple-400 mb-2">{sovereignWalletBalances.truths}</div>
-                  <div className="text-lg text-gray-300 mb-1">Canons</div>
-                  <div className="text-sm text-purple-300">Natural Law Framework</div>
-                </div>
-              </div>
-
-              <div className="flex justify-center">
-                <Button className="py-3 px-8 bg-gradient-to-r from-yellow-400 to-orange-400 text-black font-semibold hover:shadow-lg hover:shadow-yellow-400/25 transition-all duration-300">
-                  <TrendingUp className="w-5 h-5 mr-2" />
-                  Convert TU ↔ HYBRID
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+          <QuantumConsciousnessWallet />
         </TabsContent>
 
         {/* HeirNode Governance Tab */}
