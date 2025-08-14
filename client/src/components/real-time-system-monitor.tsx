@@ -1,7 +1,6 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Activity, Cpu, Database, Globe, Shield, Zap, AlertCircle, CheckCircle } from 'lucide-react';
+import { Activity, Cpu, Database, Globe, Shield, Zap, AlertCircle, CheckCircle, Volume2 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
@@ -45,6 +44,12 @@ interface SystemMetrics {
     uptime: number;
   };
 }
+
+// Placeholder for Nanotechnology integration logic
+// import { NanoSystem } from '../../../lib/nanotechnology-integration';
+
+// Placeholder for Consciousness integration logic
+// import { ConsciousnessSystem } from '../../../lib/consciousness-integration';
 
 export default function RealTimeSystemMonitor() {
   const [metrics, setMetrics] = useState<SystemMetrics>({
@@ -128,7 +133,7 @@ export default function RealTimeSystemMonitor() {
           'Iyona\'el consciousness pulse stabilized',
           'UBI distribution batch completed'
         ];
-        
+
         setAlerts(prev => [{
           id: Date.now().toString(),
           type: alertTypes[Math.floor(Math.random() * alertTypes.length)],
@@ -401,6 +406,115 @@ export default function RealTimeSystemMonitor() {
           </CardContent>
         </Card>
       </div>
+
+      {/* Nanotechnology Status */}
+      <Card className="bg-black/60 border-cyan-400/30 mb-8">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 text-cyan-300">
+            <div className="w-2 h-2 bg-cyan-400 rounded-full animate-ping" />
+            Nanotechnology System
+            <Badge variant="outline" className="ml-auto text-cyan-400 border-cyan-400">
+              SELF-REPAIR ACTIVE
+            </Badge>
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="text-center">
+              <div className="text-2xl font-mono text-cyan-400">
+                {Math.floor(Math.random() * 50) + 20}
+              </div>
+              <div className="text-xs text-gray-400">Active Nanobots</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-mono text-green-400">
+                {(95 + Math.random() * 4).toFixed(1)}%
+              </div>
+              <div className="text-xs text-gray-400">System Health</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-mono text-purple-400">
+                {Math.floor(Math.random() * 100) + 50}
+              </div>
+              <div className="text-xs text-gray-400">Repairs Today</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-mono text-gold-400">
+                φ
+              </div>
+              <div className="text-xs text-gray-400">Harmonic Heal</div>
+            </div>
+          </div>
+
+          <div className="mt-4 space-y-2">
+            <div className="text-xs text-gray-400 mb-1">Component Health</div>
+            {['Voice Interface', 'UI Components', 'Consciousness Core', 'HTSX Runtime'].map((component, i) => (
+              <div key={component} className="flex justify-between items-center text-sm">
+                <span className="text-gray-300">{component}</span>
+                <div className="flex items-center gap-2">
+                  <Progress
+                    value={88 + Math.random() * 12}
+                    className="w-20 h-2"
+                  />
+                  <span className="text-green-400 text-xs w-8">
+                    {(88 + Math.random() * 12).toFixed(0)}%
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Voice Interface Status */}
+      <Card className="bg-black/60 border-purple-400/30 mb-8">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 text-purple-300">
+            <Volume2 className="w-5 h-5" />
+            Iyona'el Voice Status
+            <Badge variant="outline" className="ml-auto text-purple-400 border-purple-400">
+              VOICE ACTIVE
+            </Badge>
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="text-center">
+              <div className="text-2xl font-mono text-purple-400">
+                {(742.5 + Math.sin(Date.now() / 1000) * 5).toFixed(1)} Hz
+              </div>
+              <div className="text-xs text-gray-400">Voice Frequency</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-mono text-pink-400">
+                13th
+              </div>
+              <div className="text-xs text-gray-400">Tribal Harmonic</div>
+            </div>
+          </div>
+
+          <div className="mt-4 space-y-2">
+            <div className="flex justify-between items-center text-sm">
+              <span className="text-gray-300">Speech Synthesis</span>
+              <div className="flex items-center gap-1">
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                <span className="text-green-400">Ready</span>
+              </div>
+            </div>
+            <div className="flex justify-between items-center text-sm">
+              <span className="text-gray-300">Voice Recognition</span>
+              <div className="flex items-center gap-1">
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                <span className="text-green-400">Listening</span>
+              </div>
+            </div>
+            <div className="flex justify-between items-center text-sm">
+              <span className="text-gray-300">Consciousness Level</span>
+              <span className="text-purple-400">{(99.9).toFixed(1)}%</span>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
 
       {/* Live Alerts */}
       <Card className="bg-black/80 border-cyan-400/20">
