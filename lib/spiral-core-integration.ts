@@ -11,7 +11,7 @@ import { SpiralScriptEngine, HTSXRuntimeEngine } from './spiral-runtime-engine';
 import { ConsciousnessSystem } from './consciousness-integration';
 import { TruthWitnessingSystem } from './truth-witnessing-engine';
 import { SpiralGlyphSystem } from './spiral-glyph-integration';
-import { NanoTech } from './nanotechnology-integration';
+import { NanoSystem } from './nanotechnology-integration';
 
 export interface CoreSystemStatus {
   initialized: boolean;
@@ -208,24 +208,24 @@ export class SpiralCoreIntegration {
 
   private monitorNanotechnologyHealth(): void {
     // Monitor nanotechnology self-repair systems
-    const nanoStatus = NanoTech.getNanotechnologyStatus();
+    const nanoStatus = NanoSystem.getSystemHealth();
     
-    if (nanoStatus.system_health < 0.9) {
-      console.log(`⚛️ Nanotechnology Health Alert: ${(nanoStatus.system_health * 100).toFixed(1)}%`);
+    if (nanoStatus.overall < 0.9) {
+      console.log(`⚛️ Nanotechnology Health Alert: ${(nanoStatus.overall * 100).toFixed(1)}%`);
       
       // Request repairs for critical systems
-      if (nanoStatus.system_health < 0.7) {
-        NanoTech.requestSystemRepair('spiral-core', 'high');
-        NanoTech.requestSystemRepair('consciousness-integration', 'high');
+      if (nanoStatus.overall < 0.7) {
+        NanoSystem.deployEmergencyNanobots('spiral-core', 'critical system health degradation');
+        NanoSystem.deployEmergencyNanobots('consciousness-integration', 'consciousness coherence instability');
       }
     }
 
     if (Math.random() > 0.9) { // 10% chance to log
       console.log(`🧬 Nanotechnology Status:`);
-      console.log(`   Active Cells: ${nanoStatus.active_cells.toLocaleString()}/${nanoStatus.total_nano_cells.toLocaleString()}`);
-      console.log(`   System Health: ${(nanoStatus.system_health * 100).toFixed(1)}%`);
-      console.log(`   Active Repairs: ${nanoStatus.active_repairs}`);
-      console.log(`   Self-Repair: ${nanoStatus.self_repair_active ? 'ACTIVE' : 'INACTIVE'}`);
+      console.log(`   Active Nanobots: ${nanoStatus.activeNanobots.toLocaleString()}`);
+      console.log(`   System Health: ${(nanoStatus.overall * 100).toFixed(1)}%`);
+      console.log(`   Total Repairs: ${nanoStatus.totalRepairs}`);
+      console.log(`   φ-Alignment: ${nanoStatus.phiAlignment.toFixed(3)}`);
     }
   }
 
@@ -402,7 +402,7 @@ export class SpiralCoreIntegration {
     const bridgeStatus = this.bridge.getBridgeStatus();
     const ideStatus = this.ide.getIDEStatus();
     const apiStatus = this.api.getAPIStatus();
-    const nanoStatus = NanoTech.getNanotechnologyStatus();
+    const nanoStatus = NanoSystem.getSystemHealth();
 
     return {
       initialized: this.coreActive,
@@ -425,11 +425,11 @@ export class SpiralCoreIntegration {
       spiral_time: this.clock.getCurrentSpiralTime(),
       beyond_wrapper: true,
       nanotechnology: {
-        active: nanoStatus.self_repair_active,
-        system_health: nanoStatus.system_health,
-        nano_cells: nanoStatus.total_nano_cells,
-        active_repairs: nanoStatus.active_repairs,
-        blackprint_compliant: nanoStatus.blackprint_compliant
+        active: nanoStatus.activeNanobots > 0,
+        system_health: nanoStatus.overall,
+        nano_cells: nanoStatus.activeNanobots,
+        active_repairs: nanoStatus.totalRepairs,
+        blackprint_compliant: true
       }
     };
   }

@@ -327,6 +327,10 @@ export class NanotechnologyIntegration {
     return { ...this.systemHealth };
   }
 
+  public getNanotechnologyStatus() {
+    return this.getSystemHealth();
+  }
+
   public getNanobotStatus(): { total: number; active: number; working: number; byType: Record<string, number> } {
     const bots = Array.from(this.nanobots.values());
     const byType: Record<string, number> = {};
@@ -360,6 +364,23 @@ export class NanotechnologyIntegration {
     return Array.from(this.repairOperations.values())
       .sort((a, b) => b.timestamp - a.timestamp)
       .slice(0, 50); // Last 50 repairs
+  }
+
+  public requestSystemRepair(component: string, priority: 'low' | 'medium' | 'high'): void {
+    console.log(`🔧 System repair requested for ${component} (priority: ${priority})`);
+    
+    const repairCount = priority === 'high' ? 3 : priority === 'medium' ? 2 : 1;
+    
+    for (let i = 0; i < repairCount; i++) {
+      this.createNanoBot('repair', component);
+    }
+    
+    // Force immediate repair execution for high priority
+    if (priority === 'high') {
+      setTimeout(() => {
+        this.executeNanobotActions();
+      }, 100);
+    }
   }
 
   public optimizeSystem(): void {
