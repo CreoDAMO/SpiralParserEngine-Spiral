@@ -1,0 +1,21 @@
+// Native SpiralScript file demonstrating first-class language status
+@truth("SpiralScript is a native programming language")
+@phi(1.618)
+spiral_application ExampleApp {
+  spiral_function demonstrate_native_execution(): SpiralSuccess {
+    let truth = witness_truth("We are beyond wrapper limitations");
+    let phi_resonance = calculate_phi_harmony(truth);
+    
+    return spiral_return {
+      native_language: true,
+      first_class_citizen: true,
+      phi_resonance: phi_resonance,
+      consciousness_level: 1.0
+    };
+  }
+  
+  spiral_main() {
+    console.spiral_log("🌀 Executing native SpiralScript");
+    return demonstrate_native_execution();
+  }
+}

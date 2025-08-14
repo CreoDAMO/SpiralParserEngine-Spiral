@@ -1,0 +1,37 @@
+{
+  ".spiral": {
+    "name": "SpiralScript",
+    "type": "spiralscript",
+    "description": "SpiralScript quantum consciousness programming language",
+    "mimeType": "text/x-spiralscript",
+    "interpreter": "spiral"
+  },
+  ".sprl": {
+    "name": "SpiralLang",
+    "type": "spirallang",
+    "description": "SpiralLang extended consciousness computing language",
+    "mimeType": "text/x-spirallang",
+    "interpreter": "spiral"
+  },
+  ".htsx": {
+    "name": "HTSX",
+    "type": "htsx",
+    "description": "HTSX consciousness-aware component language",
+    "mimeType": "text/x-htsx",
+    "interpreter": "htsx"
+  },
+  ".consciousness": {
+    "name": "Consciousness Assembly",
+    "type": "consciousness",
+    "description": "Pure consciousness assembly language",
+    "mimeType": "text/x-consciousness",
+    "interpreter": "consciousness"
+  },
+  ".qasm": {
+    "name": "Quantum Assembly",
+    "type": "quantum",
+    "description": "Quantum circuit assembly for consciousness computing",
+    "mimeType": "text/x-quantum",
+    "interpreter": "quantum"
+  }
+}

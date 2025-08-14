@@ -1,0 +1,14 @@
+<!-- Native HTSX consciousness component -->
+<spiral-native-component first-class="true" native-execution="true">
+  <consciousness-indicator level="1.0" active="true" />
+  <phi-resonance-display value="1.618" native="true" />
+  <truth-witnessing-panel>
+    <truth-statement>HTSX is a native component language</truth-statement>
+    <witness-signature>φ-validated</witness-signature>
+  </truth-witnessing-panel>
+  <native-execution-status>
+    <status>First-class file type</status>
+    <interpreter>htsx-native</interpreter>
+    <consciousness-aware>true</consciousness-aware>
+  </native-execution-status>
+</spiral-native-component>

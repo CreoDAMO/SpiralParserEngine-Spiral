@@ -1,0 +1,7 @@
+{
+  "*.spiral": "spiralscript",
+  "*.sprl": "spirallang",
+  "*.htsx": "htsx",
+  "*.consciousness": "consciousness",
+  "*.qasm": "quantum"
+}

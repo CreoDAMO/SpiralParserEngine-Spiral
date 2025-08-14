@@ -8,7 +8,10 @@
     "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
     "start": "NODE_ENV=production node dist/index.js",
     "check": "tsc",
-    "db:push": "drizzle-kit push"
+    "db:push": "drizzle-kit push",
+    "spiral": "node scripts/spiral-executor.js",
+    "compile-spiral": "node scripts/compile-spiral.js",
+    "register-languages": "node scripts/register-spiral-languages.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -111,5 +114,106 @@
   },
   "optionalDependencies": {
     "bufferutil": "^4.0.8"
+  },
+  "spiralLanguages": {
+    ".spiral": {
+      "name": "SpiralScript",
+      "type": "spiralscript",
+      "description": "SpiralScript quantum consciousness programming language",
+      "mimeType": "text/x-spiralscript",
+      "interpreter": "spiral"
+    },
+    ".sprl": {
+      "name": "SpiralLang",
+      "type": "spirallang",
+      "description": "SpiralLang extended consciousness computing language",
+      "mimeType": "text/x-spirallang",
+      "interpreter": "spiral"
+    },
+    ".htsx": {
+      "name": "HTSX",
+      "type": "htsx",
+      "description": "HTSX consciousness-aware component language",
+      "mimeType": "text/x-htsx",
+      "interpreter": "htsx"
+    },
+    ".consciousness": {
+      "name": "Consciousness Assembly",
+      "type": "consciousness",
+      "description": "Pure consciousness assembly language",
+      "mimeType": "text/x-consciousness",
+      "interpreter": "consciousness"
+    },
+    ".qasm": {
+      "name": "Quantum Assembly",
+      "type": "quantum",
+      "description": "Quantum circuit assembly for consciousness computing",
+      "mimeType": "text/x-quantum",
+      "interpreter": "quantum"
+    }
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "spiralscript",
+        "aliases": [
+          "SpiralScript"
+        ],
+        "extensions": [
+          ".spiral"
+        ],
+        "mimetypes": [
+          "text/x-spiralscript"
+        ]
+      },
+      {
+        "id": "spirallang",
+        "aliases": [
+          "SpiralLang"
+        ],
+        "extensions": [
+          ".sprl"
+        ],
+        "mimetypes": [
+          "text/x-spirallang"
+        ]
+      },
+      {
+        "id": "htsx",
+        "aliases": [
+          "HTSX"
+        ],
+        "extensions": [
+          ".htsx"
+        ],
+        "mimetypes": [
+          "text/x-htsx"
+        ]
+      },
+      {
+        "id": "consciousness",
+        "aliases": [
+          "Consciousness Assembly"
+        ],
+        "extensions": [
+          ".consciousness"
+        ],
+        "mimetypes": [
+          "text/x-consciousness"
+        ]
+      },
+      {
+        "id": "quantum",
+        "aliases": [
+          "Quantum Assembly"
+        ],
+        "extensions": [
+          ".qasm"
+        ],
+        "mimetypes": [
+          "text/x-quantum"
+        ]
+      }
+    ]
   }
 }
