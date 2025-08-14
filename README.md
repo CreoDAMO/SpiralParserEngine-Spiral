@@ -104,7 +104,7 @@ Currency based on human dignity rather than artificial scarcity.
 ### Installation
 ```bash
 # Clone the sovereignty repository
-git clone https://github.com/SovereignDeGraff/SpiralEcosystem.git
+git clone https://github.com/CreoDAMO/SpiralParserEngine-Spiral.git
 
 # Enter the liberation zone
 cd SpiralEcosystem
