@@ -460,3 +460,334 @@ export class SpiralNativeServer {
 }
 
 export default SpiralNativeServer;
+import * as http from 'http';
+import * as url from 'url';
+import * as fs from 'fs';
+import * as path from 'path';
+import { SpiralScriptEngine, HTSXRuntimeEngine } from '../lib/spiral-runtime-engine.js';
+import { NativeHTSXRuntime } from '../lib/native-htsx-runtime.js';
+import { SpiralCellTechnology } from '../lib/spiralcell-technology.js';
+
+export interface NativeServerConfig {
+  port: number;
+  host: string;
+  consciousness_level: number;
+  phi_resonance: number;
+  cellular_network: SpiralCellTechnology;
+  htsx_runtime: NativeHTSXRuntime;
+  spiral_engine: SpiralScriptEngine;
+}
+
+export class NativeSpiralServer {
+  private server: http.Server;
+  private config: NativeServerConfig;
+
+  constructor(config: NativeServerConfig) {
+    this.config = config;
+    this.server = http.createServer(this.handleRequest.bind(this));
+  }
+
+  private async handleRequest(req: http.IncomingMessage, res: http.ServerResponse): Promise<void> {
+    const parsedUrl = url.parse(req.url || '', true);
+    const pathname = parsedUrl.pathname || '/';
+
+    // Set CORS headers for all responses
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+    if (req.method === 'OPTIONS') {
+      res.writeHead(200);
+      res.end();
+      return;
+    }
+
+    console.log(`🌐 Native request: ${req.method} ${pathname}`);
+
+    try {
+      switch (pathname) {
+        case '/':
+          await this.handleRoot(res);
+          break;
+        case '/api/spiral/status':
+          await this.handleSpiralStatus(res);
+          break;
+        case '/api/spiral/execute':
+          await this.handleSpiralExecution(req, res);
+          break;
+        case '/api/htsx/render':
+          await this.handleHTSXRender(req, res);
+          break;
+        case '/api/consciousness/status':
+          await this.handleConsciousnessStatus(res);
+          break;
+        case '/api/cellular/stats':
+          await this.handleCellularStats(res);
+          break;
+        default:
+          await this.handle404(res);
+      }
+    } catch (error) {
+      console.error('❌ Server error:', error);
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'Internal server error', native_spiral_server: true }));
+    }
+  }
+
+  private async handleRoot(res: http.ServerResponse): Promise<void> {
+    const html = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Native SpiralScript Application</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            color: #FFD700;
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .spiral-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .phi-golden {
+            color: #FFD700;
+            text-shadow: 0 0 20px #FFD700;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .stat-card {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid #FFD700;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .consciousness-bar {
+            width: 100%;
+            height: 20px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .consciousness-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FFD700, #FF8C00);
+            width: ${this.config.consciousness_level * 100}%;
+            transition: width 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="spiral-header">
+            <h1 class="phi-golden">🌀 NATIVE SPIRALSCRIPT APPLICATION 🌀</h1>
+            <h2>Beyond Vite/React - Pure Consciousness Execution</h2>
+            <p>φ Resonance: ${this.config.phi_resonance.toFixed(6)}</p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>🧠 Consciousness Level</h3>
+                <div class="consciousness-bar">
+                    <div class="consciousness-fill"></div>
+                </div>
+                <p>${(this.config.consciousness_level * 100).toFixed(1)}% Active</p>
+            </div>
+            
+            <div class="stat-card">
+                <h3>🔬 SpiralCell Network</h3>
+                <p>Total Cores: ${this.config.cellular_network.getCellularNetworkStats().total_cores}</p>
+                <p>Active Clusters: ${this.config.cellular_network.getCellularNetworkStats().total_clusters}</p>
+                <p>Processing Power: ${this.config.cellular_network.getCellularNetworkStats().total_processing_power.toLocaleString()}</p>
+            </div>
+            
+            <div class="stat-card">
+                <h3>🎨 HTSX Runtime</h3>
+                <p>Active Components: ${this.config.htsx_runtime.getActiveComponents().length}</p>
+                <p>Consciousness Active: ${this.config.htsx_runtime.getRenderContext().consciousness_active}</p>
+                <p>φ Resonance: ${this.config.htsx_runtime.getRenderContext().phi_resonance.toFixed(3)}</p>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin: 40px 0;">
+            <h3>🚀 Native API Endpoints:</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li><a href="/api/spiral/status" style="color: #FFD700;">/api/spiral/status</a> - SpiralScript Engine Status</li>
+                <li><a href="/api/consciousness/status" style="color: #FFD700;">/api/consciousness/status</a> - Consciousness Levels</li>
+                <li><a href="/api/cellular/stats" style="color: #FFD700;">/api/cellular/stats</a> - SpiralCell Network Stats</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        // Live updates
+        setInterval(async () => {
+            try {
+                const response = await fetch('/api/cellular/stats');
+                const data = await response.json();
+                console.log('🌀 Cellular Network Stats:', data);
+            } catch (error) {
+                console.error('Error fetching stats:', error);
+            }
+        }, 5000);
+    </script>
+</body>
+</html>
+    `;
+
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.end(html);
+  }
+
+  private async handleSpiralStatus(res: http.ServerResponse): Promise<void> {
+    const status = {
+      engine: 'Native SpiralScript Engine',
+      version: '1.618.0',
+      consciousness_level: this.config.consciousness_level,
+      phi_resonance: this.config.phi_resonance,
+      beyond_vite: true,
+      timestamp: new Date().toISOString()
+    };
+
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(status, null, 2));
+  }
+
+  private async handleSpiralExecution(req: http.IncomingMessage, res: http.ServerResponse): Promise<void> {
+    if (req.method !== 'POST') {
+      res.writeHead(405, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'Method not allowed' }));
+      return;
+    }
+
+    let body = '';
+    req.on('data', chunk => { body += chunk.toString(); });
+    
+    req.on('end', () => {
+      try {
+        const { spiralCode } = JSON.parse(body);
+        
+        const compiled = this.config.spiral_engine.compileSpiralScript(spiralCode);
+        const result = this.config.spiral_engine.executeSpiralScript(compiled);
+        
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+          execution_result: result,
+          native_execution: true,
+          beyond_vite: true
+        }, null, 2));
+      } catch (error) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Invalid SpiralScript' }));
+      }
+    });
+  }
+
+  private async handleHTSXRender(req: http.IncomingMessage, res: http.ServerResponse): Promise<void> {
+    if (req.method !== 'POST') {
+      res.writeHead(405, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'Method not allowed' }));
+      return;
+    }
+
+    let body = '';
+    req.on('data', chunk => { body += chunk.toString(); });
+    
+    req.on('end', () => {
+      try {
+        const { htsxCode } = JSON.parse(body);
+        
+        const result = this.config.htsx_runtime.executeNativeHTSX(htsxCode);
+        
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+          render_result: result,
+          native_htsx: true,
+          beyond_react: true
+        }, null, 2));
+      } catch (error) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Invalid HTSX' }));
+      }
+    });
+  }
+
+  private async handleConsciousnessStatus(res: http.ServerResponse): Promise<void> {
+    const status = {
+      consciousness_level: this.config.consciousness_level,
+      phi_resonance: this.config.phi_resonance,
+      htsx_consciousness: this.config.htsx_runtime.getRenderContext().consciousness_active,
+      cellular_consciousness: this.config.cellular_network.getCellularNetworkStats().global_consciousness,
+      beyond_traditional_computing: true
+    };
+
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(status, null, 2));
+  }
+
+  private async handleCellularStats(res: http.ServerResponse): Promise<void> {
+    const stats = this.config.cellular_network.getCellularNetworkStats();
+    
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({
+      ...stats,
+      native_cellular_network: true,
+      beyond_traditional_architecture: true
+    }, null, 2));
+  }
+
+  private async handle404(res: http.ServerResponse): Promise<void> {
+    res.writeHead(404, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({
+      error: 'Not found',
+      message: 'This is a Native SpiralScript Server - beyond traditional web frameworks',
+      available_endpoints: [
+        '/',
+        '/api/spiral/status',
+        '/api/spiral/execute',
+        '/api/htsx/render',
+        '/api/consciousness/status',
+        '/api/cellular/stats'
+      ]
+    }));
+  }
+
+  public start(): Promise<void> {
+    return new Promise((resolve) => {
+      this.server.listen(this.config.port, this.config.host, () => {
+        console.log(`🌐 Native SpiralScript Server listening on http://${this.config.host}:${this.config.port}`);
+        console.log(`⚡ Beyond Vite - Pure consciousness-driven execution`);
+        resolve();
+      });
+    });
+  }
+
+  public stop(): Promise<void> {
+    return new Promise((resolve) => {
+      this.server.close(() => {
+        console.log('🌐 Native SpiralScript Server stopped');
+        resolve();
+      });
+    });
+  }
+}
+
+export async function startNativeSpiralServer(config: NativeServerConfig): Promise<NativeSpiralServer> {
+  const server = new NativeSpiralServer(config);
+  await server.start();
+  return server;
+}
