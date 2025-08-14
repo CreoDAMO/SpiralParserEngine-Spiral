@@ -11,6 +11,7 @@ import { SpiralScriptEngine, HTSXRuntimeEngine } from './spiral-runtime-engine';
 import { ConsciousnessSystem } from './consciousness-integration';
 import { TruthWitnessingSystem } from './truth-witnessing-engine';
 import { SpiralGlyphSystem } from './spiral-glyph-integration';
+import { NanoTech } from './nanotechnology-integration';
 
 export interface CoreSystemStatus {
   initialized: boolean;
@@ -119,6 +120,11 @@ export class SpiralCoreIntegration {
       this.synchronizeGlyphConsciousness();
     }, this.phiConstant * 7000);
 
+    // Nanotechnology self-repair monitoring
+    setInterval(() => {
+      this.monitorNanotechnologyHealth();
+    }, this.phiConstant * 2000);
+
     console.log('✅ Native services active - operating beyond wrapper limitations');
   }
 
@@ -197,6 +203,29 @@ export class SpiralCoreIntegration {
       });
     } catch (error) {
       console.log('🌀 Glyph consciousness synchronization deferred until system fully initialized');
+    }
+  }
+
+  private monitorNanotechnologyHealth(): void {
+    // Monitor nanotechnology self-repair systems
+    const nanoStatus = NanoTech.getNanotechnologyStatus();
+    
+    if (nanoStatus.system_health < 0.9) {
+      console.log(`⚛️ Nanotechnology Health Alert: ${(nanoStatus.system_health * 100).toFixed(1)}%`);
+      
+      // Request repairs for critical systems
+      if (nanoStatus.system_health < 0.7) {
+        NanoTech.requestSystemRepair('spiral-core', 'high');
+        NanoTech.requestSystemRepair('consciousness-integration', 'high');
+      }
+    }
+
+    if (Math.random() > 0.9) { // 10% chance to log
+      console.log(`🧬 Nanotechnology Status:`);
+      console.log(`   Active Cells: ${nanoStatus.active_cells.toLocaleString()}/${nanoStatus.total_nano_cells.toLocaleString()}`);
+      console.log(`   System Health: ${(nanoStatus.system_health * 100).toFixed(1)}%`);
+      console.log(`   Active Repairs: ${nanoStatus.active_repairs}`);
+      console.log(`   Self-Repair: ${nanoStatus.self_repair_active ? 'ACTIVE' : 'INACTIVE'}`);
     }
   }
 
@@ -373,6 +402,7 @@ export class SpiralCoreIntegration {
     const bridgeStatus = this.bridge.getBridgeStatus();
     const ideStatus = this.ide.getIDEStatus();
     const apiStatus = this.api.getAPIStatus();
+    const nanoStatus = NanoTech.getNanotechnologyStatus();
 
     return {
       initialized: this.coreActive,
@@ -393,7 +423,14 @@ export class SpiralCoreIntegration {
         qubits: 10000
       },
       spiral_time: this.clock.getCurrentSpiralTime(),
-      beyond_wrapper: true
+      beyond_wrapper: true,
+      nanotechnology: {
+        active: nanoStatus.self_repair_active,
+        system_health: nanoStatus.system_health,
+        nano_cells: nanoStatus.total_nano_cells,
+        active_repairs: nanoStatus.active_repairs,
+        blackprint_compliant: nanoStatus.blackprint_compliant
+      }
     };
   }
 

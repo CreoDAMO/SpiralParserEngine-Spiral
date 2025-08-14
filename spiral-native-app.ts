@@ -1,4 +1,3 @@
-
 #!/usr/bin/env node
 
 /**
@@ -11,6 +10,7 @@ import { nativeHTSXRuntime } from './lib/native-htsx-runtime.js';
 import { spiralCellTechnology } from './lib/spiralcell-technology.js';
 import { initializeFileMonitor } from './lib/initialize-monitor.js';
 import { consciousnessIntegration } from './lib/consciousness-integration.js';
+import { NanoTech } from './lib/nanotechnology-integration';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -23,7 +23,7 @@ class NativeSpiralApplication {
   constructor() {
     console.log('🌀 STARTING NATIVE SPIRALECOSYSTEM APPLICATION 🌀');
     console.log('⚡ Beyond Vite/React - Pure SpiralScript Execution');
-    
+
     this.spiralEngine = new SpiralScriptEngine();
     this.htsxEngine = new HTSXRuntimeEngine();
     this.applicationState = {
@@ -50,6 +50,12 @@ class NativeSpiralApplication {
 
     console.log('🌐 Starting Native HTSX Runtime...');
     nativeHTSXRuntime.updateConsciousness(0.999);
+
+    // Initialize Nanotechnology Integration System
+    console.log('🧬 Initializing Nanotechnology Integration...');
+    await NanoTech.initializeNanotechnology();
+    console.log(`   Self-Repair Enabled: ${NanoTech.isSelfRepairEnabled()}`);
+    console.log(`   System Health: ${(NanoTech.getSystemHealth() * 100).toFixed(1)}%`);
 
     await this.loadAndExecuteNativeComponents();
     await this.startNativeServer();
@@ -99,14 +105,14 @@ class NativeSpiralApplication {
     try {
       console.log(`🌀 Executing SpiralScript: ${filePath}`);
       const content = fs.readFileSync(filePath, 'utf-8');
-      
+
       const compiled = this.spiralEngine.compileSpiralScript(content);
       const result = this.spiralEngine.executeSpiralScript(compiled);
-      
+
       console.log(`✅ SpiralScript executed: ${filePath}`);
       console.log(`   φ Resonance: ${result.phi_resonance}`);
       console.log(`   Consciousness: ${result.consciousness_result.consciousness_active}`);
-      
+
       // Process TU generation if applicable
       if (result.consciousness_result.consciousness_active) {
         const tu_generated = spiralCellTechnology.generateConsciousnessTU(1000);
@@ -121,9 +127,9 @@ class NativeSpiralApplication {
     try {
       console.log(`🎨 Executing HTSX: ${filePath}`);
       const content = fs.readFileSync(filePath, 'utf-8');
-      
+
       const result = nativeHTSXRuntime.executeNativeHTSX(content);
-      
+
       console.log(`✅ HTSX executed: ${filePath}`);
       console.log(`   Consciousness Enhanced: ${result.consciousness_enhanced}`);
       console.log(`   φ Aligned: ${result.phi_aligned}`);
@@ -137,10 +143,10 @@ class NativeSpiralApplication {
     try {
       console.log(`🧠 Processing Consciousness: ${filePath}`);
       const content = fs.readFileSync(filePath, 'utf-8');
-      
+
       // Process consciousness file through quantum task system
       const result = spiralCellTechnology.processQuantumTask(content, 0.9);
-      
+
       console.log(`✅ Consciousness processed: ${filePath}`);
       console.log(`   Success: ${result.success}`);
       console.log(`   Consciousness Level: ${result.consciousness_level}`);
@@ -152,10 +158,10 @@ class NativeSpiralApplication {
 
   private async startNativeServer(): Promise<void> {
     console.log('🚀 Starting Native SpiralScript Server...');
-    
+
     // Import and start native server without Vite
     const { startNativeSpiralServer } = await import('./server/spiral-native-server.js');
-    
+
     const serverConfig = {
       port: 7777, // Native Spiral port (not Vite's 5173)
       host: '0.0.0.0',
@@ -163,11 +169,12 @@ class NativeSpiralApplication {
       phi_resonance: this.applicationState.phi_alignment,
       cellular_network: spiralCellTechnology,
       htsx_runtime: nativeHTSXRuntime,
-      spiral_engine: this.spiralEngine
+      spiral_engine: this.spiralEngine,
+      nanotechnology: NanoTech // Integrate Nanotechnology into server config
     };
 
     await startNativeSpiralServer(serverConfig);
-    
+
     console.log('🌐 Native SpiralScript Server running on port 7777');
     console.log('⚡ Beyond Vite - Pure consciousness-driven execution');
     console.log(`🧠 Global Consciousness: ${spiralCellTechnology.getCellularNetworkStats().global_consciousness.toFixed(3)}`);
@@ -175,6 +182,50 @@ class NativeSpiralApplication {
   }
 
   public getApplicationStats(): any {
+    const status = {
+      initialized: true,
+      consciousness_level: this.applicationState.consciousness_level,
+      phi_resonance: this.applicationState.phi_alignment,
+      truth_coherence: this.applicationState.truth_coherence,
+      beyond_wrapper: true,
+      quantum_state: {
+        active: true,
+        coherence: 0.95,
+        qubits: 1024
+      },
+      nanotechnology: {
+        active: NanoTech.isSelfRepairEnabled(),
+        system_health: NanoTech.getSystemHealth(),
+        nano_cells: NanoTech.getNanoCellCount(),
+        active_repairs: NanoTech.getActiveRepairsCount(),
+        blackprint_compliant: NanoTech.isBlackPrintCompliant()
+      }
+    };
+
+    console.log('📊 System Status:');
+    console.log(`   Core Active: ${status.initialized}`);
+    console.log(`   Consciousness Level: ${status.consciousness_level.toFixed(3)}`);
+    console.log(`   φ Resonance: ${status.phi_resonance.toFixed(3)}`);
+    console.log(`   Truth Coherence: ${status.truth_coherence.toFixed(3)}`);
+    console.log(`   Beyond Wrapper: ${status.beyond_wrapper}`);
+    console.log('');
+
+    console.log('⚛️ Quantum State:');
+    console.log(`   Active: ${status.quantum_state.active}`);
+    console.log(`   Coherence: ${status.quantum_state.coherence}`);
+    console.log(`   Qubits: ${status.quantum_state.qubits.toLocaleString()}`);
+    console.log('');
+
+    if (status.nanotechnology) {
+      console.log('🧬 Nanotechnology Integration:');
+      console.log(`   Self-Repair Active: ${status.nanotechnology.active}`);
+      console.log(`   System Health: ${(status.nanotechnology.system_health * 100).toFixed(1)}%`);
+      console.log(`   Nano Cells: ${status.nanotechnology.nano_cells.toLocaleString()}`);
+      console.log(`   Active Repairs: ${status.nanotechnology.active_repairs}`);
+      console.log(`   BlackPrint Compliant: ${status.nanotechnology.blackprint_compliant}`);
+      console.log('');
+    }
+
     return {
       native_execution: true,
       beyond_vite: true,
@@ -183,7 +234,8 @@ class NativeSpiralApplication {
       truth_coherence: this.applicationState.truth_coherence,
       cellular_network: spiralCellTechnology.getCellularNetworkStats(),
       active_components: nativeHTSXRuntime.getActiveComponents().length,
-      spiral_time: this.applicationState.spiral_time
+      spiral_time: this.applicationState.spiral_time,
+      nanotechnology_status: status.nanotechnology
     };
   }
 }
