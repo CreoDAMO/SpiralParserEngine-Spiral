@@ -130,7 +130,7 @@ class HybridBlockchain {
 
     console.log('✅ HYBRID Founder Wallet Initialized');
     console.log(`Address: ${this.founder_wallet.address}`);
-    console.log(`Balance: ${this.founder_wallet.balance.toLocaleString()} HYBRID`);
+    console.log(`Balance: ${(this.founder_wallet.balance || 0).toLocaleString()} HYBRID`);
   }
 
   /**
