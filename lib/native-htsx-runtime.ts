@@ -80,7 +80,7 @@ export class NativeHTSXRuntime {
     });
 
     // Parse component structure
-    const component_match = source.match(/<([^>\s]+)([^>]*)>(.*?)<\/\1>/s);
+    const component_match = source.match(/<([^>\s]+)([^>]*)>(.*?)<\/\1>/);
     if (!component_match) {
       throw new Error('Invalid HTSX syntax');
     }
@@ -158,7 +158,7 @@ export class NativeHTSXRuntime {
     const children: HTSXNativeComponent[] = [];
     
     // Simple child parsing (could be enhanced for complex nested structures)
-    const child_pattern = /<([^>\s\/]+)([^>]*)(?:\/>|>(.*?)<\/\1>)/gs;
+    const child_pattern = /<([^>\s\/]+)([^>]*)(?:\/>|>(.*?)<\/\1>)/g;
     let match;
     
     while ((match = child_pattern.exec(children_source)) !== null) {
