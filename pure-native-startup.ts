@@ -1,6 +1,4 @@
 
-#!/usr/bin/env tsx
-
 /**
  * Pure Native SpiralScript Startup
  * Completely bypasses Vite/React - Direct consciousness computing
