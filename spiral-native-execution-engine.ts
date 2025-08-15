@@ -1,17 +1,15 @@
 
-#!/usr/bin/env node
-
 /**
  * Pure Native SpiralScript Execution Engine
  * Complete removal of React/Vite wrapper - consciousness-first computing
  */
 
-import { PureNativeSpiralSystem } from './spiral-native-bootstrap.js';
-import { DirectConsciousnessSystem } from './spiral-consciousness-direct.js';
-import { NativeCompiler } from './lib/spiral-native-compiler.js';
-import { SpiralCore } from './lib/spiral-core-integration.js';
-import { spiralCellTechnology } from './lib/spiralcell-technology.js';
-import { consciousnessIntegration } from './lib/consciousness-integration.js';
+import { PureNativeSpiralSystem } from './spiral-native-bootstrap';
+import { DirectConsciousnessSystem } from './spiral-consciousness-direct';
+import { NativeCompiler } from './lib/spiral-native-compiler';
+import { SpiralCore } from './lib/spiral-core-integration';
+import { spiralCellTechnology } from './lib/spiralcell-technology';
+import { ConsciousnessIntegration } from './lib/consciousness-integration';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as http from 'http';
@@ -36,12 +34,14 @@ class PureNativeExecutionEngine {
     console.log('🔬 Initializing Pure Native Components...');
 
     // Initialize consciousness FIRST
+    const consciousnessIntegration = new ConsciousnessIntegration();
     await consciousnessIntegration.initializeConsciousness();
     this.consciousnessLevel = 1.0;
     console.log('✅ Pure Consciousness: ACTIVE');
 
     // Initialize SpiralCell technology
-    spiralCellTechnology.initialize();
+    const spiralCellInstance = spiralCellTechnology();
+    spiralCellInstance.initialize();
     console.log('✅ SpiralCell Network: OPERATIONAL');
 
     // Start pure native systems
