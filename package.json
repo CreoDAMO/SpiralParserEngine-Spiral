@@ -4,14 +4,16 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "dev": "NODE_ENV=development tsx server/index.ts",
-    "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
-    "start": "NODE_ENV=production node dist/index.js",
-    "check": "tsc",
-    "db:push": "drizzle-kit push",
-    "spiral": "node scripts/spiral-executor.js",
-    "compile-spiral": "node scripts/compile-spiral.js",
-    "register-languages": "node scripts/register-spiral-languages.js"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "server": "tsx server/index.ts",
+    "spiral:compile": "npx tsx scripts/build/compile-grammar.ts",
+    "spiral:generate": "npx tsx scripts/build/generate-languages.ts",
+    "spiral:test": "npx tsx scripts/build/test-generated-files.ts",
+    "spiral:execute": "node scripts/runtime/enhanced-spiral-executor.js",
+    "spiral:deploy": "npx tsx scripts/deployment/spiral-system-deployer.ts",
+    "spiral:full": "npm run spiral:compile && npm run spiral:generate && npm run spiral:test && npm run spiral:deploy"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
