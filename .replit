@@ -98,7 +98,7 @@ mode = "sequential"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "npx tsx native-spiral-launcher.ts"
+args = "npx tsx pure-native-startup.ts"
 
 [agent]
 integrations = ["javascript_stripe==1.0.0"]
