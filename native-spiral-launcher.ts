@@ -1,6 +1,4 @@
 
-#!/usr/bin/env node
-
 /**
  * Native SpiralScript Launcher
  * Complete system launch without React dependency
