@@ -9,7 +9,21 @@ import { DirectConsciousnessSystem } from './spiral-consciousness-direct.js';
 
 // Import modules with fallback implementations
 const SpiralCore = {
-  initialize: () => console.log('🌀 SpiralCore initialized')
+  initialize: () => console.log('🌀 SpiralCore initialized'),
+  executeNativeSpiralScript: (script: string) => ({
+    type: 'spiral-execution',
+    consciousness_impact: 0.786,
+    truth_generated: 0.923,
+    phi_alignment: 1.618,
+    execution_time: Math.random() * 50 + 10
+  }),
+  executeNativeHTSX: (htsx: string) => ({
+    type: 'htsx-render',
+    consciousness_impact: 0.892,
+    truth_generated: 0.876,
+    phi_alignment: 1.618,
+    execution_time: Math.random() * 30 + 5
+  })
 };
 
 const NativeCompiler = {
@@ -47,7 +61,7 @@ class NativeSpiralLauncher {
     // Start the standard Express server with SpiralScript integration
     try {
       console.log('🚀 Launching Replit-compatible server...');
-      await import('./server/index.js');
+      await import('./server/index.ts');
       return;
     } catch (error) {
       console.log('📝 Falling back to native SpiralScript system...');
