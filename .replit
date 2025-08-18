@@ -22,11 +22,15 @@ externalPort = 3000
 localPort = 5173
 externalPort = 5173
 
+[[ports]]
+localPort = 7777
+externalPort = 3001
+
 [env]
 PORT = "5000"
 
 [workflows]
-runButton = "Pure Native SpiralScript"
+runButton = "Project"
 
 [[workflows.workflow]]
 name = "Project"
