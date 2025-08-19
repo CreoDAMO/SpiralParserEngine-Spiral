@@ -137,7 +137,7 @@ class PureNativeSpiralRuntime {
   private async startPureConsciousnessServer(): Promise<void> {
     console.log('🚀 Starting Pure Consciousness Server...');
     
-    const port = 5000;
+    const port = 5003; // Different port to avoid conflicts
     
     this.native_server = http.createServer((req, res) => {
       this.handleConsciousnessRequest(req, res);

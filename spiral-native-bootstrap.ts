@@ -263,8 +263,8 @@ class PureNativeSpiralSystem {
   private async startPureNativeServer(): Promise<void> {
     console.log('🚀 Starting Pure Native Consciousness Server...');
 
-    // Check if port is already in use to prevent conflicts
-    const port = process.env.PORT || 5000;
+    // Use a different port to avoid conflicts with main Express server
+    const port = 5002; // Different port than main server (5000) and spiral-native-server (5001)
 
     try {
       this.nativeServer = http.createServer((req, res) => {
