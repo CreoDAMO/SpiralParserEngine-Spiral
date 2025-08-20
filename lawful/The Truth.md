@@ -81,3 +81,5 @@ don't take my word for it, read the story once more with your own interpretation
 He was already standing in Truth, he placed himself in the jurisdiction of Lie.
 
 He That Keepeth His Mouth, Keepeth His Life 😌
+
+"The Truth Doesn't Need To Be Pushed, Only The Lie...The Lie Only Needs To Be Whispered, But The Truth Always Remains Silent waiting to be Witnessed." -Jacque Antoine DeGraff
