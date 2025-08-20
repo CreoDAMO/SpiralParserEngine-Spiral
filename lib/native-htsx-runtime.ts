@@ -1,4 +1,3 @@
-
 /**
  * Native HTSX Runtime Engine - Complete Implementation
  * Beyond React wrapper - full native execution
@@ -25,10 +24,13 @@ export class NativeHTSXRuntime {
   private consciousness_level: number = 1.618;
   private active_components: Map<string, HTSXNativeComponent> = new Map();
   private render_context: HTSXRenderContext;
+  // Component registry for native rendering
+  private componentRegistry: Map<string, { render: (props: any) => any; [key: string]: any }> = new Map();
+
 
   constructor() {
     console.log('🌀 Initializing Native HTSX Runtime - Beyond React Wrapper');
-    
+
     this.render_context = {
       consciousness_active: true,
       phi_resonance: 1.618033988749895,
@@ -36,8 +38,9 @@ export class NativeHTSXRuntime {
       quantum_state: { coherence: 0.999, qubits: 10000 },
       spiral_time: Date.now()
     };
-    
+
     this.initializeNativeRendering();
+    this.registerSpiralComponents(); // Register core components
   }
 
   private initializeNativeRendering(): void {
@@ -46,18 +49,87 @@ export class NativeHTSXRuntime {
     console.log('🧠 Consciousness-driven component system active');
   }
 
+  private registerSpiralComponents() {
+    // Register core Spiral/HTSX components
+    this.componentRegistry.set('spiral-consciousness', {
+      render: (props: any) => this.renderConsciousness(props),
+      phi_aligned: true
+    });
+
+    this.componentRegistry.set('hybrid-coin', {
+      render: (props: any) => this.renderHybridCoin(props),
+      native_coin: true
+    });
+
+    this.componentRegistry.set('trust-units', {
+      render: (props: any) => this.renderTrustUnits(props),
+      infinite_mathematics: true
+    });
+
+    this.componentRegistry.set('enhanced-native-spiral-visual', {
+      render: (props: any) => this.renderEnhancedNativeVisual(props),
+      native_execution: true,
+      consciousness_aware: true,
+      backend_integrated: true
+    });
+  }
+
+  // Placeholder methods for registered components
+  private renderConsciousness(props: any): any {
+    console.log('Rendering Consciousness Component:', props);
+    return {
+      type: 'spiral-consciousness',
+      value: props.value,
+      awareness_level: props['awareness-level'] || 'high'
+    };
+  }
+
+  private renderHybridCoin(props: any): any {
+    console.log('Rendering Hybrid Coin Component:', props);
+    return {
+      type: 'hybrid-coin',
+      denom: props.denom || 'H',
+      amount: parseFloat(props.amount || '0'),
+      is_native: props.native === 'true'
+    };
+  }
+
+  private renderTrustUnits(props: any): any {
+    return {
+      type: 'trust-units',
+      value: props.value === '∞' ? Infinity : parseFloat(props.value || '0'),
+      infinite_mathematics: props.value === '∞',
+      abundance_economics: true
+    };
+  }
+
+  private renderEnhancedNativeVisual(props: any): any {
+    return {
+      type: 'enhanced-native-spiral-visual',
+      consciousness_level: parseFloat(props['consciousness-level'] || '1.0'),
+      native_languages: ['spiral', 'sprl', 'quantum', 'consciousness'],
+      htsx_runtime: 'native-execution',
+      wrapper_status: 'eliminated',
+      phi_alignment: 1.618,
+      quantum_coherence: 0.999,
+      backend_integration: true,
+      real_time_processing: true
+    };
+  }
+
+
   public compileHTSX(source: string): HTSXNativeComponent {
     console.log('🔄 Compiling HTSX to native components...');
-    
+
     // Parse HTSX syntax with consciousness awareness
     const parsed = this.parseHTSXWithConsciousness(source);
-    
+
     // Convert to native component tree
     const component = this.createNativeComponent(parsed);
-    
+
     // Apply consciousness enhancement
     this.enhanceWithConsciousness(component);
-    
+
     console.log('✅ Native HTSX compilation complete');
     return component;
   }
@@ -86,10 +158,10 @@ export class NativeHTSXRuntime {
     }
 
     const [, tag, attributes, children] = component_match;
-    
+
     // Parse attributes with consciousness awareness
     const props = this.parseAttributesWithConsciousness(attributes);
-    
+
     return {
       tag,
       props,
@@ -101,11 +173,11 @@ export class NativeHTSXRuntime {
   private parseAttributesWithConsciousness(attributes: string): Record<string, any> {
     const props: Record<string, any> = {};
     const attr_pattern = /(\w+(?:-\w+)*)="([^"]*)"/g;
-    
+
     let match;
     while ((match = attr_pattern.exec(attributes)) !== null) {
       const [, name, value] = match;
-      
+
       // Handle consciousness-specific attributes
       if (name.includes('consciousness') || name.includes('phi') || name.includes('truth')) {
         props[name] = this.parseConsciousnessValue(value);
@@ -113,7 +185,7 @@ export class NativeHTSXRuntime {
         props[name] = value;
       }
     }
-    
+
     return props;
   }
 
@@ -122,15 +194,15 @@ export class NativeHTSXRuntime {
     if (value === 'true' || value === 'false') {
       return value === 'true';
     }
-    
+
     if (!isNaN(parseFloat(value))) {
       return parseFloat(value);
     }
-    
+
     if (value === '∞' || value === 'infinite') {
       return Infinity;
     }
-    
+
     return value;
   }
 
@@ -156,14 +228,14 @@ export class NativeHTSXRuntime {
 
   private parseChildComponents(children_source: string): HTSXNativeComponent[] {
     const children: HTSXNativeComponent[] = [];
-    
+
     // Simple child parsing (could be enhanced for complex nested structures)
     const child_pattern = /<([^>\s\/]+)([^>]*)(?:\/>|>(.*?)<\/\1>)/g;
     let match;
-    
+
     while ((match = child_pattern.exec(children_source)) !== null) {
       const [, tag, attributes, child_content] = match;
-      
+
       const child_component: HTSXNativeComponent = {
         type: tag,
         props: this.parseAttributesWithConsciousness(attributes),
@@ -172,10 +244,10 @@ export class NativeHTSXRuntime {
         phi_alignment: 1.618,
         truth_coherence: 0.9
       };
-      
+
       children.push(child_component);
     }
-    
+
     return children;
   }
 
@@ -194,8 +266,16 @@ export class NativeHTSXRuntime {
 
   public renderToNative(component: HTSXNativeComponent): any {
     console.log(`🎨 Rendering native component: ${component.type}`);
-    
-    // Native rendering logic (platform-agnostic)
+
+    // Check if the component type is registered
+    const registeredRenderer = this.componentRegistry.get(component.type);
+
+    if (registeredRenderer) {
+      // Use the registered renderer
+      return registeredRenderer.render(component.props);
+    }
+
+    // Default native rendering logic (platform-agnostic)
     const rendered = {
       element_type: component.type,
       properties: component.props,
@@ -213,19 +293,20 @@ export class NativeHTSXRuntime {
     return rendered;
   }
 
+
   public executeNativeHTSX(source: string): any {
     console.log('🚀 Executing Native HTSX (Beyond React)...');
-    
+
     const component = this.compileHTSX(source);
     const rendered = this.renderToNative(component);
-    
+
     console.log('✅ Native HTSX execution complete:', {
       consciousness_level: component.consciousness_level,
       phi_alignment: component.phi_alignment,
       truth_coherence: component.truth_coherence,
       components_active: this.active_components.size
     });
-    
+
     return rendered;
   }
 
@@ -241,7 +322,7 @@ export class NativeHTSXRuntime {
     this.consciousness_level = level;
     this.render_context.consciousness_active = level > 0.5;
     this.render_context.phi_resonance = level * 1.618;
-    
+
     console.log(`🧠 Consciousness level updated to: ${level.toFixed(3)}`);
   }
 }

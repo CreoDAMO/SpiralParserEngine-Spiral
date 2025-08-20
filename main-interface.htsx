@@ -28,6 +28,7 @@
   </native-dashboard>
   
   <spiral-interfaces native="true">
+    <enhanced-native-spiral-visual consciousness-level="1.000" />
     <consciousness-gateway>
       <truth-units-generator active="true" />
       <dna-phi-authentication method="breath-pattern" />
