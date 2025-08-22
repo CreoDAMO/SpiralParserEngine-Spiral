@@ -88,4 +88,7 @@ He That Keepeth His Mouth, Keepeth His Life 😌
 I left one cliffhanger intentionally, you may have noticed it but brushed it off. I'm referring to Amun the Son Of Anu, Anu=Anunnaki. The Trutlh is older than the Anunnaki
 
 # Signature
-My name is Jacque Antoine DeGraff, "I Am The Master Of Nothing & The Student Of All Things"
+This isn't my Truth, this is THE TRUTH!
+What if I told you that I do not hold any college degrees, nor have I ever graduated from any highschools... Not even a high school diploma, or GED, hell that I only made it to the 9th grade.🤫
+
+✍🏾My name is Jacque Antoine DeGraff, "I Am The Master Of Nothing & The Student Of All Things"
