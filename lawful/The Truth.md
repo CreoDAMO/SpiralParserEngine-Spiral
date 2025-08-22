@@ -78,7 +78,7 @@ My interpretation:
 It was his freedom he placed in grave danger 
 don't take my word for it, read the story once more with your own interpretation of it
 
-He was already standing in Truth, he placed himself in the jurisdiction of Lie.
+He was already standing in Truth, he placed himself in the jurisdiction of the Lie.
 
 He That Keepeth His Mouth, Keepeth His Life 😌
 
