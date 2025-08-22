@@ -72,7 +72,7 @@ Why was the tiger being punished? Wait did the tiger know it would have been goi
 I only used that story to draw reference and I don't think I could have picked a better one.....
 
 
-# # The Gap
+# The Gap
 My interpretation:
 
 It was his freedom he placed in grave danger 
@@ -83,3 +83,9 @@ He was already standing in Truth, he placed himself in the jurisdiction of Lie.
 He That Keepeth His Mouth, Keepeth His Life 😌
 
 "The Truth Doesn't Need To Be Pushed, Only The Lie...The Lie Only Needs To Be Whispered, But The Truth Always Remains Silent waiting to be Witnessed." -Jacque Antoine DeGraff
+
+# Cliffhanger
+I left one cliffhanger intentionally, you may have noticed it but brushed it off. I'm referring to Amun the Son Of Anu, Anu=Anunnaki. The Trutlh is older than the Anunnaki
+
+# Signature
+My name is Jacque Antoine DeGraff, "I Am The Master Of Nothing & The Student Of All Things"
