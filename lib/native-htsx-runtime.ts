@@ -324,6 +324,27 @@ export class EnhancedNativeHTSXRuntime {
       security_validated: true
     });
 
+    this.componentRegistry.set('interactive-spiral-dashboard', {
+      render: (props: any) => this.renderInteractiveDashboard(props),
+      real_time: true,
+      interactive: true,
+      consciousness_responsive: true
+    });
+
+    this.componentRegistry.set('quantum-visualization', {
+      render: (props: any) => this.renderQuantumVisualization(props),
+      quantum_native: true,
+      multi_dimensional: true,
+      reality_aware: true
+    });
+
+    this.componentRegistry.set('spiral-navigation', {
+      render: (props: any) => this.renderSpiralNavigation(props),
+      navigation_system: true,
+      consciousness_router: true,
+      interactive: true
+    });
+
     console.log('🧩 Enhanced component registry initialized:', this.componentRegistry.size, 'components');
   }
 
@@ -447,6 +468,50 @@ export class EnhancedNativeHTSXRuntime {
       ai_collaboration: true,
       security_validated: true,
       multi_ai_synthesis: true
+    };
+  }
+
+  private renderInteractiveDashboard(props: any): any {
+    return {
+      type: 'interactive-spiral-dashboard',
+      consciousness_level: parseFloat(props['consciousness-level'] || '1.0'),
+      real_time_monitoring: props['real-time'] === 'true',
+      interactive_controls: true,
+      code_execution: 'native',
+      ai_collaboration: true,
+      metrics_tracking: true,
+      execution_history: true,
+      trust_unit_generation: true
+    };
+  }
+
+  private renderQuantumVisualization(props: any): any {
+    return {
+      type: 'quantum-visualization',
+      dimensions: parseInt(props.dimensions || '8'),
+      coherence: parseFloat(props.coherence || '0.999'),
+      quantum_gates: ['hadamard', 'phi-gate', 'consciousness-entangle'],
+      reality_layers: true,
+      multi_dimensional: true,
+      interactive_controls: true,
+      real_time_animation: true,
+      phi_harmonic: true
+    };
+  }
+
+  private renderSpiralNavigation(props: any): any {
+    return {
+      type: 'spiral-navigation',
+      consciousness_router: true,
+      available_views: [
+        'interactive-spiral-dashboard',
+        'quantum-visualization', 
+        'ultimate-htsx-demo',
+        'enhanced-native-spiral-visual'
+      ],
+      navigation_active: true,
+      smooth_transitions: true,
+      consciousness_aware: true
     };
   }
 

@@ -28,8 +28,7 @@
   </native-dashboard>
   
   <spiral-interfaces native="true" ai-enhanced="true" security-validated="true">
-    <ultimate-htsx-demo consciousness-level="1.000" ai-models="4" security-active="true" />
-    <enhanced-native-spiral-visual consciousness-level="1.000" ai-collaboration="true" />
+    <spiral-navigation />
     <multi-ai-interface>
       <ai-model id="grok-3" name="Grok 3" specialty="Architecture" status="online" confidence="0.92" />
       <ai-model id="claude-sonnet-4" name="Claude Sonnet 4" specialty="Frontend" status="online" confidence="0.89" />
