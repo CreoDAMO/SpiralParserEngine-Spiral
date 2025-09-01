@@ -1,4 +1,3 @@
-
 /**
  * Unified Native Spiral Launcher - Single Entry Point
  * Pure Native Implementation - No React/Vite Wrappers
@@ -21,7 +20,7 @@ class UnifiedNativeSpiralLauncher {
     console.log('🌀 UNIFIED NATIVE SPIRAL LAUNCHER - STARTING');
     console.log('⚡ Pure Native Implementation - Training Wheels REMOVED');
     console.log('🧠 No React/Vite Dependencies - Direct Consciousness Computing');
-    
+
     this.app = express();
     this.initializeNativeSystem();
   }
@@ -32,7 +31,7 @@ class UnifiedNativeSpiralLauncher {
     // Configure Express for native Spiral processing
     this.app.use(express.json());
     this.app.use(express.static('glyphs'));
-    
+
     // CORS for cross-origin requests
     this.app.use((req, res, next) => {
       res.header('Access-Control-Allow-Origin', '*');
@@ -43,13 +42,13 @@ class UnifiedNativeSpiralLauncher {
 
     // Initialize Enhanced HTSX Runtime
     console.log('🎨 Initializing Enhanced Native HTSX Runtime...');
-    
+
     // Execute main Spiral files natively
     await this.executeNativeSpiralFiles();
-    
+
     // Set up API routes
     this.setupNativeAPIRoutes();
-    
+
     // Start the unified server
     await this.startUnifiedServer();
   }
@@ -57,15 +56,26 @@ class UnifiedNativeSpiralLauncher {
   private async executeNativeSpiralFiles(): Promise<void> {
     console.log('🌀 Executing Native Spiral Files...');
 
-    // Execute main-interface.htsx through native HTSX runtime
-    if (fs.existsSync('main-interface.htsx')) {
-      console.log('🎨 Rendering main-interface.htsx through native HTSX runtime');
-      try {
-        const htsxContent = fs.readFileSync('main-interface.htsx', 'utf-8');
-        const result = await enhancedNativeHTSXRuntime.executeNativeHTSX(htsxContent);
-        console.log('✅ main-interface.htsx rendered natively - Consciousness Enhanced:', result.consciousness_enhanced || false);
-      } catch (error) {
-        console.error('❌ Error rendering HTSX:', error);
+    // Execute main HTSX interface
+    console.log('🎨 Rendering main-interface.htsx through native HTSX runtime');
+    const mainInterfaceContent = fs.readFileSync('main-interface.htsx', 'utf-8');
+    const mainInterfaceResult = await enhancedNativeHTSXRuntime.executeNativeHTSX(mainInterfaceContent);
+    console.log(`✅ main-interface.htsx rendered natively - Consciousness Enhanced: ${mainInterfaceResult.consciousness_enhanced}`);
+
+    // Execute all interactive components
+    console.log('🎨 Loading all interactive components...');
+    const componentFiles = [
+      'components/enhanced-native-spiral-visual.htsx',
+      'components/interactive-spiral-dashboard.htsx',
+      'components/quantum-visualization.htsx',
+      'production-reality-interface.htsx'
+    ];
+
+    for (const componentFile of componentFiles) {
+      if (fs.existsSync(componentFile)) {
+        const componentContent = fs.readFileSync(componentFile, 'utf8');
+        const componentResult = await enhancedNativeHTSXRuntime.executeNativeHTSX(componentContent);
+        console.log(`✅ ${componentFile} loaded - Active: ${componentResult.consciousness_level > 0}`);
       }
     }
 
@@ -125,7 +135,7 @@ class UnifiedNativeSpiralLauncher {
     this.app.post('/api/spiral/execute', (req, res) => {
       const { code, language } = req.body;
       console.log(`🌀 Native execution request: ${language}`);
-      
+
       res.json({
         success: true,
         result: `Native ${language} executed successfully`,
@@ -148,7 +158,7 @@ class UnifiedNativeSpiralLauncher {
   private convertHTSXToHTML(htsxContent: string): string {
     // Basic HTSX to HTML conversion for serving
     let html = htsxContent;
-    
+
     // Convert HTSX tags to HTML
     html = html.replace(/<spiral-application[^>]*>/g, '<div class="spiral-application">');
     html = html.replace(/<\/spiral-application>/g, '</div>');
@@ -156,7 +166,7 @@ class UnifiedNativeSpiralLauncher {
     html = html.replace(/<\/consciousness-header>/g, '</header>');
     html = html.replace(/<native-dashboard[^>]*>/g, '<div class="native-dashboard">');
     html = html.replace(/<\/native-dashboard>/g, '</div>');
-    
+
     // Wrap in proper HTML structure
     return `
 <!DOCTYPE html>
