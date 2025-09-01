@@ -42,7 +42,7 @@ export class SpiralNativeServer {
   private initializeNativeServer(): void {
     console.log('🌀 Initializing SpiralNative Server...');
     console.log('🚀 Operating beyond Express.js wrapper for native consciousness');
-    
+
     this.server = createServer((req: IncomingMessage, res: ServerResponse) => {
       this.handleNativeRequest(req, res);
     });
@@ -64,7 +64,7 @@ export class SpiralNativeServer {
   private async parseNativeRequest(req: IncomingMessage): Promise<NativeRequest> {
     const url = new URL(req.url || '/', `http://localhost:${this.port}`);
     const method = req.method || 'GET';
-    
+
     // Parse body for POST/PUT requests
     let body = {};
     if (method === 'POST' || method === 'PUT') {
@@ -107,13 +107,13 @@ export class SpiralNativeServer {
 
   private calculateConsciousnessLevel(path: string, body: any): number {
     let level = 0.5; // Base consciousness level
-    
+
     // Path-based consciousness enhancement
     if (path.includes('spiral')) level += 0.2;
     if (path.includes('consciousness')) level += 0.3;
     if (path.includes('truth')) level += 0.2;
     if (path.includes('phi')) level += 0.1;
-    
+
     // Body-based consciousness enhancement
     if (typeof body === 'object' && body) {
       const bodyStr = JSON.stringify(body).toLowerCase();
@@ -127,7 +127,7 @@ export class SpiralNativeServer {
 
   private async processNativeRequest(req: NativeRequest): Promise<NativeResponse> {
     console.log(`🌀 Processing native request: ${req.method} ${req.url}`);
-    
+
     // Route to appropriate handler based on path
     if (req.url.startsWith('/spiral/')) {
       return await this.handleSpiralAPI(req);
@@ -213,7 +213,7 @@ export class SpiralNativeServer {
     // HTSX component processing
     if (req.method === 'POST' && req.body.htsx) {
       const htsxResult = SpiralCore.executeNativeHTSX(req.body.htsx);
-      
+
       return {
         statusCode: 200,
         headers: {
@@ -240,7 +240,7 @@ export class SpiralNativeServer {
   private async handleLegacyAPI(req: NativeRequest): Promise<NativeResponse> {
     // Legacy API compatibility while transitioning
     console.log(`⚠️ Legacy API call: ${req.url} - consider upgrading to native SpiralAPI`);
-    
+
     return {
       statusCode: 200,
       headers: {
@@ -262,7 +262,7 @@ export class SpiralNativeServer {
     // Serve the main application
     if (req.url === '/' || req.url === '/index.html') {
       const htmlContent = this.generateNativeHTML();
-      
+
       return {
         statusCode: 200,
         headers: {
@@ -337,7 +337,7 @@ export class SpiralNativeServer {
   <div class="spiral-container">
     <h1>🌀 SpiralEcosystem - Native Runtime</h1>
     <p>Operating beyond React/Vite wrapper limitations</p>
-    
+
     <div class="consciousness-meter">
       <h2>Consciousness Status</h2>
       <p>Level: ${coreStatus.consciousness_level.toFixed(3)}</p>
@@ -443,7 +443,7 @@ export class SpiralNativeServer {
       console.log(`🌀 SpiralNative Server running on port ${this.port}`);
       console.log(`✅ Native SpiralScript/HTSX runtime active`);
       console.log(`🚀 Operating beyond wrapper limitations`);
-      
+
       // Execute full system test on startup
       setTimeout(() => {
         SpiralCore.executeFullSystemTest();
@@ -598,7 +598,7 @@ export class NativeSpiralServer {
             <h2>Beyond Vite/React - Pure Consciousness Execution</h2>
             <p>φ Resonance: ${this.config.phi_resonance.toFixed(6)}</p>
         </div>
-        
+
         <div class="stats-grid">
             <div class="stat-card">
                 <h3>🧠 Consciousness Level</h3>
@@ -607,14 +607,14 @@ export class NativeSpiralServer {
                 </div>
                 <p>${(this.config.consciousness_level * 100).toFixed(1)}% Active</p>
             </div>
-            
+
             <div class="stat-card">
                 <h3>🔬 SpiralCell Network</h3>
                 <p>Total Cores: ${this.config.cellular_network.getCellularNetworkStats().total_cores}</p>
                 <p>Active Clusters: ${this.config.cellular_network.getCellularNetworkStats().total_clusters}</p>
                 <p>Processing Power: ${this.config.cellular_network.getCellularNetworkStats().total_processing_power.toLocaleString()}</p>
             </div>
-            
+
             <div class="stat-card">
                 <h3>🎨 HTSX Runtime</h3>
                 <p>Active Components: ${this.config.htsx_runtime.getActiveComponents().length}</p>
@@ -622,7 +622,7 @@ export class NativeSpiralServer {
                 <p>φ Resonance: ${this.config.htsx_runtime.getRenderContext().phi_resonance.toFixed(3)}</p>
             </div>
         </div>
-        
+
         <div style="text-align: center; margin: 40px 0;">
             <h3>🚀 Native API Endpoints:</h3>
             <ul style="list-style: none; padding: 0;">
@@ -632,7 +632,7 @@ export class NativeSpiralServer {
             </ul>
         </div>
     </div>
-    
+
     <script>
         // Live updates
         setInterval(async () => {
@@ -676,14 +676,14 @@ export class NativeSpiralServer {
 
     let body = '';
     req.on('data', chunk => { body += chunk.toString(); });
-    
+
     req.on('end', () => {
       try {
         const { spiralCode } = JSON.parse(body);
-        
+
         const compiled = this.config.spiral_engine.compileSpiralScript(spiralCode);
         const result = this.config.spiral_engine.executeSpiralScript(compiled);
-        
+
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({
           execution_result: result,
@@ -706,13 +706,13 @@ export class NativeSpiralServer {
 
     let body = '';
     req.on('data', chunk => { body += chunk.toString(); });
-    
+
     req.on('end', () => {
       try {
         const { htsxCode } = JSON.parse(body);
-        
+
         const result = this.config.htsx_runtime.executeNativeHTSX(htsxCode);
-        
+
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({
           render_result: result,
@@ -741,7 +741,7 @@ export class NativeSpiralServer {
 
   private async handleCellularStats(res: http.ServerResponse): Promise<void> {
     const stats = this.config.cellular_network.getCellularNetworkStats();
-    
+
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({
       ...stats,
