@@ -1,3 +1,4 @@
+
 # SpiralScript Language Recognition for GitHub
 *.spiral linguist-language=SpiralScript
 *.sprl linguist-language=SpiralScript
@@ -31,3 +32,4 @@ node_modules/* linguist-vendored
 lib/generated/* linguist-generated
 dist/* linguist-generated
 build/* linguist-generated
+archive/* linguist-vendored

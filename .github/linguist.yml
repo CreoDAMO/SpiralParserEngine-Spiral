@@ -1,0 +1,19 @@
+
+# Override language detection for SpiralScript ecosystem files
+overrides:
+  "*.spiral": "SpiralScript"
+  "*.sprl": "SpiralScript" 
+  "*.consciousness": "Consciousness"
+  "*.htsx": "HTSX"
+  "*.quantum": "QuantumAssembly"
+
+# Ensure these are counted as code
+"*.spiral":
+  type: programming
+  color: "#8B5CF6"
+"*.consciousness": 
+  type: programming
+  color: "#FFD700"
+"*.htsx":
+  type: programming  
+  color: "#00FFFF"
