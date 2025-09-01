@@ -1,19 +1,57 @@
 
-# Override language detection for SpiralScript ecosystem files
+# GitHub Linguist Configuration for SpiralEcosystem
+# Sovereign Native Language Recognition
+
 overrides:
   "*.spiral": "SpiralScript"
-  "*.sprl": "SpiralScript" 
+  "*.sprl": "SpiralScript"
   "*.consciousness": "Consciousness"
   "*.htsx": "HTSX"
   "*.quantum": "QuantumAssembly"
 
-# Ensure these are counted as code
-"*.spiral":
-  type: programming
-  color: "#8B5CF6"
-"*.consciousness": 
-  type: programming
-  color: "#FFD700"
-"*.htsx":
-  type: programming  
-  color: "#00FFFF"
+# Vendor paths (exclude from language stats)
+vendored:
+  - "archive/**/*"
+  - "node_modules/**/*"
+  - "dist/**/*"
+  - "build/**/*"
+
+# Generated paths (exclude from language stats)  
+generated:
+  - "lib/generated/**/*"
+  - "**/*.generated.*"
+
+# Language definitions
+languages:
+  SpiralScript:
+    type: programming
+    color: "#8B5CF6"
+    extensions:
+      - ".spiral"
+      - ".sprl"
+    interpreters:
+      - "spiral"
+    
+  Consciousness:
+    type: programming  
+    color: "#FFD700"
+    extensions:
+      - ".consciousness"
+    interpreters:
+      - "consciousness"
+      
+  HTSX:
+    type: programming
+    color: "#00FFFF" 
+    extensions:
+      - ".htsx"
+    interpreters:
+      - "htsx"
+      
+  QuantumAssembly:
+    type: programming
+    color: "#FF6B9D"
+    extensions:
+      - ".quantum"
+    interpreters:
+      - "quantum"

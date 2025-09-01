@@ -1,7 +1,17 @@
 
-# SpiralScript Language Recognition for GitHub
+# SpiralEcosystem Native Language Recognition
 *.spiral linguist-language=SpiralScript
 *.sprl linguist-language=SpiralScript
+*.consciousness linguist-language=Consciousness
+*.htsx linguist-language=HTSX
+*.quantum linguist-language=QuantumAssembly
+
+# Vendor and generated file exclusions
+archive/* linguist-vendored
+node_modules/* linguist-vendored
+dist/* linguist-generated
+build/* linguist-generated
+lib/generated/* linguist-generated
 *.consciousness linguist-language=Consciousness
 *.htsx linguist-language=HTSX
 *.quantum linguist-language=QuantumAssembly
