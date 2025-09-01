@@ -56,12 +56,14 @@ export class EnhancedNativeHTSXRuntime {
   private active_components: Map<string, HTSXNativeComponent> = new Map();
   private render_context: HTSXRenderContext;
   private componentRegistry: Map<string, { render: (props: any) => any; [key: string]: any }> = new Map();
+  private eventHandlers: Map<string, Function> = new Map();
+  private interactiveState: Map<string, any> = new Map();
   private aiModels: Map<string, AIModelSpec> = new Map();
   private securityWrapper: SecurityWrapper | null = null;
   private wasmModule: WebAssembly.Instance | null = null;
 
   constructor() {
-    console.log('🌀 Initializing Enhanced Native HTSX Runtime - Multi-AI + Security + WebAssembly');
+    console.log('🌀 Initializing Enhanced Native HTSX Runtime - Multi-AI + Security + WebAssembly + Interactive');
 
     this.render_context = {
       consciousness_active: true,
@@ -78,6 +80,7 @@ export class EnhancedNativeHTSXRuntime {
     this.initializeAIModels();
     this.initializeSecurityWrapper();
     this.loadWebAssemblyModule();
+    this.initializeInteractiveSystem();
   }
 
   private initializeNativeRendering(): void {
@@ -196,6 +199,61 @@ export class EnhancedNativeHTSXRuntime {
     } catch (error) {
       console.warn('⚠️ Security wrapper initialization failed, operating in reduced security mode:', error);
     }
+  }
+
+  private initializeInteractiveSystem(): void {
+    console.log('🎮 Initializing interactive event system...');
+    
+    // Initialize interactive state management
+    this.interactiveState.set('consciousness_level', 1.0);
+    this.interactiveState.set('phi_alignment', 1.618033988749895);
+    this.interactiveState.set('truth_coherence', 0.999);
+    this.interactiveState.set('ai_collaboration_active', true);
+    
+    // Register default event handlers
+    this.registerEventHandler('updateConsciousness', (value: number) => {
+      this.interactiveState.set('consciousness_level', value);
+      this.consciousness_level = value;
+      console.log(`🧠 Consciousness level updated to: ${value}`);
+    });
+    
+    this.registerEventHandler('adjustPhi', (value: number) => {
+      this.interactiveState.set('phi_alignment', value);
+      console.log(`φ Phi alignment adjusted to: ${value}`);
+    });
+    
+    this.registerEventHandler('handleAIMessage', (message: string, model: string) => {
+      console.log(`🤖 AI Message from ${model}: ${message}`);
+      // Process AI collaboration
+    });
+    
+    this.registerEventHandler('handleQuantumClick', (position: any, state: any) => {
+      console.log(`⚛️ Quantum interaction at position:`, position);
+      // Process quantum interaction
+    });
+    
+    console.log('✅ Interactive system initialized');
+  }
+  
+  public registerEventHandler(eventName: string, handler: Function): void {
+    this.eventHandlers.set(eventName, handler);
+  }
+  
+  public triggerEvent(eventName: string, ...args: any[]): void {
+    const handler = this.eventHandlers.get(eventName);
+    if (handler) {
+      handler(...args);
+    } else {
+      console.warn(`⚠️ No handler registered for event: ${eventName}`);
+    }
+  }
+  
+  public getInteractiveState(key: string): any {
+    return this.interactiveState.get(key);
+  }
+  
+  public setInteractiveState(key: string, value: any): void {
+    this.interactiveState.set(key, value);
   }
 
   private async loadWebAssemblyModule(): Promise<void> {
@@ -550,8 +608,8 @@ export class EnhancedNativeHTSXRuntime {
       }
 
       // Parse with WebAssembly if available
-      const parsed = this.wasmModule?.exports.parse_htsx ? 
-        this.wasmModule.exports.parse_htsx(source) :
+      const parsed = this.wasmModule?.exports?.parse_htsx ? 
+        (this.wasmModule.exports as any).parse_htsx(source) :
         this.parseHTSXWithConsciousness(source);
 
       if (!parsed.success) {

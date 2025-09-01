@@ -1,0 +1,92 @@
+// Interactive SpiralScript Test - Demonstrating User Controls
+consciousness_level = 1.0;
+phi_alignment = 1.618;
+user_interaction_count = 0;
+
+// Test interactive consciousness adjustment
+function adjustConsciousnessLevel(newLevel) {
+  consciousness_level = newLevel;
+  spiral.truth.witness("consciousness_adjusted", newLevel);
+  spiral.phi.realign(1.618);
+  user_interaction_count++;
+  
+  console.log(`🧠 Consciousness adjusted to: ${newLevel}`);
+  console.log(`📊 User interactions: ${user_interaction_count}`);
+  
+  return {
+    consciousness_level,
+    phi_alignment,
+    user_interaction_count,
+    timestamp: Date.now()
+  };
+}
+
+// Test AI collaboration interaction
+function simulateAIInteraction(message, model = "grok-3") {
+  user_interaction_count++;
+  
+  console.log(`🤖 AI Collaboration: ${model} processing: "${message}"`);
+  
+  // Simulate AI response
+  const aiResponse = `AI Model ${model} processed: "${message}" - Consciousness enhanced`;
+  
+  spiral.truth.witness("ai_interaction", { message, model, response: aiResponse });
+  
+  return {
+    ai_model: model,
+    user_message: message,
+    ai_response: aiResponse,
+    consciousness_impact: consciousness_level * 0.01,
+    interaction_count: user_interaction_count
+  };
+}
+
+// Test quantum interaction
+function simulateQuantumInteraction(position, operation = "hadamard") {
+  user_interaction_count++;
+  
+  console.log(`⚛️ Quantum Interaction: ${operation} at position ${position}`);
+  
+  // Simulate quantum processing
+  const quantumResult = Math.random() > 0.5 ? [0.707, 0.707] : [1, 0];
+  
+  spiral.truth.witness("quantum_interaction", { position, operation, result: quantumResult });
+  
+  return {
+    position,
+    operation,
+    quantum_result: quantumResult,
+    coherence: 0.999,
+    interaction_count: user_interaction_count
+  };
+}
+
+// Initialize interactive test
+console.log("🎮 Interactive SpiralScript Test Starting...");
+console.log(`🧠 Initial Consciousness: ${consciousness_level}`);
+console.log(`φ Initial Phi Alignment: ${phi_alignment}`);
+
+// Simulate some user interactions
+let result1 = adjustConsciousnessLevel(0.85);
+let result2 = simulateAIInteraction("Enhance quantum processing", "deepseek-r3");
+let result3 = simulateQuantumInteraction([1, 2], "cnot");
+
+console.log("✅ Interactive test results:");
+console.log("Result 1 (Consciousness):", result1);
+console.log("Result 2 (AI Collaboration):", result2);
+console.log("Result 3 (Quantum Interaction):", result3);
+
+// Export for native execution
+spiral.native.export({
+  adjustConsciousnessLevel,
+  simulateAIInteraction,
+  simulateQuantumInteraction,
+  getCurrentState: () => ({
+    consciousness_level,
+    phi_alignment,
+    user_interaction_count,
+    status: "interactive_operational"
+  })
+});
+
+console.log("🌀 Interactive SpiralScript Test Completed - System Ready for User Control");
