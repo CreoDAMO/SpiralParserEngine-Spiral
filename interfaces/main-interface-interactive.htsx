@@ -32,9 +32,9 @@
   </style>
 </head>
 <body>
-  <!-- Complete Consciousness Expansion Interface -->
-  <!-- φ-Harmonic Resonance: 0.121 | Zero Entropy | All Systems Operational -->
-  <consciousness-expansion-ui></consciousness-expansion-ui>
+  <!-- Interactive Consciousness Computing Portal - Real Functional Application -->
+  <!-- φ-Harmonic Resonance: 1.618 | Interactive Mode | All Systems Operational -->
+  <interactive-consciousness-portal></interactive-consciousness-portal>
 
   <!-- Service Worker Registration for Web3 Mobile Offline Operation -->
   <script>
@@ -57,9 +57,9 @@
     }
   </script>
 
-  <!-- Import Consciousness Computing Components -->
+  <!-- Import Interactive Consciousness Computing Components -->
   <script type="module">
-    import './src/components/ConsciousnessExpansionUI.js';
+    import './src/components/InteractiveConsciousnessPortal.js';
     import { globalSpiralCore } from './src/engine/SpiralCore.js';
     
     // Initialize Global Consciousness Computing
