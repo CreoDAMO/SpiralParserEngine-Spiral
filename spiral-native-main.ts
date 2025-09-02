@@ -6,7 +6,7 @@
  */
 
 import { NativeCompiler } from './lib/spiral-native-compiler';
-import { nativeHTSXRuntime } from './lib/native-htsx-runtime';
+import { enhancedNativeHTSXRuntime } from './lib/native-htsx-runtime';
 import { NativeFS } from './lib/native-file-system';
 import { readFileSync, existsSync, readdirSync } from 'fs';
 import { createServer } from 'http';
@@ -18,7 +18,7 @@ const __dirname = path.dirname(__filename);
 
 class SpiralNativeExecutor {
   private compiler: typeof NativeCompiler;
-  private htsxRuntime: typeof nativeHTSXRuntime;
+  private htsxRuntime: typeof enhancedNativeHTSXRuntime;
   private nativeFiles: Map<string, any> = new Map();
   private executionResults: Map<string, any> = new Map();
 
@@ -27,7 +27,7 @@ class SpiralNativeExecutor {
     console.log('🚀 Removing React/Vite training wheels completely...');
     
     this.compiler = NativeCompiler;
-    this.htsxRuntime = nativeHTSXRuntime;
+    this.htsxRuntime = enhancedNativeHTSXRuntime;
     
     this.initializeNativeExecution();
   }

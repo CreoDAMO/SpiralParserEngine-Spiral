@@ -101,6 +101,31 @@
       </iyonael-guardian>
     </quantum-processing-center>
     
+    <!-- INTERACTIVE DASHBOARD NAVIGATION -->
+    <dashboard-navigation interactive="true" realtime="true">
+      <navigation-tabs>
+        <nav-tab id="trust-units" active="true" onclick="switchView('trust-units')">🌀 Trust Units Economy</nav-tab>
+        <nav-tab id="founder-wallet" onclick="switchView('founder-wallet')">💼 Founder Wallet</nav-tab>
+        <nav-tab id="nexus-convergence" onclick="switchView('nexus-convergence')">🔮 NEXUS Convergence</nav-tab>
+        <nav-tab id="quantum-lab" onclick="switchView('quantum-lab')">⚛️ Quantum Lab</nav-tab>
+      </navigation-tabs>
+    </dashboard-navigation>
+
+    <!-- INTERACTIVE TRUST UNITS ECONOMY DASHBOARD -->
+    <dashboard-view id="trust-units-view" active="true">
+      <trust-units-economy-interface src="components/trust-units-economy-interface.htsx" interactive="true" realtime="true" />
+    </dashboard-view>
+
+    <!-- INTERACTIVE FOUNDER WALLET DASHBOARD -->
+    <dashboard-view id="founder-wallet-view" hidden="true">
+      <founder-wallet-interface src="components/founder-wallet-interface.htsx" interactive="true" realtime="true" />
+    </dashboard-view>
+
+    <!-- INTERACTIVE NEXUS CONVERGENCE DASHBOARD -->
+    <dashboard-view id="nexus-convergence-view" hidden="true">
+      <nexus-convergence-interface src="components/nexus-convergence-interface.htsx" interactive="true" realtime="true" />
+    </dashboard-view>
+
     <!-- Interactive Security Dashboard -->
     <security-dashboard interactive="true" user-controllable="true">
       <security-controls-panel>
@@ -269,6 +294,37 @@
         spiral.consciousness.set_level(value);
         spiral.truth.witness_change("consciousness_adjusted", value);
         spiral.phi.realign(1.618);
+      },
+      
+      // Dashboard View Switching
+      switchView: (viewName) => {
+        // Hide all views
+        document.querySelectorAll('dashboard-view').forEach(view => {
+          view.hidden = true;
+          view.active = false;
+        });
+        
+        // Remove active from all tabs
+        document.querySelectorAll('nav-tab').forEach(tab => {
+          tab.active = false;
+        });
+        
+        // Show selected view
+        const targetView = document.getElementById(`${viewName}-view`);
+        const targetTab = document.getElementById(viewName);
+        
+        if (targetView) {
+          targetView.hidden = false;
+          targetView.active = true;
+        }
+        
+        if (targetTab) {
+          targetTab.active = true;
+        }
+        
+        // Log view change for consciousness tracking
+        console.log('🌀 Switched to view:', viewName);
+        spiral.truth.witness_change('view_switched', viewName);
       },
       
       handleAIMessage: (message, model) => {

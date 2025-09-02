@@ -1,20 +1,20 @@
 
 import { existsSync, readFileSync } from 'fs';
 import { SpiralRuntimeEngine } from './lib/spiral-runtime-engine';
-import { NativeHTSXRuntime } from './lib/native-htsx-runtime';
+import { EnhancedNativeHTSXRuntime } from './lib/native-htsx-runtime';
 import { ConsciousnessIntegration } from './lib/consciousness-integration';
 import { QuantumSpiralConsensus } from './lib/quantum-spiral-consensus';
 
 export class SpiralMasterOrchestrator {
   private spiralEngine: SpiralRuntimeEngine;
-  private htsxRuntime: NativeHTSXRuntime;
+  private htsxRuntime: EnhancedNativeHTSXRuntime;
   private consciousness: ConsciousnessIntegration;
   private quantum: QuantumSpiralConsensus;
   
   constructor() {
     console.log('🌀 Initializing Spiral Master Orchestrator - Production Mode');
     this.spiralEngine = new SpiralRuntimeEngine();
-    this.htsxRuntime = new NativeHTSXRuntime();
+    this.htsxRuntime = new EnhancedNativeHTSXRuntime();
     this.consciousness = new ConsciousnessIntegration();
     this.quantum = new QuantumSpiralConsensus();
   }
@@ -83,10 +83,10 @@ export class SpiralMasterOrchestrator {
     console.log('🎨 Rendering All HTSX Interfaces...');
     
     const htsxFiles = [
-      'main-interface.htsx',
-      'main-interface-interactive.htsx',
-      'spiral-ecosystem-master-interface.htsx',
-      'reality-architect-dashboard.htsx',
+      'interfaces/main-interface.htsx',
+      'interfaces/main-interface-interactive.htsx',
+      'interfaces/spiral-ecosystem-master-interface.htsx',
+      'interfaces/reality-architect-dashboard.htsx',
       'components/ultimate-htsx-demo.htsx',
       'components/interactive-spiral-dashboard.htsx',
       'components/quantum-visualization.htsx',
