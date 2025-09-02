@@ -111,9 +111,21 @@ export class EnhancedNativeHTSXRuntime {
   private quantum_ethical_constructs: QuantumEthicalSecurity;
   private avatar_system: TripleAvatarSystem;
 
+  // REVOLUTIONARY: Advanced Hybrid Rendering Engine Integration
+  private advancedRenderer: any; // AdvancedHybridRenderingEngine instance
+  private renderingPipeline: 'realtime' | 'offline' | 'hybrid' | 'neural' | 'quantum' = 'hybrid';
+  private gpuAccelerated: boolean = false;
+  private renderingMetrics = {
+    totalFramesRendered: 0,
+    averageFPS: 0,
+    gpuUtilization: 0,
+    neuralInferenceTime: 0,
+    quantumQubitsProcessed: 0,
+    holographicLayersActive: 0
+  };
 
   constructor() {
-    console.log('🌀 Initializing Enhanced Native HTSX Runtime - Multi-AI + Security + WebAssembly + Interactive');
+    console.log('🌀 Initializing Enhanced Native HTSX Runtime - Multi-AI + Security + WebAssembly + Interactive + ADVANCED RENDERING');
 
     this.render_context = {
       consciousness_active: true,
@@ -131,6 +143,7 @@ export class EnhancedNativeHTSXRuntime {
     this.initializeSecurityWrapper();
     this.loadWebAssemblyModule();
     this.initializeInteractiveSystem();
+    this.initializeAdvancedRenderingEngine();
     
     // Initialize Revolutionary BlackPrint Nanotechnology-to-Software Conversion
     this.initializeBlackPrintEngine();
@@ -1420,6 +1433,138 @@ export class EnhancedNativeHTSXRuntime {
   private updateConsciousnessLevel(level: number): void {
      // This might be called from an external source, e.g., a UI event
     this.updateConsciousness(level);
+  }
+
+  // ADVANCED HYBRID RENDERING ENGINE METHODS
+  private async initializeAdvancedRenderingEngine(): Promise<void> {
+    try {
+      console.log('🚀 Initializing Advanced Hybrid Rendering Engine...');
+      
+      // Dynamically import the advanced renderer
+      const { default: AdvancedHybridRenderingEngine } = await import('./advanced-hybrid-rendering-engine');
+      this.advancedRenderer = new AdvancedHybridRenderingEngine();
+      
+      // Check GPU capabilities
+      const gpuConfig = this.advancedRenderer.getGPUConfig();
+      if (gpuConfig) {
+        this.gpuAccelerated = true;
+        console.log('⚡ GPU acceleration enabled:', gpuConfig);
+        
+        // Set rendering pipeline based on GPU capabilities
+        if (gpuConfig.ray_tracing_cores && gpuConfig.ray_tracing_cores > 0) {
+          this.renderingPipeline = 'hybrid'; // Use hybrid for RTX GPUs
+        } else if (gpuConfig.cuda_cores && gpuConfig.cuda_cores > 5000) {
+          this.renderingPipeline = 'neural'; // Use neural for high CUDA core count
+        } else {
+          this.renderingPipeline = 'realtime'; // Fallback to realtime
+        }
+      }
+      
+      // Run initial benchmark
+      const benchmarkResults = await this.advancedRenderer.benchmark();
+      console.log('📊 Rendering benchmark results:', benchmarkResults);
+      
+      // Update metrics
+      this.renderingMetrics.averageFPS = benchmarkResults.realtime_fps;
+      
+      console.log(`✅ Advanced rendering initialized - Pipeline: ${this.renderingPipeline}`);
+    } catch (error) {
+      console.warn('⚠️ Advanced rendering initialization failed, using standard rendering:', error);
+      this.advancedRenderer = null;
+      this.gpuAccelerated = false;
+    }
+  }
+
+  // Render HTSX component with advanced rendering
+  public async renderWithAdvancedPipeline(
+    component: HTSXNativeComponent,
+    targetElement?: HTMLElement
+  ): Promise<void> {
+    if (!this.advancedRenderer) {
+      // Fallback to standard rendering
+      return this.executeEnhancedNativeHTSX(this.compileHTSX(JSON.stringify(component)));
+    }
+
+    try {
+      // Render with advanced pipeline
+      const renderResult = await this.advancedRenderer.renderHTSXComponent(component, {
+        type: this.renderingPipeline,
+        quality: 'production',
+        acceleration: this.gpuAccelerated ? 'gpu' : 'cpu'
+      });
+
+      // Update metrics
+      this.renderingMetrics.totalFramesRendered++;
+      
+      // Display rendered result
+      if (targetElement && renderResult.pixels) {
+        const canvas = document.createElement('canvas');
+        canvas.width = renderResult.metadata.resolution[0];
+        canvas.height = renderResult.metadata.resolution[1];
+        
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          const imageData = new ImageData(
+            new Uint8ClampedArray(renderResult.pixels),
+            renderResult.metadata.resolution[0],
+            renderResult.metadata.resolution[1]
+          );
+          ctx.putImageData(imageData, 0, 0);
+          targetElement.appendChild(canvas);
+        }
+      }
+
+      console.log(`🎨 Advanced render complete - ${renderResult.metadata.technique} in ${renderResult.metadata.render_time_ms}ms`);
+    } catch (error) {
+      console.error('❌ Advanced rendering failed:', error);
+      // Fallback to standard rendering
+      return this.executeEnhancedNativeHTSX(this.compileHTSX(JSON.stringify(component)));
+    }
+  }
+
+  // Render holographic layers
+  public async renderHolographic(layers: any[]): Promise<void> {
+    if (!this.advancedRenderer) {
+      console.warn('⚠️ Advanced renderer not available for holographic rendering');
+      return;
+    }
+
+    try {
+      const holographicLayers = layers.map((layer, index) => ({
+        id: `layer_${index}`,
+        type: layer.type || 'consciousness',
+        resolution: [1024, 1024, 1024] as [number, number, number],
+        interference_pattern: new Float32Array(1024),
+        energy_density: layer.energy || 1.0,
+        coherence_factor: layer.coherence || 0.999,
+        phi_resonance: 1.618033988749895
+      }));
+
+      const result = await this.advancedRenderer.renderHolographic(holographicLayers);
+      this.renderingMetrics.holographicLayersActive = layers.length;
+      
+      console.log(`🔮 Holographic render complete - ${layers.length} layers processed`);
+    } catch (error) {
+      console.error('❌ Holographic rendering failed:', error);
+    }
+  }
+
+  // Switch rendering pipeline
+  public setRenderingPipeline(pipeline: 'realtime' | 'offline' | 'hybrid' | 'neural' | 'quantum'): void {
+    this.renderingPipeline = pipeline;
+    console.log(`🔄 Switched rendering pipeline to: ${pipeline}`);
+  }
+
+  // Get rendering metrics
+  public getRenderingMetrics(): typeof this.renderingMetrics {
+    if (this.advancedRenderer) {
+      const engineMetrics = this.advancedRenderer.getMetrics();
+      this.renderingMetrics.totalFramesRendered = engineMetrics.frames_rendered;
+      this.renderingMetrics.averageFPS = 1000 / engineMetrics.average_frame_time_ms;
+      this.renderingMetrics.gpuUtilization = engineMetrics.gpu_memory_used_mb / 1024; // Convert to GB
+      this.renderingMetrics.neuralInferenceTime = engineMetrics.neural_inference_time_ms;
+    }
+    return { ...this.renderingMetrics };
   }
 }
 
