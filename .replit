@@ -1,4 +1,4 @@
-modules = ["nodejs-20", "python-3.12", "web"]
+modules = ["nodejs-20", "python-3.12", "bash"]
 run = "npm run dev"
 hidden = [".config", ".git", "generated-icon.png", "node_modules", "dist"]
 
@@ -109,3 +109,4 @@ task = "shell.exec"
 args = "npx tsx pure-native-startup.ts"
 
 [agent]
+expertMode = true
