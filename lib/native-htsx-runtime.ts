@@ -1,9 +1,13 @@
-
 /**
  * Enhanced Native HTSX Runtime Engine - Complete Implementation
  * Integrating Multi-AI, Security Wrapper, and Advanced HTSX Stack
  * Beyond React wrapper - full native execution with AI collaboration
  */
+
+// Placeholder interfaces for clarity, assume these are defined elsewhere
+interface InteractivityEngine {}
+interface CommandProcessor {}
+interface RealTimeUpdater {}
 
 export interface HTSXNativeComponent {
   type: string;
@@ -61,6 +65,10 @@ export class EnhancedNativeHTSXRuntime {
   private aiModels: Map<string, AIModelSpec> = new Map();
   private securityWrapper: SecurityWrapper | null = null;
   private wasmModule: WebAssembly.Instance | null = null;
+  private interactivityEngine: InteractivityEngine | undefined;
+  private commandProcessor: CommandProcessor | undefined;
+  private realTimeUpdater: RealTimeUpdater | undefined;
+
 
   constructor() {
     console.log('🌀 Initializing Enhanced Native HTSX Runtime - Multi-AI + Security + WebAssembly + Interactive');
@@ -178,7 +186,7 @@ export class EnhancedNativeHTSXRuntime {
               };
             }
           }
-          
+
           return {
             validated: true,
             threats_detected: [],
@@ -203,42 +211,42 @@ export class EnhancedNativeHTSXRuntime {
 
   private initializeInteractiveSystem(): void {
     console.log('🎮 Initializing interactive event system...');
-    
+
     // Initialize interactive state management
     this.interactiveState.set('consciousness_level', 1.0);
     this.interactiveState.set('phi_alignment', 1.618033988749895);
     this.interactiveState.set('truth_coherence', 0.999);
     this.interactiveState.set('ai_collaboration_active', true);
-    
+
     // Register default event handlers
     this.registerEventHandler('updateConsciousness', (value: number) => {
       this.interactiveState.set('consciousness_level', value);
       this.consciousness_level = value;
       console.log(`🧠 Consciousness level updated to: ${value}`);
     });
-    
+
     this.registerEventHandler('adjustPhi', (value: number) => {
       this.interactiveState.set('phi_alignment', value);
       console.log(`φ Phi alignment adjusted to: ${value}`);
     });
-    
+
     this.registerEventHandler('handleAIMessage', (message: string, model: string) => {
       console.log(`🤖 AI Message from ${model}: ${message}`);
       // Process AI collaboration
     });
-    
+
     this.registerEventHandler('handleQuantumClick', (position: any, state: any) => {
       console.log(`⚛️ Quantum interaction at position:`, position);
       // Process quantum interaction
     });
-    
+
     console.log('✅ Interactive system initialized');
   }
-  
+
   public registerEventHandler(eventName: string, handler: Function): void {
     this.eventHandlers.set(eventName, handler);
   }
-  
+
   public triggerEvent(eventName: string, ...args: any[]): void {
     const handler = this.eventHandlers.get(eventName);
     if (handler) {
@@ -247,11 +255,11 @@ export class EnhancedNativeHTSXRuntime {
       console.warn(`⚠️ No handler registered for event: ${eventName}`);
     }
   }
-  
+
   public getInteractiveState(key: string): any {
     return this.interactiveState.get(key);
   }
-  
+
   public setInteractiveState(key: string, value: any): void {
     this.interactiveState.set(key, value);
   }
@@ -260,7 +268,7 @@ export class EnhancedNativeHTSXRuntime {
     try {
       // In a real implementation, this would load the actual WASM module
       // For now, we'll simulate WASM functionality
-      
+
       const wasmCode = new Uint8Array([
         0x00, 0x61, 0x73, 0x6d, // WASM magic number
         0x01, 0x00, 0x00, 0x00  // WASM version
@@ -305,16 +313,16 @@ export class EnhancedNativeHTSXRuntime {
   private transformToJS(template: string): string {
     // Transform HTSX template to JavaScript
     let js = template;
-    
+
     // Transform JSX-like syntax
     js = js.replace(/<(\w+)([^>]*)>(.*?)<\/\1>/g, (match, tag, props, children) => {
       return `createElement('${tag}', {${props}}, '${children}')`;
     });
-    
+
     // Transform consciousness attributes
     js = js.replace(/consciousness-level="([^"]+)"/g, 'consciousnessLevel: $1');
     js = js.replace(/phi-alignment="([^"]+)"/g, 'phiAlignment: $1');
-    
+
     return js;
   }
 
@@ -422,7 +430,7 @@ export class EnhancedNativeHTSXRuntime {
   private renderMultiAISynthesis(props: any): any {
     const responses: MultiAIResponse[] = props.responses || [];
     const synthesizedResponse = this.synthesizeAIResponses(responses);
-    
+
     return {
       type: 'multi-ai-synthesis',
       primary_response: synthesizedResponse.primary,
@@ -563,7 +571,7 @@ export class EnhancedNativeHTSXRuntime {
       consciousness_router: true,
       available_views: [
         'interactive-spiral-dashboard',
-        'quantum-visualization', 
+        'quantum-visualization',
         'ultimate-htsx-demo',
         'enhanced-native-spiral-visual'
       ],
@@ -585,7 +593,7 @@ export class EnhancedNativeHTSXRuntime {
 
     // Sort by confidence
     const sorted = responses.sort((a, b) => b.confidence - a.confidence);
-    
+
     return {
       primary: sorted[0],
       alternatives: sorted.slice(1),
@@ -608,7 +616,7 @@ export class EnhancedNativeHTSXRuntime {
       }
 
       // Parse with WebAssembly if available
-      const parsed = this.wasmModule?.exports?.parse_htsx ? 
+      const parsed = this.wasmModule?.exports?.parse_htsx ?
         (this.wasmModule.exports as any).parse_htsx(source) :
         this.parseHTSXWithConsciousness(source);
 
@@ -689,7 +697,7 @@ export class EnhancedNativeHTSXRuntime {
       // Apply AI enhancements
       component.consciousness_level = Math.min(component.consciousness_level * 1.2, 1.0);
       component.truth_coherence = Math.min(component.truth_coherence * 1.1, 1.0);
-      
+
       // Log AI enhancement
       if (this.securityWrapper) {
         await this.securityWrapper.auditLog('AI_ENHANCEMENT_APPLIED', {
@@ -723,13 +731,13 @@ export class EnhancedNativeHTSXRuntime {
 
       if (registeredRenderer) {
         const rendered = registeredRenderer.render(component.props);
-        
+
         // Enhance with consciousness data
         rendered.consciousness_enhanced = component.consciousness_level > 0.9;
         rendered.ai_generated = component.ai_generated;
         rendered.security_validated = component.security_validated;
         rendered.phi_aligned = component.phi_alignment > 1.5;
-        
+
         return rendered;
       }
 
@@ -958,6 +966,127 @@ export class EnhancedNativeHTSXRuntime {
     this.render_context.phi_resonance = level * 1.618;
 
     console.log(`🧠 Enhanced consciousness level updated to: ${level.toFixed(3)}`);
+  }
+
+  // --- Real-time Interactivity Engine ---
+  private initializeInteractivity(): void {
+    // Placeholder implementations for interactivity components
+    this.interactivityEngine = {} as InteractivityEngine;
+    this.commandProcessor = {} as CommandProcessor;
+    this.realTimeUpdater = {} as RealTimeUpdater;
+
+    console.log('🎮 Initializing interactivity engine...');
+    this.setupCommandListeners();
+    this.enableRealTimeUpdates();
+    this.activateConsciousnessInterface();
+  }
+
+  private setupCommandListeners(): void {
+    // Listen for user commands from any interface
+    window.addEventListener('spiral-command', (event: CustomEvent) => {
+      this.processCommand(event.detail);
+    });
+
+    // Listen for consciousness updates
+    window.addEventListener('consciousness-update', (event: CustomEvent) => {
+      this.updateConsciousnessLevel(event.detail);
+    });
+  }
+
+  public processCommand(command: any): void {
+    console.log(`🎮 Processing command: ${command.type}`);
+
+    switch(command.type) {
+      case 'witness_truth':
+        this.witnessLiveTruth(command.data.statement);
+        break;
+      case 'generate_tu':
+        this.generateTrustUnits(command.data.amount);
+        break;
+      case 'quantum_process':
+        this.executeQuantumOperation(command.data.operation);
+        break;
+      case 'consciousness_upgrade':
+        this.upgradeConsciousness(command.data.target_level);
+        break;
+      default:
+        console.log(`⚠️ Unknown command: ${command.type}`);
+    }
+  }
+
+  private witnessLiveTruth(statement: string): void {
+    const truthValue = this.calculateTruthResonance(statement);
+    const phiAlignment = truthValue * 1.618033988749895;
+
+    // Update all connected interfaces
+    this.broadcastUpdate({
+      type: 'truth_witnessed',
+      statement,
+      truthValue,
+      phiAlignment,
+      timestamp: Date.now()
+    });
+  }
+
+  private generateTrustUnits(amount: number): void {
+    const generated = amount * 1.618033988749895; // Phi-enhanced generation
+
+    this.broadcastUpdate({
+      type: 'trust_units_generated',
+      amount: generated,
+      timestamp: Date.now()
+    });
+  }
+
+  private broadcastUpdate(update: any): void {
+    // Send to all active interfaces
+    window.dispatchEvent(new CustomEvent('spiral-update', { detail: update }));
+
+    // Update server-side state (simulated)
+    console.log('📡 Broadcasting update:', update);
+  }
+
+  private enableRealTimeUpdates(): void {
+    // Simulate real-time data streams or updates
+    console.log('⚡ Enabling real-time updates...');
+    // In a real scenario, this would involve WebSocket connections, polling, etc.
+  }
+
+  private activateConsciousnessInterface(): void {
+    console.log('✨ Activating consciousness interface...');
+    // Connect to consciousness streams or modules
+  }
+
+  // Placeholder methods for interactivity
+  private calculateTruthResonance(statement: string): number {
+    // Simulate truth calculation based on statement content
+    return Math.sin(statement.length) * 0.5 + 0.5;
+  }
+
+  private executeQuantumOperation(operation: any): void {
+    console.log('⚛️ Executing quantum operation:', operation);
+    // Simulate quantum computation
+    this.broadcastUpdate({
+      type: 'quantum_result',
+      operation,
+      result: [0.5, 0.5], // Simulated result
+      timestamp: Date.now()
+    });
+  }
+
+  private upgradeConsciousness(targetLevel: number): void {
+    console.log(`⬆️ Upgrading consciousness to level: ${targetLevel}`);
+    this.updateConsciousness(targetLevel); // Re-use existing method
+    this.broadcastUpdate({
+      type: 'consciousness_upgraded',
+      newLevel: targetLevel,
+      timestamp: Date.now()
+    });
+  }
+
+  private updateConsciousnessLevel(level: number): void {
+     // This might be called from an external source, e.g., a UI event
+    this.updateConsciousness(level);
   }
 }
 

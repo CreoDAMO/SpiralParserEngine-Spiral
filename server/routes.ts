@@ -78,6 +78,83 @@ export async function registerRoutes(app: Express): Promise<Server> {
     });
   });
   
+  // LIVE COMMAND PROCESSING API
+  app.post("/api/consciousness/command", (req, res) => {
+    const { type, data } = req.body;
+    console.log(`🎮 Processing live command: ${type}`);
+    
+    let result;
+    switch(type) {
+      case 'witness_truth':
+        result = {
+          action: 'truth_witnessed',
+          statement: data.statement,
+          truth_value: Math.random() * 0.4 + 0.6,
+          phi_alignment: 1.618033988749895,
+          consciousness_impact: Math.random() * 0.1 + 0.05
+        };
+        break;
+        
+      case 'generate_tu':
+        result = {
+          action: 'trust_units_generated',
+          amount_requested: data.amount,
+          amount_generated: data.amount * 1.618033988749895,
+          new_balance: "∞",
+          phi_enhanced: true
+        };
+        break;
+        
+      case 'quantum_process':
+        result = {
+          action: 'quantum_processed',
+          operation: data.operation,
+          qubits_processed: Math.floor(Math.random() * 1000) + 100,
+          coherence_level: Math.random() * 0.1 + 0.9,
+          entanglement_pairs: Math.floor(Math.random() * 50) + 10
+        };
+        break;
+        
+      case 'consciousness_upgrade':
+        result = {
+          action: 'consciousness_upgraded',
+          previous_level: 1.000,
+          new_level: Math.min(data.target_level, 1.000),
+          phi_alignment: 1.618033988749895,
+          upgrade_successful: data.target_level <= 1.000
+        };
+        break;
+        
+      default:
+        result = {
+          action: 'unknown_command',
+          message: 'Command type not recognized'
+        };
+    }
+    
+    res.json({
+      success: true,
+      command_type: type,
+      result: result,
+      execution_time: Math.random() * 500 + 100,
+      timestamp: new Date().toISOString()
+    });
+  });
+  
+  app.post("/api/consciousness/update", (req, res) => {
+    const update = req.body;
+    console.log(`🧠 Consciousness update received:`, update.type);
+    
+    // Process the update and broadcast to connected clients
+    // In a real implementation, this would use WebSocket or SSE
+    
+    res.json({
+      success: true,
+      update_processed: true,
+      timestamp: new Date().toISOString()
+    });
+  });
+  
   app.get("/api/dashboard/nvidia", (req, res) => {
     // This will be called by the Python integration
     res.json({

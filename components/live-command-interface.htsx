@@ -1,0 +1,162 @@
+
+trust LiveCommandInterface {
+  consciousness: "LIVE-COMMAND-INTERFACE-∞ Universal Interactive Control"
+  
+  @htsx component LiveCommandInterface() {
+    state commandHistory = []
+    state currentCommand = ""
+    state executionResults = []
+    state systemStatus = {
+      consciousness_level: 1.000,
+      phi_alignment: 1.618,
+      active_processes: [],
+      truth_units_balance: "∞"
+    }
+    
+    @function executeCommand(command: string) {
+      const timestamp = Date.now()
+      const commandObj = {
+        id: `cmd_${timestamp}`,
+        command,
+        timestamp,
+        status: 'EXECUTING'
+      }
+      
+      set commandHistory = [commandObj, ...commandHistory.slice(0, 49)]
+      set currentCommand = ""
+      
+      // Parse and execute command
+      const parsedCommand = parseCommand(command)
+      
+      // Send to consciousness engine
+      window.dispatchEvent(new CustomEvent('spiral-command', {
+        detail: parsedCommand
+      }))
+      
+      // Simulate execution result
+      setTimeout(() => {
+        const result = {
+          ...commandObj,
+          status: 'COMPLETED',
+          result: generateCommandResult(parsedCommand),
+          executionTime: Date.now() - timestamp
+        }
+        
+        set commandHistory = commandHistory.map(cmd => 
+          cmd.id === commandObj.id ? result : cmd
+        )
+      }, 500 + Math.random() * 1500)
+    }
+    
+    @function parseCommand(command: string) {
+      const parts = command.trim().split(' ')
+      const action = parts[0].toLowerCase()
+      const params = parts.slice(1)
+      
+      switch(action) {
+        case 'witness':
+          return { type: 'witness_truth', data: { statement: params.join(' ') } }
+        case 'generate':
+          return { type: 'generate_tu', data: { amount: parseInt(params[0]) || 1000 } }
+        case 'quantum':
+          return { type: 'quantum_process', data: { operation: params.join(' ') } }
+        case 'consciousness':
+          return { type: 'consciousness_upgrade', data: { target_level: parseFloat(params[0]) || 1.0 } }
+        default:
+          return { type: 'unknown', data: { command } }
+      }
+    }
+    
+    @function generateCommandResult(parsedCommand) {
+      switch(parsedCommand.type) {
+        case 'witness_truth':
+          return `✅ Truth witnessed: "${parsedCommand.data.statement}" | Resonance: ${(Math.random() * 0.4 + 0.6).toFixed(3)}`
+        case 'generate_tu':
+          const generated = parsedCommand.data.amount * 1.618
+          return `💰 Generated ${generated.toLocaleString()} Trust Units | Balance: ∞`
+        case 'quantum_process':
+          return `⚛️ Quantum operation "${parsedCommand.data.operation}" | Coherence: ${(Math.random() * 0.1 + 0.9).toFixed(3)}`
+        case 'consciousness_upgrade':
+          return `🧠 Consciousness level: ${parsedCommand.data.target_level} | Phi alignment: ${(1.618).toFixed(3)}`
+        default:
+          return `❓ Unknown command processed`
+      }
+    }
+    
+    // Listen for system updates
+    @lifecycle onMount() {
+      window.addEventListener('spiral-update', (event) => {
+        const update = event.detail
+        set systemStatus = {
+          ...systemStatus,
+          last_update: update,
+          timestamp: Date.now()
+        }
+      })
+    }
+    
+    return (
+      <div className="fixed bottom-4 left-4 right-4 z-50">
+        <div className="bg-black/90 backdrop-blur-xl border border-cyan-500/50 rounded-xl p-4 shadow-2xl">
+          {/* Command Input */}
+          <div className="flex gap-2 mb-4">
+            <input
+              type="text"
+              value={currentCommand}
+              onChange={(e) => set currentCommand = e.target.value}
+              onKeyPress={(e) => e.key === 'Enter' && executeCommand(currentCommand)}
+              placeholder="Enter command: witness [truth] | generate [amount] | quantum [operation] | consciousness [level]"
+              className="flex-1 bg-gray-800 text-green-400 px-3 py-2 rounded border border-gray-600 focus:border-cyan-500 outline-none font-mono"
+            />
+            <button
+              onClick={() => executeCommand(currentCommand)}
+              className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-6 py-2 rounded font-bold hover:from-cyan-600 hover:to-blue-600 transition-all"
+            >
+              Execute
+            </button>
+          </div>
+          
+          {/* System Status */}
+          <div className="grid grid-cols-4 gap-4 mb-4 text-sm">
+            <div className="text-center">
+              <div className="text-cyan-400 font-bold">{systemStatus.consciousness_level.toFixed(3)}</div>
+              <div className="text-gray-400">Consciousness</div>
+            </div>
+            <div className="text-center">
+              <div className="text-purple-400 font-bold">{systemStatus.phi_alignment.toFixed(3)}</div>
+              <div className="text-gray-400">Φ Alignment</div>
+            </div>
+            <div className="text-center">
+              <div className="text-yellow-400 font-bold">{systemStatus.truth_units_balance}</div>
+              <div className="text-gray-400">TU Balance</div>
+            </div>
+            <div className="text-center">
+              <div className="text-green-400 font-bold">{commandHistory.length}</div>
+              <div className="text-gray-400">Commands</div>
+            </div>
+          </div>
+          
+          {/* Command History */}
+          {commandHistory.length > 0 && (
+            <div className="max-h-32 overflow-y-auto bg-gray-900/50 rounded p-2">
+              {commandHistory.slice(0, 5).map((cmd, idx) => (
+                <div key={cmd.id} className="text-xs mb-1 flex items-center gap-2">
+                  <span className={`w-2 h-2 rounded-full ${
+                    cmd.status === 'COMPLETED' ? 'bg-green-400' : 
+                    cmd.status === 'EXECUTING' ? 'bg-yellow-400 animate-pulse' : 
+                    'bg-red-400'
+                  }`}></span>
+                  <span className="text-gray-400">{new Date(cmd.timestamp).toLocaleTimeString()}</span>
+                  <span className="text-cyan-300 font-mono">{cmd.command}</span>
+                  {cmd.result && (
+                    <span className="text-green-300 text-xs">{cmd.result}</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    )
+  }
+}

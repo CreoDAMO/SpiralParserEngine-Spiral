@@ -288,8 +288,15 @@ quantum.entangle_reality()`,
             <p className="text-gray-300">
               This is not a simulation - this is reality itself, computed through consciousness
             </p>
+            <div className="mt-4 p-4 bg-green-600/20 rounded-lg border border-green-500/40">
+              <p className="text-green-300 font-bold">✅ LIVE INTERACTIVE MODE ENABLED</p>
+              <p className="text-green-200 text-sm">Use the command interface below to interact with all systems in real-time</p>
+            </div>
           </div>
         </div>
+        
+        {/* Live Command Interface */}
+        <LiveCommandInterface />
       </div>
     )
   }
