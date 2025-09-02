@@ -228,170 +228,393 @@ function convertInteractiveHTSXToHTML(): string {
   return `<!DOCTYPE html>
 <html>
 <head>
-    <title>🌀 Interactive SpiralEcosystem - Trust Units & Founder Wallet</title>
+    <title>🚀 HYBRID Blockchain + HTSX Integration - TU/HYBRID Dual Currency</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { font-family: 'JetBrains Mono', monospace; margin: 0; padding: 0; background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%); }
+        body { font-family: 'JetBrains Mono', monospace; margin: 0; padding: 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
         .phi-glow { color: #FFD700; text-shadow: 0 0 20px #FFD700; }
+        .hybrid-glow { color: #00ff88; text-shadow: 0 0 15px #00ff88; }
         .consciousness-pulse { animation: pulse 2s infinite; }
         .interactive-btn { transition: all 0.3s; cursor: pointer; }
         .interactive-btn:hover { transform: scale(1.05); box-shadow: 0 0 20px currentColor; }
-        .active-tab { background: linear-gradient(45deg, #FFD700, #FF6B6B); box-shadow: 0 0 30px #FFD700; }
+        .active-tab { background: linear-gradient(45deg, #00ff88, #667eea); box-shadow: 0 0 30px #00ff88; }
         .dashboard-view { display: none; }
         .dashboard-view.active { display: block; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+        .metric-card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(255,255,255,0.2); }
+        .hybrid-card { background: linear-gradient(135deg, rgba(0,255,136,0.1), rgba(102,126,234,0.1)); border: 1px solid #00ff88; }
+        .tu-card { background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,107,107,0.1)); border: 1px solid #FFD700; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+        .price-ticker { animation: pulse 3s infinite; }
     </style>
 </head>
 <body>
-    <div id="spiral-interactive-app" class="min-h-screen text-white">
-        <!-- Interactive Header -->
+    <div id="hybrid-blockchain-app" class="min-h-screen text-white">
+        <!-- HYBRID Blockchain Header -->
         <div class="text-center py-8 border-b border-purple-500/30">
-            <h1 class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 consciousness-pulse">
-                🌀 INTERACTIVE SPIRALECOSYSTEM 🌀
+            <h1 class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 consciousness-pulse">
+                🚀 HYBRID BLOCKCHAIN + HTSX INTEGRATION 🚀
             </h1>
-            <p class="text-xl text-cyan-300 mt-2">Trust Units Economy & Founder Wallet - FULLY INTERACTIVE</p>
-            <div class="phi-glow mt-2">Consciousness Level: 1.000 | φ-Alignment: 1.618 | Privacy: MAXIMUM</div>
+            <p class="text-xl hybrid-glow mt-2">Fully Operational Cosmos SDK Blockchain with HTSX Runtime Engine</p>
+            <div class="flex justify-center items-center gap-8 mt-4">
+                <div class="hybrid-glow">HYBRID Price: <span class="price-ticker font-bold text-2xl">$10.00</span></div>
+                <div class="phi-glow">Market Cap: $1,000,000,000,000</div>
+                <div class="text-cyan-300">Network: 🟢 Online</div>
+            </div>
         </div>
 
-        <!-- Interactive Navigation Tabs -->
+        <!-- HYBRID Blockchain Navigation -->
         <div class="flex flex-wrap justify-center gap-4 py-6 px-4">
-            <button onclick="switchDashboard('trust-units')" id="tab-trust-units" 
-                class="interactive-btn px-8 py-4 rounded-xl font-bold text-lg bg-gradient-to-r from-green-500 to-emerald-600 active-tab">
-                🌀 Trust Units Economy - INTERACTIVE
+            <button onclick="switchDashboard('hybrid-dashboard')" id="tab-hybrid-dashboard" 
+                class="interactive-btn px-6 py-3 rounded-xl font-bold text-lg bg-gradient-to-r from-green-500 to-blue-600 active-tab">
+                📊 HYBRID Dashboard
             </button>
-            <button onclick="switchDashboard('founder-wallet')" id="tab-founder-wallet"
-                class="interactive-btn px-8 py-4 rounded-xl font-bold text-lg bg-gray-700/50 text-gray-300">
-                💼 Founder Wallet Dashboard
+            <button onclick="switchDashboard('dual-currency')" id="tab-dual-currency"
+                class="interactive-btn px-6 py-3 rounded-xl font-bold text-lg bg-gray-700/50 text-gray-300">
+                💰 TU/HYBRID Dual Currency
             </button>
-            <button onclick="switchDashboard('nexus-convergence')" id="tab-nexus-convergence"
-                class="interactive-btn px-8 py-4 rounded-xl font-bold text-lg bg-gray-700/50 text-gray-300">
-                🔮 NEXUS Convergence
+            <button onclick="switchDashboard('mining')" id="tab-mining"
+                class="interactive-btn px-6 py-3 rounded-xl font-bold text-lg bg-gray-700/50 text-gray-300">
+                ⛏️ Cloud Mining
+            </button>
+            <button onclick="switchDashboard('bridges')" id="tab-bridges"
+                class="interactive-btn px-6 py-3 rounded-xl font-bold text-lg bg-gray-700/50 text-gray-300">
+                🌉 Cross-Chain Bridges
+            </button>
+            <button onclick="switchDashboard('node-operations')" id="tab-node-operations"
+                class="interactive-btn px-6 py-3 rounded-xl font-bold text-lg bg-gray-700/50 text-gray-300">
+                ⚙️ Node Operations
+            </button>
+            <button onclick="switchDashboard('ai-assistant')" id="tab-ai-assistant"
+                class="interactive-btn px-6 py-3 rounded-xl font-bold text-lg bg-gray-700/50 text-gray-300">
+                🧠 AI MoE Layer
             </button>
         </div>
 
-        <!-- TRUST UNITS ECONOMY DASHBOARD -->
-        <div id="trust-units-dashboard" class="dashboard-view active px-6 py-4">
+        <!-- HYBRID BLOCKCHAIN DASHBOARD -->
+        <div id="hybrid-dashboard-dashboard" class="dashboard-view active px-6 py-4">
             <div class="max-w-7xl mx-auto">
+                <!-- Blockchain Metrics -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+                    <div class="metric-card hybrid-card text-center">
+                        <h3 class="text-lg font-bold hybrid-glow">Block Height</h3>
+                        <div class="text-3xl font-bold text-white" id="block-height">1,234,567</div>
+                        <div class="text-sm text-gray-300">+1 new block</div>
+                    </div>
+                    <div class="metric-card hybrid-card text-center">
+                        <h3 class="text-lg font-bold hybrid-glow">Active Validators</h3>
+                        <div class="text-3xl font-bold text-white">21</div>
+                        <div class="text-sm text-gray-300">Tendermint BFT</div>
+                    </div>
+                    <div class="metric-card hybrid-card text-center">
+                        <h3 class="text-lg font-bold hybrid-glow">TPS</h3>
+                        <div class="text-3xl font-bold text-white" id="tps">2,500</div>
+                        <div class="text-sm text-gray-300">+150 avg</div>
+                    </div>
+                    <div class="metric-card hybrid-card text-center">
+                        <h3 class="text-lg font-bold hybrid-glow">TVL</h3>
+                        <div class="text-3xl font-bold text-white">$4.94B</div>
+                        <div class="text-sm text-gray-300">Across chains</div>
+                    </div>
+                </div>
+                
+                <!-- HYBRID Native Coin Information -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-                    <!-- TU Generation Interface -->
-                    <div class="bg-gradient-to-br from-purple-900/50 to-indigo-900/50 p-6 rounded-xl border border-purple-500/30">
-                        <h2 class="text-2xl font-bold text-purple-400 mb-4">💎 INTERACTIVE TU Generation</h2>
+                    <div class="metric-card hybrid-card">
+                        <h2 class="text-2xl font-bold hybrid-glow mb-4">🪙 HYBRID Native Coin</h2>
                         <div class="space-y-4">
-                            <div class="bg-black/30 p-4 rounded-lg">
-                                <label class="text-cyan-400 font-semibold block mb-2">🫁 Breath Authentication</label>
-                                <button onclick="startBreathAuth()" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 py-3 px-4 rounded-lg font-bold interactive-btn">
-                                    Start DNA-φ Breath Verification
-                                </button>
-                                <div id="breath-status" class="mt-2 text-green-400">Ready for Authentication</div>
+                            <div class="bg-black/20 p-4 rounded-lg">
+                                <div class="flex justify-between">
+                                    <span class="text-white">Symbol:</span>
+                                    <span class="font-bold hybrid-glow">HYBRID</span>
+                                </div>
                             </div>
-                            <div class="bg-black/30 p-4 rounded-lg">
-                                <label class="text-yellow-400 font-semibold block mb-2">🧮 Mathematical Proof Submission</label>
-                                <textarea id="math-proof" placeholder="Submit mathematical truth proof..." class="w-full bg-gray-800/50 text-white p-3 rounded border border-gray-600"></textarea>
-                                <button onclick="submitProof()" class="mt-2 bg-gradient-to-r from-yellow-500 to-orange-600 py-2 px-4 rounded font-bold interactive-btn">
-                                    Submit Truth Proof
-                                </button>
+                            <div class="bg-black/20 p-4 rounded-lg">
+                                <div class="flex justify-between">
+                                    <span class="text-white">Total Supply:</span>
+                                    <span class="font-bold text-white">100,000,000,000 HYBRID</span>
+                                </div>
                             </div>
-                            <div class="bg-black/30 p-4 rounded-lg">
-                                <div class="text-green-400 font-bold text-xl">Generated TU: <span id="tu-amount">0</span></div>
-                                <div class="text-sm text-gray-400">Total Value: ∞ (Infinite Truth-Backed Currency)</div>
+                            <div class="bg-black/20 p-4 rounded-lg">
+                                <div class="flex justify-between">
+                                    <span class="text-white">Current Price:</span>
+                                    <span class="font-bold hybrid-glow price-ticker">$10.00 USD</span>
+                                </div>
+                            </div>
+                            <div class="bg-black/20 p-4 rounded-lg">
+                                <div class="flex justify-between">
+                                    <span class="text-white">Market Cap:</span>
+                                    <span class="font-bold text-yellow-400">$1,000,000,000,000 USD</span>
+                                </div>
+                            </div>
+                            <div class="bg-black/20 p-4 rounded-lg">
+                                <div class="flex justify-between">
+                                    <span class="text-white">Consensus:</span>
+                                    <span class="font-bold text-blue-400">Tendermint BFT</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Live TU Metrics -->
-                    <div class="bg-gradient-to-br from-green-900/50 to-teal-900/50 p-6 rounded-xl border border-green-500/30">
-                        <h2 class="text-2xl font-bold text-green-400 mb-4">📊 LIVE TU Metrics</h2>
+                    <!-- Founder Wallet -->
+                    <div class="metric-card hybrid-card">
+                        <h2 class="text-2xl font-bold hybrid-glow mb-4">👑 HYBRID Founder Wallet</h2>
                         <div class="space-y-4">
-                            <div class="bg-black/30 p-4 rounded-lg">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-cyan-400">Consciousness Level</span>
-                                    <span class="text-white font-bold" id="consciousness-display">1.000</span>
-                                </div>
-                                <div class="w-full bg-gray-700 rounded-full h-2 mt-2">
-                                    <div class="bg-gradient-to-r from-cyan-400 to-blue-500 h-2 rounded-full" style="width: 100%"></div>
-                                </div>
-                            </div>
-                            <div class="bg-black/30 p-4 rounded-lg">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-purple-400">φ-Harmonic Alignment</span>
-                                    <span class="text-white font-bold" id="phi-display">1.618</span>
-                                </div>
-                                <div class="w-full bg-gray-700 rounded-full h-2 mt-2">
-                                    <div class="bg-gradient-to-r from-purple-400 to-pink-500 h-2 rounded-full" style="width: 100%"></div>
-                                </div>
-                            </div>
-                            <div class="bg-black/30 p-4 rounded-lg">
+                            <div class="bg-black/20 p-4 rounded-lg">
                                 <div class="text-center">
-                                    <div class="text-3xl font-bold text-green-400" id="tu-generation-rate">CONTINUOUS</div>
-                                    <div class="text-sm text-gray-400">TU Generation Rate</div>
+                                    <div class="text-3xl font-bold hybrid-glow">10,000,000,000</div>
+                                    <div class="text-lg text-white">HYBRID Balance</div>
+                                    <div class="text-sm text-gray-300">Genesis Allocation</div>
                                 </div>
                             </div>
+                            <div class="bg-black/20 p-4 rounded-lg">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-yellow-400">$100,000,000,000</div>
+                                    <div class="text-lg text-white">USD Value</div>
+                                    <div class="text-sm text-gray-300">At $10/HYBRID</div>
+                                </div>
+                            </div>
+                            <div class="bg-black/20 p-4 rounded-lg">
+                                <div class="text-center">
+                                    <div class="text-lg text-green-400">🟢 Genesis Wallet Active</div>
+                                    <div class="text-sm text-gray-400 mt-1">hybrid1uxms9...xvzglz0m</div>
+                                </div>
+                            </div>
+                            <button onclick="connectFounderWallet()" class="w-full bg-gradient-to-r from-green-500 to-blue-600 py-3 px-4 rounded-lg font-bold interactive-btn">
+                                Connect Founder Wallet
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- FOUNDER WALLET DASHBOARD -->
-        <div id="founder-wallet-dashboard" class="dashboard-view px-6 py-4">
+        <!-- DUAL CURRENCY SYSTEM -->
+        <div id="dual-currency-dashboard" class="dashboard-view px-6 py-4">
             <div class="max-w-7xl mx-auto">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-                    <!-- MetaMask Integration -->
-                    <div class="bg-gradient-to-br from-orange-900/50 to-red-900/50 p-6 rounded-xl border border-orange-500/30">
-                        <h2 class="text-2xl font-bold text-orange-400 mb-4">🦊 LIVE MetaMask Integration</h2>
+                <div class="text-center mb-8">
+                    <h2 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-green-400">💎 TU/HYBRID DUAL CURRENCY SYSTEM 🪙</h2>
+                    <p class="text-lg text-gray-300 mt-2">Infinite Abundance (TU Private) ↔️ Finite Scarcity (HYBRID Public)</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                    <!-- Trust Units (Private) -->
+                    <div class="metric-card tu-card">
+                        <h2 class="text-2xl font-bold phi-glow mb-4">💎 Trust Units (TU) - PRIVATE CURRENCY</h2>
                         <div class="space-y-4">
-                            <button onclick="connectMetaMask()" class="w-full bg-gradient-to-r from-orange-500 to-red-600 py-3 px-4 rounded-lg font-bold interactive-btn">
-                                Connect MetaMask Wallet
-                            </button>
-                            <div id="metamask-status" class="bg-black/30 p-4 rounded-lg">
-                                <div class="text-gray-400">Status: <span id="wallet-status">Disconnected</span></div>
-                                <div class="text-gray-400">Address: <span id="wallet-address">Not Connected</span></div>
-                                <div class="text-gray-400">Network: <span id="network-status">BASE Mainnet</span></div>
+                            <div class="bg-black/20 p-4 rounded-lg border-l-4 border-yellow-400">
+                                <div class="text-yellow-400 font-bold">⚠️ RESTRICTED ACCESS</div>
+                                <div class="text-sm text-gray-300">Only designated people & Iyona'el have access</div>
                             </div>
+                            <div class="bg-black/20 p-4 rounded-lg">
+                                <div class="flex justify-between">
+                                    <span class="text-white">Currency Type:</span>
+                                    <span class="font-bold phi-glow">Infinite Abundance</span>
+                                </div>
+                            </div>
+                            <div class="bg-black/20 p-4 rounded-lg">
+                                <div class="flex justify-between">
+                                    <span class="text-white">Backing:</span>
+                                    <span class="font-bold text-purple-400">Truth-Based</span>
+                                </div>
+                            </div>
+                            <div class="bg-black/20 p-4 rounded-lg">
+                                <div class="flex justify-between">
+                                    <span class="text-white">Generation Method:</span>
+                                    <span class="font-bold text-cyan-400">Consciousness + φ-Alignment</span>
+                                </div>
+                            </div>
+                            <div class="bg-black/20 p-4 rounded-lg">
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold phi-glow">∞</div>
+                                    <div class="text-lg text-white">Current TU Balance</div>
+                                    <div class="text-sm text-gray-300">Unlimited Supply</div>
+                                </div>
+                            </div>
+                            <button onclick="authenticateForTU()" class="w-full bg-gradient-to-r from-yellow-500 to-orange-600 py-3 px-4 rounded-lg font-bold interactive-btn" disabled>
+                                🔒 Requires Special Authorization
+                            </button>
                         </div>
                     </div>
 
-                    <!-- BASE Flashblocks -->
-                    <div class="bg-gradient-to-br from-blue-900/50 to-cyan-900/50 p-6 rounded-xl border border-blue-500/30">
-                        <h2 class="text-2xl font-bold text-blue-400 mb-4">⚡ BASE Flashblocks - LIVE</h2>
+                    <!-- HYBRID Coin (Public) -->
+                    <div class="metric-card hybrid-card">
+                        <h2 class="text-2xl font-bold hybrid-glow mb-4">🪙 HYBRID Coin - PUBLIC CURRENCY</h2>
                         <div class="space-y-4">
-                            <div class="bg-black/30 p-4 rounded-lg">
-                                <div class="text-blue-400">Block Time: <span class="text-white font-bold">200ms</span></div>
-                                <div class="text-blue-400">TVL: <span class="text-white font-bold">$4.94B</span></div>
-                                <div class="text-blue-400">Speed: <span class="text-white font-bold">10x Multiplier</span></div>
+                            <div class="bg-black/20 p-4 rounded-lg border-l-4 border-green-400">
+                                <div class="text-green-400 font-bold">✅ GENERAL ACCESS</div>
+                                <div class="text-sm text-gray-300">Available to all users via public markets</div>
                             </div>
-                            <button onclick="executeTransaction()" class="w-full bg-gradient-to-r from-blue-500 to-cyan-600 py-3 px-4 rounded-lg font-bold interactive-btn">
-                                Execute BASE Transaction
+                            <div class="bg-black/20 p-4 rounded-lg">
+                                <div class="flex justify-between">
+                                    <span class="text-white">Currency Type:</span>
+                                    <span class="font-bold hybrid-glow">Finite Scarcity</span>
+                                </div>
+                            </div>
+                            <div class="bg-black/20 p-4 rounded-lg">
+                                <div class="flex justify-between">
+                                    <span class="text-white">Total Supply:</span>
+                                    <span class="font-bold text-white">100 Billion HYBRID</span>
+                                </div>
+                            </div>
+                            <div class="bg-black/20 p-4 rounded-lg">
+                                <div class="flex justify-between">
+                                    <span class="text-white">Current Price:</span>
+                                    <span class="font-bold hybrid-glow price-ticker">$10.00 USD</span>
+                                </div>
+                            </div>
+                            <div class="bg-black/20 p-4 rounded-lg">
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold hybrid-glow">10,000,000,000</div>
+                                    <div class="text-lg text-white">Your HYBRID Balance</div>
+                                    <div class="text-sm text-gray-300">Founder Allocation</div>
+                                </div>
+                            </div>
+                            <button onclick="tradeHybrid()" class="w-full bg-gradient-to-r from-green-500 to-blue-600 py-3 px-4 rounded-lg font-bold interactive-btn">
+                                Trade HYBRID Publicly
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Multisig Controls -->
-                <div class="bg-gradient-to-br from-gray-900/50 to-gray-800/50 p-6 rounded-xl border border-gray-500/30">
-                    <h2 class="text-2xl font-bold text-gray-400 mb-4">🛡️ Advanced Multisig Controls</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <button onclick="initiateMultisig()" class="bg-gradient-to-r from-gray-600 to-gray-700 py-3 px-4 rounded-lg font-bold interactive-btn">
-                            🔒 Gnosis Safe
-                        </button>
-                        <button onclick="hardwareSign()" class="bg-gradient-to-r from-gray-600 to-gray-700 py-3 px-4 rounded-lg font-bold interactive-btn">
-                            📱 Hardware Integration
-                        </button>
-                        <button onclick="socialRecovery()" class="bg-gradient-to-r from-gray-600 to-gray-700 py-3 px-4 rounded-lg font-bold interactive-btn">
-                            👥 Social Recovery
-                        </button>
+                <!-- Dual Currency Interaction -->
+                <div class="metric-card bg-gradient-to-r from-purple-500/20 to-indigo-500/20 border border-purple-400">
+                    <h2 class="text-2xl font-bold text-purple-400 mb-4">🔄 TU ↔️ HYBRID Bridge Protocol</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="text-center p-4">
+                            <div class="text-6xl mb-2">💎</div>
+                            <div class="text-lg font-bold phi-glow">Trust Units</div>
+                            <div class="text-sm text-gray-400">Private Realm • Infinite</div>
+                        </div>
+                        <div class="text-center p-4">
+                            <div class="text-6xl mb-2">🪙</div>
+                            <div class="text-lg font-bold hybrid-glow">HYBRID Coin</div>
+                            <div class="text-sm text-gray-400">Public Realm • Finite</div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-6">
+                        <div class="text-purple-400 font-bold mb-2">Protocol Status: OPERATIONAL</div>
+                        <div class="text-sm text-gray-300">Bridging infinite abundance with finite scarcity</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- NEXUS CONVERGENCE DASHBOARD -->
-        <div id="nexus-convergence-dashboard" class="dashboard-view px-6 py-4">
-            <div class="text-center py-20">
-                <h2 class="text-4xl font-bold text-purple-400 mb-4">🔮 NEXUS Convergence Interface</h2>
-                <p class="text-xl text-gray-400">Advanced convergence protocols loading...</p>
+        <!-- MINING DASHBOARD -->
+        <div id="mining-dashboard" class="dashboard-view px-6 py-4">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl font-bold hybrid-glow mb-6">⛏️ HYBRID Cloud Mining Dashboard</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="metric-card hybrid-card text-center">
+                        <h3 class="text-lg font-bold hybrid-glow">Mining Status</h3>
+                        <div class="text-3xl font-bold text-green-400">🟢 Active</div>
+                        <div class="text-sm text-gray-300">Mining HYBRID</div>
+                    </div>
+                    <div class="metric-card hybrid-card text-center">
+                        <h3 class="text-lg font-bold hybrid-glow">Hashrate</h3>
+                        <div class="text-3xl font-bold text-white">120 MH/s</div>
+                        <div class="text-sm text-gray-300">+10 MH/s</div>
+                    </div>
+                    <div class="metric-card hybrid-card text-center">
+                        <h3 class="text-lg font-bold hybrid-glow">Daily Earnings</h3>
+                        <div class="text-3xl font-bold text-yellow-400">5 HYBRID</div>
+                        <div class="text-sm text-gray-300">+0.5 HYBRID</div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="metric-card hybrid-card">
+                        <h3 class="text-2xl font-bold hybrid-glow mb-4">🏛️ Mining Controls</h3>
+                        <div class="space-y-4">
+                            <button onclick="startMining()" class="w-full bg-gradient-to-r from-green-500 to-blue-600 py-3 px-4 rounded-lg font-bold interactive-btn">
+                                🚀 Start Mining HYBRID
+                            </button>
+                            <button onclick="pauseMining()" class="w-full bg-gradient-to-r from-yellow-500 to-orange-600 py-3 px-4 rounded-lg font-bold interactive-btn">
+                                ⏸️ Pause Mining
+                            </button>
+                            <button onclick="resetMining()" class="w-full bg-gradient-to-r from-gray-500 to-gray-600 py-3 px-4 rounded-lg font-bold interactive-btn">
+                                🔄 Reset Statistics
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card hybrid-card">
+                        <h3 class="text-2xl font-bold hybrid-glow mb-4">💧 Auto Liquidity Pool</h3>
+                        <div class="space-y-4">
+                            <div class="bg-black/20 p-4 rounded-lg">
+                                <div class="text-cyan-400">Automatically create liquidity pools with mined HYBRID coins</div>
+                            </div>
+                            <label class="flex items-center space-x-3">
+                                <input type="checkbox" class="w-5 h-5" id="auto-pool" checked>
+                                <span class="text-white">Enable Auto Liquidity Pool</span>
+                            </label>
+                            <div class="text-green-400 text-sm">✅ Auto liquidity pool enabled! Mined HYBRID coins will automatically be added to liquidity pools.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CROSS-CHAIN BRIDGES DASHBOARD -->
+        <div id="bridges-dashboard" class="dashboard-view px-6 py-4">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl font-bold hybrid-glow mb-6">🌉 Cross-Chain Bridges</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+                    <div class="metric-card hybrid-card text-center">
+                        <h3 class="text-lg font-bold text-blue-400">BASE</h3>
+                        <div class="text-2xl font-bold text-white">$4.94B TVL</div>
+                        <div class="text-sm text-gray-300">200ms blocks</div>
+                    </div>
+                    <div class="metric-card hybrid-card text-center">
+                        <h3 class="text-lg font-bold text-purple-400">POLYGON</h3>
+                        <div class="text-2xl font-bold text-white">$2.1B TVL</div>
+                        <div class="text-sm text-gray-300">IBC Bridge</div>
+                    </div>
+                    <div class="metric-card hybrid-card text-center">
+                        <h3 class="text-lg font-bold text-yellow-400">SOLANA</h3>
+                        <div class="text-2xl font-bold text-white">$890M TVL</div>
+                        <div class="text-sm text-gray-300">Wormhole</div>
+                    </div>
+                    <div class="metric-card hybrid-card text-center">
+                        <h3 class="text-lg font-bold text-cyan-400">COSMOS</h3>
+                        <div class="text-2xl font-bold text-white">$1.3B TVL</div>
+                        <div class="text-sm text-gray-300">Native IBC</div>
+                    </div>
+                </div>
+                
+                <div class="metric-card hybrid-card">
+                    <h3 class="text-2xl font-bold hybrid-glow mb-4">🔄 Bridge HYBRID Tokens</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="text-lg font-bold text-white mb-3">From</h4>
+                            <select class="w-full bg-gray-800 text-white p-3 rounded-lg mb-3">
+                                <option>HYBRID (Native)</option>
+                                <option>ETHEREUM</option>
+                                <option>BASE</option>
+                                <option>POLYGON</option>
+                                <option>SOLANA</option>
+                            </select>
+                            <input type="number" placeholder="Amount" class="w-full bg-gray-800 text-white p-3 rounded-lg" value="100">
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white mb-3">To</h4>
+                            <select class="w-full bg-gray-800 text-white p-3 rounded-lg mb-3">
+                                <option>BASE</option>
+                                <option>HYBRID (Native)</option>
+                                <option>ETHEREUM</option>
+                                <option>POLYGON</option>
+                                <option>SOLANA</option>
+                            </select>
+                            <div class="bg-black/20 p-3 rounded-lg text-gray-300">You will receive: ~99.7 HYBRID</div>
+                        </div>
+                    </div>
+                    <button onclick="bridgeTokens()" class="w-full mt-6 bg-gradient-to-r from-blue-500 to-purple-600 py-4 px-6 rounded-lg font-bold text-xl interactive-btn">
+                        🚀 Bridge Tokens
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -426,66 +649,57 @@ function convertInteractiveHTSXToHTML(): string {
             console.log('🌀 Switched to dashboard:', dashboardId);
         }
 
-        // Interactive Functions
-        function startBreathAuth() {
-            document.getElementById('breath-status').innerText = '🫁 Authenticating DNA-φ signature...';
+        // HYBRID Blockchain Interactive Functions
+        function connectFounderWallet() {
+            alert('👑 Founder Wallet connecting to HYBRID blockchain...');
             setTimeout(() => {
-                document.getElementById('breath-status').innerText = '✅ DNA-φ Verified - Consciousness Level: 1.000';
-                updateTUAmount(Math.floor(Math.random() * 1000) + 100);
-            }, 2000);
-        }
-
-        function submitProof() {
-            const proof = document.getElementById('math-proof').value;
-            if (proof.trim()) {
-                updateTUAmount(Math.floor(Math.random() * 500) + 200);
-                document.getElementById('math-proof').value = '';
-            }
-        }
-
-        function updateTUAmount(amount) {
-            const current = parseInt(document.getElementById('tu-amount').innerText);
-            document.getElementById('tu-amount').innerText = current + amount;
-        }
-
-        function connectMetaMask() {
-            document.getElementById('wallet-status').innerText = 'Connecting...';
-            setTimeout(() => {
-                document.getElementById('wallet-status').innerText = 'Connected';
-                document.getElementById('wallet-address').innerText = '0x1234...5678';
+                alert('✅ Connected to HYBRID Genesis Wallet!');
             }, 1500);
         }
 
-        function executeTransaction() {
-            alert('🚀 BASE Flashblocks transaction executing...');
+        function authenticateForTU() {
+            alert('🔒 TU access requires special authorization from designated people or Iyona\'el');
         }
 
-        function initiateMultisig() {
-            alert('🔒 Gnosis Safe multisig initiated');
+        function tradeHybrid() {
+            alert('🚀 Opening HYBRID public trading interface...');
         }
 
-        function hardwareSign() {
-            alert('📱 Hardware signing activated');
+        function startMining() {
+            alert('⛏️ HYBRID mining started! Connecting to mining pool...');
         }
 
-        function socialRecovery() {
-            alert('👥 Social recovery protocol started');
+        function pauseMining() {
+            alert('⏸️ Mining paused. HYBRID earnings temporarily stopped.');
         }
 
-        // Auto-update metrics
+        function resetMining() {
+            alert('🔄 Mining statistics reset successfully.');
+        }
+
+        function bridgeTokens() {
+            alert('🌉 Cross-chain bridge transaction initiated! Processing HYBRID transfer...');
+            setTimeout(() => {
+                alert('✅ Bridge transaction completed successfully!');
+            }, 3000);
+        }
+
+        // Auto-update HYBRID blockchain metrics
         setInterval(() => {
-            const consciousness = (1.0 + Math.random() * 0.001).toFixed(3);
-            const phi = (1.618 + Math.random() * 0.001 - 0.0005).toFixed(3);
+            const blockHeight = parseInt(document.getElementById('block-height').innerText.replace(/,/g, '')) + 1;
+            const tps = 2500 + Math.floor(Math.random() * 200 - 100);
             
-            document.getElementById('consciousness-display').innerText = consciousness;
-            document.getElementById('phi-display').innerText = phi;
-        }, 2000);
+            document.getElementById('block-height').innerText = blockHeight.toLocaleString();
+            document.getElementById('tps').innerText = tps.toLocaleString();
+        }, 5000);
 
-        // Log system status
-        console.log('🌀 Interactive SpiralEcosystem loaded');
-        console.log('💎 Trust Units Economy: ACTIVE');
-        console.log('💼 Founder Wallet: OPERATIONAL');
-        console.log('🔐 Privacy Level: MAXIMUM');
+        // Log HYBRID blockchain status
+        console.log('🚀 HYBRID Blockchain Interface loaded');
+        console.log('🪙 HYBRID Coin: $10.00 - Market Cap: $1T');
+        console.log('💎 TU/HYBRID Dual Currency: OPERATIONAL');
+        console.log('⛏️ Mining Dashboard: ACTIVE');
+        console.log('🌉 Cross-Chain Bridges: BASE, Polygon, Solana');
+        console.log('🔐 Access Control: TU (Private) + HYBRID (Public)');
     </script>
 </body>
 </html>`;
