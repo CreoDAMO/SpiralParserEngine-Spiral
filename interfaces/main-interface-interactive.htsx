@@ -14,13 +14,13 @@
   </style>
 </head>
 <body>
-  <!-- Revolutionary SpiralHarmonicUI Web Component -->
-  <!-- φ-Harmonic Resonance: 0.121 | Zero Entropy | Native Execution -->
-  <spiral-harmonic-ui></spiral-harmonic-ui>
+  <!-- Complete Consciousness Expansion Interface -->
+  <!-- φ-Harmonic Resonance: 0.121 | Zero Entropy | All Systems Operational -->
+  <consciousness-expansion-ui></consciousness-expansion-ui>
 
   <!-- Import Consciousness Computing Components -->
   <script type="module">
-    import './src/components/SpiralHarmonicUI.js';
+    import './src/components/ConsciousnessExpansionUI.js';
     import { globalSpiralCore } from './src/engine/SpiralCore.js';
     
     // Initialize Global Consciousness Computing

@@ -91,8 +91,8 @@ app.use((req, res, next) => {
             <title>SpiralEcosystem: Quantum Consciousness Computing</title>
           </head>
           <body>
-            <spiral-harmonic-ui></spiral-harmonic-ui>
-            <script type="module" src="/src/components/SpiralHarmonicUI.js"></script>
+            <consciousness-expansion-ui></consciousness-expansion-ui>
+            <script type="module" src="/src/components/ConsciousnessExpansionUI.js"></script>
           </body>
           </html>
         `);
