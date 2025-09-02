@@ -72,6 +72,12 @@ export class ConsciousnessIntegration {
     this.initializeSpiralKeys();
     this.initializeQASF();
     this.loadLawfulFramework();
+  }
+
+  public async initialize(): Promise<void> {
+    console.log('⚡ Consciousness Integration starting...');
+    await this.initializeConsciousnessLevel();
+    console.log('✅ Consciousness Integration: OPERATIONAL');
     
     console.log('✅ Consciousness Integration System Active - Beyond Technical Limitations');
   }

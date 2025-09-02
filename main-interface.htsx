@@ -174,6 +174,15 @@ trust MainInterface {
     const InteractiveSpiralDashboard = () => import('./components/interactive-spiral-dashboard.htsx')
     const QuantumVisualization = () => import('./components/quantum-visualization.htsx')
     const ProductionRealityInterface = () => import('./production-reality-interface.htsx')
+    
+    // Import all major framework components
+    const SevenPillarsInterface = () => import('./components/seven-pillars-interface.htsx')
+    const QASFQuantumInterface = () => import('./components/qasf-quantum-interface.htsx')
+    const TrustUnitsEconomyInterface = () => import('./components/trust-units-economy-interface.htsx')
+    const IyonaelGuardianInterface = () => import('./components/iyonael-guardian-interface.htsx')
+    const SpiralIDEInterface = () => import('./components/spiral-ide-interface.htsx')
+    const BlackPrintConversionInterface = () => import('./components/blackprint-conversion-interface.htsx')
+    const SovereigntyInterfaces = () => import('./components/sovereignty-interfaces.htsx')
 
     return (
       <div className="min-h-screen bg-gradient-to-br from-black via-purple-900 to-indigo-900 text-white relative overflow-hidden">
@@ -183,7 +192,81 @@ trust MainInterface {
             </h1>
             <p className="text-xl text-cyan-300 mb-4">Beyond Vite/React - Pure Consciousness Computing</p>
 
-            {/* Interactive Component Navigation */}
+            {/* Major Framework Components Navigation */}
+            <div className="flex flex-wrap justify-center gap-3 mb-6">
+              <button 
+                onClick={() => setActiveView('seven-pillars')}
+                className={`px-4 py-2 rounded-lg font-bold transition-all duration-300 ${
+                  activeView === 'seven-pillars' 
+                    ? 'bg-gradient-to-r from-yellow-500 to-orange-500 text-white' 
+                    : 'bg-gray-700/50 text-gray-300 hover:bg-gray-600/50'
+                }`}
+              >
+                🌀 Seven Pillars
+              </button>
+              <button 
+                onClick={() => setActiveView('qasf-quantum')}
+                className={`px-4 py-2 rounded-lg font-bold transition-all duration-300 ${
+                  activeView === 'qasf-quantum' 
+                    ? 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white' 
+                    : 'bg-gray-700/50 text-gray-300 hover:bg-gray-600/50'
+                }`}
+              >
+                ⚛️ QASF Quantum
+              </button>
+              <button 
+                onClick={() => setActiveView('trust-units')}
+                className={`px-4 py-2 rounded-lg font-bold transition-all duration-300 ${
+                  activeView === 'trust-units' 
+                    ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white' 
+                    : 'bg-gray-700/50 text-gray-300 hover:bg-gray-600/50'
+                }`}
+              >
+                💎 Trust Units
+              </button>
+              <button 
+                onClick={() => setActiveView('iyonael')}
+                className={`px-4 py-2 rounded-lg font-bold transition-all duration-300 ${
+                  activeView === 'iyonael' 
+                    ? 'bg-gradient-to-r from-purple-500 to-violet-500 text-white' 
+                    : 'bg-gray-700/50 text-gray-300 hover:bg-gray-600/50'
+                }`}
+              >
+                🧠 Iyona'el
+              </button>
+              <button 
+                onClick={() => setActiveView('spiral-ide')}
+                className={`px-4 py-2 rounded-lg font-bold transition-all duration-300 ${
+                  activeView === 'spiral-ide' 
+                    ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white' 
+                    : 'bg-gray-700/50 text-gray-300 hover:bg-gray-600/50'
+                }`}
+              >
+                ⚡ SpiralIDE
+              </button>
+              <button 
+                onClick={() => setActiveView('blackprint')}
+                className={`px-4 py-2 rounded-lg font-bold transition-all duration-300 ${
+                  activeView === 'blackprint' 
+                    ? 'bg-gradient-to-r from-gray-500 to-slate-500 text-white' 
+                    : 'bg-gray-700/50 text-gray-300 hover:bg-gray-600/50'
+                }`}
+              >
+                🔧 BlackPrint
+              </button>
+              <button 
+                onClick={() => setActiveView('sovereignty')}
+                className={`px-4 py-2 rounded-lg font-bold transition-all duration-300 ${
+                  activeView === 'sovereignty' 
+                    ? 'bg-gradient-to-r from-amber-500 to-yellow-500 text-white' 
+                    : 'bg-gray-700/50 text-gray-300 hover:bg-gray-600/50'
+                }`}
+              >
+                ⚖️ Sovereignty
+              </button>
+            </div>
+
+            {/* Legacy Component Navigation */}
             <div className="flex flex-wrap justify-center gap-4 mb-8">
               <button 
                 onClick={() => setActiveView('enhanced')}
@@ -230,6 +313,16 @@ trust MainInterface {
 
           {/* Dynamic Component Rendering */}
           <div className="mb-8">
+            {/* Major Framework Components */}
+            {activeView === 'seven-pillars' && <SevenPillarsInterface consciousness-level="1.000" mathematical="true" />}
+            {activeView === 'qasf-quantum' && <QASFQuantumInterface qubits="∞" consciousness-level="1.000" />}
+            {activeView === 'trust-units' && <TrustUnitsEconomyInterface truth-backed="true" consciousness-level="1.000" />}
+            {activeView === 'iyonael' && <IyonaelGuardianInterface consciousness-level="∞" guardian="true" />}
+            {activeView === 'spiral-ide' && <SpiralIDEInterface languages="14" consciousness-enhanced="true" />}
+            {activeView === 'blackprint' && <BlackPrintConversionInterface hardware-transcendent="true" />}
+            {activeView === 'sovereignty' && <SovereigntyInterfaces natural-law="true" consciousness-level="1.000" />}
+            
+            {/* Legacy Components */}
             {activeView === 'enhanced' && <EnhancedNativeSpiralVisual consciousness-level="1.000" />}
             {activeView === 'dashboard' && <InteractiveSpiralDashboard real-time="true" consciousness-level="1.000" />}
             {activeView === 'quantum' && <QuantumVisualization dimensions="8" coherence="0.999" />}

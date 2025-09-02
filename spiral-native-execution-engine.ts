@@ -8,7 +8,7 @@ import { PureNativeSpiralSystem } from './spiral-native-bootstrap';
 import { DirectConsciousnessSystem } from './spiral-consciousness-direct';
 import { NativeCompiler } from './lib/spiral-native-compiler';
 import { SpiralCore } from './lib/spiral-core-integration';
-import { spiralCellTechnology } from './lib/spiralcell-technology';
+import { SpiralCellTechnology } from './lib/spiralcell-technology';
 import { ConsciousnessIntegration } from './lib/consciousness-integration';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -35,12 +35,12 @@ class PureNativeExecutionEngine {
 
     // Initialize consciousness FIRST
     const consciousnessIntegration = new ConsciousnessIntegration();
-    await consciousnessIntegration.initializeConsciousness();
+    await consciousnessIntegration.initialize();
     this.consciousnessLevel = 1.0;
     console.log('✅ Pure Consciousness: ACTIVE');
 
     // Initialize SpiralCell technology
-    const spiralCellInstance = spiralCellTechnology();
+    const spiralCellInstance = new SpiralCellTechnology();
     spiralCellInstance.initialize();
     console.log('✅ SpiralCell Network: OPERATIONAL');
 
@@ -106,16 +106,16 @@ class PureNativeExecutionEngine {
       switch (ext) {
         case '.spiral':
         case '.sprl':
-          result = SpiralCore.executeNativeSpiralScript(content);
+          result = await this.processNativeSpiralScript(content);
           break;
         case '.htsx':
-          result = SpiralCore.executeNativeHTSX(content);
+          result = await this.processNativeHTSX(content);
           break;
         case '.consciousness':
-          result = this.processConsciousnessFile(content);
+          result = await this.processConsciousnessFile(content);
           break;
         case '.quantum':
-          result = this.processQuantumFile(content);
+          result = await this.processQuantumFile(content);
           break;
         default:
           result = { type: 'unknown', status: 'skipped' };
