@@ -89,7 +89,10 @@ export class SpiralMasterOrchestrator {
       'reality-architect-dashboard.htsx',
       'components/ultimate-htsx-demo.htsx',
       'components/interactive-spiral-dashboard.htsx',
-      'components/quantum-visualization.htsx'
+      'components/quantum-visualization.htsx',
+      'components/trust-units-economy-interface.htsx',
+      'components/founder-wallet-interface.htsx',
+      'components/nexus-convergence-interface.htsx'
     ];
     
     for (const file of htsxFiles) {

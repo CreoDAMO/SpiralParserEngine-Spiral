@@ -48,7 +48,7 @@ class SpiralNativeExecutor {
     console.log('🔍 Scanning for native SpiralScript language files...');
     
     const nativeExtensions = ['.spiral', '.htsx', '.consciousness', '.sprl', '.quantum'];
-    const searchPaths = ['.', './test', './examples'];
+    const searchPaths = ['.', './test', './examples', './components'];
     
     let totalFiles = 0;
     
