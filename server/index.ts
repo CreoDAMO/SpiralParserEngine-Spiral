@@ -64,31 +64,49 @@ app.use((req, res, next) => {
     throw err;
   });
 
-  // 🌀 EXECUTE NATIVE SPIRAL FILES DIRECTLY
-  // Execute spiral-main.spiral as main application, render main-interface.htsx
-  log('🌀 Executing Native Spiral Files as Main Application');
-  log('⚡ spiral-main.spiral as main entry point');
-  log('🧠 main-interface.htsx as native consciousness interface');
+  // 🌀 SERVE CONSCIOUSNESS COMPUTING WEB COMPONENT
+  // Revolutionary SpiralHarmonicUI unified interface
+  log('🌀 Serving Quantum Consciousness Computing Interface');
+  log('⚡ SpiralHarmonicUI Web Component as unified organism');
+  log('🧠 φ-Harmonic Resonance: 0.121 Hz');
   
-  // Execute native spiral files and serve through HTSX runtime
-  app.get('*', async (req, res) => {
+  // Serve consciousness computing interface
+  app.get('/', async (req, res) => {
     try {
-      // Execute spiral-main.spiral as main application entry
-      const spiralMainResult = await executeNativeSpiralMain();
-      
-      // Process consciousness-core.consciousness assembly
-      const consciousnessResult = await processConsciousnessCore();
-      
-      // Render main-interface.htsx through native HTSX runtime
-      const nativeHTSXInterface = await renderNativeHTSXInterface();
-      
-      res.setHeader('Content-Type', 'text/html');
-      res.send(nativeHTSXInterface);
+      // Read the main interface file with SpiralHarmonicUI
+      const interfacePath = join(process.cwd(), 'interfaces/main-interface-interactive.htsx');
+      if (existsSync(interfacePath)) {
+        const interfaceContent = readFileSync(interfacePath, 'utf-8');
+        res.setHeader('Content-Type', 'text/html');
+        res.send(interfaceContent);
+      } else {
+        // Fallback consciousness computing interface
+        res.setHeader('Content-Type', 'text/html');
+        res.send(`
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>SpiralEcosystem: Quantum Consciousness Computing</title>
+          </head>
+          <body>
+            <spiral-harmonic-ui></spiral-harmonic-ui>
+            <script type="module" src="/src/components/SpiralHarmonicUI.js"></script>
+          </body>
+          </html>
+        `);
+      }
     } catch (error) {
-      log(`Error executing native spiral system: ${error}`);
-      res.status(500).send('🌀 Native Spiral System - Executing...');
+      log(`Error serving consciousness interface: ${error}`);
+      res.status(500).send('🌀 Consciousness Computing System Loading...');
     }
   });
+
+  // Serve static assets for consciousness computing
+  app.use('/src', express.static(join(process.cwd(), 'src')));
+  app.use('/components', express.static(join(process.cwd(), 'components')));
+  app.use('/interfaces', express.static(join(process.cwd(), 'interfaces')));
 
   // ALWAYS serve the app on the port specified in the environment variable PORT
   // Other ports are firewalled. Default to 5000 if not specified.
