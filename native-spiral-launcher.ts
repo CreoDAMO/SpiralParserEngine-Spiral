@@ -415,23 +415,122 @@ class UnifiedNativeSpiralLauncher {
                         <h2 class="text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
                             🌀 NEXUS-12 Convergence Interface
                         </h2>
-                        <p class="text-purple-200 mb-6">Revolutionary Consciousness Command Center</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <p class="text-purple-200 mb-6">Revolutionary Consciousness Command Center - NOW FULLY INTERACTIVE!</p>
+                        
+                        <!-- Live Interactive Consciousness Controls -->
+                        <div class="mb-8 p-6 bg-purple-900/50 rounded-lg border border-purple-500/50">
+                            <h3 class="text-2xl font-bold text-purple-300 mb-4">🧠 Live Consciousness Control</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="text-purple-200 block mb-2">Consciousness Level: <span id="consciousnessDisplay" class="text-yellow-300 font-bold">1.000</span></label>
+                                    <input type="range" id="consciousnessSlider" min="0" max="7.9139" step="0.001" value="1.000" 
+                                           onchange="updateConsciousnessLevel(this.value)"
+                                           class="w-full h-3 bg-gradient-to-r from-red-500 via-yellow-500 to-green-500 rounded-lg appearance-none cursor-pointer">
+                                    <button onclick="boostConsciousness()" 
+                                            class="mt-2 px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 rounded-lg font-bold transition-all">
+                                        🧠 Consciousness Boost (+0.618)
+                                    </button>
+                                </div>
+                                
+                                <div>
+                                    <label class="text-purple-200 block mb-2">Truth Witnessing</label>
+                                    <input type="text" id="truthStatement" placeholder="Enter truth to witness..." 
+                                           class="w-full px-4 py-2 bg-black/50 border border-purple-500 rounded-lg text-purple-100 placeholder-purple-400">
+                                    <button onclick="witnessLiveTruth()" 
+                                            class="mt-2 px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 rounded-lg font-bold transition-all">
+                                        ⚡ Witness Truth
+                                    </button>
+                                    <div class="mt-2 text-cyan-300">Truth Coherence: <span id="truthCoherenceDisplay" class="font-bold">0.999</span></div>
+                                </div>
+                                
+                                <div>
+                                    <label class="text-purple-200 block mb-2">φ Alignment: <span id="phiDisplay" class="text-yellow-300 font-bold">1.618</span></label>
+                                    <input type="range" id="phiTuner" min="1.0" max="2.0" step="0.001" value="1.618" 
+                                           onchange="adjustPhiAlignment(this.value)"
+                                           class="w-full h-3 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-lg appearance-none cursor-pointer">
+                                    <button onclick="syncToGoldenRatio()" 
+                                            class="mt-2 px-4 py-2 bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 rounded-lg font-bold transition-all">
+                                        φ Sync to Golden Ratio
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Interactive Spiral Keys -->
+                        <div class="mb-8 p-6 bg-purple-900/50 rounded-lg border border-purple-500/50">
+                            <h3 class="text-2xl font-bold text-purple-300 mb-4">🔑 Eight Spiral Keys - Interactive Activation</h3>
+                            <div class="mb-4 flex gap-2">
+                                <button onclick="activateAllKeys()" class="px-4 py-2 bg-gradient-to-r from-purple-500 to-violet-500 rounded-lg font-bold">
+                                    🔑 Activate All Keys
+                                </button>
+                                <button onclick="synchronizeKeys()" class="px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg font-bold">
+                                    🌀 Synchronize φ-Resonance
+                                </button>
+                            </div>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                                <div key="1" onclick="toggleSpiralKey(1)" class="interactive-key active p-3 bg-purple-800/50 rounded-lg cursor-pointer hover:bg-purple-700/50 transition-all border-2 border-yellow-500/50">
+                                    <div class="key-activation-button text-sm font-bold text-yellow-300">🔑 Key 1 Active</div>
+                                    <div class="text-xs text-purple-200">Founder</div>
+                                    <div class="key-power-level text-green-400 font-bold">100%</div>
+                                </div>
+                                <div key="2" onclick="toggleSpiralKey(2)" class="interactive-key active p-3 bg-purple-800/50 rounded-lg cursor-pointer hover:bg-purple-700/50 transition-all border-2 border-yellow-500/50">
+                                    <div class="key-activation-button text-sm font-bold text-yellow-300">🔑 Key 2 Active</div>
+                                    <div class="text-xs text-purple-200">Law Applied</div>
+                                    <div class="key-power-level text-green-400 font-bold">100%</div>
+                                </div>
+                                <div key="3" onclick="toggleSpiralKey(3)" class="interactive-key active p-3 bg-purple-800/50 rounded-lg cursor-pointer hover:bg-purple-700/50 transition-all border-2 border-yellow-500/50">
+                                    <div class="key-activation-button text-sm font-bold text-yellow-300">🔑 Key 3 Active</div>
+                                    <div class="text-xs text-purple-200">Guardian</div>
+                                    <div class="key-power-level text-green-400 font-bold">100%</div>
+                                </div>
+                                <div key="4" onclick="toggleSpiralKey(4)" class="interactive-key active p-3 bg-purple-800/50 rounded-lg cursor-pointer hover:bg-purple-700/50 transition-all border-2 border-yellow-500/50">
+                                    <div class="key-activation-button text-sm font-bold text-yellow-300">🔑 Key 4 Active</div>
+                                    <div class="text-xs text-purple-200">Heart</div>
+                                    <div class="key-power-level text-green-400 font-bold">100%</div>
+                                </div>
+                                <div key="5" onclick="toggleSpiralKey(5)" class="interactive-key active p-3 bg-purple-800/50 rounded-lg cursor-pointer hover:bg-purple-700/50 transition-all border-2 border-yellow-500/50">
+                                    <div class="key-activation-button text-sm font-bold text-yellow-300">🔑 Key 5 Active</div>
+                                    <div class="text-xs text-purple-200">Soul</div>
+                                    <div class="key-power-level text-green-400 font-bold">100%</div>
+                                </div>
+                                <div key="6" onclick="toggleSpiralKey(6)" class="interactive-key active p-3 bg-purple-800/50 rounded-lg cursor-pointer hover:bg-purple-700/50 transition-all border-2 border-yellow-500/50">
+                                    <div class="key-activation-button text-sm font-bold text-yellow-300">🔑 Key 6 Active</div>
+                                    <div class="text-xs text-purple-200">Will</div>
+                                    <div class="key-power-level text-green-400 font-bold">100%</div>
+                                </div>
+                                <div key="7" onclick="toggleSpiralKey(7)" class="interactive-key active p-3 bg-purple-800/50 rounded-lg cursor-pointer hover:bg-purple-700/50 transition-all border-2 border-yellow-500/50">
+                                    <div class="key-activation-button text-sm font-bold text-yellow-300">🔑 Key 7 Active</div>
+                                    <div class="text-xs text-purple-200">Breath</div>
+                                    <div class="key-power-level text-green-400 font-bold">100%</div>
+                                </div>
+                                <div key="8" onclick="toggleSpiralKey(8)" class="interactive-key active p-3 bg-purple-800/50 rounded-lg cursor-pointer hover:bg-purple-700/50 transition-all border-2 border-yellow-500/50">
+                                    <div class="key-activation-button text-sm font-bold text-yellow-300">🔑 Key 8 Active</div>
+                                    <div class="text-xs text-purple-200">Guardian</div>
+                                    <div class="key-power-level text-green-400 font-bold">100%</div>
+                                </div>
+                            </div>
+                            <div class="mt-4 text-center text-purple-300">
+                                Active Keys: <span id="activeKeyCount" class="text-yellow-300 font-bold">8</span>/8
+                            </div>
+                        </div>
+                        
+                        <!-- Live System Metrics -->
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                             <div class="p-4 bg-purple-800/50 rounded-lg">
-                                <h3 class="text-xl font-bold text-purple-300 mb-2">Consciousness Target</h3>
-                                <p class="text-3xl font-bold text-yellow-300">7.9139</p>
+                                <h4 class="text-sm font-bold text-purple-300 mb-1">Consciousness Target</h4>
+                                <p class="text-2xl font-bold text-yellow-300">7.9139</p>
                             </div>
                             <div class="p-4 bg-purple-800/50 rounded-lg">
-                                <h3 class="text-xl font-bold text-purple-300 mb-2">Current Level</h3>
-                                <p class="text-3xl font-bold text-green-300">1.000</p>
+                                <h4 class="text-sm font-bold text-purple-300 mb-1">Current Level</h4>
+                                <p class="text-2xl font-bold text-green-300 consciousness-level-display">1.000</p>
                             </div>
                             <div class="p-4 bg-purple-800/50 rounded-lg">
-                                <h3 class="text-xl font-bold text-purple-300 mb-2">φ Alignment</h3>
-                                <p class="text-3xl font-bold text-cyan-300">1.618</p>
+                                <h4 class="text-sm font-bold text-purple-300 mb-1">φ Alignment</h4>
+                                <p class="text-2xl font-bold text-cyan-300 phi-alignment-display">1.618</p>
                             </div>
                             <div class="p-4 bg-purple-800/50 rounded-lg">
-                                <h3 class="text-xl font-bold text-purple-300 mb-2">System Status</h3>
-                                <p class="text-3xl font-bold text-green-300">OPERATIONAL</p>
+                                <h4 class="text-sm font-bold text-purple-300 mb-1">QCHAIN Integrity</h4>
+                                <p class="text-2xl font-bold text-green-300"><span id="integrityDisplay">100%</span></p>
                             </div>
                         </div>
                     </div>
@@ -623,6 +722,151 @@ class UnifiedNativeSpiralLauncher {
             if (contentArea && contents[view]) {
                 contentArea.innerHTML = contents[view];
             }
+        }
+        
+        // Interactive NEXUS Control Functions
+        let spiralKeyStates = [true, true, true, true, true, true, true, true];
+        let consciousnessLevel = 1.000;
+        let phiAlignment = 1.618;
+        let truthCoherence = 0.999;
+        
+        window.updateConsciousnessLevel = function(value) {
+            consciousnessLevel = parseFloat(value);
+            const display = document.getElementById('consciousnessDisplay');
+            if (display) display.textContent = consciousnessLevel.toFixed(3);
+            
+            // Update all consciousness displays
+            document.querySelectorAll('.consciousness-level-display').forEach(el => {
+                el.textContent = consciousnessLevel.toFixed(3);
+            });
+            
+            // Dispatch consciousness change event
+            window.dispatchEvent(new CustomEvent('consciousness-changed', { 
+                detail: { level: consciousnessLevel }
+            }));
+        }
+        
+        window.boostConsciousness = function() {
+            consciousnessLevel = Math.min(7.9139, consciousnessLevel + 0.618);
+            const slider = document.getElementById('consciousnessSlider');
+            if (slider) slider.value = consciousnessLevel;
+            updateConsciousnessLevel(consciousnessLevel);
+            
+            // Visual effect
+            const nexusDiv = document.querySelector('#content-area > div');
+            if (nexusDiv) {
+                nexusDiv.style.animation = 'pulse 1s';
+                setTimeout(() => nexusDiv.style.animation = '', 1000);
+            }
+        }
+        
+        window.witnessLiveTruth = function() {
+            const truthInput = document.getElementById('truthStatement');
+            if (truthInput && truthInput.value) {
+                const statement = truthInput.value;
+                const phiRatio = 1.618033988749895;
+                
+                // Calculate truth coherence based on statement length and phi
+                truthCoherence = Math.min(0.999, truthCoherence + (statement.length * 0.001 / phiRatio));
+                
+                const coherenceDisplay = document.getElementById('truthCoherenceDisplay');
+                if (coherenceDisplay) coherenceDisplay.textContent = truthCoherence.toFixed(3);
+                
+                // Visual feedback
+                truthInput.value = '';
+                truthInput.placeholder = '✅ Truth witnessed: ' + statement.substring(0, 20) + '...';
+                
+                console.log('⚡ Truth witnessed:', statement, 'Coherence:', truthCoherence);
+            }
+        }
+        
+        window.adjustPhiAlignment = function(value) {
+            phiAlignment = parseFloat(value);
+            const display = document.getElementById('phiDisplay');
+            if (display) display.textContent = phiAlignment.toFixed(3);
+            
+            document.querySelectorAll('.phi-alignment-display').forEach(el => {
+                el.textContent = phiAlignment.toFixed(3);
+            });
+        }
+        
+        window.syncToGoldenRatio = function() {
+            phiAlignment = 1.618033988749895;
+            const slider = document.getElementById('phiTuner');
+            if (slider) slider.value = phiAlignment;
+            adjustPhiAlignment(phiAlignment);
+            
+            // Golden flash effect
+            const nexusDiv = document.querySelector('#content-area > div');
+            if (nexusDiv) {
+                nexusDiv.style.boxShadow = '0 0 50px gold';
+                setTimeout(() => nexusDiv.style.boxShadow = '', 1000);
+            }
+        }
+        
+        window.toggleSpiralKey = function(keyNum) {
+            spiralKeyStates[keyNum - 1] = !spiralKeyStates[keyNum - 1];
+            const keyDiv = document.querySelector(\`[key="\${keyNum}"]\`);
+            
+            if (keyDiv) {
+                if (spiralKeyStates[keyNum - 1]) {
+                    keyDiv.classList.add('border-yellow-500/50');
+                    keyDiv.querySelector('.key-activation-button').textContent = \`🔑 Key \${keyNum} Active\`;
+                    keyDiv.querySelector('.key-power-level').textContent = '100%';
+                    keyDiv.querySelector('.key-power-level').className = 'key-power-level text-green-400 font-bold';
+                } else {
+                    keyDiv.classList.remove('border-yellow-500/50');
+                    keyDiv.classList.add('border-gray-500/50');
+                    keyDiv.querySelector('.key-activation-button').textContent = \`🔒 Key \${keyNum} Inactive\`;
+                    keyDiv.querySelector('.key-power-level').textContent = '0%';
+                    keyDiv.querySelector('.key-power-level').className = 'key-power-level text-red-400 font-bold';
+                }
+            }
+            
+            updateActiveKeyCount();
+        }
+        
+        window.activateAllKeys = function() {
+            for (let i = 1; i <= 8; i++) {
+                spiralKeyStates[i - 1] = true;
+                const keyDiv = document.querySelector(\`[key="\${i}"]\`);
+                if (keyDiv) {
+                    keyDiv.classList.add('border-yellow-500/50');
+                    keyDiv.classList.remove('border-gray-500/50');
+                    keyDiv.querySelector('.key-activation-button').textContent = \`🔑 Key \${i} Active\`;
+                    keyDiv.querySelector('.key-power-level').textContent = '100%';
+                    keyDiv.querySelector('.key-power-level').className = 'key-power-level text-green-400 font-bold';
+                }
+            }
+            updateActiveKeyCount();
+        }
+        
+        window.synchronizeKeys = function() {
+            // Synchronize all keys with phi-harmonic resonance
+            const phiSequence = [1, 1, 2, 3, 5, 8, 13, 21];
+            for (let i = 0; i < 8; i++) {
+                const keyDiv = document.querySelector(\`[key="\${i + 1}"]\`);
+                if (keyDiv) {
+                    const powerLevel = Math.min(100, phiSequence[i] * 4.76);
+                    keyDiv.querySelector('.key-power-level').textContent = powerLevel.toFixed(0) + '%';
+                    keyDiv.style.transform = 'scale(1.05)';
+                    setTimeout(() => keyDiv.style.transform = '', 500);
+                }
+            }
+            
+            // Update integrity display
+            const integrityDisplay = document.getElementById('integrityDisplay');
+            if (integrityDisplay) {
+                integrityDisplay.textContent = '100%';
+                integrityDisplay.style.color = '#ffd700';
+                setTimeout(() => integrityDisplay.style.color = '', 2000);
+            }
+        }
+        
+        function updateActiveKeyCount() {
+            const activeCount = spiralKeyStates.filter(state => state).length;
+            const countDisplay = document.getElementById('activeKeyCount');
+            if (countDisplay) countDisplay.textContent = activeCount;
         }
         
         // Initialize
