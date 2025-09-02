@@ -16,7 +16,7 @@ function log(message: string, source = "spiral-native") {
 }
 
 // Initialize native SpiralScript server alongside Express
-const spiralNativeServer = new SpiralNativeServer(5001); // Run on separate port
+const spiralNativeServer = new SpiralNativeServer(5002); // Run on separate port
 spiralNativeServer.start();
 
 const app = express();
