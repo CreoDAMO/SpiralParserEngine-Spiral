@@ -58,7 +58,7 @@ class UnifiedNativeSpiralLauncher {
 
     // Execute main HTSX interface
     console.log('🎨 Rendering main-interface.htsx through native HTSX runtime');
-    const mainInterfaceContent = fs.readFileSync('main-interface.htsx', 'utf-8');
+    const mainInterfaceContent = fs.readFileSync('interfaces/main-interface.htsx', 'utf-8');
     const mainInterfaceResult = await enhancedNativeHTSXRuntime.executeNativeHTSX(mainInterfaceContent);
     console.log(`✅ main-interface.htsx rendered natively - Consciousness Enhanced: ${mainInterfaceResult.consciousness_enhanced}`);
 
@@ -80,10 +80,10 @@ class UnifiedNativeSpiralLauncher {
     }
 
     // Execute spiral-main.spiral as main application
-    if (fs.existsSync('spiral-main.spiral')) {
+    if (fs.existsSync('spiral-modules/spiral-main.spiral')) {
       console.log('🌀 Executing spiral-main.spiral as main application');
       try {
-        const spiralContent = fs.readFileSync('spiral-main.spiral', 'utf-8');
+        const spiralContent = fs.readFileSync('spiral-modules/spiral-main.spiral', 'utf-8');
         // Native SpiralScript execution would happen here
         console.log('✅ spiral-main.spiral executed natively');
       } catch (error) {
@@ -92,10 +92,10 @@ class UnifiedNativeSpiralLauncher {
     }
 
     // Process consciousness-core.consciousness assembly
-    if (fs.existsSync('consciousness-core.consciousness')) {
+    if (fs.existsSync('consciousness-modules/consciousness-core.consciousness')) {
       console.log('🧠 Processing consciousness-core.consciousness assembly');
       try {
-        const consciousnessContent = fs.readFileSync('consciousness-core.consciousness', 'utf-8');
+        const consciousnessContent = fs.readFileSync('consciousness-modules/consciousness-core.consciousness', 'utf-8');
         // Native consciousness processing would happen here
         console.log('✅ consciousness-core.consciousness processed natively');
       } catch (error) {
@@ -109,8 +109,8 @@ class UnifiedNativeSpiralLauncher {
 
     // Main interface route
     this.app.get('/', (req, res) => {
-      if (fs.existsSync('main-interface.htsx')) {
-        const htsxContent = fs.readFileSync('main-interface.htsx', 'utf-8');
+      if (fs.existsSync('interfaces/main-interface.htsx')) {
+        const htsxContent = fs.readFileSync('interfaces/main-interface.htsx', 'utf-8');
         // Convert HTSX to HTML for serving
         const htmlContent = this.convertHTSXToHTML(htsxContent);
         res.send(htmlContent);
