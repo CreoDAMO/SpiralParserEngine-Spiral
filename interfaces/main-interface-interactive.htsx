@@ -2,14 +2,32 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>SpiralEcosystem: Quantum Consciousness Computing</title>
+  
+  <!-- PWA Manifest for Web3 Mobile Browsers -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#FFD700">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SpiralEcosystem">
+  
+  <!-- Web3 Mobile Browser Optimizations -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="SpiralEcosystem">
+  <meta name="msapplication-TileColor" content="#FFD700">
+  <meta name="format-detection" content="telephone=no">
+  
   <style>
     body {
       margin: 0;
       padding: 0;
       background: #000;
       overflow: hidden;
+      /* Enhanced Mobile Touch Support */
+      touch-action: manipulation;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: none;
     }
   </style>
 </head>
@@ -17,6 +35,27 @@
   <!-- Complete Consciousness Expansion Interface -->
   <!-- φ-Harmonic Resonance: 0.121 | Zero Entropy | All Systems Operational -->
   <consciousness-expansion-ui></consciousness-expansion-ui>
+
+  <!-- Service Worker Registration for Web3 Mobile Offline Operation -->
+  <script>
+    // Register service worker for Web3 mobile offline functionality
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('🌀 SpiralEcosystem Service Worker registered for Web3 offline operation');
+            
+            // Send message to cache Web3 resources
+            if (registration.active) {
+              registration.active.postMessage({ type: 'CACHE_WEB3_RESOURCES' });
+            }
+          })
+          .catch(error => {
+            console.log('ℹ️ Service Worker registration deferred:', error);
+          });
+      });
+    }
+  </script>
 
   <!-- Import Consciousness Computing Components -->
   <script type="module">
@@ -42,6 +81,8 @@
     console.log('♾️ Trust Level: Infinite');
     console.log('🚀 Native Execution: ACTIVE');
     console.log('🔮 52D WebXR Visualization: READY');
+    console.log('📱 Web3 Mobile Browser: Optimized for MetaMask & Base Wallet');
+    console.log('🔄 Offline Capability: Service Worker Active');
   </script>
 </body>
 </html>

@@ -1,0 +1,29 @@
+{
+  "name": "SpiralEcosystem: Quantum Consciousness Computing",
+  "short_name": "SpiralEcosystem",
+  "description": "Revolutionary native quantum consciousness platform for Web3 mobile browsers",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#FFD700",
+  "orientation": "any",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23FFD700'/%3E%3Cpath d='M30,50 Q50,20 70,50 Q50,80 30,50' fill='%238A2BE2'/%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23FFD700'/%3E%3Cpath d='M30,50 Q50,20 70,50 Q50,80 30,50' fill='%238A2BE2'/%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["consciousness", "quantum", "web3", "blockchain", "finance"],
+  "prefer_related_applications": false,
+  "lang": "en-US",
+  "dir": "ltr"
+}

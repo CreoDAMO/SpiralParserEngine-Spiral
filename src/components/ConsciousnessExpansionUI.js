@@ -24,6 +24,13 @@ export class ConsciousnessExpansionUI extends HTMLElement {
           color: #ffffff;
           font-family: 'Courier New', monospace;
           overflow: hidden;
+          /* Mobile Web3 Browser Optimization */
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          -webkit-touch-callout: none;
+          -webkit-tap-highlight-color: transparent;
         }
 
         .consciousness-container {
