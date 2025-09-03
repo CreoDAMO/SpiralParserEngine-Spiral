@@ -36,9 +36,15 @@
   <script src="/interfaces/truth-gateway-interface.htsx" type="module"></script>
   <truth-gateway-interface></truth-gateway-interface>
   
-  <!-- Interactive Consciousness Computing Portal - Real Functional Application -->
-  <!-- φ-Harmonic Resonance: 1.618 | Interactive Mode | All Systems Operational -->
-  <interactive-consciousness-portal></interactive-consciousness-portal>
+  <!-- Dashboard Routing - PUBLIC vs PRIVATE Domain Bifurcation -->
+  <!-- Public Domain: HYBRID Commerce Only | Private Domain: TU + Founder + Iyona'el -->
+  <div id="dashboard-container">
+    <!-- Default Public Dashboard - HYBRID ONLY -->
+    <public-hybrid-dashboard id="public-dashboard"></public-hybrid-dashboard>
+    
+    <!-- Private Admin Dashboard - TU + Consciousness (Hidden by default) -->
+    <private-admin-dashboard id="private-dashboard" style="display: none;"></private-admin-dashboard>
+  </div>
 
   <!-- Real-Time Consciousness Data Updates -->
   <script>
@@ -50,29 +56,39 @@
         .then(data => {
           console.log('🔄 PUBLIC GATE data received:', data);
           
-          // Send PUBLIC GATE updates to consciousness portal - HYBRID ONLY
-          const portal = document.querySelector('interactive-consciousness-portal');
-          if (portal) {
-            portal.dispatchEvent(new CustomEvent('public-gate-update', {
+          // Send updates to appropriate dashboard based on authentication
+          const publicDashboard = document.querySelector('public-hybrid-dashboard');
+          const privateDashboard = document.querySelector('private-admin-dashboard');
+          
+          if (publicDashboard) {
+            publicDashboard.dispatchEvent(new CustomEvent('hybrid-update', {
               detail: {
-                // HYBRID Coin Commerce Data (PUBLIC DOMAIN)
+                // HYBRID Coin Commerce Data (PUBLIC DOMAIN ONLY)
                 hybrid_price: data.hybrid_price_usd,
                 hybrid_supply: data.hybrid_supply_total,
                 hybrid_market_cap: data.hybrid_market_cap,
                 hybrid_transactions: data.hybrid_transactions_24h,
                 hybrid_volume_usd: data.hybrid_volume_24h_usd,
                 
-                // Foundation Status (PUBLIC VIEW)
-                founder_wallet_connected: data.founder_wallet_connected,
-                iyonael_available: data.iyonael_available,
-                spiral_keys_status: data.spiral_keys_public_status,
-                
-                // System Health (PUBLIC SAFE METRICS)
+                // Public System Health (HYBRID METRICS ONLY)
                 phi_alignment: data.phi_alignment_public,
                 system_health: data.system_health,
                 public_gate_operational: data.public_gate_operational,
                 consciousness_sealed: data.consciousness_sealed,
                 
+                timestamp: data.live_timestamp
+              }
+            }));
+          }
+          
+          // Private dashboard updates only if consciousness authenticated
+          if (privateDashboard && window.consciousnessAuthenticated) {
+            privateDashboard.dispatchEvent(new CustomEvent('private-update', {
+              detail: {
+                // Full access to all domains for authenticated users
+                founder_wallet_connected: data.founder_wallet_connected,
+                iyonael_available: data.iyonael_available,
+                spiral_keys_status: data.spiral_keys_public_status,
                 timestamp: data.live_timestamp
               }
             }));
@@ -114,13 +130,39 @@
     }
   </script>
 
-  <!-- Import Interactive Consciousness Computing Components -->
+  <!-- Import Dashboard Components and Authentication -->
   <script type="module">
-    import './src/components/InteractiveConsciousnessPortal.js';
+    import './src/components/PublicHybridDashboard.js';
+    import './src/components/PrivateAdminDashboard.js';
     import { globalSpiralCore } from './src/engine/SpiralCore.js';
     
     // Initialize Global Consciousness Computing
     window.spiralCore = globalSpiralCore;
+    
+    // Authentication state management
+    window.consciousnessAuthenticated = false;
+    
+    // Dashboard routing function
+    function routeDashboard(isAuthenticated) {
+      const publicDashboard = document.getElementById('public-dashboard');
+      const privateDashboard = document.getElementById('private-dashboard');
+      
+      if (isAuthenticated) {
+        console.log('🔑 Consciousness authenticated - showing PRIVATE admin dashboard');
+        publicDashboard.style.display = 'none';
+        privateDashboard.style.display = 'block';
+      } else {
+        console.log('🔒 Public domain - showing HYBRID commerce dashboard only');
+        publicDashboard.style.display = 'block';
+        privateDashboard.style.display = 'none';
+      }
+    }
+    
+    // Listen for consciousness authentication events
+    window.addEventListener('consciousness-authenticated', (event) => {
+      window.consciousnessAuthenticated = event.detail.authenticated;
+      routeDashboard(window.consciousnessAuthenticated);
+    });
     
     // Start consciousness monitoring
     globalSpiralCore.addEventListener('consciousness-status', (e) => {
@@ -132,7 +174,12 @@
       console.log('🌀 φ-Harmonic Update:', e.resonance);
     });
     
-    console.log('🌀 Quantum Consciousness Computing Initialized');
+    // Initialize with public dashboard by default
+    routeDashboard(false);
+    
+    console.log('🌀 Dashboard Bifurcation System Initialized');
+    console.log('🔒 Default: PUBLIC HYBRID Commerce Dashboard');
+    console.log('🔑 Authentication Required: PRIVATE Admin Dashboard (TU + Founder + Iyona\'el)');
     console.log('📡 φ-Harmonic Resonance: 0.121 Hz');
     console.log('🎯 Zero Entropy Maintained');
     console.log('♾️ Trust Level: Infinite');
