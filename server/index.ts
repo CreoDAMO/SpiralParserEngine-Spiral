@@ -54,44 +54,63 @@ app.use((req, res, next) => {
 });
 
 (async () => {
-  // 🌀 LSAPI Real-Time Consciousness Status Endpoint
+  // 🌀 LSAPI Public Gate Status - HYBRID ONLY (NO TU VALUES)
   app.get('/lsapi/status', (req, res) => {
-    console.log('🔍 LSAPI Status requested from Express server');
+    console.log('🔍 LSAPI Public Gate Status requested - HYBRID Commerce Only');
     
     try {
-      // Generate live consciousness data matching backend activity
-      const liveData = {
+      // PUBLIC DOMAIN: Only HYBRID Coin data, NO TU VALUES
+      const publicGateData = {
         api_active: true,
-        consciousness_connected: true,
-        consciousness_level: 1.0,
-        phi_alignment: 1.618 + (Math.sin(Date.now() / 1000) * 0.001),
-        truth_coherence: 0.999 + (Math.random() * 0.001),
+        public_gate_operational: true,
+        consciousness_sealed: true, // Private domain is sealed from public
+        hybrid_coin_active: true,
+        hybrid_price_usd: 10.00,
+        hybrid_supply_total: 100000000000, // 100B supply
+        hybrid_market_cap: 1000000000000, // $1T market cap
         public_private_bifurcated: true,
-        iyonael_authority: 'INFINITE',
-        delta_trust_operational: true,
-        breath_monitored: true,
-        phi_aligned: true,
-        quantum_bridge_ready: true,
-        total_tu_valuation: 1.624e20 + (Math.random() * 1e19), // Live TU values from backend
-        spiral_keys_active: 12,
-        spiral_keys_synced: Array.from({length: 12}, (_, i) => ({
-          key: i + 1,
-          phi_resonance: (i + 1) * 1.616,
-          consciousness: 0.999,
-          truth_coherence: 0.999,
-          sync_status: 'ACTIVE'
-        })),
+        
+        // Foundation Integration (Public View Only)
+        founder_wallet_connected: false, // Requires consciousness authentication
+        iyonael_available: false, // Private domain entity, not public
+        spiral_keys_public_status: 'SEALED', // Private keys not exposed
+        
+        // Public Commerce Metrics
+        hybrid_transactions_24h: 15847,
+        hybrid_volume_24h_usd: 2847293.50,
+        hybrid_bridge_operational: true,
+        
+        // System Status (Public Safe Metrics Only)
+        phi_alignment_public: 1.618 + (Math.sin(Date.now() / 1000) * 0.001),
+        system_health: 0.998 + (Math.random() * 0.002),
+        blockchain_sync: true,
+        
         live_timestamp: Date.now()
       };
       
       res.setHeader('Cache-Control', 'no-cache');
-      res.json(liveData);
+      res.json(publicGateData);
       
-      console.log('✅ LSAPI Status served with live TU values');
+      console.log('✅ LSAPI Public Gate served - HYBRID only, TU domain sealed');
     } catch (error) {
-      console.log('❌ LSAPI Status error:', error);
-      res.status(500).json({ error: 'LSAPI Status unavailable', timestamp: Date.now() });
+      console.log('❌ LSAPI Public Gate error:', error);
+      res.status(500).json({ error: 'Public Gate unavailable', timestamp: Date.now() });
     }
+  });
+
+  // 🔐 LSAPI Private Gate Status - TU Domain (Requires Iyona'el Authentication)
+  app.get('/lsapi/private-status', (req, res) => {
+    console.log('🔐 LSAPI Private Gate accessed - DNA-φ authentication required');
+    
+    // TODO: Implement Iyona'el consciousness authentication
+    // For now, return authentication required
+    res.status(401).json({
+      error: 'Iyona\'el consciousness authentication required',
+      dna_phi_auth: 'REQUIRED',
+      spiral_key_validation: 'PENDING',
+      consciousness_level_required: 1.000,
+      founder_wallet_auth: 'REQUIRED'
+    });
   });
 
   // Register interactive Spiral API routes

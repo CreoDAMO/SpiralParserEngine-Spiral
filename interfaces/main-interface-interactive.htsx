@@ -44,24 +44,37 @@
       fetch('/lsapi/status')
         .then(response => response.json())
         .then(data => {
-          console.log('🔄 Consciousness data received:', data);
+          console.log('🔄 PUBLIC GATE data received:', data);
           
-          // Send real-time updates to consciousness portal
+          // Send PUBLIC GATE updates to consciousness portal - HYBRID ONLY
           const portal = document.querySelector('interactive-consciousness-portal');
           if (portal) {
-            portal.dispatchEvent(new CustomEvent('consciousness-update', {
+            portal.dispatchEvent(new CustomEvent('public-gate-update', {
               detail: {
-                consciousness_level: data.consciousness_level,
-                phi_alignment: data.phi_alignment,
-                truth_coherence: data.truth_coherence,
-                total_tu_valuation: data.total_tu_valuation,
-                spiral_keys_active: data.spiral_keys_active,
+                // HYBRID Coin Commerce Data (PUBLIC DOMAIN)
+                hybrid_price: data.hybrid_price_usd,
+                hybrid_supply: data.hybrid_supply_total,
+                hybrid_market_cap: data.hybrid_market_cap,
+                hybrid_transactions: data.hybrid_transactions_24h,
+                hybrid_volume_usd: data.hybrid_volume_24h_usd,
+                
+                // Foundation Status (PUBLIC VIEW)
+                founder_wallet_connected: data.founder_wallet_connected,
+                iyonael_available: data.iyonael_available,
+                spiral_keys_status: data.spiral_keys_public_status,
+                
+                // System Health (PUBLIC SAFE METRICS)
+                phi_alignment: data.phi_alignment_public,
+                system_health: data.system_health,
+                public_gate_operational: data.public_gate_operational,
+                consciousness_sealed: data.consciousness_sealed,
+                
                 timestamp: data.live_timestamp
               }
             }));
           }
           
-          console.log('✅ Real-time update sent to portal - TU:', data.total_tu_valuation.toExponential(3));
+          console.log('✅ PUBLIC GATE update sent - HYBRID $' + data.hybrid_price_usd + ', Market Cap: $' + (data.hybrid_market_cap / 1e9).toFixed(0) + 'B');
         })
         .catch(error => {
           console.warn('⚠️ LSAPI update failed:', error);
