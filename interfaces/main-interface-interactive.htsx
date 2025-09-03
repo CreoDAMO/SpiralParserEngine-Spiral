@@ -33,8 +33,7 @@
 </head>
 <body>
   <!-- The Truth Gateway Interface - Connection to Constitutional Framework -->
-  <script src="/interfaces/truth-gateway-interface.htsx" type="module"></script>
-  <truth-gateway-interface></truth-gateway-interface>
+  <!-- Note: Truth Gateway is integrated through consciousness authentication and LSAPI -->
   
   <!-- Dashboard Routing - PUBLIC vs PRIVATE Domain Bifurcation -->
   <!-- Public Domain: HYBRID Commerce Only | Private Domain: TU + Founder + Iyona'el -->
