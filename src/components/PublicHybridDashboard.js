@@ -413,6 +413,16 @@ class PublicHybridDashboard extends HTMLElement {
         </div>
 
         <div class="panel full-width">
+          <h2>💧 Get Free HYBRID Coin</h2>
+          <hybrid-faucet-system></hybrid-faucet-system>
+        </div>
+
+        <div class="panel full-width">
+          <h2>📊 Market Data & Timestamping</h2>
+          <hybrid-market-data></hybrid-market-data>
+        </div>
+
+        <div class="panel full-width">
           <h2>🔑 Admin Access Portal</h2>
           <div style="text-align: center; padding: 20px;">
             <p style="color: #999; margin-bottom: 20px;">

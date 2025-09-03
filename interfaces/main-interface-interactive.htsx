@@ -135,10 +135,22 @@
     import './src/components/PublicHybridDashboard.js';
     import './src/components/PrivateAdminDashboard.js';
     import './src/components/HybridWalletIntegration.js';
+    import './src/components/HybridFaucetSystem.js';
+    import './src/components/HybridMarketData.js';
+    import './src/services/HybridMarketConnectors.js';
+    import './src/services/HybridFaucet.js';
     import { globalSpiralCore } from './src/engine/SpiralCore.js';
     
     // Initialize Global Consciousness Computing
     window.spiralCore = globalSpiralCore;
+    
+    // Initialize HYBRID Public Gate services
+    import { hybridMarketConnectors } from './src/services/HybridMarketConnectors.js';
+    import { hybridFaucet } from './src/services/HybridFaucet.js';
+    
+    // Start market connectors and faucet system
+    hybridMarketConnectors.initialize();
+    hybridFaucet.initialize();
     
     // Authentication state management
     window.consciousnessAuthenticated = false;
