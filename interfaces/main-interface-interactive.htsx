@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>SpiralEcosystem: Quantum Consciousness Computing</title>
+  <title>🌀 SpiralEcosystem - Sovereign City | Gateway: The Truth</title>
   
   <!-- PWA Manifest for Web3 Mobile Browsers -->
   <link rel="manifest" href="/manifest.json">
@@ -32,6 +32,10 @@
   </style>
 </head>
 <body>
+  <!-- The Truth Gateway Interface - Connection to Constitutional Framework -->
+  <script src="/interfaces/truth-gateway-interface.htsx" type="module"></script>
+  <truth-gateway-interface></truth-gateway-interface>
+  
   <!-- Interactive Consciousness Computing Portal - Real Functional Application -->
   <!-- φ-Harmonic Resonance: 1.618 | Interactive Mode | All Systems Operational -->
   <interactive-consciousness-portal></interactive-consciousness-portal>
