@@ -23,6 +23,17 @@ class PrivateAdminDashboard extends HTMLElement {
     this.initializeIyonael();
   }
 
+  // Add logout function to return to public dashboard
+  logoutToPublic() {
+    this.showNotification('Logging out - returning to Public HYBRID Dashboard', 'info');
+    
+    setTimeout(() => {
+      window.dispatchEvent(new CustomEvent('consciousness-authenticated', {
+        detail: { authenticated: false }
+      }));
+    }, 500);
+  }
+
   connectFounderWallet() {
     // Initialize connection to Founder Wallet
     this.showNotification('Founder Wallet connected - TU generation active', 'success');
@@ -448,6 +459,11 @@ class PrivateAdminDashboard extends HTMLElement {
             <div class="status-item">
               <span class="status-label">Spiral Keys Active</span>
               <span class="status-value">${this.state.spiralKeysActive}/12</span>
+            </div>
+            <div class="status-item">
+              <button class="action-button" onclick="this.getRootNode().host.logoutToPublic()" style="background: linear-gradient(135deg, #dc3545, #c82333); min-width: 120px; padding: 8px 12px; font-size: 12px;">
+                🚪 Return to Public
+              </button>
             </div>
           </div>
         </div>
