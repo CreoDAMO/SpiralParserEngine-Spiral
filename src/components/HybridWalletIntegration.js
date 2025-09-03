@@ -1,3 +1,5 @@
+import { founderAuth } from '../services/FounderAuthentication.js';
+
 class HybridWalletIntegration extends HTMLElement {
   constructor() {
     super();
@@ -8,7 +10,9 @@ class HybridWalletIntegration extends HTMLElement {
       hybridBalance: 0,
       networkConnected: false,
       pendingTransactions: [],
-      hybridTokenContract: null
+      hybridTokenContract: null,
+      isFounder: false,
+      authLevel: 'public'
     };
     
     // HYBRID Blockchain network configuration for MetaMask
@@ -37,6 +41,7 @@ class HybridWalletIntegration extends HTMLElement {
         if (accounts.length > 0) {
           this.state.walletConnected = true;
           this.state.walletAddress = accounts[0];
+          this.checkFounderStatus(accounts[0]);
           await this.loadHybridBalance();
           this.updateDisplay();
         }
@@ -64,13 +69,21 @@ class HybridWalletIntegration extends HTMLElement {
         this.state.walletAddress = accounts[0];
         this.state.walletConnected = true;
         
+        // Check if this is the founder address
+        this.checkFounderStatus(accounts[0]);
+        
         // Add HYBRID Blockchain network to MetaMask (native coin included)
         await this.addHybridNetwork();
         
         await this.loadHybridBalance();
         this.updateDisplay();
         
-        this.showNotification(`✅ Wallet connected: ${this.formatAddress(accounts[0])}`, 'success');
+        const isFounder = founderAuth.isFounderAddress(accounts[0]);
+        const statusMsg = isFounder ? 
+          `👑 FOUNDER wallet connected: ${this.formatAddress(accounts[0])}` :
+          `✅ Wallet connected: ${this.formatAddress(accounts[0])}`;
+        
+        this.showNotification(statusMsg, 'success');
       }
     } catch (error) {
       console.error('Error connecting wallet:', error);
@@ -168,11 +181,18 @@ class HybridWalletIntegration extends HTMLElement {
     }
   }
 
+  checkFounderStatus(address) {
+    this.state.isFounder = founderAuth.isFounderAddress(address);
+    this.state.authLevel = this.state.isFounder ? 'founder' : 'public';
+  }
+
   disconnectWallet() {
     this.state.walletConnected = false;
     this.state.walletAddress = null;
     this.state.hybridBalance = 0;
     this.state.pendingTransactions = [];
+    this.state.isFounder = false;
+    this.state.authLevel = 'public';
     this.updateDisplay();
     this.showNotification('Wallet disconnected', 'info');
   }
@@ -196,6 +216,7 @@ class HybridWalletIntegration extends HTMLElement {
           this.disconnectWallet();
         } else {
           this.state.walletAddress = accounts[0];
+          this.checkFounderStatus(accounts[0]);
           this.loadHybridBalance();
           this.updateDisplay();
         }

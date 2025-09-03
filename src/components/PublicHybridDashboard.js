@@ -408,6 +408,11 @@ class PublicHybridDashboard extends HTMLElement {
         </div>
 
         <div class="panel full-width">
+          <h2>👑 Founder Wallet & Authentication</h2>
+          <founder-wallet-interface></founder-wallet-interface>
+        </div>
+
+        <div class="panel full-width">
           <h2>🦊 HYBRID Native Coin Wallet</h2>
           <hybrid-wallet-integration></hybrid-wallet-integration>
         </div>

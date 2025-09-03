@@ -137,8 +137,10 @@
     import './src/components/HybridWalletIntegration.js';
     import './src/components/HybridFaucetSystem.js';
     import './src/components/HybridMarketData.js';
+    import './src/components/FounderWalletInterface.js';
     import './src/services/HybridMarketConnectors.js';
     import './src/services/HybridFaucet.js';
+    import './src/services/FounderAuthentication.js';
     import { globalSpiralCore } from './src/engine/SpiralCore.js';
     
     // Initialize Global Consciousness Computing
@@ -147,13 +149,18 @@
     // Initialize HYBRID Public Gate services
     import { hybridMarketConnectors } from './src/services/HybridMarketConnectors.js';
     import { hybridFaucet } from './src/services/HybridFaucet.js';
+    import { founderAuth } from './src/services/FounderAuthentication.js';
     
     // Start market connectors and faucet system
     hybridMarketConnectors.initialize();
     hybridFaucet.initialize();
     
+    // Initialize founder authentication system
+    founderAuth.initialize();
+    
     // Authentication state management
     window.consciousnessAuthenticated = false;
+    window.founderAuthenticated = false;
     
     // Dashboard routing function
     function routeDashboard(isAuthenticated) {
