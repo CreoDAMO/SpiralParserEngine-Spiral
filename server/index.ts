@@ -15,9 +15,7 @@ function log(message: string, source = "spiral-native") {
   console.log(`${formattedTime} [${source}] ${message}`);
 }
 
-// Initialize native SpiralScript server alongside Express
-const spiralNativeServer = new SpiralNativeServer(5002); // Run on separate port
-spiralNativeServer.start();
+// Native SpiralScript server is initialized via workflow, not here
 
 const app = express();
 app.use(express.json());

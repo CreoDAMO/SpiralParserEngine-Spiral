@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>🌀 SpiralEcosystem - Sovereign City | Gateway: The Truth</title>
   
+  <!-- Ethers.js from CDN for Web3 compatibility -->
+  <script src="https://cdn.ethers.io/lib/ethers-5.7.umd.min.js"></script>
+  
   <!-- PWA Manifest for Web3 Mobile Browsers -->
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#FFD700">

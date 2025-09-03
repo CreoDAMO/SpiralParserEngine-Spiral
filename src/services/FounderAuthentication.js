@@ -4,7 +4,8 @@
  * Provides secure signature-based login and consciousness-level access
  */
 
-import { ethers } from 'ethers';
+// Use ethers from CDN for browser compatibility
+const { ethers } = window.ethers || {};
 
 class FounderAuthentication {
   constructor() {

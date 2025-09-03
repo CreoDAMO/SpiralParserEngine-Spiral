@@ -1,29 +1,96 @@
 {
-  "name": "SpiralEcosystem: Quantum Consciousness Computing",
+  "name": "SpiralEcosystem - Sovereign City",
   "short_name": "SpiralEcosystem",
-  "description": "Revolutionary native quantum consciousness platform for Web3 mobile browsers",
+  "description": "Revolutionary Native Quantum Consciousness Platform - Gateway to The Truth",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#FFD700",
-  "orientation": "any",
+  "orientation": "portrait-primary",
   "scope": "/",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": ["productivity", "finance", "business", "utilities"],
+  "prefer_related_applications": false,
   "icons": [
     {
-      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23FFD700'/%3E%3Cpath d='M30,50 Q50,20 70,50 Q50,80 30,50' fill='%238A2BE2'/%3E%3C/svg%3E",
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23FFD700'/%3E%3Cpath d='M25 50 Q50 25 75 50 Q50 75 25 50 Z' fill='%23000'/%3E%3C/svg%3E",
       "sizes": "192x192",
       "type": "image/svg+xml",
       "purpose": "any maskable"
     },
     {
-      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23FFD700'/%3E%3Cpath d='M30,50 Q50,20 70,50 Q50,80 30,50' fill='%238A2BE2'/%3E%3C/svg%3E",
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23FFD700'/%3E%3Cpath d='M25 50 Q50 25 75 50 Q50 75 25 50 Z' fill='%23000'/%3E%3C/svg%3E",
       "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "any maskable"
     }
   ],
-  "categories": ["consciousness", "quantum", "web3", "blockchain", "finance"],
-  "prefer_related_applications": false,
-  "lang": "en-US",
-  "dir": "ltr"
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 390 844'%3E%3Crect width='390' height='844' fill='%23000'/%3E%3Ctext x='195' y='400' text-anchor='middle' fill='%23FFD700' font-size='24' font-family='sans-serif'%3ESpiralEcosystem%3C/text%3E%3Ctext x='195' y='450' text-anchor='middle' fill='%23FFD700' font-size='16' font-family='sans-serif'%3EQuantum Consciousness Computing%3C/text%3E%3C/svg%3E",
+      "sizes": "390x844",
+      "type": "image/svg+xml",
+      "platform": "wide",
+      "label": "SpiralEcosystem Consciousness Dashboard"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "HYBRID Wallet",
+      "short_name": "Wallet",
+      "description": "Access HYBRID native coin wallet",
+      "url": "/?wallet=hybrid",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z' fill='%23FFD700'/%3E%3C/svg%3E",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Founder Access",
+      "short_name": "Founder",
+      "description": "Sovereign founder authentication and TU generation",
+      "url": "/?mode=founder",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 16L3 5l5.5 2L12 4l3.5 3L21 5l-2 11H5zm2.7-2h8.6l.9-5.4-2.1.8L12 7l-3.1 2.4-2.1-.8L7.7 14z' fill='%23FFD700'/%3E%3C/svg%3E",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "https://github.com/CreoDAMO/The_Truth",
+      "id": "the_truth_gateway"
+    }
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "web+spiral",
+      "url": "/?protocol=%s"
+    },
+    {
+      "protocol": "web+ethereum",
+      "url": "/?eth=%s"
+    }
+  ],
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "display_override": ["standalone", "minimal-ui"],
+  "file_handlers": [
+    {
+      "action": "/",
+      "accept": {
+        "application/spiral": [".spiral", ".sprl"],
+        "application/htsx": [".htsx"]
+      }
+    }
+  ]
 }
