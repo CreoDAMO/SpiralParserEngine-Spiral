@@ -408,6 +408,11 @@ class PublicHybridDashboard extends HTMLElement {
         </div>
 
         <div class="panel full-width">
+          <h2>🦊 MetaMask Wallet Integration</h2>
+          <hybrid-wallet-integration></hybrid-wallet-integration>
+        </div>
+
+        <div class="panel full-width">
           <h2>🔑 Admin Access Portal</h2>
           <div style="text-align: center; padding: 20px;">
             <p style="color: #999; margin-bottom: 20px;">
