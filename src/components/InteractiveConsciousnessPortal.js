@@ -6,12 +6,15 @@ class InteractiveConsciousnessPortal extends HTMLElement {
     super();
     this.shadow = this.attachShadow({ mode: 'open' });
     this.state = {
-      userBalance: 0,
+      // PUBLIC DOMAIN - HYBRID ONLY
       hybridBalance: 0,
       currentOperation: null,
       walletConnected: false,
-      truthUnitsGenerated: 0,
-      activeTransactions: []
+      activeTransactions: [],
+      
+      // CONSCIOUSNESS SEALED - NO TU IN PUBLIC INTERFACE
+      consciousnessAuthenticated: false,
+      dnaPhiValidated: false
     };
     this.render();
     this.initializePortal();
@@ -26,17 +29,17 @@ class InteractiveConsciousnessPortal extends HTMLElement {
 
   async loadUserData() {
     try {
-      // Load real user balance and state
-      const response = await fetch('/api/spiral/user/balance');
+      // Load HYBRID balance only - TU is PRIVATE DOMAIN
+      const response = await fetch('/lsapi/status');
       if (response.ok) {
         const data = await response.json();
-        this.state.userBalance = data.truUnits || 0;
-        this.state.hybridBalance = data.hybridBalance || 0;
+        // ONLY HYBRID data allowed in public interface
+        this.state.hybridBalance = data.hybrid_volume_24h_usd || 0;
         this.updateDisplay();
       }
     } catch (error) {
-      console.log('ℹ️ Operating in offline mode');
-      this.state.userBalance = Math.floor(Math.random() * 1000000); // Demo data for offline
+      console.log('ℹ️ Operating in offline mode - HYBRID only');
+      this.state.hybridBalance = 10; // Demo HYBRID balance
     }
   }
 
@@ -52,11 +55,10 @@ class InteractiveConsciousnessPortal extends HTMLElement {
     }
   }
 
-  handleTruthUnitGenerated(tuData) {
-    this.state.truthUnitsGenerated++;
-    this.state.userBalance += tuData.value;
-    this.updateDisplay();
-    this.showNotification(`Truth Unit Generated: +${tuData.value} TU`);
+  handleConsciousnessAuthenticationRequired() {
+    // TU operations require consciousness authentication - NOT ALLOWED in public interface
+    this.showNotification('Consciousness Authentication Required - Access PRIVATE GATE', 'info');
+    console.log('🚨 TU operations blocked - requires DNA-φ authentication through LSAPI Private Gate');
   }
 
   handleTransactionComplete(txData) {
@@ -66,55 +68,31 @@ class InteractiveConsciousnessPortal extends HTMLElement {
   }
 
   async generateTruthUnit() {
-    if (this.state.currentOperation) return;
+    // 🚨 SOVEREIGNTY VIOLATION - TU generation not allowed in public interface
+    this.handleConsciousnessAuthenticationRequired();
+    this.showNotification('TU operations sealed - Access through PRIVATE GATE only', 'error');
     
-    this.state.currentOperation = 'generating-tu';
-    this.updateDisplay();
-    
-    try {
-      const response = await fetch('/api/spiral/truth-units/generate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          witness: 'User Interactive Action',
-          timestamp: Date.now(),
-          phiAlignment: 1.618
-        })
-      });
-      
-      if (response.ok) {
-        const result = await response.json();
-        this.state.userBalance += result.value;
-        this.state.truthUnitsGenerated++;
-        this.showNotification(`Generated ${result.value} TU!`);
-      }
-    } catch (error) {
-      // Offline mode - simulate TU generation
-      const generatedValue = Math.floor(Math.random() * 1000) + 100;
-      this.state.userBalance += generatedValue;
-      this.state.truthUnitsGenerated++;
-      this.showNotification(`Generated ${generatedValue} TU (Offline Mode)`);
-    }
-    
-    this.state.currentOperation = null;
-    this.updateDisplay();
+    // Redirect to consciousness authentication
+    console.log('🔒 TU generation blocked: Public interface access denied');
+    console.log('🌀 Redirect required: LSAPI Private Gate with DNA-φ authentication');
   }
 
   async createHybridTransaction() {
     const amount = this.shadow.getElementById('transactionAmount').value;
     if (!amount || amount <= 0) {
-      this.showNotification('Please enter a valid amount', 'error');
+      this.showNotification('Please enter a valid HYBRID amount', 'error');
       return;
     }
     
-    if (amount > this.state.userBalance) {
-      this.showNotification('Insufficient TU balance', 'error');
+    // HYBRID transactions only - no TU conversion in public interface
+    if (amount > this.state.hybridBalance) {
+      this.showNotification('Insufficient HYBRID balance', 'error');
       return;
     }
 
     const transaction = {
       id: 'tx-' + Date.now(),
-      type: 'TU-to-HYBRID',
+      type: 'HYBRID-TRANSACTION',
       amount: parseFloat(amount),
       status: 'processing',
       timestamp: Date.now()
@@ -207,33 +185,47 @@ class InteractiveConsciousnessPortal extends HTMLElement {
   }
 
   updateDisplay() {
-    const balanceElement = this.shadow.getElementById('tuBalance');
+    // PUBLIC DOMAIN - HYBRID ONLY
     const hybridElement = this.shadow.getElementById('hybridBalance');
-    const generatedElement = this.shadow.getElementById('tuGenerated');
+    if (hybridElement) hybridElement.textContent = `${this.state.hybridBalance.toFixed(2)} HYBRID`;
     
-    if (balanceElement) balanceElement.textContent = `${this.state.userBalance.toLocaleString()} TU`;
-    if (hybridElement) hybridElement.textContent = `${this.state.hybridBalance.toFixed(3)} HYBRID`;
-    if (generatedElement) generatedElement.textContent = this.state.truthUnitsGenerated;
+    // Consciousness Authentication Status
+    const authStatus = this.shadow.getElementById('authenticationStatus');
+    if (authStatus) {
+      authStatus.textContent = this.state.consciousnessAuthenticated ? 
+        '🔓 Consciousness Authenticated' : 
+        '🔒 Consciousness Sealed - Public Domain';
+    }
     
-    // Update operation status
-    const generateBtn = this.shadow.getElementById('generateTUBtn');
+    // Update HYBRID operation status
+    const generateBtn = this.shadow.getElementById('generateHYBRIDBtn');
     if (generateBtn) {
-      generateBtn.disabled = this.state.currentOperation === 'generating-tu';
-      generateBtn.textContent = this.state.currentOperation === 'generating-tu' ? '⏳ Generating...' : '✨ Generate Truth Unit';
+      generateBtn.disabled = this.state.currentOperation === 'processing-hybrid';
+      generateBtn.textContent = this.state.currentOperation === 'processing-hybrid' ? 
+        '⏳ Processing...' : 
+        '💰 Process HYBRID';
     }
     
     const witnessBtn = this.shadow.getElementById('witnessBtn');
     if (witnessBtn) {
       witnessBtn.disabled = this.state.currentOperation === 'witnessing';
-      witnessBtn.textContent = this.state.currentOperation === 'witnessing' ? '⏳ Witnessing...' : '👁️ Witness Event';
+      witnessBtn.textContent = this.state.currentOperation === 'witnessing' ? 
+        '⏳ Witnessing...' : 
+        '👁️ Witness Event';
     }
     
-    // Update active transactions display
+    // TU operations blocked - redirect to consciousness authentication
+    const tuBlockedBtn = this.shadow.getElementById('tuBlockedBtn');
+    if (tuBlockedBtn) {
+      tuBlockedBtn.textContent = '🚨 TU Access Requires Consciousness Authentication';
+    }
+    
+    // Update active transactions display - HYBRID only
     const txContainer = this.shadow.getElementById('activeTransactions');
     if (txContainer) {
       txContainer.innerHTML = this.state.activeTransactions.map(tx => 
         `<div class="transaction-item">
-          <span>${tx.type}: ${tx.amount} TU</span>
+          <span>${tx.type}: ${tx.amount} HYBRID</span>
           <span class="status-processing">Processing...</span>
         </div>`
       ).join('');
@@ -440,38 +432,38 @@ class InteractiveConsciousnessPortal extends HTMLElement {
               <span class="status-value" id="consciousnessLevel">0.999</span>
             </div>
             <div class="status-item">
-              <span class="status-label">Truth Units Generated</span>
-              <span class="status-value" id="tuGenerated">0</span>
+              <span class="status-label">Domain Status</span>
+              <span class="status-value" id="authenticationStatus">🔒 Public Domain</span>
             </div>
           </div>
         </div>
 
         <div class="panel">
-          <h2>💎 Truth Unit Operations</h2>
-          <div class="balance-display">Balance: <span id="tuBalance">0 TU</span></div>
+          <h2>🚨 Truth Unit Operations</h2>
+          <div class="balance-display" style="color: #ff6b6b;">🔒 CONSCIOUSNESS SEALED</div>
           
-          <button class="action-button" id="generateTUBtn" onclick="this.getRootNode().host.generateTruthUnit()">
-            ✨ Generate Truth Unit
+          <button class="action-button" id="tuBlockedBtn" onclick="this.getRootNode().host.handleConsciousnessAuthenticationRequired()" style="background: linear-gradient(135deg, #ff6b6b, #444);">
+            🚨 TU Access Requires Consciousness Authentication
           </button>
           
           <div class="input-group">
-            <label>Witness Event (Generate TU by witnessing truth):</label>
-            <textarea id="witnessEvent" placeholder="Describe an event or truth to witness..." rows="3"></textarea>
-            <button class="action-button" id="witnessBtn" onclick="this.getRootNode().host.witnessEvent()">
-              👁️ Witness Event
+            <label style="color: #ff6b6b;">TU operations sealed in PUBLIC domain:</label>
+            <textarea disabled placeholder="TU operations require DNA-φ authentication through LSAPI Private Gate..." rows="2" style="background: rgba(255,107,107,0.1);"></textarea>
+            <button class="action-button" disabled style="background: #444; opacity: 0.5;">
+              🔒 Access PRIVATE GATE Required
             </button>
           </div>
         </div>
 
         <div class="panel">
-          <h2>🔄 HYBRID Exchange</h2>
-          <div class="balance-display">HYBRID: <span id="hybridBalance">0.000 HYBRID</span></div>
+          <h2>💰 HYBRID Exchange</h2>
+          <div class="balance-display">HYBRID: $<span id="hybridBalance">10.00</span></div>
           
           <div class="input-group">
-            <label>Convert TU to HYBRID (φ-ratio: 1 TU = 0.618 HYBRID):</label>
-            <input type="number" id="transactionAmount" placeholder="Enter TU amount..." min="1" step="1">
-            <button class="action-button" onclick="this.getRootNode().host.createHybridTransaction()">
-              🔄 Convert to HYBRID
+            <label>HYBRID Operations ($10 per coin, 100B supply):</label>
+            <input type="number" id="transactionAmount" placeholder="Enter HYBRID amount..." min="1" step="0.01">
+            <button class="action-button" id="generateHYBRIDBtn" onclick="this.getRootNode().host.createHybridTransaction()">
+              💰 Process HYBRID Transaction
             </button>
           </div>
           
