@@ -408,7 +408,7 @@ class PublicHybridDashboard extends HTMLElement {
         </div>
 
         <div class="panel full-width">
-          <h2>🦊 MetaMask Wallet Integration</h2>
+          <h2>🦊 HYBRID Native Coin Wallet</h2>
           <hybrid-wallet-integration></hybrid-wallet-integration>
         </div>
 

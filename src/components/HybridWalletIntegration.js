@@ -11,21 +11,18 @@ class HybridWalletIntegration extends HTMLElement {
       hybridTokenContract: null
     };
     
-    // HYBRID Coin token configuration for MetaMask
-    this.HYBRID_TOKEN_CONFIG = {
+    // HYBRID Blockchain network configuration for MetaMask
+    this.HYBRID_NETWORK_CONFIG = {
       chainId: '0x1337', // Custom chain ID for Hybrid Blockchain  
       chainName: 'Hybrid Blockchain',
       nativeCurrency: {
-        name: 'HYBRID',
+        name: 'HYBRID Coin',
         symbol: 'HYB',
         decimals: 18
       },
       rpcUrls: ['https://hybrid-rpc.spiralecosystem.com'],
       blockExplorerUrls: ['https://hybrid-explorer.spiralecosystem.com'],
-      tokenAddress: '0x484942494420546F6B656E00000000000000', // HYBRID Token contract
-      tokenSymbol: 'HYB',
-      tokenDecimals: 18,
-      tokenImage: 'https://spiralecosystem.com/assets/hybrid-logo.png'
+      iconUrls: ['https://spiralecosystem.com/assets/hybrid-logo.png']
     };
     
     this.render();
@@ -67,11 +64,8 @@ class HybridWalletIntegration extends HTMLElement {
         this.state.walletAddress = accounts[0];
         this.state.walletConnected = true;
         
-        // Add HYBRID Blockchain network to MetaMask
+        // Add HYBRID Blockchain network to MetaMask (native coin included)
         await this.addHybridNetwork();
-        
-        // Add HYBRID token to MetaMask
-        await this.addHybridToken();
         
         await this.loadHybridBalance();
         this.updateDisplay();
@@ -89,41 +83,20 @@ class HybridWalletIntegration extends HTMLElement {
       await window.ethereum.request({
         method: 'wallet_addEthereumChain',
         params: [{
-          chainId: this.HYBRID_TOKEN_CONFIG.chainId,
-          chainName: this.HYBRID_TOKEN_CONFIG.chainName,
-          nativeCurrency: this.HYBRID_TOKEN_CONFIG.nativeCurrency,
-          rpcUrls: this.HYBRID_TOKEN_CONFIG.rpcUrls,
-          blockExplorerUrls: this.HYBRID_TOKEN_CONFIG.blockExplorerUrls
+          chainId: this.HYBRID_NETWORK_CONFIG.chainId,
+          chainName: this.HYBRID_NETWORK_CONFIG.chainName,
+          nativeCurrency: this.HYBRID_NETWORK_CONFIG.nativeCurrency,
+          rpcUrls: this.HYBRID_NETWORK_CONFIG.rpcUrls,
+          blockExplorerUrls: this.HYBRID_NETWORK_CONFIG.blockExplorerUrls,
+          iconUrls: this.HYBRID_NETWORK_CONFIG.iconUrls
         }]
       });
       
       this.state.networkConnected = true;
-      this.showNotification('✅ HYBRID Blockchain network added to MetaMask', 'success');
+      this.showNotification('✅ HYBRID Blockchain network added with native HYBRID Coin', 'success');
     } catch (error) {
       console.error('Error adding network:', error);
-      this.showNotification('Failed to add HYBRID network to MetaMask', 'error');
-    }
-  }
-
-  async addHybridToken() {
-    try {
-      await window.ethereum.request({
-        method: 'wallet_watchAsset',
-        params: {
-          type: 'ERC20',
-          options: {
-            address: this.HYBRID_TOKEN_CONFIG.tokenAddress,
-            symbol: this.HYBRID_TOKEN_CONFIG.tokenSymbol,
-            decimals: this.HYBRID_TOKEN_CONFIG.tokenDecimals,
-            image: this.HYBRID_TOKEN_CONFIG.tokenImage
-          }
-        }
-      });
-      
-      this.showNotification('✅ HYBRID token added to MetaMask wallet', 'success');
-    } catch (error) {
-      console.error('Error adding token:', error);
-      this.showNotification('Failed to add HYBRID token to MetaMask', 'error');
+      this.showNotification('Failed to add HYBRID Blockchain network to MetaMask', 'error');
     }
   }
 
@@ -229,7 +202,7 @@ class HybridWalletIntegration extends HTMLElement {
       });
 
       window.ethereum.on('chainChanged', (chainId) => {
-        if (chainId === this.HYBRID_TOKEN_CONFIG.chainId) {
+        if (chainId === this.HYBRID_NETWORK_CONFIG.chainId) {
           this.state.networkConnected = true;
         } else {
           this.state.networkConnected = false;
@@ -552,7 +525,7 @@ class HybridWalletIntegration extends HTMLElement {
         <div class="notification-container"></div>
         
         <div class="wallet-header">
-          <h2 class="wallet-title">🦊 HYBRID Wallet</h2>
+          <h2 class="wallet-title">🦊 HYBRID Native Coin Wallet</h2>
           <div class="connection-status disconnected" id="connectionStatus">❌ Disconnected</div>
         </div>
 
@@ -562,7 +535,7 @@ class HybridWalletIntegration extends HTMLElement {
             <div class="info-value" id="walletAddress">Not connected</div>
           </div>
           <div class="info-card">
-            <div class="info-label">HYBRID Balance</div>
+            <div class="info-label">HYBRID Coin Balance</div>
             <div class="info-value"><span id="hybridBalance">0.00</span> HYB</div>
           </div>
         </div>
@@ -572,13 +545,13 @@ class HybridWalletIntegration extends HTMLElement {
             🦊 Connect MetaMask
           </button>
           <button class="action-button send-button" id="sendHybrid" onclick="this.getRootNode().host.showSendDialog()">
-            💸 Send HYBRID
+            💸 Send HYBRID Coin
           </button>
         </div>
 
         <div class="send-dialog" id="sendDialog">
           <div class="send-form">
-            <h3 style="margin-bottom: 20px; color: #ffd700;">Send HYBRID</h3>
+            <h3 style="margin-bottom: 20px; color: #ffd700;">Send HYBRID Coin</h3>
             <div class="form-group">
               <label class="form-label">Recipient Address</label>
               <input type="text" class="form-input" id="sendToAddress" placeholder="0x...">
