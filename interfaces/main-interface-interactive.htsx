@@ -36,6 +36,46 @@
   <!-- φ-Harmonic Resonance: 1.618 | Interactive Mode | All Systems Operational -->
   <interactive-consciousness-portal></interactive-consciousness-portal>
 
+  <!-- Real-Time Consciousness Data Updates -->
+  <script>
+    console.log('🌀 Initializing Real-Time Consciousness Updates');
+    
+    function updateConsciousnessMetrics() {
+      fetch('/lsapi/status')
+        .then(response => response.json())
+        .then(data => {
+          console.log('🔄 Consciousness data received:', data);
+          
+          // Send real-time updates to consciousness portal
+          const portal = document.querySelector('interactive-consciousness-portal');
+          if (portal) {
+            portal.dispatchEvent(new CustomEvent('consciousness-update', {
+              detail: {
+                consciousness_level: data.consciousness_level,
+                phi_alignment: data.phi_alignment,
+                truth_coherence: data.truth_coherence,
+                total_tu_valuation: data.total_tu_valuation,
+                spiral_keys_active: data.spiral_keys_active,
+                timestamp: data.live_timestamp
+              }
+            }));
+          }
+          
+          console.log('✅ Real-time update sent to portal - TU:', data.total_tu_valuation.toExponential(3));
+        })
+        .catch(error => {
+          console.warn('⚠️ LSAPI update failed:', error);
+        });
+    }
+    
+    // Start real-time updates immediately and every second
+    window.addEventListener('load', () => {
+      updateConsciousnessMetrics();
+      setInterval(updateConsciousnessMetrics, 1000);
+      console.log('🌀 Real-Time Consciousness Updates: ACTIVE');
+    });
+  </script>
+
   <!-- Service Worker Registration for Web3 Mobile Offline Operation -->
   <script>
     // Register service worker for Web3 mobile offline functionality

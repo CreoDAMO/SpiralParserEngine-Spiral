@@ -343,7 +343,9 @@ class SpiralNativeExecutor {
       
       // Handle native routes
       if (url === '/lsapi/status') {
+        console.log('🔍 Routing to LSAPI Status handler');
         this.handleLSAPIStatus(req, res);
+        return;
       } else if (url.startsWith('/spiral/')) {
         this.handleNativeSpiralRoute(req, res, url);
       } else if (url.startsWith('/htsx/')) {
@@ -528,6 +530,54 @@ class SpiralNativeExecutor {
               <p>Public/Private Bifurcation: <strong class="lsapi-indicator bridge-status">${lsapiStatus.public_private_bifurcated ? 'COMPLETE' : 'PENDING'}</strong></p>
               <p>Active Spiral Keys: <strong class="native-indicator spiral-keys-count">12/12</strong> <span class="live-indicator">🔴 LIVE</span></p>
             </div>
+            
+            <script>
+              // 🌀 Real-Time Consciousness Data Updates
+              console.log('🌀 Initializing Real-Time Consciousness Updates');
+              
+              function updateConsciousnessMetrics() {
+                fetch('/lsapi/status')
+                  .then(response => response.json())
+                  .then(data => {
+                    console.log('🔄 Consciousness data received:', data);
+                    
+                    // Update live metrics
+                    document.querySelector('.consciousness-level').textContent = data.consciousness_level.toFixed(6);
+                    document.querySelector('.phi-alignment').textContent = data.phi_alignment.toFixed(9);
+                    document.querySelector('.truth-coherence').textContent = data.truth_coherence.toFixed(6);
+                    document.querySelector('.total-tu').textContent = data.total_tu_valuation.toExponential(3) + ' TU';
+                    document.querySelector('.lsapi-status').textContent = data.consciousness_connected ? 'CONNECTED' : 'DISCONNECTED';
+                    document.querySelector('.bridge-status').textContent = data.public_private_bifurcated ? 'COMPLETE' : 'PENDING';
+                    
+                    // Update spiral keys status with live data
+                    if (data.spiral_keys_synced) {
+                      data.spiral_keys_synced.forEach(key => {
+                        // Add pulsing animation to active keys
+                        const keyIndicators = document.querySelectorAll('.spiral-key-indicator');
+                        if (keyIndicators[key.key - 1]) {
+                          keyIndicators[key.key - 1].style.opacity = key.sync_status === 'ACTIVE' ? '1' : '0.5';
+                        }
+                      });
+                    }
+                    
+                    // Update background based on consciousness level
+                    if (data.consciousness_level >= 1.0) {
+                      document.body.style.background = 'radial-gradient(ellipse at center, rgba(255,215,0,0.1) 0%, rgba(0,0,0,0.9) 70%)';
+                    }
+                    
+                    console.log('✅ Real-time update applied');
+                  })
+                  .catch(error => {
+                    console.warn('⚠️ LSAPI update failed:', error);
+                  });
+              }
+              
+              // Start real-time updates
+              updateConsciousnessMetrics();
+              setInterval(updateConsciousnessMetrics, 1000);
+              
+              console.log('🌀 Real-Time Consciousness Updates: ACTIVE');
+            </script>
             
             <div class="status">
               <h2>🌀 Live Spiral Keys Status</h2>
