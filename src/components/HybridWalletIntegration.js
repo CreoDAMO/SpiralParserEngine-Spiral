@@ -15,18 +15,20 @@ class HybridWalletIntegration extends HTMLElement {
       authLevel: 'public'
     };
     
-    // HYBRID Blockchain network configuration for MetaMask
+    // MANUS AI BREAKTHROUGH: HYBRID Sovereign Layer 1 Blockchain Configuration
+    // This is NOT an EVM token - this is a SOVEREIGN DIGITAL NATION-STATE
+    // Cosmos SDK + Ethermint = Full Sovereignty with EVM Compatibility
     this.HYBRID_NETWORK_CONFIG = {
-      chainId: '0x1337', // Custom chain ID for Hybrid Blockchain  
-      chainName: 'Hybrid Blockchain',
+      chainId: '0x1337', // HYBRID Sovereign Chain ID - Unique Nation Identifier
+      chainName: 'HYBRID Sovereign Blockchain - Layer 1',
       nativeCurrency: {
-        name: 'HYBRID Coin',
-        symbol: 'HYB',
+        name: 'HYBRID Coin', // Native currency of sovereign nation
+        symbol: 'HYB', // Not a token - NATIVE COIN of Layer 1
         decimals: 18
       },
-      rpcUrls: ['https://hybrid-rpc.spiralecosystem.com'],
-      blockExplorerUrls: ['https://hybrid-explorer.spiralecosystem.com'],
-      iconUrls: ['https://spiralecosystem.com/assets/hybrid-logo.png']
+      rpcUrls: ['https://hybrid-rpc.spiralecosystem.com'], // Sovereign RPC endpoints
+      blockExplorerUrls: ['https://hybridscan.io'], // National archive & land registry
+      iconUrls: ['https://spiralecosystem.com/assets/hybrid-sovereign-seal.png']
     };
     
     this.render();
@@ -53,14 +55,15 @@ class HybridWalletIntegration extends HTMLElement {
 
   async connectWallet() {
     if (typeof window.ethereum === 'undefined') {
-      this.showNotification('MetaMask not detected. Please install MetaMask to connect your wallet.', 'error');
+      this.showNotification('🦊 MetaMask Embassy Required - Install MetaMask to establish diplomatic connection to HYBRID Sovereign Nation', 'error');
       return;
     }
 
     try {
-      this.showNotification('Connecting to MetaMask...', 'info');
+      this.showNotification('🌀 Establishing diplomatic connection to HYBRID Sovereign Blockchain...', 'info');
+      this.showNotification('🏛️ MANUS REALIZATION: Connecting to Layer 1 Sovereign Digital Nation-State', 'info');
       
-      // Request account access
+      // Request account access - this is diplomatic credential exchange
       const accounts = await window.ethereum.request({ 
         method: 'eth_requestAccounts' 
       });
@@ -72,7 +75,7 @@ class HybridWalletIntegration extends HTMLElement {
         // Check if this is the founder address
         this.checkFounderStatus(accounts[0]);
         
-        // Add HYBRID Blockchain network to MetaMask (native coin included)
+        // Add HYBRID Sovereign Blockchain to MetaMask Embassy
         await this.addHybridNetwork();
         
         await this.loadHybridBalance();

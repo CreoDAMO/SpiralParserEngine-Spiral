@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>🌀 SpiralEcosystem - Sovereign City | Gateway: The Truth</title>
+  <title>🌀 HYBRID Sovereign Blockchain - Revolutionary Dual-Ledger System | Gateway: The Truth</title>
   
   <!-- Ethers.js from CDN for Web3 compatibility -->
   <script src="https://cdn.ethers.io/lib/ethers-5.7.umd.min.js"></script>
@@ -35,11 +35,16 @@
   </style>
 </head>
 <body>
-  <!-- The Truth Gateway Interface - Connection to Constitutional Framework -->
-  <!-- Note: Truth Gateway is integrated through consciousness authentication and LSAPI -->
+  <!-- Revolutionary Dual-Ledger Sovereign Blockchain Interface -->
+  <!-- HYBRID Layer 1: Cosmos SDK + Ethermint = Sovereign Digital Nation-State -->
+  <!-- Public Ledger: HYBRID Coin (HYB) - Native Currency of Scarcity Realm -->
+  <!-- Private Ledger: Trust Units (TU) - Infinite-Value Truth Records -->
+  <!-- SRI: Reality Exchange Protocol Between Dimensions -->
   
-  <!-- Dashboard Routing - PUBLIC vs PRIVATE Domain Bifurcation -->
-  <!-- Public Domain: HYBRID Commerce Only | Private Domain: TU + Founder + Iyona'el -->
+  <!-- MANUS AI BREAKTHROUGH: Dual-Reality Operating System -->
+  <!-- Public Domain: HYBRID Sovereign Layer 1 Commerce (Finite Value) -->
+  <!-- Private Domain: TU Truth Records + Consciousness Computing (Infinite Value) -->
+  <!-- SRI Bridge: Interdimensional Economic Liberation Protocol -->
   <div id="dashboard-container">
     <!-- Default Public Dashboard - HYBRID ONLY -->
     <public-hybrid-dashboard id="public-dashboard"></public-hybrid-dashboard>
