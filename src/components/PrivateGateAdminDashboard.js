@@ -676,7 +676,7 @@ class PrivateGateAdminDashboard extends HTMLElement {
     return `
       <div class="section-header">
         <h3>📜 Constitutional Framework & Trust Empire</h3>
-        <div class="constitutional-badge">INFINITE VALUE TRUST STRUCTURES • $900T PERELMAN TRUST</div>
+        <div class="constitutional-badge">INFINITE VALUE TRUST STRUCTURES • PRICELESS PERELMAN TRUST</div>
       </div>
       
       <!-- $900T PERELMAN TRUST SECTION -->
@@ -688,11 +688,11 @@ class PrivateGateAdminDashboard extends HTMLElement {
         margin-bottom: 30px;
         box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
       ">
-        <h4 style="color: #FFD700; text-align: center; margin-bottom: 20px; font-size: 20px;">💎 $900 TRILLION PERELMAN TRUST EMPIRE</h4>
+        <h4 style="color: #FFD700; text-align: center; margin-bottom: 20px; font-size: 20px;">💎 PRICELESS PERELMAN TRUST EMPIRE</h4>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
           <div style="background: rgba(255, 215, 0, 0.15); padding: 20px; border-radius: 15px; border: 1px solid #FFD700;">
             <div style="font-size: 16px; margin-bottom: 10px; color: #FFD700;"><strong>🏆 PERELMAN TRUST</strong></div>
-            <div style="font-size: 14px; margin-bottom: 8px;"><strong>Valuation:</strong> <span style="color: #FFD700;">∞ TU (Infinite)</span></div>
+            <div style="font-size: 14px; margin-bottom: 8px;"><strong>Valuation:</strong> <span style="color: #FFD700;">∞ TU (PRICELESS)</span></div>
             <div style="font-size: 14px; margin-bottom: 8px;"><strong>Purpose:</strong> Poincaré Conjecture & Global UBI</div>
             <div style="font-size: 14px; margin-bottom: 8px;"><strong>Honor:</strong> Grigori Perelman Mathematical Legacy</div>
             <div style="font-size: 14px; margin-bottom: 8px;"><strong>Authority:</strong> Constitutional Mandate ΩΦ.∞</div>
@@ -702,8 +702,8 @@ class PrivateGateAdminDashboard extends HTMLElement {
             <div style="font-size: 16px; margin-bottom: 10px; color: #8B5DFF;"><strong>🌍 GLOBAL UBI DISTRIBUTION</strong></div>
             <div style="font-size: 14px; margin-bottom: 8px;"><strong>Recipients:</strong> 1 Billion People</div>
             <div style="font-size: 14px; margin-bottom: 8px;"><strong>Amount:</strong> $25,000 per person/year</div>
-            <div style="font-size: 14px; margin-bottom: 8px;"><strong>Total Distribution:</strong> $25 Trillion annually</div>
-            <div style="font-size: 14px; margin-bottom: 8px;"><strong>Funding:</strong> Truth Validation ∞ TU</div>
+            <div style="font-size: 14px; margin-bottom: 8px;"><strong>Total Distribution:</strong> INFINITE via Truth Economy</div>
+            <div style="font-size: 14px; margin-bottom: 8px;"><strong>Funding:</strong> Priceless Truth Validation ∞ TU</div>
             <div style="font-size: 14px;"><strong>Method:</strong> UBI NFTs via Truth Economy</div>
           </div>
         </div>
@@ -851,8 +851,8 @@ class PrivateGateAdminDashboard extends HTMLElement {
             <div style="font-size: 12px; color: #00FF88;">Per Person/Year</div>
           </div>
           <div style="text-align: center; background: rgba(255, 215, 0, 0.1); padding: 15px; border-radius: 10px;">
-            <div style="font-size: 28px; font-weight: bold; color: #FFD700;">$25T</div>
-            <div style="font-size: 12px; color: #00FF88;">Annual Distribution</div>
+            <div style="font-size: 28px; font-weight: bold; color: #FFD700;">∞</div>
+            <div style="font-size: 12px; color: #00FF88;">Infinite Distribution</div>
           </div>
           <div style="text-align: center; background: rgba(255, 215, 0, 0.1); padding: 15px; border-radius: 10px;">
             <div style="font-size: 28px; font-weight: bold; color: #FFD700;">∞</div>
@@ -860,7 +860,7 @@ class PrivateGateAdminDashboard extends HTMLElement {
           </div>
         </div>
         <div style="text-align: center; margin-top: 15px; padding: 15px; background: rgba(0, 255, 136, 0.05); border-radius: 10px;">
-          <div style="font-size: 16px; color: #00FF88;"><strong>Deployment Method:</strong> UBI NFTs via HYBRID Wallet • Truth Economy Verification • Constitutional Authority</div>
+          <div style="font-size: 16px; color: #00FF88;"><strong>Deployment Method:</strong> UBI NFTs via HYBRID Wallet • PRICELESS Truth Economy • Constitutional Authority</div>
         </div>
       </div>
     `;
