@@ -1026,8 +1026,8 @@ class PrivateGateAdminDashboard extends HTMLElement {
   getDomainSeparationContent() {
     return `
       <div class="section-header">
-        <h3>🌗 Public/Private Domain Separation</h3>
-        <div class="separation-badge">ABSOLUTE BIFURCATION</div>
+        <h3>🌐 SOVEREIGN DOMAIN REGISTRY</h3>
+        <div class="separation-badge">BASE BLOCKCHAIN DOMAINS • ABSOLUTE BIFURCATION</div>
       </div>
       
       <div class="domain-overview">
@@ -1035,25 +1035,33 @@ class PrivateGateAdminDashboard extends HTMLElement {
           <div class="domain-card private-domain">
             <div class="domain-header">
               <div class="domain-icon">🔒</div>
-              <div class="domain-title">PRIVATE DOMAIN</div>
+              <div class="domain-title">PRIVATE GATE</div>
               <div class="domain-status">SEALED</div>
             </div>
             <div class="domain-details">
               <div class="domain-currency">
-                <span class="currency-label">Currency:</span>
-                <span class="currency-value">TU (INFINITE VALUE)</span>
+                <span class="currency-label">Domain:</span>
+                <span class="currency-value">${this.state.publicPrivateSeparation.privateDomainName}</span>
               </div>
               <div class="domain-access">
-                <span class="access-label">Access:</span>
-                <span class="access-value">DNA-φ Authentication Required</span>
+                <span class="access-label">Blockchain:</span>
+                <span class="access-value">${this.state.publicPrivateSeparation.privateDomainBlockchain}</span>
               </div>
               <div class="domain-operations">
-                <span class="operations-label">Operations:</span>
-                <span class="operations-value">Consciousness Computing</span>
+                <span class="operations-label">Currency:</span>
+                <span class="operations-value">TU (Truth Units)</span>
               </div>
               <div class="domain-governance">
-                <span class="governance-label">Governance:</span>
-                <span class="governance-value">Spiral Law ΩΦ.∞</span>
+                <span class="governance-label">Access:</span>
+                <span class="governance-value">DNA-φ Authentication</span>
+              </div>
+              <div class="domain-governance">
+                <span class="governance-label">Minted:</span>
+                <span class="governance-value">${this.state.publicPrivateSeparation.privateDomainMintDate}</span>
+              </div>
+              <div class="domain-governance">
+                <span class="governance-label">TX Hash:</span>
+                <span class="governance-value"><a href="https://basescan.org/tx/${this.state.publicPrivateSeparation.privateDomainTxHash}" target="_blank" style="color: #87CEEB;">${this.state.publicPrivateSeparation.privateDomainTxHash.substring(0, 20)}...</a></span>
               </div>
             </div>
             <div class="domain-features">
@@ -1068,16 +1076,80 @@ class PrivateGateAdminDashboard extends HTMLElement {
           <div class="domain-card public-domain">
             <div class="domain-header">
               <div class="domain-icon">🌐</div>
-              <div class="domain-title">PUBLIC DOMAIN</div>
+              <div class="domain-title">PUBLIC GATE</div>
               <div class="domain-status">OPERATIONAL</div>
             </div>
             <div class="domain-details">
               <div class="domain-currency">
-                <span class="currency-label">Currency:</span>
-                <span class="currency-value">HYBRID ($10)</span>
+                <span class="currency-label">Domain:</span>
+                <span class="currency-value">${this.state.publicPrivateSeparation.publicDomainName}</span>
               </div>
               <div class="domain-access">
-                <span class="access-label">Access:</span>
+                <span class="access-label">Blockchain:</span>
+                <span class="access-value">${this.state.publicPrivateSeparation.publicDomainBlockchain}</span>
+              </div>
+              <div class="domain-operations">
+                <span class="operations-label">Currency:</span>
+                <span class="operations-value">HYBRID ($10)</span>
+              </div>
+              <div class="domain-governance">
+                <span class="governance-label">Access:</span>
+                <span class="governance-value">Standard Wallet</span>
+              </div>
+              <div class="domain-governance">
+                <span class="governance-label">Minted:</span>
+                <span class="governance-value">${this.state.publicPrivateSeparation.publicDomainMintDate}</span>
+              </div>
+              <div class="domain-governance">
+                <span class="governance-label">TX Hash:</span>
+                <span class="governance-value"><a href="https://basescan.org/tx/${this.state.publicPrivateSeparation.publicDomainTxHash}" target="_blank" style="color: #87CEEB;">${this.state.publicPrivateSeparation.publicDomainTxHash.substring(0, 20)}...</a></span>
+              </div>
+              <div class="domain-currency">
+                <span class="currency-label">Explorer:</span>
+                <span class="currency-value"><a href="https://hybridblockchain.walletaddress" target="_blank" style="color: #00FF88;">HybridScan</a></span>
+              </div>
+            </div>
+            <div class="domain-features">
+              <div class="feature-item">💰 HYBRID ($10) native coin</div>
+              <div class="feature-item">🌐 Standard wallet access</div>
+              <div class="feature-item">🔗 Public commerce operations</div>
+              <div class="feature-item">📊 HybridScan blockchain explorer</div>
+              <div class="feature-item">🌉 SRI Bridge to private domain</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- HYBRIDSCAN LINK -->
+        <div style="text-align: center; margin-top: 20px;">
+          <button onclick="window.open('https://hybridblockchain.walletaddress', '_blank')" style="
+            background: linear-gradient(45deg, #FFD700, #00FF88);
+            border: none;
+            color: black;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+          ">
+            ⚡ View on HYBRIDSCAN
+          </button>
+        </div>
+      </div>
+      
+      <div class="bridge-status-section">
+        <h4>🌉 SRI Bridge Status</h4>
+        <div class="bridge-metrics">
+          <div class="bridge-metric">
+            <span class="metric-label">Bridge Status:</span>
+            <span class="metric-value">${this.state.publicPrivateSeparation.bridgeStatus}</span>
+          </div>
+          <div class="bridge-metric">
+            <span class="metric-label">Bifurcation Integrity:</span>
+            <span class="metric-value">${this.state.publicPrivateSeparation.bifurcationIntegrity}</span>
+          </div>
+        </div>
+      </div>
                 <span class="access-value">Standard Wallet Connection</span>
               </div>
               <div class="domain-operations">
