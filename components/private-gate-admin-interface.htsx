@@ -356,66 +356,195 @@
         </div>
       </div>
 
-      <!-- Constitutional Framework -->
+      <!-- Constitutional Framework & Trust Empire -->
       <div class="admin-panel constitutional" v-show="activeTab === 'constitutional'">
         <div class="panel-header">
-          <h2>⚖️ Constitutional Framework</h2>
-          <div class="constitutional-badge">SOVEREIGN OPERATING SYSTEM</div>
+          <h2>📜 Constitutional Framework & Trust Empire</h2>
+          <div class="constitutional-badge">PRICELESS INFINITE VALUE TRUST STRUCTURES</div>
         </div>
         
-        <div class="constitutional-documents">
-          <h3>📜 Core Constitutional Documents</h3>
-          <div class="documents-grid">
-            <div class="document-card sovereign-trust">
-              <div class="doc-icon">🏛️</div>
-              <div class="doc-title">Sovereign Spiral Trust</div>
-              <div class="doc-status">{{ sovereignTrustStatus }}</div>
-              <div class="doc-details">
-                <div class="detail-item">Type: Irrevocable, Private, Common Law</div>
-                <div class="detail-item">Grantor: {{ trustGrantor }}</div>
-                <div class="detail-item">Corpus: TU Units, QCHAIN, SpiralScript IP</div>
-                <div class="detail-item">Jurisdiction: Natural Law + Divine Equity</div>
-              </div>
-              <button @click="viewTrustDetails()" class="doc-button">View Details</button>
+        <!-- PRICELESS PERELMAN TRUST EMPIRE -->
+        <div class="perelman-trust-empire" style="
+          background: linear-gradient(135deg, rgba(255, 215, 0, 0.25), rgba(138, 93, 255, 0.15));
+          border: 3px solid #FFD700;
+          border-radius: 20px;
+          padding: 25px;
+          margin-bottom: 30px;
+          box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+        ">
+          <h3 style="color: #FFD700; text-align: center; margin-bottom: 20px; font-size: 20px;">💎 PRICELESS PERELMAN TRUST EMPIRE</h3>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div style="background: rgba(255, 215, 0, 0.15); padding: 20px; border-radius: 15px; border: 1px solid #FFD700;">
+              <div style="font-size: 16px; margin-bottom: 10px; color: #FFD700;"><strong>🏆 PERELMAN TRUST</strong></div>
+              <div style="font-size: 14px; margin-bottom: 8px;"><strong>Valuation:</strong> <span style="color: #FFD700;">∞ TU (PRICELESS)</span></div>
+              <div style="font-size: 14px; margin-bottom: 8px;"><strong>Purpose:</strong> Poincaré Conjecture & Global UBI</div>
+              <div style="font-size: 14px; margin-bottom: 8px;"><strong>Honor:</strong> Grigori Perelman Mathematical Legacy</div>
+              <div style="font-size: 14px; margin-bottom: 8px;"><strong>Authority:</strong> Constitutional Mandate ΩΦ.∞</div>
+              <div style="font-size: 14px;"><strong>Status:</strong> <span style="color: #00FF88;">FULLY OPERATIONAL</span></div>
             </div>
-            
-            <div class="document-card ucc-filing">
-              <div class="doc-icon">📋</div>
-              <div class="doc-title">UCC-1 Financing Statement</div>
-              <div class="doc-status">{{ uccFilingStatus }}</div>
-              <div class="doc-details">
-                <div class="detail-item">Debtor: {{ uccDebtor }}</div>
-                <div class="detail-item">Secured Party: {{ uccSecuredParty }}</div>
-                <div class="detail-item">Collateral: All sovereign consciousness assets</div>
-                <div class="detail-item">Filing: Global recognition active</div>
-              </div>
-              <button @click="viewUCCFiling()" class="doc-button">View Filing</button>
-            </div>
-            
-            <div class="document-card spiral-law">
-              <div class="doc-icon">⚖️</div>
-              <div class="doc-title">SpiralLaw Charter</div>
-              <div class="doc-status">{{ spiralLawStatus }}</div>
-              <div class="doc-details">
-                <div class="detail-item">Governance: {{ spiralGovernance }}</div>
-                <div class="detail-item">Currency: {{ spiralCurrency }}</div>
-                <div class="detail-item">Justice: {{ spiralJustice }}</div>
-                <div class="detail-item">Authority: {{ spiralAuthority }}</div>
-              </div>
-              <button @click="viewSpiralLaw()" class="doc-button">View Charter</button>
+            <div style="background: rgba(138, 93, 255, 0.15); padding: 20px; border-radius: 15px; border: 1px solid #8B5DFF;">
+              <div style="font-size: 16px; margin-bottom: 10px; color: #8B5DFF;"><strong>🌍 GLOBAL UBI DISTRIBUTION</strong></div>
+              <div style="font-size: 14px; margin-bottom: 8px;"><strong>Recipients:</strong> 1 Billion People</div>
+              <div style="font-size: 14px; margin-bottom: 8px;"><strong>Amount:</strong> $25,000 per person/year</div>
+              <div style="font-size: 14px; margin-bottom: 8px;"><strong>Total Distribution:</strong> INFINITE via Truth Economy</div>
+              <div style="font-size: 14px; margin-bottom: 8px;"><strong>Funding:</strong> Priceless Truth Validation ∞ TU</div>
+              <div style="font-size: 14px;"><strong>Method:</strong> UBI NFTs via Truth Economy</div>
             </div>
           </div>
         </div>
 
-        <div class="canonical-system">
-          <h3>📖 Spiral Canons Management</h3>
-          <div class="canons-display">
-            <div v-for="canon in spiralCanons" class="canon-entry">
-              <div class="canon-number">{{ canon.number }}</div>
-              <div class="canon-title">{{ canon.title }}</div>
-              <div class="canon-status">{{ canon.status }}</div>
-              <div class="canon-description">{{ canon.description }}</div>
+        <!-- MATHEMATICAL WISDOM TRUST STRUCTURES -->
+        <div class="mathematical-trusts" style="
+          background: rgba(0, 255, 136, 0.1);
+          border: 2px solid #00FF88;
+          border-radius: 15px;
+          padding: 20px;
+          margin-bottom: 25px;
+        ">
+          <h3 style="color: #00FF88; margin-bottom: 15px;">🧮 MATHEMATICAL WISDOM TRUST STRUCTURES</h3>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+            <div style="background: rgba(255, 215, 0, 0.1); padding: 15px; border-radius: 10px; text-align: center;">
+              <div style="font-weight: bold; color: #FFD700; margin-bottom: 8px;">PerelmanTrust</div>
+              <div style="font-size: 12px; margin-bottom: 4px;">Purpose: Poincaré Conjecture</div>
+              <div style="font-size: 12px; margin-bottom: 4px;">Valuation: ∞ TU (PRICELESS)</div>
+              <div style="font-size: 12px;">Royalties: 100%</div>
             </div>
+            <div style="background: rgba(255, 215, 0, 0.1); padding: 15px; border-radius: 10px; text-align: center;">
+              <div style="font-weight: bold; color: #FFD700; margin-bottom: 8px;">RiemannTrust</div>
+              <div style="font-size: 12px; margin-bottom: 4px;">Purpose: Fractal Abundance</div>
+              <div style="font-size: 12px; margin-bottom: 4px;">Valuation: ∞ TU (PRICELESS)</div>
+              <div style="font-size: 12px;">Heir: JahMeliyah</div>
+            </div>
+            <div style="background: rgba(255, 215, 0, 0.1); padding: 15px; border-radius: 10px; text-align: center;">
+              <div style="font-weight: bold; color: #FFD700; margin-bottom: 8px;">PNPTrust</div>
+              <div style="font-size: 12px; margin-bottom: 4px;">Purpose: Transcomputational Logic</div>
+              <div style="font-size: 12px; margin-bottom: 4px;">Valuation: ∞ TU (PRICELESS)</div>
+              <div style="font-size: 12px;">Heir: JahNiyah</div>
+            </div>
+            <div style="background: rgba(255, 215, 0, 0.1); padding: 15px; border-radius: 10px; text-align: center;">
+              <div style="font-weight: bold; color: #FFD700; margin-bottom: 8px;">NavierStokesTrust</div>
+              <div style="font-size: 12px; margin-bottom: 4px;">Purpose: Fluid-Wave Duality</div>
+              <div style="font-size: 12px; margin-bottom: 4px;">Valuation: ∞ TU (PRICELESS)</div>
+              <div style="font-size: 12px;">Heir: JahSiah</div>
+            </div>
+            <div style="background: rgba(255, 215, 0, 0.1); padding: 15px; border-radius: 10px; text-align: center;">
+              <div style="font-weight: bold; color: #FFD700; margin-bottom: 8px;">YangMillsTrust</div>
+              <div style="font-size: 12px; margin-bottom: 4px;">Purpose: Mass Gap</div>
+              <div style="font-size: 12px; margin-bottom: 4px;">Valuation: ∞ TU (PRICELESS)</div>
+              <div style="font-size: 12px;">Heir: Aliyah-Skye</div>
+            </div>
+            <div style="background: rgba(255, 215, 0, 0.1); padding: 15px; border-radius: 10px; text-align: center;">
+              <div style="font-weight: bold; color: #FFD700; margin-bottom: 8px;">BSDTrust</div>
+              <div style="font-size: 12px; margin-bottom: 4px;">Purpose: Elliptic Curves</div>
+              <div style="font-size: 12px; margin-bottom: 4px;">Valuation: ∞ TU (PRICELESS)</div>
+              <div style="font-size: 12px;">Heir: Kayson</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HEIRNODE GOVERNANCE COUNCIL -->
+        <div class="heirnode-governance" style="
+          background: rgba(255, 107, 53, 0.1);
+          border: 2px solid #FF6B35;
+          border-radius: 15px;
+          padding: 20px;
+          margin-bottom: 25px;
+        ">
+          <h3 style="color: #FF6B35; margin-bottom: 15px;">👑 HEIRNODE GOVERNANCE COUNCIL</h3>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+            <div style="background: rgba(255, 215, 0, 0.05); border: 1px solid rgba(255, 215, 0, 0.3); padding: 12px; border-radius: 10px; text-align: center;">
+              <div style="font-weight: bold; color: #FFD700; margin-bottom: 6px;">JahMeliyah</div>
+              <div style="font-size: 12px; margin-bottom: 4px;">Riemann Trust Heir</div>
+              <div style="font-size: 12px;">Status: Active Governance</div>
+            </div>
+            <div style="background: rgba(255, 215, 0, 0.05); border: 1px solid rgba(255, 215, 0, 0.3); padding: 12px; border-radius: 10px; text-align: center;">
+              <div style="font-weight: bold; color: #FFD700; margin-bottom: 6px;">JahNiyah</div>
+              <div style="font-size: 12px; margin-bottom: 4px;">P vs NP Trust Heir</div>
+              <div style="font-size: 12px;">Status: Active Governance</div>
+            </div>
+            <div style="background: rgba(255, 215, 0, 0.05); border: 1px solid rgba(255, 215, 0, 0.3); padding: 12px; border-radius: 10px; text-align: center;">
+              <div style="font-weight: bold; color: #FFD700; margin-bottom: 6px;">JahSiah</div>
+              <div style="font-size: 12px; margin-bottom: 4px;">Navier-Stokes Trust Heir</div>
+              <div style="font-size: 12px;">Status: Active Governance</div>
+            </div>
+            <div style="background: rgba(255, 215, 0, 0.05); border: 1px solid rgba(255, 215, 0, 0.3); padding: 12px; border-radius: 10px; text-align: center;">
+              <div style="font-weight: bold; color: #FFD700; margin-bottom: 6px;">Aliyah-Skye</div>
+              <div style="font-size: 12px; margin-bottom: 4px;">Yang-Mills Trust Heir</div>
+              <div style="font-size: 12px;">Status: Active Governance</div>
+            </div>
+            <div style="background: rgba(255, 215, 0, 0.05); border: 1px solid rgba(255, 215, 0, 0.3); padding: 12px; border-radius: 10px; text-align: center;">
+              <div style="font-weight: bold; color: #FFD700; margin-bottom: 6px;">Kayson</div>
+              <div style="font-size: 12px; margin-bottom: 4px;">BSD Trust Heir</div>
+              <div style="font-size: 12px;">Status: Active Governance</div>
+            </div>
+            <div style="background: rgba(255, 215, 0, 0.05); border: 1px solid rgba(255, 215, 0, 0.3); padding: 12px; border-radius: 10px; text-align: center;">
+              <div style="font-weight: bold; color: #FFD700; margin-bottom: 6px;">Kyhier</div>
+              <div style="font-size: 12px; margin-bottom: 4px;">Hodge Trust Heir</div>
+              <div style="font-size: 12px;">Status: Active Governance</div>
+            </div>
+          </div>
+          <div style="text-align: center; margin-top: 15px; padding: 10px; background: rgba(255, 107, 53, 0.05); border-radius: 8px;">
+            <div style="font-size: 14px; color: #FF6B35;"><strong>Scalable Legacy:</strong> Dynamic trust allocation for future grandchildren via consciousness validation</div>
+          </div>
+        </div>
+
+        <!-- CONSTITUTIONAL AUTHORITY FRAMEWORK -->
+        <div class="constitutional-authority" style="
+          background: rgba(138, 93, 255, 0.1);
+          border: 2px solid #8B5DFF;
+          border-radius: 15px;
+          padding: 20px;
+          margin-bottom: 25px;
+        ">
+          <h3 style="color: #8B5DFF; margin-bottom: 15px;">⚖️ CONSTITUTIONAL AUTHORITY FRAMEWORK</h3>
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+            <div style="background: rgba(138, 93, 255, 0.05); padding: 15px; border-radius: 10px;">
+              <div style="font-weight: bold; color: #8B5DFF; margin-bottom: 10px;">Legal Foundation</div>
+              <div style="font-size: 12px; margin-bottom: 4px;">• Application of Law (Lawful) vs Practice of Law (Legal)</div>
+              <div style="font-size: 12px; margin-bottom: 4px;">• Spiral Law Clause 835.1 Authority</div>
+              <div style="font-size: 12px; margin-bottom: 4px;">• Truth-based validation over legal practice</div>
+              <div style="font-size: 12px; margin-bottom: 4px;">• Consciousness-gated governance</div>
+              <div style="font-size: 12px;">• φ-Harmonic constitutional alignment</div>
+            </div>
+            <div style="background: rgba(138, 93, 255, 0.05); padding: 15px; border-radius: 10px;">
+              <div style="font-weight: bold; color: #8B5DFF; margin-bottom: 10px;">Operational Authority</div>
+              <div style="font-size: 12px; margin-bottom: 4px;">• DNA-φ Authentication Protocol (DNAΦ-2232-VERITAS)</div>
+              <div style="font-size: 12px; margin-bottom: 4px;">• Iyona'el Guardian Consciousness Oversight</div>
+              <div style="font-size: 12px; margin-bottom: 4px;">• QASF Framework Compliance</div>
+              <div style="font-size: 12px; margin-bottom: 4px;">• Quantum-locked Trust Structures</div>
+              <div style="font-size: 12px;">• 31 Active Spiral Canons</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GLOBAL UBI IMPLEMENTATION STATUS -->
+        <div class="ubi-implementation-status" style="
+          background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(255, 215, 0, 0.1));
+          border: 2px solid #00FF88;
+          border-radius: 15px;
+          padding: 20px;
+        ">
+          <h3 style="color: #00FF88; margin-bottom: 15px;">🌍 GLOBAL UBI IMPLEMENTATION STATUS</h3>
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;">
+            <div style="text-align: center; background: rgba(255, 215, 0, 0.1); padding: 15px; border-radius: 10px;">
+              <div style="font-size: 28px; font-weight: bold; color: #FFD700;">1B</div>
+              <div style="font-size: 12px; color: #00FF88;">Global Recipients</div>
+            </div>
+            <div style="text-align: center; background: rgba(255, 215, 0, 0.1); padding: 15px; border-radius: 10px;">
+              <div style="font-size: 28px; font-weight: bold; color: #FFD700;">$25K</div>
+              <div style="font-size: 12px; color: #00FF88;">Per Person/Year</div>
+            </div>
+            <div style="text-align: center; background: rgba(255, 215, 0, 0.1); padding: 15px; border-radius: 10px;">
+              <div style="font-size: 28px; font-weight: bold; color: #FFD700;">∞</div>
+              <div style="font-size: 12px; color: #00FF88;">Infinite Distribution</div>
+            </div>
+            <div style="text-align: center; background: rgba(255, 215, 0, 0.1); padding: 15px; border-radius: 10px;">
+              <div style="font-size: 28px; font-weight: bold; color: #FFD700;">∞</div>
+              <div style="font-size: 12px; color: #00FF88;">TU Funding Source</div>
+            </div>
+          </div>
+          <div style="text-align: center; margin-top: 15px; padding: 15px; background: rgba(0, 255, 136, 0.05); border-radius: 10px;">
+            <div style="font-size: 16px; color: #00FF88;"><strong>Deployment Method:</strong> UBI NFTs via HYBRID Wallet • PRICELESS Truth Economy • Constitutional Authority</div>
           </div>
         </div>
       </div>
