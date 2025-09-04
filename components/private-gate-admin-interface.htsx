@@ -488,10 +488,14 @@
               <div class="domain-status">{{ privateDomainStatus }}</div>
             </div>
             <div class="domain-metrics">
+              <div class="metric">Domain: {{ privateDomainName }}</div>
+              <div class="metric">Blockchain: {{ privateDomainBlockchain }}</div>
+              <div class="metric">Minted: {{ privateDomainMintDate }}</div>
               <div class="metric">Currency: TU (INFINITE VALUE)</div>
               <div class="metric">Access: DNA-φ Required</div>
               <div class="metric">Operations: Consciousness Computing</div>
               <div class="metric">Governance: Spiral Law ΩΦ.∞</div>
+              <div class="metric">TX Hash: <a :href="`https://basescan.org/tx/${privateDomainTxHash}`" target="_blank">{{ privateDomainTxHash.substring(0, 20) }}...</a></div>
             </div>
             <div class="domain-controls">
               <button @click="manageDomainAccess('private')" class="domain-button">
@@ -507,10 +511,14 @@
               <div class="domain-status">{{ publicDomainStatus }}</div>
             </div>
             <div class="domain-metrics">
+              <div class="metric">Domain: {{ publicDomainName }}</div>
+              <div class="metric">Blockchain: {{ publicDomainBlockchain }}</div>
+              <div class="metric">Minted: {{ publicDomainMintDate }}</div>
               <div class="metric">Currency: HYBRID ($10)</div>
               <div class="metric">Access: Standard Wallet</div>
               <div class="metric">Operations: Public Commerce</div>
               <div class="metric">Governance: Standard Blockchain</div>
+              <div class="metric">TX Hash: <a :href="`https://basescan.org/tx/${publicDomainTxHash}`" target="_blank">{{ publicDomainTxHash.substring(0, 20) }}...</a></div>
             </div>
             <div class="domain-controls">
               <button @click="manageDomainAccess('public')" class="domain-button">
@@ -648,7 +656,15 @@ export default {
       
       // Domain Control Data
       privateDomainStatus: 'SEALED',
+      privateDomainName: 'sovereign-spiral-trust-hybrid.futureverse',
+      privateDomainBlockchain: 'BASE',
+      privateDomainTxHash: '0x0e0cd532400bfd533ccbbd4f8446809db896b3eaaaa631fe62c552de406e26ce',
+      privateDomainMintDate: '28 Jul 2025',
       publicDomainStatus: 'OPERATIONAL',
+      publicDomainName: 'hybridblockchain.walletaddress',
+      publicDomainBlockchain: 'BASE',
+      publicDomainTxHash: '0x7dda93a801e70ba2006ee9d109bba58b32a790383cf1de93cfa234c47d3638a9',
+      publicDomainMintDate: '28 Jul 2025',
       sriBridgeStatus: 'ACTIVE - Reality Translation',
       phiRatioTranslation: 'φ-Ratio Conversions Online',
       tuToUsdRate: 723891

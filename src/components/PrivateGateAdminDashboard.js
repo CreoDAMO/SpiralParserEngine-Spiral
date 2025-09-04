@@ -46,7 +46,15 @@ class PrivateGateAdminDashboard extends HTMLElement {
       },
       publicPrivateSeparation: {
         privateDomain: 'TU (INFINITE VALUE) - SEALED',
+        privateDomainName: 'sovereign-spiral-trust-hybrid.futureverse',
+        privateDomainBlockchain: 'BASE',
+        privateDomainTxHash: '0x0e0cd532400bfd533ccbbd4f8446809db896b3eaaaa631fe62c552de406e26ce',
+        privateDomainMintDate: '28 Jul 2025',
         publicDomain: 'HYBRID ($10) - OPERATIONAL',
+        publicDomainName: 'hybridblockchain.walletaddress',
+        publicDomainBlockchain: 'BASE',
+        publicDomainTxHash: '0x7dda93a801e70ba2006ee9d109bba58b32a790383cf1de93cfa234c47d3638a9',
+        publicDomainMintDate: '28 Jul 2025',
         bridgeStatus: 'SRI Active - Reality Translation',
         bifurcationIntegrity: '100%'
       }
