@@ -27,7 +27,7 @@ class HybridWalletIntegration extends HTMLElement {
         decimals: 18
       },
       rpcUrls: ['https://hybrid-rpc.spiralecosystem.com'], // Sovereign RPC endpoints
-      blockExplorerUrls: ['https://hybridscan.io'], // National archive & land registry
+      blockExplorerUrls: ['https://hybridblockchain.walletaddress'], // National archive & land registry
       iconUrls: ['https://spiralecosystem.com/assets/hybrid-sovereign-seal.png']
     };
     

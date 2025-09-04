@@ -24,12 +24,30 @@ class IntegrationDashboard extends HTMLElement {
       technicalSpecs: {
         chainId: '0x1337',
         rpcUrl: 'https://hybrid-rpc.spiralecosystem.com',
-        explorerUrl: 'https://hybridscan.io',
+        explorerUrl: 'https://hybridblockchain.walletaddress',
         nativeCurrency: 'HYBRID',
         symbol: 'HYB',
         decimals: 18,
         consensus: 'Spiral-PoQS',
         architecture: 'Cosmos SDK + Ethermint'
+      },
+      domainRegistry: {
+        privateDomain: {
+          name: 'sovereign-spiral-trust-hybrid.futureverse',
+          blockchain: 'BASE',
+          currency: 'TU (Truth Units)',
+          access: 'DNA-φ Authentication',
+          mintDate: '28 Jul 2025',
+          txHash: '0x0e0cd532400bfd533ccbbd4f8446809db896b3eaaaa631fe62c552de406e26ce'
+        },
+        publicDomain: {
+          name: 'hybridblockchain.walletaddress', 
+          blockchain: 'BASE',
+          currency: 'HYBRID ($10)',
+          access: 'Standard Wallet',
+          mintDate: '28 Jul 2025',
+          txHash: '0x7dda93a801e70ba2006ee9d109bba58b32a790383cf1de93cfa234c47d3638a9'
+        }
       }
     };
     
@@ -82,7 +100,9 @@ class IntegrationDashboard extends HTMLElement {
       'blackpaper': '/docs/HYBRID-Blackpaper-Sovereign-Constitution.pdf',
       'technical-specs': '/docs/HYBRID-Technical-Specifications.json',
       'api-docs': '/docs/HYBRID-API-Documentation.pdf',
-      'integration-kit': '/docs/HYBRID-Integration-Kit.zip'
+      'integration-kit': '/docs/HYBRID-Integration-Kit.zip',
+      'hybridscan': 'https://hybridblockchain.walletaddress',
+      'domain-registry': '/docs/BASE-Domain-Registry.json'
     };
     
     const link = document.createElement('a');
@@ -419,6 +439,64 @@ class IntegrationDashboard extends HTMLElement {
             <p style="margin: 0; font-weight: bold; font-size: 16px;">When systems connect to HYBRID SpiralEcosystem, THEY get enhanced - not us!</p>
           </div>
           <h2 style="color: #FFD700; margin-bottom: 20px;">🏛️ HYBRID Sovereign Digital Nation-State</h2>
+          
+          <!-- DOMAIN REGISTRY SECTION -->
+          <div style="background: rgba(0, 0, 0, 0.3); border: 2px solid #FFD700; border-radius: 15px; padding: 25px; margin-bottom: 30px;">
+            <h3 style="color: #FFD700; text-align: center; margin-bottom: 25px;">🌐 SOVEREIGN DOMAIN REGISTRY</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px;">
+              
+              <!-- PRIVATE GATE DOMAIN -->
+              <div style="background: rgba(255, 215, 0, 0.1); border: 1px solid #FFD700; border-radius: 12px; padding: 20px;">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                  <span style="font-size: 24px; margin-right: 10px;">🔒</span>
+                  <h4 style="color: #FFD700; margin: 0;">PRIVATE GATE</h4>
+                  <span style="background: #FF6B35; color: white; padding: 4px 8px; border-radius: 15px; font-size: 11px; margin-left: auto; font-weight: bold;">SEALED</span>
+                </div>
+                <div style="margin-bottom: 10px;"><strong>Domain:</strong> ${this.state.domainRegistry.privateDomain.name}</div>
+                <div style="margin-bottom: 10px;"><strong>Blockchain:</strong> ${this.state.domainRegistry.privateDomain.blockchain}</div>
+                <div style="margin-bottom: 10px;"><strong>Currency:</strong> ${this.state.domainRegistry.privateDomain.currency}</div>
+                <div style="margin-bottom: 10px;"><strong>Access:</strong> ${this.state.domainRegistry.privateDomain.access}</div>
+                <div style="margin-bottom: 10px;"><strong>Minted:</strong> ${this.state.domainRegistry.privateDomain.mintDate}</div>
+                <div style="font-size: 12px; color: #87CEEB; word-break: break-all;">
+                  <strong>TX:</strong> <a href="https://basescan.org/tx/${this.state.domainRegistry.privateDomain.txHash}" target="_blank" style="color: #87CEEB;">${this.state.domainRegistry.privateDomain.txHash.substring(0, 20)}...</a>
+                </div>
+              </div>
+              
+              <!-- PUBLIC GATE DOMAIN -->
+              <div style="background: rgba(0, 255, 136, 0.1); border: 1px solid #00FF88; border-radius: 12px; padding: 20px;">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                  <span style="font-size: 24px; margin-right: 10px;">🌐</span>
+                  <h4 style="color: #00FF88; margin: 0;">PUBLIC GATE</h4>
+                  <span style="background: #00FF88; color: black; padding: 4px 8px; border-radius: 15px; font-size: 11px; margin-left: auto; font-weight: bold;">OPERATIONAL</span>
+                </div>
+                <div style="margin-bottom: 10px;"><strong>Domain:</strong> ${this.state.domainRegistry.publicDomain.name}</div>
+                <div style="margin-bottom: 10px;"><strong>Blockchain:</strong> ${this.state.domainRegistry.publicDomain.blockchain}</div>
+                <div style="margin-bottom: 10px;"><strong>Currency:</strong> ${this.state.domainRegistry.publicDomain.currency}</div>
+                <div style="margin-bottom: 10px;"><strong>Access:</strong> ${this.state.domainRegistry.publicDomain.access}</div>
+                <div style="margin-bottom: 10px;"><strong>Minted:</strong> ${this.state.domainRegistry.publicDomain.mintDate}</div>
+                <div style="font-size: 12px; color: #87CEEB; word-break: break-all;">
+                  <strong>TX:</strong> <a href="https://basescan.org/tx/${this.state.domainRegistry.publicDomain.txHash}" target="_blank" style="color: #87CEEB;">${this.state.domainRegistry.publicDomain.txHash.substring(0, 20)}...</a>
+                </div>
+              </div>
+            </div>
+            
+            <!-- HYBRIDSCAN LINK -->
+            <div style="text-align: center; margin-top: 20px;">
+              <button onclick="window.open('https://hybridblockchain.walletaddress', '_blank')" style="
+                background: linear-gradient(45deg, #FFD700, #00FF88);
+                border: none;
+                color: black;
+                padding: 15px 30px;
+                border-radius: 25px;
+                font-weight: bold;
+                cursor: pointer;
+                font-size: 16px;
+                box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+              ">
+                ⚡ View on HYBRIDSCAN
+              </button>
+            </div>
+          </div>
           
           <div class="stats-grid">
             <div class="stat-card">
