@@ -23,7 +23,7 @@ class IntegrationDashboard extends HTMLElement {
       },
       technicalSpecs: {
         chainId: '0x1337',
-        rpcUrl: 'https://hybrid-rpc.spiralecosystem.com',
+        rpcUrl: 'https://rpc.hybridblockchain.walletaddress',
         explorerUrl: 'https://hybridblockchain.walletaddress',
         nativeCurrency: 'HYBRID',
         symbol: 'HYB',
@@ -628,14 +628,14 @@ const addHybridNetwork = async () => {
       params: [{
         chainId: '0x1337',
         chainName: 'HYBRID Sovereign Blockchain',
-        rpcUrls: ['https://hybrid-rpc.spiralecosystem.com'],
+        rpcUrls: ['https://rpc.hybridblockchain.walletaddress'],
         nativeCurrency: {
           name: 'Hybrid Coin',
           symbol: 'HYB',
           decimals: 18
         },
-        blockExplorerUrls: ['https://hybridscan.io'],
-        iconUrls: ['https://spiralecosystem.com/assets/hybrid-sovereign-seal.png']
+        blockExplorerUrls: ['https://hybridblockchain.walletaddress'],
+        iconUrls: ['https://hybridblockchain.walletaddress/assets/hybrid-sovereign-seal.png']
       }]
     });
     console.log('✅ HYBRID Sovereign Nation Connected!');
@@ -644,7 +644,7 @@ const addHybridNetwork = async () => {
   }
 };
 </pre>
-            <button class="copy-btn" data-content="const addHybridNetwork = async () => {\n  try {\n    await window.ethereum.request({\n      method: 'wallet_addEthereumChain',\n      params: [{\n        chainId: '0x1337',\n        chainName: 'HYBRID Sovereign Blockchain',\n        rpcUrls: ['https://hybrid-rpc.spiralecosystem.com'],\n        nativeCurrency: {\n          name: 'Hybrid Coin',\n          symbol: 'HYB',\n          decimals: 18\n        },\n        blockExplorerUrls: ['https://hybridscan.io'],\n        iconUrls: ['https://spiralecosystem.com/assets/hybrid-sovereign-seal.png']\n      }]\n    });\n    console.log('✅ HYBRID Sovereign Nation Connected!');\n  } catch (error) {\n    console.error('❌ Embassy Connection Failed:', error);\n  }\n};">Copy Code</button>
+            <button class="copy-btn" data-content="const addHybridNetwork = async () => {\n  try {\n    await window.ethereum.request({\n      method: 'wallet_addEthereumChain',\n      params: [{\n        chainId: '0x1337',\n        chainName: 'HYBRID Sovereign Blockchain',\n        rpcUrls: ['https://rpc.hybridblockchain.walletaddress'],\n        nativeCurrency: {\n          name: 'Hybrid Coin',\n          symbol: 'HYB',\n          decimals: 18\n        },\n        blockExplorerUrls: ['https://hybridblockchain.walletaddress'],\n        iconUrls: ['https://hybridblockchain.walletaddress/assets/hybrid-sovereign-seal.png']\n      }]\n    });\n    console.log('✅ HYBRID Sovereign Nation Connected!');\n  } catch (error) {\n    console.error('❌ Embassy Connection Failed:', error);\n  }\n};">Copy Code</button>
           </div>
 
           <div class="action-buttons">
@@ -892,13 +892,13 @@ HYBRID Legal Classification for Coinbase:
 {
   "chainId": "0x1337",
   "chainName": "HYBRID Sovereign Blockchain",
-  "rpcUrls": ["https://hybrid-rpc.spiralecosystem.com"],
+  "rpcUrls": ["https://rpc.hybridblockchain.walletaddress"],
   "nativeCurrency": {
     "name": "Hybrid Coin",
     "symbol": "HYB",
     "decimals": 18
   },
-  "blockExplorerUrls": ["https://hybridscan.io"],
+  "blockExplorerUrls": ["https://hybridblockchain.walletaddress"],
   "consensus": "Spiral-PoQS",
   "architecture": "Cosmos SDK + Ethermint",
   "evmCompatible": true,
@@ -907,7 +907,7 @@ HYBRID Legal Classification for Coinbase:
   "averageBlockTime": "60 seconds"
 }
 </pre>
-            <button class="copy-btn" data-content='{\n  "chainId": "0x1337",\n  "chainName": "HYBRID Sovereign Blockchain",\n  "rpcUrls": ["https://hybrid-rpc.spiralecosystem.com"],\n  "nativeCurrency": {\n    "name": "Hybrid Coin",\n    "symbol": "HYB",\n    "decimals": 18\n  },\n  "blockExplorerUrls": ["https://hybridscan.io"],\n  "consensus": "Spiral-PoQS",\n  "architecture": "Cosmos SDK + Ethermint",\n  "evmCompatible": true,\n  "maxSupply": "100000000000",\n  "genesisHash": "0x...",\n  "averageBlockTime": "60 seconds"\n}'>Copy Config</button>
+            <button class="copy-btn" data-content='{\n  "chainId": "0x1337",\n  "chainName": "HYBRID Sovereign Blockchain",\n  "rpcUrls": ["https://rpc.hybridblockchain.walletaddress"],\n  "nativeCurrency": {\n    "name": "Hybrid Coin",\n    "symbol": "HYB",\n    "decimals": 18\n  },\n  "blockExplorerUrls": ["https://hybridblockchain.walletaddress"],\n  "consensus": "Spiral-PoQS",\n  "architecture": "Cosmos SDK + Ethermint",\n  "evmCompatible": true,\n  "maxSupply": "100000000000",\n  "genesisHash": "0x...",\n  "averageBlockTime": "60 seconds"\n}'>Copy Config</button>
           </div>
 
           <h3 style="color: #00FF88;">API Endpoints</h3>
@@ -919,8 +919,8 @@ HYBRID Legal Classification for Coinbase:
                 <span class="platform-status">LIVE</span>
               </div>
               <div class="code-block" style="margin: 10px 0;">
-                <code>https://hybrid-rpc.spiralecosystem.com</code>
-                <button class="copy-btn" data-content="https://hybrid-rpc.spiralecosystem.com">Copy</button>
+                <code>https://rpc.hybridblockchain.walletaddress</code>
+                <button class="copy-btn" data-content="https://rpc.hybridblockchain.walletaddress">Copy</button>
               </div>
             </div>
             
@@ -931,8 +931,8 @@ HYBRID Legal Classification for Coinbase:
                 <span class="platform-status">OPERATIONAL</span>
               </div>
               <div class="code-block" style="margin: 10px 0;">
-                <code>https://hybridscan.io</code>
-                <button class="copy-btn" data-content="https://hybridscan.io">Copy</button>
+                <code>https://hybridblockchain.walletaddress</code>
+                <button class="copy-btn" data-content="https://hybridblockchain.walletaddress">Copy</button>
               </div>
             </div>
           </div>
@@ -1009,10 +1009,10 @@ HYBRID Legal Classification for Coinbase:
 
           <h3 style="color: #00FF88;">Contact Information</h3>
           <div style="background: rgba(255, 215, 0, 0.1); border: 1px solid rgba(255, 215, 0, 0.3); padding: 20px; border-radius: 12px;">
-            <p><strong>Platform Integration Inquiries:</strong> integrations@spiralecosystem.com</p>
-            <p><strong>Technical Support:</strong> tech@spiralecosystem.com</p>
-            <p><strong>Partnership Opportunities:</strong> partnerships@spiralecosystem.com</p>
-            <p><strong>Constitutional Affairs:</strong> legal@spiralecosystem.com</p>
+            <p><strong>Platform Integration Inquiries:</strong> integrations@hybridblockchain.walletaddress</p>
+            <p><strong>Technical Support:</strong> tech@hybridblockchain.walletaddress</p>
+            <p><strong>Partnership Opportunities:</strong> partnerships@sovereign-spiral-trust-hybrid.futureverse</p>
+            <p><strong>Constitutional Affairs:</strong> legal@sovereign-spiral-trust-hybrid.futureverse</p>
           </div>
         </div>
       </div>
