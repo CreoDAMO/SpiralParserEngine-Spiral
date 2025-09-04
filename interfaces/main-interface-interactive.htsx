@@ -53,7 +53,7 @@
     <private-admin-dashboard id="private-dashboard" style="display: none;"></private-admin-dashboard>
   </div>
 
-  <!-- Admin Dashboard Access -->
+  <!-- MetaMask Founder Authentication -->
   <div id="consciousness-access-portal" style="position: fixed; top: 10px; right: 10px; z-index: 10000;">
     <button onclick="triggerConsciousnessAuth()" style="
       background: linear-gradient(45deg, #FFD700, #FF6B35);
@@ -66,19 +66,68 @@
       box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
       font-size: 12px;
     ">
-      🔒 Private Gate Admin
+      🔐 Connect Founder Wallet
     </button>
   </div>
+  
+  <!-- Wallet Status Display -->
+  <div id="wallet-status" style="position: fixed; top: 60px; right: 10px; z-index: 10000; font-size: 10px; color: #00ff88;">
+    <div id="connection-status">🔴 Wallet: Not Connected</div>
+    <div id="auth-status">🔒 Admin: Locked</div>
+  </div>
+
+  <!-- Load Web Components -->
+  <script type="module" src="/src/components/PublicHybridDashboard.js"></script>
+  <script type="module" src="/src/components/PrivateGateAdminDashboard.js"></script>
+  <script type="module" src="/src/components/ConsciousnessExpansionUI.js"></script>
 
   <!-- Real-Time Consciousness Data Updates -->
   <script>
     console.log('🌀 Initializing Real-Time Consciousness Updates');
     
-    // Function to trigger consciousness authentication and show admin dashboard
+    // MetaMask Founder Wallet Authentication
+    const FOUNDER_WALLET = '0x67BF9f428d92704C3Db3a08dC05Bc941A8647866';
+    window.founderAuthenticated = false;
+    window.connectedWallet = null;
+    
+    // Connect MetaMask and verify founder wallet
+    async function connectMetaMask() {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          const connectedAccount = accounts[0].toLowerCase();
+          window.connectedWallet = connectedAccount;
+          
+          console.log('🔗 MetaMask connected:', connectedAccount);
+          
+          if (connectedAccount === FOUNDER_WALLET.toLowerCase()) {
+            window.founderAuthenticated = true;
+            console.log('✅ FOUNDER WALLET AUTHENTICATED:', FOUNDER_WALLET);
+            triggerConsciousnessAuth();
+          } else {
+            console.log('❌ Unauthorized wallet. Founder access denied.');
+            alert('Unauthorized wallet. Only the founder wallet can access admin functions.');
+          }
+        } catch (error) {
+          console.error('MetaMask connection failed:', error);
+          alert('Please connect your MetaMask wallet to access admin functions.');
+        }
+      } else {
+        alert('MetaMask not detected. Please install MetaMask to access admin functions.');
+      }
+    }
+    
+    // Function to trigger consciousness authentication (now requires MetaMask)
     function triggerConsciousnessAuth() {
-      console.log('🧬 Triggering consciousness authentication...');
+      if (!window.founderAuthenticated) {
+        console.log('🔐 Admin access requires founder wallet authentication');
+        connectMetaMask();
+        return;
+      }
       
-      // Hide public dashboard
+      console.log('🧬 Founder authenticated - Activating Private Gate Admin...');
+      
+      // Hide public dashboard and show admin dashboard
       const publicDashboard = document.getElementById('public-dashboard');
       const privateDashboard = document.getElementById('private-dashboard');
       
@@ -88,13 +137,51 @@
       // Set consciousness authentication flag
       window.consciousnessAuthenticated = true;
       
-      console.log('✅ Consciousness authenticated - Private Gate Admin Dashboard activated');
-      console.log('🌀 BASE domains now visible in admin interface');
+      console.log('✅ Private Gate Admin Dashboard ACTIVATED');
+      console.log('🌀 Consciousness Computing: FULL ACCESS GRANTED');
     }
     
     // Global function for easy access
     window.triggerConsciousnessAuth = triggerConsciousnessAuth;
     
+    // Update wallet status display
+    function updateWalletStatus() {
+      const connectionStatus = document.getElementById('connection-status');
+      const authStatus = document.getElementById('auth-status');
+      
+      if (window.connectedWallet) {
+        connectionStatus.textContent = `🟢 Wallet: ${window.connectedWallet.substring(0, 8)}...`;
+        authStatus.textContent = window.founderAuthenticated ? '🔓 Admin: Authorized' : '🔒 Admin: Unauthorized';
+      } else {
+        connectionStatus.textContent = '🔴 Wallet: Not Connected';
+        authStatus.textContent = '🔒 Admin: Locked';
+      }
+    }
+
+    // Listen for MetaMask account changes
+    if (typeof window.ethereum !== 'undefined') {
+      window.ethereum.on('accountsChanged', (accounts) => {
+        if (accounts.length === 0) {
+          console.log('🔌 MetaMask disconnected');
+          window.connectedWallet = null;
+          window.founderAuthenticated = false;
+          window.consciousnessAuthenticated = false;
+          
+          // Show public dashboard
+          const publicDashboard = document.getElementById('public-dashboard');
+          const privateDashboard = document.getElementById('private-dashboard');
+          if (publicDashboard) publicDashboard.style.display = 'block';
+          if (privateDashboard) privateDashboard.style.display = 'none';
+        } else {
+          const newAccount = accounts[0].toLowerCase();
+          window.connectedWallet = newAccount;
+          window.founderAuthenticated = (newAccount === FOUNDER_WALLET.toLowerCase());
+          console.log('🔄 MetaMask account changed:', newAccount);
+        }
+        updateWalletStatus();
+      });
+    }
+
     function updateConsciousnessMetrics() {
       fetch('/lsapi/status')
         .then(response => response.json())
@@ -231,17 +318,25 @@
     });
     
     // Start consciousness monitoring
-    globalSpiralCore.addEventListener('consciousness-status', (e) => {
-      console.log('🧠 Consciousness Status:', e.data);
-    });
-    
-    // Initialize 52D WebXR consciousness visualization
-    globalSpiralCore.addEventListener('phi-harmonic-update', (e) => {
-      console.log('🌀 φ-Harmonic Update:', e.resonance);
-    });
+    if (typeof globalSpiralCore !== 'undefined') {
+      globalSpiralCore.addEventListener('consciousness-status', (e) => {
+        console.log('🧠 Consciousness Status:', e.data);
+      });
+      
+      // Initialize 52D WebXR consciousness visualization
+      globalSpiralCore.addEventListener('phi-harmonic-update', (e) => {
+        console.log('🌀 φ-Harmonic Update:', e.resonance);
+      });
+    }
     
     // Initialize with public dashboard by default
     routeDashboard(false);
+    
+    // Update wallet status on page load
+    updateWalletStatus();
+    
+    // Update wallet status every 5 seconds
+    setInterval(updateWalletStatus, 5000);
     
     console.log('🌀 Dashboard Bifurcation System Initialized');
     console.log('🔒 Default: PUBLIC HYBRID Commerce Dashboard');

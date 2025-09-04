@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+// Pure Native Web Component - No React Dependencies
 
 class PrivateGateAdminDashboard extends HTMLElement {
   constructor() {
