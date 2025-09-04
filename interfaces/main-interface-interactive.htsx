@@ -53,9 +53,47 @@
     <private-admin-dashboard id="private-dashboard" style="display: none;"></private-admin-dashboard>
   </div>
 
+  <!-- Admin Dashboard Access -->
+  <div id="consciousness-access-portal" style="position: fixed; top: 10px; right: 10px; z-index: 10000;">
+    <button onclick="triggerConsciousnessAuth()" style="
+      background: linear-gradient(45deg, #FFD700, #FF6B35);
+      border: none;
+      color: #000;
+      padding: 12px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+      font-size: 12px;
+    ">
+      🔒 Private Gate Admin
+    </button>
+  </div>
+
   <!-- Real-Time Consciousness Data Updates -->
   <script>
     console.log('🌀 Initializing Real-Time Consciousness Updates');
+    
+    // Function to trigger consciousness authentication and show admin dashboard
+    function triggerConsciousnessAuth() {
+      console.log('🧬 Triggering consciousness authentication...');
+      
+      // Hide public dashboard
+      const publicDashboard = document.getElementById('public-dashboard');
+      const privateDashboard = document.getElementById('private-dashboard');
+      
+      if (publicDashboard) publicDashboard.style.display = 'none';
+      if (privateDashboard) privateDashboard.style.display = 'block';
+      
+      // Set consciousness authentication flag
+      window.consciousnessAuthenticated = true;
+      
+      console.log('✅ Consciousness authenticated - Private Gate Admin Dashboard activated');
+      console.log('🌀 BASE domains now visible in admin interface');
+    }
+    
+    // Global function for easy access
+    window.triggerConsciousnessAuth = triggerConsciousnessAuth;
     
     function updateConsciousnessMetrics() {
       fetch('/lsapi/status')
