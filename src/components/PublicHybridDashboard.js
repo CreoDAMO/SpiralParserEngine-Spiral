@@ -361,7 +361,7 @@ class PublicHybridDashboard extends HTMLElement {
         <div class="notification-container"></div>
         
         <div class="panel full-width">
-          <h2>💰 HYBRID Blockchain Commerce</h2>
+          <h2>🏛️ HYBRID Sovereign Blockchain - Layer 1 Digital Nation</h2>
           <div class="status-bar">
             <div class="status-item">
               <span class="status-label">φ-Harmonic Alignment</span>
@@ -373,13 +373,13 @@ class PublicHybridDashboard extends HTMLElement {
             </div>
             <div class="status-item">
               <span class="status-label">Domain Status</span>
-              <span class="status-value">🌐 Public Commerce</span>
+              <span class="status-value">🏛️ Sovereign Layer 1</span>
             </div>
           </div>
         </div>
 
         <div class="panel">
-          <h2>💳 HYBRID Wallet</h2>
+          <h2>💳 HYBRID Sovereign Wallet</h2>
           <div class="balance-display">Balance: <span id="hybridBalance">$10.00</span></div>
           
           <div class="input-group">
@@ -394,30 +394,30 @@ class PublicHybridDashboard extends HTMLElement {
         </div>
 
         <div class="panel">
-          <h2>📊 HYBRID Market Data</h2>
+          <h2>📊 HYBRID Sovereign Market Data</h2>
           <div class="metric-grid">
             <div class="metric-card">
               <div class="metric-value" id="hybridPrice">$10.00</div>
-              <div class="metric-label">Price per HYBRID</div>
+              <div class="metric-label">Native Coin Price</div>
             </div>
             <div class="metric-card">
               <div class="metric-value" id="marketCap">$1000B</div>
-              <div class="metric-label">Market Cap</div>
+              <div class="metric-label">Sovereign Market Cap</div>
             </div>
             <div class="metric-card">
               <div class="metric-value" id="totalSupply">100B HYBRID</div>
-              <div class="metric-label">Total Supply</div>
+              <div class="metric-label">Layer 1 Max Supply</div>
             </div>
           </div>
         </div>
 
         <div class="panel full-width">
-          <h2>👑 Founder Wallet & Authentication</h2>
+          <h2>👑 Sovereign Founder Authentication Portal</h2>
           <founder-wallet-interface></founder-wallet-interface>
         </div>
 
         <div class="panel full-width">
-          <h2>🦊 HYBRID Native Coin Wallet</h2>
+          <h2>🦊 HYBRID Native Coin Wallet - MetaMask Embassy</h2>
           <hybrid-wallet-integration></hybrid-wallet-integration>
         </div>
 
