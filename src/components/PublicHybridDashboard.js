@@ -85,6 +85,20 @@ class PublicHybridDashboard extends HTMLElement {
     }, 500);
   }
 
+  // Open Integration Portal
+  openIntegrationPortal() {
+    this.showNotification('🌟 Opening HYBRID Integration Portal...', 'info');
+    
+    // Switch dashboard to Integration Dashboard
+    setTimeout(() => {
+      const container = document.getElementById('dashboard-container');
+      if (container) {
+        container.innerHTML = '<integration-dashboard></integration-dashboard>';
+        this.showNotification('🏛️ Integration Dashboard Loaded - Professional Platform Portal Active', 'success');
+      }
+    }, 1000);
+  }
+
   showNotification(message, type = 'info') {
     const container = this.shadow.querySelector('.notification-container');
     const notification = document.createElement('div');
@@ -429,6 +443,20 @@ class PublicHybridDashboard extends HTMLElement {
         <div class="panel full-width">
           <h2>📊 Market Data & Timestamping</h2>
           <hybrid-market-data></hybrid-market-data>
+        </div>
+
+        <div class="panel full-width">
+          <h2>🏛️ Platform Integration Portal</h2>
+          <p style="color: #FFD700; margin: 10px 0; font-size: 14px;">Professional hub for MetaMask, CoinMarketCap, CoinGecko & Coinbase integration</p>
+          <div style="text-align: center; padding: 10px;">
+            <button class="action-button" onclick="this.getRootNode().host.openIntegrationPortal()"
+                    style="background: linear-gradient(135deg, #FFD700, #00FF88); color: #000; font-weight: bold;">
+              🌟 Open Integration Dashboard
+            </button>
+            <p style="color: #999; font-size: 12px; margin-top: 10px;">
+              MANUS BLUEPRINT: They connect to us - complete sovereignty approach
+            </p>
+          </div>
         </div>
 
         <div class="panel full-width">
