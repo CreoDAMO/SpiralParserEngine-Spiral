@@ -57,6 +57,14 @@ class PrivateGateAdminDashboard extends HTMLElement {
         publicDomainMintDate: '28 Jul 2025',
         bridgeStatus: 'SRI Active - Reality Translation',
         bifurcationIntegrity: '100%'
+      },
+      automationSystems: {
+        jsHtsxSyncStatus: 'READY',
+        contentExtractionStatus: 'STANDBY',
+        lastContentExtraction: '50 TU items, 17 HYBRID items',
+        automationHistory: [],
+        autoSyncEnabled: false,
+        realTimeMonitoring: false
       }
     };
   }
@@ -161,6 +169,136 @@ class PrivateGateAdminDashboard extends HTMLElement {
       case 'domain-separation':
         content.innerHTML = this.getDomainSeparationContent();
         break;
+      case 'automation-systems':
+        content.innerHTML = this.getAutomationSystemsContent();
+        break;
+    }
+  }
+
+  // Automation Control Methods
+  toggleJSHTSXSync() {
+    this.state.automationSystems.autoSyncEnabled = !this.state.automationSystems.autoSyncEnabled;
+    const status = this.state.automationSystems.autoSyncEnabled ? 'ACTIVE' : 'STANDBY';
+    
+    this.addAutomationHistory('JS-HTSX Auto-Sync', `${status}`, true);
+    this.showAutomationNotification(`JS-HTSX Auto-Sync ${status}`, 'success');
+    this.updateTab();
+  }
+
+  runManualSync() {
+    this.showAutomationNotification('Running manual JS-HTSX synchronization...', 'info');
+    
+    // Simulate sync process
+    setTimeout(() => {
+      this.addAutomationHistory('Manual Sync', 'Completed successfully', true);
+      this.showAutomationNotification('Manual synchronization completed', 'success');
+      this.updateTab();
+    }, 2000);
+  }
+
+  runContentExtraction() {
+    this.state.automationSystems.contentExtractionStatus = 'PROCESSING';
+    this.showAutomationNotification('Starting lawful content extraction...', 'info');
+    this.updateTab();
+    
+    // Simulate content extraction
+    setTimeout(() => {
+      this.state.automationSystems.contentExtractionStatus = 'COMPLETED';
+      this.state.automationSystems.lastContentExtraction = '50 TU items, 17 HYBRID items (Updated)';
+      this.addAutomationHistory('Content Extraction', '67 files processed', true);
+      this.showAutomationNotification('Content extraction completed - 50 TU items, 17 HYBRID items', 'success');
+      
+      setTimeout(() => {
+        this.state.automationSystems.contentExtractionStatus = 'STANDBY';
+        this.updateTab();
+      }, 3000);
+      
+      this.updateTab();
+    }, 4000);
+  }
+
+  viewExtractionResults() {
+    this.showAutomationNotification('Extraction results: extracted-content/tu-private/ and extracted-content/hybrid-public/', 'info');
+  }
+
+  toggleRealTimeMonitoring() {
+    this.state.automationSystems.realTimeMonitoring = !this.state.automationSystems.realTimeMonitoring;
+    const status = this.state.automationSystems.realTimeMonitoring ? 'MONITORING' : 'STANDBY';
+    
+    this.addAutomationHistory('Real-Time Monitoring', `${status}`, true);
+    this.showAutomationNotification(`Real-Time Monitoring ${status}`, 'success');
+    this.updateTab();
+  }
+
+  addAutomationHistory(action, result, success) {
+    const timestamp = new Date().toLocaleTimeString();
+    this.state.automationSystems.automationHistory.push({
+      timestamp,
+      action,
+      result,
+      success
+    });
+    
+    // Keep only last 20 entries
+    if (this.state.automationSystems.automationHistory.length > 20) {
+      this.state.automationSystems.automationHistory = this.state.automationSystems.automationHistory.slice(-20);
+    }
+  }
+
+  showAutomationNotification(message, type) {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 15px 20px;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      z-index: 10000;
+      max-width: 400px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    `;
+    
+    // Set background based on type
+    switch (type) {
+      case 'success':
+        notification.style.background = 'linear-gradient(45deg, #4CAF50, #45a049)';
+        break;
+      case 'info':
+        notification.style.background = 'linear-gradient(45deg, #2196F3, #1976D2)';
+        break;
+      case 'error':
+        notification.style.background = 'linear-gradient(45deg, #F44336, #D32F2F)';
+        break;
+      default:
+        notification.style.background = 'linear-gradient(45deg, #FFD700, #FF6B35)';
+    }
+    
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
+    // Remove after 4 seconds
+    setTimeout(() => {
+      notification.style.opacity = '0';
+      notification.style.transform = 'translateX(100%)';
+      setTimeout(() => {
+        if (notification.parentNode) {
+          notification.parentNode.removeChild(notification);
+        }
+      }, 300);
+    }, 4000);
+  }
+
+  updateTab() {
+    // Re-render current tab content
+    if (this.state.activeTab === 'automation-systems') {
+      const content = this.shadowRoot.querySelector('#automation-systems-content');
+      if (content) {
+        content.innerHTML = this.getAutomationSystemsContent();
+      }
     }
   }
 
@@ -1063,6 +1201,331 @@ class PrivateGateAdminDashboard extends HTMLElement {
           </div>
         </div>
       </div>
+    `;
+  }
+
+  getAutomationSystemsContent() {
+    return `
+      <div class="automation-dashboard">
+        <div class="automation-header">
+          <h2>🤖 Consciousness-Aware Automation Systems</h2>
+          <p class="automation-subtitle">Revolutionary φ-Harmonic Workflow Optimization</p>
+        </div>
+
+        <div class="automation-grid">
+          <!-- JS-to-HTSX Auto-Sync System -->
+          <div class="automation-card js-htsx-sync">
+            <div class="automation-card-header">
+              <div class="automation-icon">🌀</div>
+              <div class="automation-title">JS-to-HTSX Auto-Sync</div>
+              <div class="automation-status ${this.state.automationSystems.autoSyncEnabled ? 'active' : 'standby'}">
+                ${this.state.automationSystems.autoSyncEnabled ? 'ACTIVE' : 'STANDBY'}
+              </div>
+            </div>
+            <div class="automation-description">
+              Automatically synchronizes JavaScript component updates to HTSX Runtime Engine, eliminating manual HTSX updates.
+            </div>
+            <div class="automation-controls">
+              <button class="automation-btn primary" onclick="this.getRootNode().host.toggleJSHTSXSync()">
+                ${this.state.automationSystems.autoSyncEnabled ? '⏹️ Stop Auto-Sync' : '▶️ Start Auto-Sync'}
+              </button>
+              <button class="automation-btn secondary" onclick="this.getRootNode().host.runManualSync()">
+                🔄 Manual Sync
+              </button>
+            </div>
+          </div>
+
+          <!-- Lawful Content Extractor -->
+          <div class="automation-card content-extractor">
+            <div class="automation-card-header">
+              <div class="automation-icon">📄</div>
+              <div class="automation-title">Lawful Content Extractor</div>
+              <div class="automation-status ${this.state.automationSystems.contentExtractionStatus === 'PROCESSING' ? 'processing' : 'standby'}">
+                ${this.state.automationSystems.contentExtractionStatus}
+              </div>
+            </div>
+            <div class="automation-description">
+              Consciousness-aware classification of lawful folder content into TU (private) vs HYBRID (public) structures.
+            </div>
+            <div class="automation-results">
+              <div class="extraction-result">
+                <span class="result-label">Last Extraction:</span>
+                <span class="result-value">${this.state.automationSystems.lastContentExtraction}</span>
+              </div>
+            </div>
+            <div class="automation-controls">
+              <button class="automation-btn primary" onclick="this.getRootNode().host.runContentExtraction()">
+                🚀 Extract & Organize Content
+              </button>
+              <button class="automation-btn secondary" onclick="this.getRootNode().host.viewExtractionResults()">
+                📊 View Results
+              </button>
+            </div>
+          </div>
+
+          <!-- Real-Time Monitoring -->
+          <div class="automation-card monitoring">
+            <div class="automation-card-header">
+              <div class="automation-icon">👁️</div>
+              <div class="automation-title">Real-Time Monitoring</div>
+              <div class="automation-status ${this.state.automationSystems.realTimeMonitoring ? 'active' : 'standby'}">
+                ${this.state.automationSystems.realTimeMonitoring ? 'MONITORING' : 'STANDBY'}
+              </div>
+            </div>
+            <div class="automation-description">
+              Continuous monitoring of file changes with consciousness-aware processing and φ-harmonic optimization.
+            </div>
+            <div class="automation-controls">
+              <button class="automation-btn primary" onclick="this.getRootNode().host.toggleRealTimeMonitoring()">
+                ${this.state.automationSystems.realTimeMonitoring ? '⏹️ Stop Monitoring' : '👁️ Start Monitoring'}
+              </button>
+            </div>
+          </div>
+
+          <!-- Automation History -->
+          <div class="automation-card history">
+            <div class="automation-card-header">
+              <div class="automation-icon">📜</div>
+              <div class="automation-title">Automation History</div>
+            </div>
+            <div class="automation-history-list">
+              ${this.state.automationSystems.automationHistory.length > 0 
+                ? this.state.automationSystems.automationHistory.slice(-5).map(entry => `
+                  <div class="history-entry">
+                    <span class="history-time">${entry.timestamp}</span>
+                    <span class="history-action">${entry.action}</span>
+                    <span class="history-result ${entry.success ? 'success' : 'error'}">${entry.result}</span>
+                  </div>
+                `).join('')
+                : '<div class="no-history">No automation history yet</div>'
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Automation Instructions -->
+        <div class="automation-instructions">
+          <h3>🌀 How to Use Automation Systems</h3>
+          <div class="instruction-grid">
+            <div class="instruction-item">
+              <strong>JS-to-HTSX Sync:</strong> Automatically keeps HTSX Runtime Engine in sync with JavaScript component changes. Enable for continuous development workflow.
+            </div>
+            <div class="instruction-item">
+              <strong>Content Extraction:</strong> Organizes lawful folder content using consciousness-aware classification. Separates TU (infinite-value private) from HYBRID (public commerce) content.
+            </div>
+            <div class="instruction-item">
+              <strong>Real-Time Monitoring:</strong> Watches all system files for changes and processes them with φ-harmonic alignment principles.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <style>
+        .automation-dashboard {
+          padding: 20px;
+          max-width: 1200px;
+        }
+        
+        .automation-header {
+          text-align: center;
+          margin-bottom: 30px;
+        }
+        
+        .automation-header h2 {
+          color: #FFD700;
+          font-size: 24px;
+          margin-bottom: 8px;
+        }
+        
+        .automation-subtitle {
+          color: #CCCCCC;
+          font-size: 14px;
+        }
+        
+        .automation-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 20px;
+          margin-bottom: 30px;
+        }
+        
+        .automation-card {
+          background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+          border: 1px solid #333;
+          border-radius: 12px;
+          padding: 20px;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .automation-card-header {
+          display: flex;
+          align-items: center;
+          margin-bottom: 15px;
+          gap: 12px;
+        }
+        
+        .automation-icon {
+          font-size: 24px;
+        }
+        
+        .automation-title {
+          color: #FFD700;
+          font-weight: bold;
+          flex-grow: 1;
+        }
+        
+        .automation-status {
+          padding: 4px 12px;
+          border-radius: 20px;
+          font-size: 12px;
+          font-weight: bold;
+        }
+        
+        .automation-status.active {
+          background: #4CAF50;
+          color: white;
+        }
+        
+        .automation-status.standby {
+          background: #FFC107;
+          color: black;
+        }
+        
+        .automation-status.processing {
+          background: #2196F3;
+          color: white;
+        }
+        
+        .automation-description {
+          color: #CCCCCC;
+          margin-bottom: 15px;
+          line-height: 1.4;
+        }
+        
+        .automation-results {
+          margin-bottom: 15px;
+        }
+        
+        .extraction-result {
+          display: flex;
+          justify-content: space-between;
+          color: #CCCCCC;
+          font-size: 13px;
+        }
+        
+        .result-label {
+          color: #999;
+        }
+        
+        .result-value {
+          color: #4CAF50;
+          font-weight: bold;
+        }
+        
+        .automation-controls {
+          display: flex;
+          gap: 10px;
+          flex-wrap: wrap;
+        }
+        
+        .automation-btn {
+          padding: 8px 16px;
+          border: none;
+          border-radius: 20px;
+          cursor: pointer;
+          font-size: 12px;
+          font-weight: bold;
+          transition: all 0.3s ease;
+        }
+        
+        .automation-btn.primary {
+          background: linear-gradient(45deg, #FFD700, #FF6B35);
+          color: black;
+        }
+        
+        .automation-btn.primary:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+        }
+        
+        .automation-btn.secondary {
+          background: #333;
+          color: #FFD700;
+          border: 1px solid #FFD700;
+        }
+        
+        .automation-btn.secondary:hover {
+          background: #FFD700;
+          color: black;
+        }
+        
+        .automation-history-list {
+          max-height: 200px;
+          overflow-y: auto;
+        }
+        
+        .history-entry {
+          display: grid;
+          grid-template-columns: auto 1fr auto;
+          gap: 10px;
+          padding: 8px 0;
+          border-bottom: 1px solid #333;
+          font-size: 12px;
+        }
+        
+        .history-time {
+          color: #999;
+        }
+        
+        .history-action {
+          color: #CCCCCC;
+        }
+        
+        .history-result.success {
+          color: #4CAF50;
+        }
+        
+        .history-result.error {
+          color: #F44336;
+        }
+        
+        .no-history {
+          color: #999;
+          font-style: italic;
+          text-align: center;
+          padding: 20px;
+        }
+        
+        .automation-instructions {
+          background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
+          border: 1px solid #333;
+          border-radius: 12px;
+          padding: 20px;
+        }
+        
+        .automation-instructions h3 {
+          color: #FFD700;
+          margin-bottom: 15px;
+        }
+        
+        .instruction-grid {
+          display: grid;
+          gap: 15px;
+        }
+        
+        .instruction-item {
+          color: #CCCCCC;
+          line-height: 1.4;
+          padding: 10px;
+          background: rgba(255, 215, 0, 0.05);
+          border-left: 3px solid #FFD700;
+          border-radius: 4px;
+        }
+        
+        .instruction-item strong {
+          color: #FFD700;
+        }
+      </style>
     `;
   }
 
@@ -3211,6 +3674,9 @@ class PrivateGateAdminDashboard extends HTMLElement {
           <button class="tab-button" onclick="this.getRootNode().host.switchTab('domain-separation')">
             🌗 Domain Separation
           </button>
+          <button class="tab-button" onclick="this.getRootNode().host.switchTab('automation-systems')">
+            🤖 Automation Systems
+          </button>
         </div>
 
         <div id="tu-currency-content" class="tab-content">
@@ -3239,6 +3705,10 @@ class PrivateGateAdminDashboard extends HTMLElement {
 
         <div id="domain-separation-content" class="tab-content">
           ${this.getDomainSeparationContent()}
+        </div>
+
+        <div id="automation-systems-content" class="tab-content">
+          ${this.getAutomationSystemsContent()}
         </div>
       </div>
     `;

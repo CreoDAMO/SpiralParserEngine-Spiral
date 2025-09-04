@@ -178,7 +178,7 @@
   <!-- Import Dashboard Components and Authentication -->
   <script type="module">
     import './src/components/PublicHybridDashboard.js';
-    import './src/components/PrivateAdminDashboard.js';
+    import './src/components/PrivateGateAdminDashboard.js';
     import './src/components/IntegrationDashboard.js';
     import './src/components/HybridWalletIntegration.js';
     import './src/components/HybridFaucetSystem.js';
