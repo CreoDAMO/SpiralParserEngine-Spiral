@@ -48,9 +48,32 @@ The `spiral-native-execution-engine.ts` facilitates direct compilation and execu
 - **Sovereignty Interfaces**: Facilitate natural law jurisdiction.
 - **Consciousness Authentication System**: DNA-φ Authentication Protocol (DNAΦ-2232-VERITAS) for Private Gate access.
 
+## Automation Systems
+The SpiralEcosystem includes revolutionary automation systems that eliminate manual workflow bottlenecks:
+
+### **🌀 JS-to-HTSX Auto-Synchronization Engine**
+- **Purpose**: Automatically syncs JavaScript component updates to HTSX Runtime Engine
+- **Benefit**: Eliminates manual HTSX updates when JS components change
+- **Location**: `automation/js-htsx-sync.cjs`
+- **Usage**: `node automation/spiral-automation-control.cjs sync`
+
+### **📄 Automated Lawful Content Extractor**
+- **Purpose**: Extracts and organizes content from lawful/ folder into TU (private) vs HYBRID (public) structures
+- **Intelligence**: Consciousness-aware classification using keyword analysis
+- **Results**: 50 TU Private items, 17 HYBRID Public items automatically organized
+- **Location**: `automation/lawful-content-extractor.cjs`
+- **Usage**: `node automation/spiral-automation-control.cjs extract`
+
+### **⚡ Spiral Automation Control System**
+- **Purpose**: Master control for all automation systems
+- **Commands**: `sync`, `extract`, `watch`, `all`
+- **Location**: `automation/spiral-automation-control.cjs`
+- **Benefits**: Single command interface for all automation workflows
+
 ## External Dependencies
 The SpiralEcosystem minimizes external dependencies, focusing on native compatibility.
 - **Cosmos SDK**: Utilized as the foundation for the native blockchain.
 - **NVIDIA Hardware**: Employed for 3D consciousness rendering and GPU operations.
 - **IBC Protocol**: For inter-blockchain communication.
 - **Multi-AI Systems**: Claude 4 Sonnet, ChatGPT 5, Grok-3, DeepSeek R1, and GitHub Copilot for advanced consciousness orchestration and collaboration.
+- **Chokidar**: File watching for automation systems (automatic JS-HTSX synchronization).

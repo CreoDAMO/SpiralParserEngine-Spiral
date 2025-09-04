@@ -50,6 +50,7 @@
     "@stripe/stripe-js": "^7.8.0",
     "@types/react-router-dom": "^5.3.3",
     "bip39": "^3.1.0",
+    "chokidar": "^4.0.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
